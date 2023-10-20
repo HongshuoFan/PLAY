@@ -58,7 +58,7 @@ HIDMenu::HIDMenu ()
 
     setSize (400, 40);
 
-
+    Refresh__textButton->triggerClick();
     //[Constructor] You can add your own custom stuff here..
     //[/Constructor]
 }
