@@ -45,14 +45,21 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     //[/UserMethods]
-
+    //virtual void HIDMenuChanged (HIDMenu* HIDMenuThatHasChanged) = 0;
+    
     void paint (juce::Graphics& g) override;
     void resized() override;
     void comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged) override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
-
-
-
+    
+//    void addListener(HIDMenuListener* newListener);
+    //std::unique_ptr<juce::ComboBox> HIDcombox__comboBox;
+    bool HIDDeviceChanged;
+    juce::String selectedKey;
+    IOHIDDeviceRef seletedDevice;
+    
+    std::function<void()> onHIDMenuChanged;
+    
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     //[/UserVariables]
@@ -62,6 +69,8 @@ private:
     std::unique_ptr<juce::TextButton> Refresh__textButton;
     std::map<juce::String, IOHIDDeviceRef> devicesMap;
     void updateHIDcombox();
+//    HIDMenuListener* listener = nullptr;
+//    void onHIDMenuChanged();
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HIDMenu)
 };

@@ -70,8 +70,8 @@ HIDMenu::~HIDMenu()
 
     HIDcombox__comboBox = nullptr;
     Refresh__textButton = nullptr;
-
-
+    seletedDevice = nullptr;
+    HIDDeviceChanged = false;
     //[Destructor]. You can add your own custom destruction code here..
     //[/Destructor]
 }
@@ -95,7 +95,10 @@ void HIDMenu::paint (juce::Graphics& g)
         g.drawText (text, x, y, width, height,
                     juce::Justification::centredLeft, true);
     }
-
+    
+    if(HIDDeviceChanged){
+        HIDDeviceChanged = false;
+    }
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
 }
@@ -116,8 +119,10 @@ void HIDMenu::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
 
     if (comboBoxThatHasChanged == HIDcombox__comboBox.get())
     {
-        juce::String key = HIDcombox__comboBox->getText();
-        std::cout << key << std::endl;
+        selectedKey = HIDcombox__comboBox->getText();
+        seletedDevice = devicesMap[selectedKey];
+        HIDDeviceChanged = true;
+        onHIDMenuChanged();
     }
 
     //[UsercomboBoxChanged_Post]
@@ -136,8 +141,12 @@ void HIDMenu::buttonClicked (juce::Button* buttonThatWasClicked)
         _listHid.get_hid_list();
         
         devicesMap = _listHid.devicesMap;
-        
-        updateHIDcombox();
+        if(devicesMap.size()){
+            updateHIDcombox();
+        }
+        else{
+            HIDcombox__comboBox->setTextWhenNoChoicesAvailable (TRANS ("(No Device)"));
+        }
         
     }
 
@@ -145,7 +154,8 @@ void HIDMenu::buttonClicked (juce::Button* buttonThatWasClicked)
     //[/UserbuttonClicked_Post]
 }
 
-void HIDMenu::updateHIDcombox() {
+void HIDMenu::updateHIDcombox()
+{
     
     // update the combox with new map
     
@@ -157,7 +167,7 @@ void HIDMenu::updateHIDcombox() {
     
     for (const auto& entry : devicesMap) {
         juce::String key = entry.first;
-        std::cout << key << std::endl;
+        //std::cout << key << std::endl;
 
         HIDcombox__comboBox->addItem(key, item_count);
         item_count += 1;
@@ -165,6 +175,11 @@ void HIDMenu::updateHIDcombox() {
     
 }
 
+//void HIDMenu::onHIDMenuChanged()
+//{
+//    if (listener != nullptr)
+//        listener->onHIDMenuChanged();
+//}
 
 
 

@@ -4,7 +4,11 @@
 MainComponent::MainComponent()
 {
     setSize (600, 400);
+    
+    // Create HIDmenu compoent and add it to the MainComponent
     addAndMakeVisible(m_HIDMenu);
+    // Add a listener to the m_HIDMenu
+    m_HIDMenu.onHIDMenuChanged = [this]{onHIDMenuChanged();};
 }
 
 MainComponent::~MainComponent()
@@ -28,3 +32,8 @@ void MainComponent::resized()
     // If you add any child components, this is where you should
     // update their positions.
 }
+
+void MainComponent::onHIDMenuChanged()
+{
+    std::cout << m_HIDMenu.selectedKey << std::endl;
+};
