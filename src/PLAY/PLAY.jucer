@@ -9,6 +9,10 @@
       <FILE id="RLQ7zR" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
     </GROUP>
+    <FILE id="ngNx0O" name="HIDMenu.cpp" compile="1" resource="0" file="Source/HIDMenu.cpp"/>
+    <FILE id="Obri31" name="HIDMenu.h" compile="0" resource="0" file="Source/HIDMenu.h"/>
+    <FILE id="OJJ0ov" name="ListHID.cpp" compile="1" resource="0" file="Source/ListHID.cpp"/>
+    <FILE id="SDbuee" name="ListHID.h" compile="0" resource="0" file="Source/ListHID.h"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

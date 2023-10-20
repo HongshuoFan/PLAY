@@ -4,6 +4,7 @@
 MainComponent::MainComponent()
 {
     setSize (600, 400);
+    addAndMakeVisible(m_HIDMenu);
 }
 
 MainComponent::~MainComponent()
