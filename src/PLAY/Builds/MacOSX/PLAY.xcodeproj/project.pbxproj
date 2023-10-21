@@ -15,6 +15,7 @@
 		437662FEF65B7945765B603A /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = 8EF1A5F445BF993323DA3736; };
 		51480E87AFFD5751D02DB901 /* ListHID.cpp */ = {isa = PBXBuildFile; fileRef = 8B257BFFF4E6D90B0F3242F8; };
 		52655D0A04683BB0ECBD40D9 /* include_juce_events.mm */ = {isa = PBXBuildFile; fileRef = 60F582DEFEF78E46596CE36A; };
+		54F903276965C171E56BE237 /* HID_IO.cpp */ = {isa = PBXBuildFile; fileRef = 44F2038ED2E8C3F8B3311BAF; };
 		58E1A012773B90B04E8345A2 /* include_juce_data_structures.mm */ = {isa = PBXBuildFile; fileRef = CC8AF84D7B98AB9A819CDE94; };
 		798E6B3CE1C73DD5252C983A /* App */ = {isa = PBXBuildFile; fileRef = C5ED5E5221FE97E324529602; };
 		7EEB93E10DCE47D8C650D8EE /* Main.cpp */ = {isa = PBXBuildFile; fileRef = A33E8D0C79428F78D1774F43; };
@@ -36,6 +37,7 @@
 		357255BCE00B80150326189B /* ListHID.h */ /* ListHID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ListHID.h; path = ../../Source/ListHID.h; sourceTree = SOURCE_ROOT; };
 		3B19C651B029D252CF366851 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = /Users/hongshuofan/Documents/JUCE/modules/juce_data_structures; sourceTree = "<absolute>"; };
 		3BFF4447BE24D2522DE8BC5A /* HIDMenu.cpp */ /* HIDMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HIDMenu.cpp; path = ../../Source/HIDMenu.cpp; sourceTree = SOURCE_ROOT; };
+		44F2038ED2E8C3F8B3311BAF /* HID_IO.cpp */ /* HID_IO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HID_IO.cpp; path = ../../Source/HID_IO.cpp; sourceTree = SOURCE_ROOT; };
 		4D8E641104DF78957EE8110D /* Metal.framework */ /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		59D7B2784C958621473D68CD /* Foundation.framework */ /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5F1B2DA4751CDED59D653556 /* include_juce_gui_basics.mm */ /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
@@ -58,6 +60,7 @@
 		CC8AF84D7B98AB9A819CDE94 /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
 		D5AD8F470B1BFEF2A0320D31 /* JuceHeader.h */ /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		DF04D0A21A079C65549ECEB9 /* RecentFilesMenuTemplate.nib */ /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
+		E76DFF909541EC9905DF7EF3 /* HID_IO.h */ /* HID_IO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HID_IO.h; path = ../../Source/HID_IO.h; sourceTree = SOURCE_ROOT; };
 		F444FED6CF8535FB7F5350CD /* juce_core */ /* juce_core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_core; path = /Users/hongshuofan/Documents/JUCE/modules/juce_core; sourceTree = "<absolute>"; };
 		F9D44C63C22BAF796CE8ED49 /* MainComponent.cpp */ /* MainComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainComponent.cpp; path = ../../Source/MainComponent.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -84,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				4B754B909D8EE3BF8517C13A,
+				44F2038ED2E8C3F8B3311BAF,
+				E76DFF909541EC9905DF7EF3,
 				3BFF4447BE24D2522DE8BC5A,
 				A32F60142AABE304BC850D4B,
 				8B257BFFF4E6D90B0F3242F8,
@@ -261,6 +266,7 @@
 			files = (
 				7EEB93E10DCE47D8C650D8EE,
 				168EC2BD77573E94476EE10D,
+				54F903276965C171E56BE237,
 				D2B2951F34D6E02A7DCE3415,
 				51480E87AFFD5751D02DB901,
 				1CD59ED1B524B5F93651171F,

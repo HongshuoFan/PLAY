@@ -36,4 +36,15 @@ void MainComponent::resized()
 void MainComponent::onHIDMenuChanged()
 {
     std::cout << m_HIDMenu.selectedKey << std::endl;
+    if(hidIO.connect(m_HIDMenu.seletedDevice)){
+        //hidIO.setDataReceivedCallback(onDataReceived);
+    }
 };
+
+void MainComponent::onDataReceived(const std::vector<unsigned char>& data)
+{
+    for (unsigned char byte : data) {
+            std::cout << std::hex << (int)byte << " ";
+        }
+        std::cout << std::endl;
+}

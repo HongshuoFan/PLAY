@@ -2,6 +2,7 @@
 
 #include <JuceHeader.h>
 #include "HIDMenu.h"
+#include "HID_IO.h"
 /*
   ==============================================================================
 
@@ -25,8 +26,10 @@ public:
 private:
     //==============================================================================
     // Your private member variables go here...
-
+    // write a new funciton 
     HIDMenu m_HIDMenu;
+    HID_IO hidIO;
     void onHIDMenuChanged();
+    void onDataReceived(const std::vector<unsigned char>& data);
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

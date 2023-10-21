@@ -23,8 +23,8 @@ public:
     ListHID();
     ~ListHID() override;
 
-    void paint (juce::Graphics&) override;
-    void resized() override;
+//    void paint (juce::Graphics&) override;
+//    void resized() override;
     
     void get_hid_list();
     
