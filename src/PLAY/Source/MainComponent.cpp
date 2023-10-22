@@ -36,9 +36,14 @@ void MainComponent::resized()
 void MainComponent::onHIDMenuChanged()
 {
     std::cout << m_HIDMenu.selectedKey << std::endl;
-    if(hidIO.connect(m_HIDMenu.seletedDevice)){
-        //hidIO.setDataReceivedCallback(onDataReceived);
+    char* charPointer = new char[m_HIDMenu.selectedKey.length() + 1];
+    m_HIDMenu.selectedKey.copyToUTF8(charPointer, m_HIDMenu.selectedKey.length()+1);
+    hidIO.device_name = charPointer;
+    
+    if(hidIO.connect()){
+        std::cout << "connect success" << std::endl;
     }
+   
 };
 
 void MainComponent::onDataReceived(const std::vector<unsigned char>& data)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		056DACCBB35F84C288986541 /* Metal.framework */ = {isa = PBXBuildFile; fileRef = 4D8E641104DF78957EE8110D; settings = { ATTRIBUTES = (Weak, ); }; };
+		12887836995149239BD0B218 /* hidAPI_IO.cpp */ = {isa = PBXBuildFile; fileRef = 5D4F7FFA3618FC92F22C6410; };
 		168EC2BD77573E94476EE10D /* MainComponent.cpp */ = {isa = PBXBuildFile; fileRef = F9D44C63C22BAF796CE8ED49; };
 		1CD59ED1B524B5F93651171F /* include_juce_core.mm */ = {isa = PBXBuildFile; fileRef = 73A2BC0024FF2CFE98EF54DA; };
 		31B4E3AE540344DFBCDBF43D /* Foundation.framework */ = {isa = PBXBuildFile; fileRef = 59D7B2784C958621473D68CD; };
@@ -40,6 +41,7 @@
 		44F2038ED2E8C3F8B3311BAF /* HID_IO.cpp */ /* HID_IO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HID_IO.cpp; path = ../../Source/HID_IO.cpp; sourceTree = SOURCE_ROOT; };
 		4D8E641104DF78957EE8110D /* Metal.framework */ /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		59D7B2784C958621473D68CD /* Foundation.framework */ /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5D4F7FFA3618FC92F22C6410 /* hidAPI_IO.cpp */ /* hidAPI_IO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = hidAPI_IO.cpp; path = ../../Source/hidAPI_IO.cpp; sourceTree = SOURCE_ROOT; };
 		5F1B2DA4751CDED59D653556 /* include_juce_gui_basics.mm */ /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
 		60F582DEFEF78E46596CE36A /* include_juce_events.mm */ /* include_juce_events.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_events.mm; path = ../../JuceLibraryCode/include_juce_events.mm; sourceTree = SOURCE_ROOT; };
 		619928B320E5DAD973D8BF05 /* MetalKit.framework */ /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -51,6 +53,7 @@
 		73A2BC0024FF2CFE98EF54DA /* include_juce_core.mm */ /* include_juce_core.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_core.mm; path = ../../JuceLibraryCode/include_juce_core.mm; sourceTree = SOURCE_ROOT; };
 		8B257BFFF4E6D90B0F3242F8 /* ListHID.cpp */ /* ListHID.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ListHID.cpp; path = ../../Source/ListHID.cpp; sourceTree = SOURCE_ROOT; };
 		8EF1A5F445BF993323DA3736 /* QuartzCore.framework */ /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8F745212082B93D241F5F1AA /* hidAPI_IO.h */ /* hidAPI_IO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hidAPI_IO.h; path = ../../Source/hidAPI_IO.h; sourceTree = SOURCE_ROOT; };
 		9F0B7BC24E4A71EE50B31E2B /* Info-App.plist */ /* Info-App.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-App.plist"; path = "Info-App.plist"; sourceTree = SOURCE_ROOT; };
 		A32F60142AABE304BC850D4B /* HIDMenu.h */ /* HIDMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HIDMenu.h; path = ../../Source/HIDMenu.h; sourceTree = SOURCE_ROOT; };
 		A33E8D0C79428F78D1774F43 /* Main.cpp */ /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Source/Main.cpp; sourceTree = SOURCE_ROOT; };
@@ -61,6 +64,7 @@
 		D5AD8F470B1BFEF2A0320D31 /* JuceHeader.h */ /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		DF04D0A21A079C65549ECEB9 /* RecentFilesMenuTemplate.nib */ /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
 		E76DFF909541EC9905DF7EF3 /* HID_IO.h */ /* HID_IO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HID_IO.h; path = ../../Source/HID_IO.h; sourceTree = SOURCE_ROOT; };
+		F1C452940280CE33FDD84A0E /* InputProvider.h */ /* InputProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InputProvider.h; path = ../../Source/InputProvider.h; sourceTree = SOURCE_ROOT; };
 		F444FED6CF8535FB7F5350CD /* juce_core */ /* juce_core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_core; path = /Users/hongshuofan/Documents/JUCE/modules/juce_core; sourceTree = "<absolute>"; };
 		F9D44C63C22BAF796CE8ED49 /* MainComponent.cpp */ /* MainComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainComponent.cpp; path = ../../Source/MainComponent.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -89,8 +93,11 @@
 				4B754B909D8EE3BF8517C13A,
 				44F2038ED2E8C3F8B3311BAF,
 				E76DFF909541EC9905DF7EF3,
+				5D4F7FFA3618FC92F22C6410,
+				8F745212082B93D241F5F1AA,
 				3BFF4447BE24D2522DE8BC5A,
 				A32F60142AABE304BC850D4B,
+				F1C452940280CE33FDD84A0E,
 				8B257BFFF4E6D90B0F3242F8,
 				357255BCE00B80150326189B,
 			);
@@ -267,6 +274,7 @@
 				7EEB93E10DCE47D8C650D8EE,
 				168EC2BD77573E94476EE10D,
 				54F903276965C171E56BE237,
+				12887836995149239BD0B218,
 				D2B2951F34D6E02A7DCE3415,
 				51480E87AFFD5751D02DB901,
 				1CD59ED1B524B5F93651171F,

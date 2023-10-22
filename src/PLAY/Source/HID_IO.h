@@ -10,15 +10,16 @@
 
 #pragma once
 
-#include <JuceHeader.h>
+
 #include <IOKit/hid/IOHIDManager.h>
-//#include <IOKit/hid/IOHIDKeys.h>
+#include <IOKit/IOKitLib.h>
+#include "InputProvider.h"
 #include <iostream>
 #include <functional>
 #include <thread>
 #include <chrono>
 #include <vector>
-#include "hidapi.h"
+#include <JuceHeader.h>
 //==============================================================================
 /*
  */
@@ -37,8 +38,9 @@ public:
     HID_IO();
     ~HID_IO() override;
 
+    char *device_name;
  
-    bool connect(IOHIDDeviceRef device);
+    bool connect();
     void disconnect();
     
     bool writeRawData(unsigned char* data, int size);
@@ -54,14 +56,22 @@ public:
     
 private:
     IOHIDManagerRef manager;
-    IOHIDDeviceRef device;
+    IOHIDDeviceRef deviceRF;
+    
+    struct DEVICE_INFO
+    {
+        HID_IO* provider = nullptr;
+        DeviceIdType deviceId;
+        IOHIDDeviceRef device;
+        bool first_run = true;
+        uint8_t prev_btn_state[50];
+    };
     
     std::vector<unsigned char> inputData; // Dynamic size for input data
     DataReceivedCallback dataReceivedCallback;
     
     void creatConncet();
     
-    static int GetIntProperty(IOHIDDeviceRef device, CFStringRef key);
     CFMutableDictionaryRef CreateDeviceMatchingDictionary(uint32_t usagePage, uint32_t usage);
     
     static void OnDeviceMatchedStub(void* context, IOReturn result, void* sender, IOHIDDeviceRef device);
@@ -69,9 +79,12 @@ private:
     
     IOHIDReportCallback GetCallback(IOHIDDeviceRef device);
     static void InputReportCallbackStub(void* context, IOReturn result, void* sender, IOHIDReportType type, uint32_t reportID, uint8_t* report, CFIndex reportLength);
-    void InputReportCallback(IOReturn result, void* sender, IOHIDReportType type, uint32_t reportID, uint8_t* report, CFIndex reportLength);
+    void InputReportCallback(DEVICE_INFO* deviceInfo, IOReturn result, void* sender, IOHIDReportType type, uint32_t reportID, uint8_t* report, CFIndex reportLength);
+    
+    std::list<DEVICE_INFO> m_devices;
     
     std::thread readingThread;
     bool stopThreadFlag;
+    bool isConneted;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HID_IO)
 };

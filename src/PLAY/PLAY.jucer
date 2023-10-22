@@ -11,8 +11,11 @@
     </GROUP>
     <FILE id="tGyaT3" name="HID_IO.cpp" compile="1" resource="0" file="Source/HID_IO.cpp"/>
     <FILE id="rXo96D" name="HID_IO.h" compile="0" resource="0" file="Source/HID_IO.h"/>
+    <FILE id="iHXYOr" name="hidAPI_IO.cpp" compile="1" resource="0" file="Source/hidAPI_IO.cpp"/>
+    <FILE id="SboQAD" name="hidAPI_IO.h" compile="0" resource="0" file="Source/hidAPI_IO.h"/>
     <FILE id="ngNx0O" name="HIDMenu.cpp" compile="1" resource="0" file="Source/HIDMenu.cpp"/>
     <FILE id="Obri31" name="HIDMenu.h" compile="0" resource="0" file="Source/HIDMenu.h"/>
+    <FILE id="utjFkL" name="InputProvider.h" compile="0" resource="0" file="Source/InputProvider.h"/>
     <FILE id="OJJ0ov" name="ListHID.cpp" compile="1" resource="0" file="Source/ListHID.cpp"/>
     <FILE id="SDbuee" name="ListHID.h" compile="0" resource="0" file="Source/ListHID.h"/>
   </MAINGROUP>

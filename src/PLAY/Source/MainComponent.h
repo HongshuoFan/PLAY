@@ -3,6 +3,7 @@
 #include <JuceHeader.h>
 #include "HIDMenu.h"
 #include "HID_IO.h"
+
 /*
   ==============================================================================
 
@@ -29,7 +30,9 @@ private:
     // write a new funciton 
     HIDMenu m_HIDMenu;
     HID_IO hidIO;
+    
     void onHIDMenuChanged();
     void onDataReceived(const std::vector<unsigned char>& data);
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
