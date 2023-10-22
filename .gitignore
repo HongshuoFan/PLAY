@@ -1,3 +1,4 @@
 
 .DS_Store
-src/PLAY/Builds/build/*
+**/.Builds
+**/Builds
