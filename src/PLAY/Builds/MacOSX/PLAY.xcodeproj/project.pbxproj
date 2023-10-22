@@ -333,6 +333,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode /Users/hongshuofan/Documents/JUCE/modules";
+				OTHER_LDFLAGS = "-lhidapi";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.PLAY;
 				PRODUCT_NAME = "PLAY";
 				USE_HEADERMAP = NO;
@@ -431,13 +432,19 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"/Users/hongshuofan/Documents/JUCE/modules",
+					"/usr/local/include/hidapi/",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info-App.plist;
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"/usr/local/lib\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode /Users/hongshuofan/Documents/JUCE/modules";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JuceLibraryCode /Users/hongshuofan/Documents/JUCE/modules /usr/local/include/hidapi/";
+				OTHER_LDFLAGS = "-lhidapi";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.PLAY;
 				PRODUCT_NAME = "PLAY";
 				USE_HEADERMAP = NO;

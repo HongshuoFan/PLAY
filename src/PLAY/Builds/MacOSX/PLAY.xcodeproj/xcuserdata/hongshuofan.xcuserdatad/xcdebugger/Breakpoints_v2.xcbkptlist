@@ -3,4 +3,321 @@
    uuid = "2F10FA83-92A2-46E1-8570-BB8CF47A5804"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C14A315E-BADC-45EF-B349-1A8B7EDF1869"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Source/HID_IO.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "HID_IO::GetIntProperty(device, key)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C14A315E-BADC-45EF-B349-1A8B7EDF1869 - c6b7be03650f8ce8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::GetIntProperty(__IOHIDDevice*, __CFString const*)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "121">
+               </Location>
+               <Location
+                  uuid = "C14A315E-BADC-45EF-B349-1A8B7EDF1869 - c6b7be03650f8c89"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::GetIntProperty(__IOHIDDevice*, __CFString const*)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "127">
+               </Location>
+               <Location
+                  uuid = "C14A315E-BADC-45EF-B349-1A8B7EDF1869 - c6b7be03650fb34b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::GetIntProperty(__IOHIDDevice*, __CFString const*)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "127">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "80417788-B38E-40CE-9382-02929FE4CEBB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Source/HID_IO.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "HID_IO::readRawData(buffer, bufferSize)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "80417788-B38E-40CE-9382-02929FE4CEBB - 1226fba19eac0fbf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "75">
+               </Location>
+               <Location
+                  uuid = "80417788-B38E-40CE-9382-02929FE4CEBB - 1226fba19eac0fbf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "53">
+               </Location>
+               <Location
+                  uuid = "80417788-B38E-40CE-9382-02929FE4CEBB - 1226fba19eac0ffd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "53">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "983B93B2-F196-431C-9A8B-A92380D57ED7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Source/HID_IO.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "HID_IO::readRawData(buffer, bufferSize)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "983B93B2-F196-431C-9A8B-A92380D57ED7 - 1226fba19eac0fde"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "101">
+               </Location>
+               <Location
+                  uuid = "983B93B2-F196-431C-9A8B-A92380D57ED7 - 1226fba19eac0fde"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "75">
+               </Location>
+               <Location
+                  uuid = "983B93B2-F196-431C-9A8B-A92380D57ED7 - 1226fba19eac0e1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "75">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "48315C82-50A2-4732-AE50-99C06A71AA5E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Source/HID_IO.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "HID_IO::readRawData(buffer, bufferSize)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "48315C82-50A2-4732-AE50-99C06A71AA5E - 1226fba19eac0ffd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "48315C82-50A2-4732-AE50-99C06A71AA5E - 1226fba19eac0ffd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "101">
+               </Location>
+               <Location
+                  uuid = "48315C82-50A2-4732-AE50-99C06A71AA5E - 1226fba19eac0e3b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "101">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FFEAF291-D53A-4AFF-9E0B-E9611EC5637D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Source/HID_IO.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "HID_IO::readRawData(buffer, bufferSize)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FFEAF291-D53A-4AFF-9E0B-E9611EC5637D - 1226fba19eac0e5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "137">
+               </Location>
+               <Location
+                  uuid = "FFEAF291-D53A-4AFF-9E0B-E9611EC5637D - 1226fba19eac0e1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "FFEAF291-D53A-4AFF-9E0B-E9611EC5637D - 1226fba19eac0e5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HID_IO::readRawData(unsigned char*, int)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/HID_IO.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
