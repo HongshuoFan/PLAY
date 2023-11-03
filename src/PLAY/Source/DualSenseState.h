@@ -72,7 +72,23 @@ namespace DualSense {
         unsigned char g;
         unsigned char b;
     } Color;
+    
+    typedef struct _Dpad{
+        bool up;
+        bool down;
+        bool left;
+        bool right;
+    
+    } Dpad;
 
+    typedef struct _Buttons{
+        
+        bool cross;
+        bool square;
+        bool circle;
+        bool triangle;
+
+    } Buttons;
     /// <summary>
     /// Touchpad state
     /// </summary>
@@ -324,6 +340,9 @@ namespace DualSense {
         /// </summary>
         unsigned int rightTrigger;
 
+        Dpad dpad;
+        
+        Buttons buttons;
         /// <summary>
         /// Buttons and dpad bitmask DualSense_ISTATE_BTX_?? and DualSense_ISTATE_DPAD_?? indices check with if(buttonsAndDpad & DualSense_ISTATE_DPAD_??)...
         /// </summary>
