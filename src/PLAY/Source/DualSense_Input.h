@@ -26,5 +26,6 @@ public:
     void evaluateDualSenseHidInputBuffer(uint8_t* _reportData);
 
 private:
+    int16_t uint16_to_int16(uint16_t a);
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DualSense_Input)
 };

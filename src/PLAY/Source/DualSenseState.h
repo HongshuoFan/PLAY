@@ -53,6 +53,9 @@ namespace DualSense {
         /// Y Posistion of stick (0 = Center)
         /// </summary>
         int y;
+        
+        bool stickPress;
+        
     } AnalogStick;
 
     /// <summary>
@@ -87,6 +90,10 @@ namespace DualSense {
         bool square;
         bool circle;
         bool triangle;
+        bool select;
+        bool menu;
+        bool r1;
+        bool l1;
 
     } Buttons;
     /// <summary>
@@ -324,7 +331,7 @@ namespace DualSense {
         /// Position of left stick
         /// </summary>
         AnalogStick leftStick;
-
+        
         /// <summary>
         /// Posisiton of right stick
         /// </summary>
