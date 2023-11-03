@@ -9,6 +9,7 @@ MainComponent::MainComponent()
     addAndMakeVisible(m_HIDMenu);
     // Add a listener to the m_HIDMenu
     m_HIDMenu.onHIDMenuChanged = [this]{onHIDMenuChanged();};
+    hidIO.dataReceivedCallback = [this]{onDataReceived();};
 }
 
 MainComponent::~MainComponent()
@@ -41,15 +42,26 @@ void MainComponent::onHIDMenuChanged()
     hidIO.device_name = charPointer;
     
     if(hidIO.connect()){
-        std::cout << "connect success" << std::endl;
+        
+        if(strcmp("DualSense Wireless Controller", hidIO.device_name) == 0){
+            std::cout << "connect to DualSense Wireless Controller" << std::endl;
+            hidIO.dataReceivedCallback = [this]{onDualSense_DataReceived();};
+        }else{
+
+        }
     }
-   
+    
+
 };
 
-void MainComponent::onDataReceived(const std::vector<unsigned char>& data)
+void MainComponent::onDataReceived()
 {
-    for (unsigned char byte : data) {
-            std::cout << std::hex << (int)byte << " ";
-        }
-        std::cout << std::endl;
+//        std::cout << std::endl;
+}
+
+void MainComponent::onDualSense_DataReceived()
+{
+//    std::cout<<  hidIO.reportData[1] << "\n";
+    DS_input.evaluateDualSenseHidInputBuffer(hidIO.reportData);
+    
 }

@@ -47,12 +47,12 @@ namespace DualSense {
         /// <summary>
         /// X Position of stick (0 = Center)
         /// </summary>
-        char x;
+        int x;
 
         /// <summary>
         /// Y Posistion of stick (0 = Center)
         /// </summary>
-        char y;
+        int y;
     } AnalogStick;
 
     /// <summary>
@@ -317,12 +317,12 @@ namespace DualSense {
         /// <summary>
         /// Left trigger position
         /// </summary>
-        unsigned char leftTrigger;
+        unsigned int leftTrigger;
 
         /// <summary>
         /// Right trigger position
         /// </summary>
-        unsigned char rightTrigger;
+        unsigned int rightTrigger;
 
         /// <summary>
         /// Buttons and dpad bitmask DualSense_ISTATE_BTX_?? and DualSense_ISTATE_DPAD_?? indices check with if(buttonsAndDpad & DualSense_ISTATE_DPAD_??)...

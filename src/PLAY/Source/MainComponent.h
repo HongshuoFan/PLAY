@@ -3,6 +3,7 @@
 #include <JuceHeader.h>
 #include "HIDMenu.h"
 #include "HID_IO.h"
+#include "DualSense_Input.h"
 
 /*
   ==============================================================================
@@ -30,9 +31,11 @@ private:
     // write a new funciton 
     HIDMenu m_HIDMenu;
     HID_IO hidIO;
+    DualSense_Input DS_input;
     
     void onHIDMenuChanged();
-    void onDataReceived(const std::vector<unsigned char>& data);
+    void onDataReceived();
+    void onDualSense_DataReceived();
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

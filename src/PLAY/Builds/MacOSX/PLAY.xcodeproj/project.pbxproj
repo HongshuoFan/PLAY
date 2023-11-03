@@ -23,6 +23,7 @@
 		84AD779BB766858C6EC2E709 /* include_juce_graphics.mm */ = {isa = PBXBuildFile; fileRef = 2C0DE1A72ED3BFE24A77848B; };
 		9B5673E09190F96226F9DCFF /* IOKit.framework */ = {isa = PBXBuildFile; fileRef = 6703FBDD34240B55E3C6F196; };
 		B151F5E5CB1A4F178686C26B /* MetalKit.framework */ = {isa = PBXBuildFile; fileRef = 619928B320E5DAD973D8BF05; settings = { ATTRIBUTES = (Weak, ); }; };
+		B17F054EA1A8BADBFB7264FC /* DualSense_Input.cpp */ = {isa = PBXBuildFile; fileRef = C5F96CC5C6790B83DF77188E; };
 		B68ECD2BD97EFEE0B56D9522 /* include_juce_gui_basics.mm */ = {isa = PBXBuildFile; fileRef = 5F1B2DA4751CDED59D653556; };
 		C87D4760C84D3F70560EF1F9 /* RecentFilesMenuTemplate.nib */ = {isa = PBXBuildFile; fileRef = DF04D0A21A079C65549ECEB9; };
 		D2B2951F34D6E02A7DCE3415 /* HIDMenu.cpp */ = {isa = PBXBuildFile; fileRef = 3BFF4447BE24D2522DE8BC5A; };
@@ -39,6 +40,7 @@
 		3B19C651B029D252CF366851 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = /Users/hongshuofan/Documents/JUCE/modules/juce_data_structures; sourceTree = "<absolute>"; };
 		3BFF4447BE24D2522DE8BC5A /* HIDMenu.cpp */ /* HIDMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HIDMenu.cpp; path = ../../Source/HIDMenu.cpp; sourceTree = SOURCE_ROOT; };
 		44F2038ED2E8C3F8B3311BAF /* HID_IO.cpp */ /* HID_IO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HID_IO.cpp; path = ../../Source/HID_IO.cpp; sourceTree = SOURCE_ROOT; };
+		4C12FD7E8FEEA9E15F722535 /* DualSense_Input.h */ /* DualSense_Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DualSense_Input.h; path = ../../Source/DualSense_Input.h; sourceTree = SOURCE_ROOT; };
 		4D8E641104DF78957EE8110D /* Metal.framework */ /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		59D7B2784C958621473D68CD /* Foundation.framework */ /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5D4F7FFA3618FC92F22C6410 /* hidAPI_IO.cpp */ /* hidAPI_IO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = hidAPI_IO.cpp; path = ../../Source/hidAPI_IO.cpp; sourceTree = SOURCE_ROOT; };
@@ -61,6 +63,7 @@
 		AC14E912234BD08FF731E23C /* juce_osc */ /* juce_osc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_osc; path = /Users/hongshuofan/Documents/JUCE/modules/juce_osc; sourceTree = "<absolute>"; };
 		B70A7A61274579060DE5E53E /* DualSenseState.h */ /* DualSenseState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DualSenseState.h; path = ../../Source/DualSenseState.h; sourceTree = SOURCE_ROOT; };
 		C5ED5E5221FE97E324529602 /* App */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PLAY.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5F96CC5C6790B83DF77188E /* DualSense_Input.cpp */ /* DualSense_Input.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DualSense_Input.cpp; path = ../../Source/DualSense_Input.cpp; sourceTree = SOURCE_ROOT; };
 		CC8AF84D7B98AB9A819CDE94 /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
 		D5AD8F470B1BFEF2A0320D31 /* JuceHeader.h */ /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		DF04D0A21A079C65549ECEB9 /* RecentFilesMenuTemplate.nib */ /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
@@ -92,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				4B754B909D8EE3BF8517C13A,
+				C5F96CC5C6790B83DF77188E,
+				4C12FD7E8FEEA9E15F722535,
 				B70A7A61274579060DE5E53E,
 				44F2038ED2E8C3F8B3311BAF,
 				E76DFF909541EC9905DF7EF3,
@@ -275,6 +280,7 @@
 			files = (
 				7EEB93E10DCE47D8C650D8EE,
 				168EC2BD77573E94476EE10D,
+				B17F054EA1A8BADBFB7264FC,
 				54F903276965C171E56BE237,
 				12887836995149239BD0B218,
 				D2B2951F34D6E02A7DCE3415,

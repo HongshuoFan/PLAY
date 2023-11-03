@@ -100,9 +100,9 @@ bool HID_IO::writeRawData(unsigned char* data, int size) {
     return false;
 }
 
-void HID_IO::setDataReceivedCallback(DataReceivedCallback callback) {
-    dataReceivedCallback = callback;
-}
+//void HID_IO::setDataReceivedCallback(DataReceivedCallback callback) {
+//    dataReceivedCallback = callback;
+//}
 
 void HID_IO::startReadingThread() {
     if (!readingThread.joinable()) {
@@ -138,9 +138,9 @@ bool HID_IO::readRawData(unsigned char* buffer, int bufferSize) {
     return false;
 }
 
-std::vector<unsigned char> HID_IO::getInputData() const {
-    return inputData;
-}
+//uint8_t* HID_IO::getInputData() {
+//    return reportData;
+//}
 
 void HID_IO::creatConncet()
 {
@@ -253,16 +253,16 @@ IOHIDReportCallback HID_IO::GetCallback(IOHIDDeviceRef device){
 
 void HID_IO::InputReportCallbackStub(void* context, IOReturn result, void* sender, IOHIDReportType type, uint32_t reportID, uint8_t* report, CFIndex reportLength){
 
-//    auto deviceInfo = reinterpret_cast<DEVICE_INFO*>(context);
-//    deviceInfo->provider->InputReportCallback_JC(deviceInfo, result, sender, type, reportID, report, reportLength);
-//    std::cout<<  "RegisterInputReportCallback" << "\n";
-    std::cout<<  report[1] << "\n";
-//    auto deviceInfo = reinterpret_cast<DEVICE_INFO*>(context);
-//    deviceInfo->provider->InputReportCallback(deviceInfo, result, sender, type, reportID, report, reportLength);
+    auto deviceInfo = reinterpret_cast<DEVICE_INFO*>(context);
+    deviceInfo->provider->InputReportCallback(deviceInfo, result, sender, type, reportID, report, reportLength);
+    
 }
 
 void HID_IO::InputReportCallback(DEVICE_INFO* deviceInfo, IOReturn result, void* sender, IOHIDReportType type, uint32_t reportID, uint8_t* report, CFIndex reportLength)
 {
-    std::cout<<  report[1] << "\n";
+    reportData = report;
+    dataReceivedCallback();
+    
+//    std::cout<<  report[1] << "\n";
 }
 

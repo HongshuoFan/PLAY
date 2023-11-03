@@ -51,8 +51,8 @@ public:
     void startReadingThread();
     void stopReadingThread();
     
-    std::vector<unsigned char> getInputData() const; // Public function to retrieve inputData
-    //std::function<void(const std::vector<unsigned char>&)> dataReceivedCallback;
+    uint8_t* reportData;
+    std::function<void()> dataReceivedCallback;
     
 private:
     IOHIDManagerRef manager;
@@ -67,8 +67,8 @@ private:
 //        uint8_t prev_btn_state[50];
     };
     
-    std::vector<unsigned char> inputData; // Dynamic size for input data
-    DataReceivedCallback dataReceivedCallback;
+    
+    //DataReceivedCallback dataReceivedCallback;
     
     void creatConncet();
     
