@@ -255,9 +255,10 @@ void HID_IO::InputReportCallbackStub(void* context, IOReturn result, void* sende
 
 //    auto deviceInfo = reinterpret_cast<DEVICE_INFO*>(context);
 //    deviceInfo->provider->InputReportCallback_JC(deviceInfo, result, sender, type, reportID, report, reportLength);
-    std::cout<<  "RegisterInputReportCallback" << "\n";
-    auto deviceInfo = reinterpret_cast<DEVICE_INFO*>(context);
-    deviceInfo->provider->InputReportCallback(deviceInfo, result, sender, type, reportID, report, reportLength);
+//    std::cout<<  "RegisterInputReportCallback" << "\n";
+    std::cout<<  report[1] << "\n";
+//    auto deviceInfo = reinterpret_cast<DEVICE_INFO*>(context);
+//    deviceInfo->provider->InputReportCallback(deviceInfo, result, sender, type, reportID, report, reportLength);
 }
 
 void HID_IO::InputReportCallback(DEVICE_INFO* deviceInfo, IOReturn result, void* sender, IOHIDReportType type, uint32_t reportID, uint8_t* report, CFIndex reportLength)

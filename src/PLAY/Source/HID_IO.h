@@ -63,8 +63,8 @@ private:
         HID_IO* provider = nullptr;
         DeviceIdType deviceId;
         IOHIDDeviceRef device;
-        bool first_run = true;
-        uint8_t prev_btn_state[50];
+//        bool first_run = true;
+//        uint8_t prev_btn_state[50];
     };
     
     std::vector<unsigned char> inputData; // Dynamic size for input data
