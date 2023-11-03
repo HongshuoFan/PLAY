@@ -40,27 +40,49 @@ void DualSense_Input::evaluateDualSenseHidInputBuffer(uint8_t *_reportData) {
     DS_input.buttons.square = (buttonData & DualSense_ISTATE_BTX_SQUARE) != 0;
     DS_input.buttons.circle = (buttonData & DualSense_ISTATE_BTX_CIRCLE) != 0;
     DS_input.buttons.triangle = (buttonData & DualSense_ISTATE_BTX_TRIANGLE) != 0;
-    
-    //Dpad
-    DS_input.dpad.left = (buttonData & DualSense_ISTATE_DPAD_LEFT) != 0;
-    
-//    uint16_t states = (_reportData[5] << 8) | (_reportData[0] & 0xFF);
-//    int x1 = (states & (1 << 0)) ? 1 : 0;
-    std::cout<<  DS_input.dpad.left << "\n";
-    // Buttons
-//    DS_input.buttonsAndDpad = _reportData[0x05] & 0xF0;
-//    switch (_reportData[0x05] & 0x0F) {
-//            // Up
-//        case 0x0:
-//            DS_input.buttonsAndDpad  |= DualSense_ISTATE_DPAD_UP;
-//            std::cout<<  "DPAD_UP" << "\n";
-//            break;
-//            // Down
-//        case 0x4:
-//            DS_input.buttonsAndDpad |= DualSense_ISTATE_DPAD_DOWN;
-//            std::cout<<  DS_input.buttonsAndDpad << "\n";
-//            break;
-//    }
+
+    //std::cout<<  static_cast<unsigned int>(buttonData) << "\n";
+    // Dpad
+    int dpadState = static_cast<int>(buttonData);
+    switch (dpadState) {
+            // Up
+        case 8:
+            DS_input.dpad.up = false;
+            DS_input.dpad.down = false;
+            DS_input.dpad.left = false;
+            DS_input.dpad.right = false;
+            break;
+            
+        case 0:
+            DS_input.dpad.up = true;
+            break;
+        case 1:
+            DS_input.dpad.up = true;
+            DS_input.dpad.left = true;
+            break;
+        case 2:
+            DS_input.dpad.left = true;
+            break;
+        case 3:
+            DS_input.dpad.left = true;
+            DS_input.dpad.down = true;
+            break;
+        case 4:
+            DS_input.dpad.down = true;
+            break;
+        case 5:
+            DS_input.dpad.down = true;
+            DS_input.dpad.right = true;
+            break;
+        case 6:
+            DS_input.dpad.right = true;
+            break;
+        case 7:
+            DS_input.dpad.right = true;
+            DS_input.dpad.up = true;
+            break;
+    }
+
 }
 
 
