@@ -43,8 +43,8 @@ public:
     bool connect();
     void disconnect();
     
-    bool writeRawData(unsigned char* data, int size);
-    bool readRawData(unsigned char* buffer, int bufferSize);
+    bool writeRawData(const uint8_t* data, CFIndex index);
+//    bool readRawData(unsigned char* buffer, int bufferSize);
     
     void setDataReceivedCallback(DataReceivedCallback callback);
     
@@ -52,6 +52,8 @@ public:
     void stopReadingThread();
     
     uint8_t* reportData;
+    uint8_t* OuputData;
+    
     std::function<void()> dataReceivedCallback;
     
 private:
@@ -67,6 +69,7 @@ private:
 //        uint8_t prev_btn_state[50];
     };
     
+    void printReport();
     
     //DataReceivedCallback dataReceivedCallback;
     

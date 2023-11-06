@@ -4,6 +4,7 @@
 #include "HIDMenu.h"
 #include "HID_IO.h"
 #include "DualSense_Input.h"
+#include "DualSense_Output.h"
 
 /*
   ==============================================================================
@@ -32,6 +33,7 @@ private:
     HIDMenu m_HIDMenu;
     HID_IO hidIO;
     DualSense_Input DS_input;
+    DualSense_Output DS_output;
     
     void onHIDMenuChanged();
     void onDataReceived();

@@ -92,9 +92,11 @@ void HID_IO::disconnect() {
 }
 
 
-bool HID_IO::writeRawData(unsigned char* data, int size) {
+bool HID_IO::writeRawData(const uint8_t* data, CFIndex index){
+    std::cout << "send test data to DualSense Wireless Controller"<< std::endl;
     if (deviceRF) {
-        IOReturn result = IOHIDDeviceSetReport(deviceRF, kIOHIDReportTypeOutput, 0, data, size);
+        IOReturn result = IOHIDDeviceSetReport(deviceRF, kIOHIDReportTypeOutput, index, data, sizeof(data));
+        std::cout<< result << "\n";
         return result == kIOReturnSuccess;
     }
     return false;
@@ -123,20 +125,20 @@ void HID_IO::stopReadingThread() {
 }
 
 
-bool HID_IO::readRawData(unsigned char* buffer, int bufferSize) {
-    if (deviceRF) {
-        CFIndex reportID = 6; // Set the appropriate report ID if necessary
-        
-        uint32_t max_input_report_size = GetIntProperty(deviceRF, CFSTR(kIOHIDMaxInputReportSizeKey));
-        uint8_t* report_buffer = static_cast<uint8_t*>(calloc(max_input_report_size, sizeof(uint8_t)));
-        CFIndex reportLength = max_input_report_size;
-        IOReturn result = IOHIDDeviceGetReport(deviceRF, kIOHIDReportTypeInput, reportID, report_buffer, &reportLength);
-
-        
-        return result == kIOReturnSuccess;
-    }
-    return false;
-}
+//bool HID_IO::readRawData(unsigned char* buffer, int bufferSize) {
+//    if (deviceRF) {
+//        CFIndex reportID = 6; // Set the appropriate report ID if necessary
+//        
+//        uint32_t max_input_report_size = GetIntProperty(deviceRF, CFSTR(kIOHIDMaxInputReportSizeKey));
+//        uint8_t* report_buffer = static_cast<uint8_t*>(calloc(max_input_report_size, sizeof(uint8_t)));
+//        CFIndex reportLength = max_input_report_size;
+//        IOReturn result = IOHIDDeviceGetReport(deviceRF, kIOHIDReportTypeInput, reportID, report_buffer, &reportLength);
+//
+//        
+//        return result == kIOReturnSuccess;
+//    }
+//    return false;
+//}
 
 //uint8_t* HID_IO::getInputData() {
 //    return reportData;
@@ -234,6 +236,16 @@ void HID_IO::OnDeviceMatched(IOReturn result, void* sender, IOHIDDeviceRef devic
             std::cout<< name <<" is available \n";
             std::cout<< max_input_report_size <<"  max_input_report_size \n";
             
+            uint8_t DS_output[15];
+            // Feature mask
+            DS_output[0] = 0x01;
+            DS_output[1] = 0xF7;
+            // Rumbel motors
+            DS_output[2] = 0x01;
+            DS_output[3] = 0x01;
+            
+            writeRawData(DS_output, 0x01);
+            
         }else{
             
 //            std::cout<< name <<" Not match \n";
@@ -261,8 +273,20 @@ void HID_IO::InputReportCallbackStub(void* context, IOReturn result, void* sende
 void HID_IO::InputReportCallback(DEVICE_INFO* deviceInfo, IOReturn result, void* sender, IOHIDReportType type, uint32_t reportID, uint8_t* report, CFIndex reportLength)
 {
     reportData = report;
+    printReport();
     dataReceivedCallback();
     
 //    std::cout<<  report[1] << "\n";
 }
+
+void HID_IO::printReport() { 
+    uint8_t* packet = reportData;
+    printf("%02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n",
+               packet[0], packet[1], packet[2], packet[3], packet[4], packet[5], packet[6], packet[7], packet[8], packet[9],
+               packet[10], packet[11], packet[12], packet[13], packet[14], packet[15], packet[16], packet[17], packet[18], packet[19], packet[20],
+               packet[21], packet[22], packet[23], packet[24], packet[25], packet[26], packet[27], packet[28], packet[29], packet[30],
+               packet[31], packet[32], packet[33], packet[34], packet[35], packet[36], packet[37], packet[38], packet[39], packet[40],
+               packet[41], packet[42], packet[43], packet[44], packet[45], packet[46], packet[47], packet[48], packet[49], packet[50], packet[51]);
+}
+
 

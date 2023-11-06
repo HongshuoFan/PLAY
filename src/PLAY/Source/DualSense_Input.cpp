@@ -96,13 +96,6 @@ void DualSense_Input::evaluateDualSenseHidInputBuffer(uint8_t *_reportData) {
     DS_input.buttons.r1 = (_reportData[0x06] & DualSense_ISTATE_BTN_A_RIGHT_BUMPER) != 0;
     DS_input.buttons.l1 = (_reportData[0x06] & DualSense_ISTATE_BTN_A_LEFT_BUMPER) != 0;
     
-//    uint8_t* packet = _reportData;
-//    printf("%02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n",
-//               packet[0], packet[1], packet[2], packet[3], packet[4], packet[5], packet[6], packet[7], packet[8], packet[9],
-//               packet[10], packet[11], packet[12], packet[13], packet[14], packet[15], packet[16], packet[17], packet[18], packet[19], packet[20],
-//               packet[21], packet[22], packet[23], packet[24], packet[25], packet[26], packet[27], packet[28], packet[29], packet[30],
-//               packet[31], packet[32], packet[33], packet[34], packet[35], packet[36], packet[37], packet[38], packet[39], packet[40],
-//               packet[41], packet[42], packet[43], packet[44], packet[45], packet[46], packet[47], packet[48], packet[49], packet[50], packet[51]);
 //    int16_t gyroSampleX = uint16_to_int16(_reportData[2 + 15] | ((_reportData[2 + 16] << 8) & 0xFF00));
 //
     //std::cout<<  DS_input.buttons.l1 << "\n";

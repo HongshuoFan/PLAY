@@ -46,6 +46,10 @@ void MainComponent::onHIDMenuChanged()
         if(strcmp("DualSense Wireless Controller", hidIO.device_name) == 0){
             std::cout << "connect to DualSense Wireless Controller" << std::endl;
             hidIO.dataReceivedCallback = [this]{onDualSense_DataReceived();};
+            
+//            DS_output.createDualSenseOutput();
+//            hidIO.writeRawData(DS_output.DS_output, 0x01);
+            
         }else{
 
         }

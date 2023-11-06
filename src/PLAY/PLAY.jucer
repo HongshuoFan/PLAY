@@ -13,6 +13,10 @@
           file="Source/DualSense_Input.cpp"/>
     <FILE id="U9axhB" name="DualSense_Input.h" compile="0" resource="0"
           file="Source/DualSense_Input.h"/>
+    <FILE id="NZp2Yb" name="DualSense_Output.cpp" compile="1" resource="0"
+          file="Source/DualSense_Output.cpp"/>
+    <FILE id="IlMQkk" name="DualSense_Output.h" compile="0" resource="0"
+          file="Source/DualSense_Output.h"/>
     <FILE id="rUtEAU" name="DualSenseState.h" compile="0" resource="0"
           file="Source/DualSenseState.h"/>
     <FILE id="tGyaT3" name="HID_IO.cpp" compile="1" resource="0" file="Source/HID_IO.cpp"/>
