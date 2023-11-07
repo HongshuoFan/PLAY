@@ -28,6 +28,12 @@
     <FILE id="utjFkL" name="InputProvider.h" compile="0" resource="0" file="Source/InputProvider.h"/>
     <FILE id="OJJ0ov" name="ListHID.cpp" compile="1" resource="0" file="Source/ListHID.cpp"/>
     <FILE id="SDbuee" name="ListHID.h" compile="0" resource="0" file="Source/ListHID.h"/>
+    <FILE id="HqqPQv" name="XboxController_Input.cpp" compile="1" resource="0"
+          file="Source/XboxController_Input.cpp"/>
+    <FILE id="zfnOXw" name="XboxController_Input.h" compile="0" resource="0"
+          file="Source/XboxController_Input.h"/>
+    <FILE id="fQLKVy" name="XboxControllerState.h" compile="0" resource="0"
+          file="Source/XboxControllerState.h"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

@@ -50,8 +50,9 @@ void MainComponent::onHIDMenuChanged()
 //            DS_output.createDualSenseOutput();
 //            hidIO.writeRawData(DS_output.DS_output, 0x01);
             
-        }else{
-
+        }else if(strcmp("Xbox Wireless Controller", hidIO.device_name) == 0){
+            std::cout << "connect to Xbox Wireless Controller" << std::endl;
+            hidIO.dataReceivedCallback = [this]{onXboxController_DataReceived();};
         }
     }
     
@@ -69,3 +70,8 @@ void MainComponent::onDualSense_DataReceived()
     DS_input.evaluateDualSenseHidInputBuffer(hidIO.reportData);
     
 }
+
+void MainComponent::onXboxController_DataReceived() { 
+    XC_input.evaluateXboxCotrollerHidInputBuffer(hidIO.reportData);
+}
+

@@ -4,8 +4,8 @@
 #include "HIDMenu.h"
 #include "HID_IO.h"
 #include "DualSense_Input.h"
-#include "DualSense_Output.h"
-
+//#include "DualSense_Output.h"
+#include "XboxController_Input.h"
 /*
   ==============================================================================
 
@@ -33,11 +33,13 @@ private:
     HIDMenu m_HIDMenu;
     HID_IO hidIO;
     DualSense_Input DS_input;
-    DualSense_Output DS_output;
+    XboxController_Input XC_input;
+//    DualSense_Output DS_output;
     
     void onHIDMenuChanged();
     void onDataReceived();
     void onDualSense_DataReceived();
+    void onXboxController_DataReceived();
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

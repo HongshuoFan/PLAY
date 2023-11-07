@@ -32,13 +32,13 @@ int16_t DualSense_Input::uint16_to_int16(uint16_t a)
 }
 void DualSense_Input::evaluateDualSenseHidInputBuffer(uint8_t *_reportData) { 
     // Convert sticks to signed range
-    DS_input.leftStick.x = (int)(_reportData[0x01] - 128);
-    DS_input.leftStick.y = (int)((_reportData[0x02] - 128) * -1);
-    DS_input.rightStick.x = (int)(_reportData[0x03] - 128);
-    DS_input.rightStick.y = (int)((_reportData[0x04] - 128) * -1);
+    DS_input.leftStick.x = (int)(_reportData[1] - 128);
+    DS_input.leftStick.y = (int)((_reportData[2] - 128) * -1);
+    DS_input.rightStick.x = (int)(_reportData[3] - 128);
+    DS_input.rightStick.y = (int)((_reportData[4] - 128) * -1);
     
     // Buttons
-    uint8_t buttonData = _reportData[0x05];
+    uint8_t buttonData = _reportData[8]; //[5] for BT
     DS_input.buttons.cross = (buttonData & DualSense_ISTATE_BTX_CROSS) != 0;
     DS_input.buttons.square = (buttonData & DualSense_ISTATE_BTX_SQUARE) != 0;
     DS_input.buttons.circle = (buttonData & DualSense_ISTATE_BTX_CIRCLE) != 0;
@@ -86,25 +86,27 @@ void DualSense_Input::evaluateDualSenseHidInputBuffer(uint8_t *_reportData) {
             break;
     }
     
-    //Stick press
-    DS_input.leftStick.stickPress = (_reportData[0x06] & DualSense_ISTATE_BTN_A_LEFT_STICK) != 0;
-    DS_input.rightStick.stickPress = (_reportData[0x06] & DualSense_ISTATE_BTN_A_RIGHT_STICK) != 0;
+    //Stick press BT 0x06
+    DS_input.leftStick.stickPress = (_reportData[9] & DualSense_ISTATE_BTN_A_LEFT_STICK) != 0;
+    DS_input.rightStick.stickPress = (_reportData[9] & DualSense_ISTATE_BTN_A_RIGHT_STICK) != 0;
     
-    // other buttons
-    DS_input.buttons.select = (_reportData[0x06] & DualSense_ISTATE_BTN_A_SELECT) != 0;
-    DS_input.buttons.menu = (_reportData[0x06] & DualSense_ISTATE_BTN_A_MENU) != 0;
-    DS_input.buttons.r1 = (_reportData[0x06] & DualSense_ISTATE_BTN_A_RIGHT_BUMPER) != 0;
-    DS_input.buttons.l1 = (_reportData[0x06] & DualSense_ISTATE_BTN_A_LEFT_BUMPER) != 0;
+    // other buttons BT 0x06
+    DS_input.buttons.select = (_reportData[9] & DualSense_ISTATE_BTN_A_SELECT) != 0;
+    DS_input.buttons.menu = (_reportData[9] & DualSense_ISTATE_BTN_A_MENU) != 0;
+    DS_input.buttons.r1 = (_reportData[9] & DualSense_ISTATE_BTN_A_RIGHT_BUMPER) != 0;
+    DS_input.buttons.l1 = (_reportData[9] & DualSense_ISTATE_BTN_A_LEFT_BUMPER) != 0;
     
 //    int16_t gyroSampleX = uint16_to_int16(_reportData[2 + 15] | ((_reportData[2 + 16] << 8) & 0xFF00));
 //
-    //std::cout<<  DS_input.buttons.l1 << "\n";
     //accelerometer
    
     
-    // Convert trigger to unsigned range
-    DS_input.leftTrigger = (int)(_reportData[0x08] & 0xF0);
-    DS_input.rightTrigger = (int)(_reportData[0x09] & 0xF0);
+    // Convert trigger to unsigned range, BT 0x09
+    DS_input.leftTrigger = (int)(_reportData[5] & 0xF0);
+    DS_input.rightTrigger = (int)(_reportData[6] & 0xF0);
+    
+//    int test = (int)(_reportData[17] & 0xF0);
+//    std::cout<< test << "\n";
 }
 
 
