@@ -18,6 +18,11 @@
 //==============================================================================
 /*
 */
+/// HID IO class, handles the HID IO raw data.
+/// Note: 3 steps to include hidapi:
+///1.add "hidapi" in the JUEC External Libraries to link.
+///2.add hidapi.h path in the Header Search Paths.
+///3.add hidapi lib file path in the Extra Library Search Paths.!
 class hidAPI_IO  : public juce::Component
 {
 public:

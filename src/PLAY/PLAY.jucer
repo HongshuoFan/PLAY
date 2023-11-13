@@ -32,6 +32,10 @@
           file="Source/XboxController_Input.cpp"/>
     <FILE id="zfnOXw" name="XboxController_Input.h" compile="0" resource="0"
           file="Source/XboxController_Input.h"/>
+    <FILE id="fcnBLq" name="XboxController_UI.cpp" compile="1" resource="0"
+          file="Source/XboxController_UI.cpp"/>
+    <FILE id="ZLAaDB" name="XboxController_UI.h" compile="0" resource="0"
+          file="Source/XboxController_UI.h"/>
     <FILE id="fQLKVy" name="XboxControllerState.h" compile="0" resource="0"
           file="Source/XboxControllerState.h"/>
   </MAINGROUP>

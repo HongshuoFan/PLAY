@@ -10,7 +10,7 @@
 
 #include <JuceHeader.h>
 #include "HID_IO.h"
-
+#include <mach/mach_error.h>
 //==============================================================================
 HID_IO::HID_IO()
 {
@@ -93,13 +93,13 @@ void HID_IO::disconnect() {
 
 
 bool HID_IO::writeRawData(const uint8_t* data, CFIndex index){
-    std::cout << "send test data to DualSense Wireless Controller"<< std::endl;
+    std::cout << "send test data to Xbox Controller"<< std::endl;
     if (deviceRF) {
-        IOReturn result = IOHIDDeviceSetReport(deviceRF, kIOHIDReportTypeOutput, index, data, sizeof(data));
-        std::cout<< result << "\n";
+        IOReturn result = IOHIDDeviceSetReport(deviceRF, kIOHIDReportTypeOutput, index, data, 11);
+        std::cout<< mach_error_string(result) << "\n";
         return result == kIOReturnSuccess;
     }
-    return false;
+    return kIOReturnError;
 }
 
 //void HID_IO::setDataReceivedCallback(DataReceivedCallback callback) {
@@ -235,9 +235,8 @@ void HID_IO::OnDeviceMatched(IOReturn result, void* sender, IOHIDDeviceRef devic
             IOHIDDeviceRegisterInputReportCallback(device, report_buffer, max_input_report_size, InputReportCallbackStub, &deviceInfo);
             std::cout<< name <<" is available \n";
             std::cout<< max_input_report_size <<"  max_input_report_size \n";
-            
-           
-            
+
+
         }else{
             
             std::cout<< name <<" Not match \n";
@@ -265,7 +264,7 @@ void HID_IO::InputReportCallbackStub(void* context, IOReturn result, void* sende
 void HID_IO::InputReportCallback(DEVICE_INFO* deviceInfo, IOReturn result, void* sender, IOHIDReportType type, uint32_t reportID, uint8_t* report, CFIndex reportLength)
 {
     reportData = report;
-    printReport();
+    //printReport();
     dataReceivedCallback();
     
 //    std::cout<<  report[1] << "\n";

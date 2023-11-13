@@ -6,6 +6,8 @@
 #include "DualSense_Input.h"
 //#include "DualSense_Output.h"
 #include "XboxController_Input.h"
+#include "XboxController_UI.h"
+
 /*
   ==============================================================================
 
@@ -35,6 +37,7 @@ private:
     DualSense_Input DS_input;
     XboxController_Input XC_input;
 //    DualSense_Output DS_output;
+    XboxController_UI xbxUI;
     
     void onHIDMenuChanged();
     void onDataReceived();

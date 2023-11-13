@@ -7,6 +7,8 @@ MainComponent::MainComponent()
     
     // Create HIDmenu compoent and add it to the MainComponent
     addAndMakeVisible(m_HIDMenu);
+    
+    
     // Add a listener to the m_HIDMenu
     m_HIDMenu.onHIDMenuChanged = [this]{onHIDMenuChanged();};
     hidIO.dataReceivedCallback = [this]{onDataReceived();};
@@ -53,6 +55,7 @@ void MainComponent::onHIDMenuChanged()
         }else if(strcmp("Xbox Wireless Controller", hidIO.device_name) == 0){
             std::cout << "connect to Xbox Wireless Controller" << std::endl;
             hidIO.dataReceivedCallback = [this]{onXboxController_DataReceived();};
+            addAndMakeVisible(xbxUI);
         }
     }
     
