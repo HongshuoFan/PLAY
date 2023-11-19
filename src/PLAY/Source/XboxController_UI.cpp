@@ -36,7 +36,7 @@ XboxController_UI::XboxController_UI ()
     Left_Stick.resized();
     addAndMakeVisible(Left_Stick);
 
-    Right_Stick.setBounds(318, 130, 80, 80);
+    Right_Stick.setBounds(317, 130, 80, 80);
     Right_Stick.resized();
     addAndMakeVisible(Right_Stick);
     //[/Constructor_pre]
@@ -120,15 +120,14 @@ XboxController_UI::XboxController_UI ()
     juce__slider_R_Trigger->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 60, 20);
     juce__slider_R_Trigger->addListener (this);
 
-    cachedImage_fab86afd63d645a9862f798e5e45cda2_jpg_1 = juce::ImageCache::getFromMemory (fab86afd63d645a9862f798e5e45cda2_jpg, fab86afd63d645a9862f798e5e45cda2_jpgSize);
-    internalPath2.startNewSubPath (304.0f, 40.0f);
-    internalPath2.lineTo (440.0f, 40.0f);
-    internalPath2.cubicTo (456.0f, 72.0f, 568.0f, 288.0f, 480.0f, 320.0f);
-    internalPath2.quadraticTo (456.0f, 320.0f, 400.0f, 240.0f);
-    internalPath2.lineTo (200.0f, 240.0f);
-    internalPath2.quadraticTo (152.0f, 312.0f, 128.0f, 320.0f);
-    internalPath2.cubicTo (48.0f, 312.0f, 112.0f, 96.0f, 160.0f, 40.0f);
-    internalPath2.closeSubPath();
+    internalPath1.startNewSubPath (304.0f, 40.0f);
+    internalPath1.lineTo (440.0f, 40.0f);
+    internalPath1.cubicTo (456.0f, 72.0f, 568.0f, 288.0f, 480.0f, 320.0f);
+    internalPath1.quadraticTo (456.0f, 320.0f, 400.0f, 240.0f);
+    internalPath1.lineTo (200.0f, 240.0f);
+    internalPath1.quadraticTo (152.0f, 312.0f, 128.0f, 320.0f);
+    internalPath1.cubicTo (48.0f, 312.0f, 112.0f, 96.0f, 160.0f, 40.0f);
+    internalPath1.closeSubPath();
 
 
     //[UserPreSize]
@@ -176,23 +175,12 @@ void XboxController_UI::paint (juce::Graphics& g)
     g.fillAll (juce::Colour (0xff323e44));
 
     {
-        int x = 0, y = 0, width = 600, height = 344;
-        //[UserPaintCustomArguments] Customize the painting arguments here..
-        //[/UserPaintCustomArguments]
-        g.setColour (juce::Colours::black.withAlpha (0.100f));
-        g.drawImageWithin (cachedImage_fab86afd63d645a9862f798e5e45cda2_jpg_1,
-                           x, y, width, height,
-                           juce::RectanglePlacement::centred,
-                           false);
-    }
-
-    {
         float x = 0, y = 0;
         juce::Colour strokeColour = juce::Colour (0xff232323);
         //[UserPaintCustomArguments] Customize the painting arguments here..
         //[/UserPaintCustomArguments]
         g.setColour (strokeColour);
-        g.strokePath (internalPath2, juce::PathStrokeType (5.000f), juce::AffineTransform::translation (x, y));
+        g.strokePath (internalPath1, juce::PathStrokeType (5.000f), juce::AffineTransform::translation (x, y));
     }
 
     //[UserPaint] Add your own custom painting code here..
@@ -215,8 +203,8 @@ void XboxController_UI::resized()
     juce__textButtonRight->setBounds (proportionOfWidth (0.4250f), proportionOfHeight (0.4794f), 20, 20);
     juce__textButtonShare->setBounds (proportionOfWidth (0.4750f), proportionOfHeight (0.3529f), 30, 15);
     juce__textButtonMenu->setBounds (proportionOfWidth (0.5283f), proportionOfHeight (0.2794f), 30, 15);
-    juce__textButtonLB->setBounds (proportionOfWidth (0.2900f), proportionOfHeight (0.0400f), 50, 20);
-    juce__textButtonRB->setBounds (proportionOfWidth (0.6250f), proportionOfHeight (0.0400f), 50, 20);
+    juce__textButtonLB->setBounds (proportionOfWidth (0.2900f), proportionOfHeight (0.0412f), 50, 20);
+    juce__textButtonRB->setBounds (proportionOfWidth (0.6250f), proportionOfHeight (0.0412f), 50, 20);
     juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0300f), proportionOfHeight (0.1000f), proportionOfWidth (0.1083f), proportionOfHeight (0.6000f));
     juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8700f), proportionOfHeight (0.1000f), proportionOfWidth (0.1000f), proportionOfHeight (0.6000f));
     //[UserResized] Add your own custom resize handling here..
@@ -340,7 +328,7 @@ BEGIN_JUCER_METADATA
                  fixedSize="1" initialWidth="600" initialHeight="340">
   <BACKGROUND backgroundColour="ff323e44">
     <IMAGE pos="0 0 600 344" resource="fab86afd63d645a9862f798e5e45cda2_jpg"
-           opacity="0.1" mode="1"/>
+           opacity="0.0" mode="1"/>
     <PATH pos="0 0 100 100" fill="solid: 642aa5" hasStroke="1" stroke="5, mitered, butt"
           strokeColour="solid: ff232323" nonZeroWinding="1">s 304 40 l 440 40 c 456 72 568 288  480 320 q 456 320 400 240 l 200 240 q 152 312 128 320 c 48 312 112 96  160 40 x</PATH>
   </BACKGROUND>

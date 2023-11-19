@@ -154,6 +154,8 @@ void HIDMenu::buttonClicked (juce::Button* buttonThatWasClicked)
     //[/UserbuttonClicked_Post]
 }
 
+
+//[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void HIDMenu::updateHIDcombox()
 {
     
@@ -175,9 +177,6 @@ void HIDMenu::updateHIDcombox()
     
 }
 
-
-
-//[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 //[/MiscUserCode]
 
 

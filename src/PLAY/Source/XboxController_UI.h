@@ -79,8 +79,7 @@ private:
     std::unique_ptr<juce::TextButton> juce__textButtonRB;
     std::unique_ptr<juce::Slider> juce__slider_L_Trigger;
     std::unique_ptr<juce::Slider> juce__slider_R_Trigger;
-    juce::Image cachedImage_fab86afd63d645a9862f798e5e45cda2_jpg_1;
-    juce::Path internalPath2;
+    juce::Path internalPath1;
 
 
     //==============================================================================

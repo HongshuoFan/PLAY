@@ -44,6 +44,11 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    bool HIDDeviceChanged;
+    juce::String selectedKey;
+    IOHIDDeviceRef seletedDevice;
+    
+    std::function<void()> onHIDMenuChanged;
     //[/UserMethods]
     //virtual void HIDMenuChanged (HIDMenu* HIDMenuThatHasChanged) = 0;
     
@@ -54,21 +59,18 @@ public:
     
 //    void addListener(HIDMenuListener* newListener);
     //std::unique_ptr<juce::ComboBox> HIDcombox__comboBox;
-    bool HIDDeviceChanged;
-    juce::String selectedKey;
-    IOHIDDeviceRef seletedDevice;
-    
-    std::function<void()> onHIDMenuChanged;
+   
     
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    //[/UserVariables]
-
-    //==============================================================================
     std::unique_ptr<juce::ComboBox> HIDcombox__comboBox;
     std::unique_ptr<juce::TextButton> Refresh__textButton;
     std::map<juce::String, IOHIDDeviceRef> devicesMap;
     void updateHIDcombox();
+    //[/UserVariables]
+
+    //==============================================================================
+   
 //    HIDMenuListener* listener = nullptr;
 //    void onHIDMenuChanged();
     //==============================================================================
