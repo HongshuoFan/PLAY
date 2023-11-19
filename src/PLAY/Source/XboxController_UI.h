@@ -49,6 +49,9 @@ public:
     void resized() override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
 
+    // Binary resources:
+    static const char* fab86afd63d645a9862f798e5e45cda2_jpg;
+    static const int fab86afd63d645a9862f798e5e45cda2_jpgSize;
 
 
 private:
@@ -56,7 +59,9 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<juce::TextButton> juce__textButton;
+    std::unique_ptr<juce::TextButton> juce__textButton2;
+    juce::Image cachedImage_fab86afd63d645a9862f798e5e45cda2_jpg_1;
+    juce::Path internalPath2;
 
 
     //==============================================================================
