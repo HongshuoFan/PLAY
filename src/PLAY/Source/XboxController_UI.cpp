@@ -310,6 +310,10 @@ void XboxController_UI::sliderValueChanged (juce::Slider* sliderThatWasMoved)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+void XboxController_UI::update()
+{
+    Left_Stick.paint();
+}
 //[/MiscUserCode]
 
 

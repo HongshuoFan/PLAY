@@ -81,6 +81,7 @@ void StickGUI::paint (juce::Graphics& g)
     }
 
     //[UserPaint] Add your own custom painting code here..
+    
     //[/UserPaint]
 }
 
@@ -97,9 +98,19 @@ void StickGUI::resized()
 void StickGUI::mouseDrag (const juce::MouseEvent& e)
 {
     //[UserCode_mouseDrag] -- Add your code here...
-//    std::cout<< e.position.getX()<<"\n";
     
+    float mouseOffsetX = e.getOffsetFromDragStart().getX();
+    float mouseOffsetY = e.getOffsetFromDragStart().getY();
+    float X_diff = previousMouseX - mouseOffsetX;
+    float Y_diff = previousMouseY - mouseOffsetY;
+    px += X_diff;
+    py += Y_diff;
+    
+//    std::cout<< nX<<"\n";
+//    updatePoint(nX,nY,0);
     //[/UserCode_mouseDrag]
+    previousMouseX = mouseOffsetX;
+    previousMouseY = mouseOffsetY;
 }
 
 void StickGUI::updatePoint(float x, float y, bool button) {
@@ -115,6 +126,7 @@ void StickGUI::updatePoint(float x, float y, bool button) {
     }else{
         pointColour = offColour;
     }
+    
 }
 
 

@@ -12,6 +12,7 @@
 		168EC2BD77573E94476EE10D /* MainComponent.cpp */ = {isa = PBXBuildFile; fileRef = F9D44C63C22BAF796CE8ED49; };
 		1CD59ED1B524B5F93651171F /* include_juce_core.mm */ = {isa = PBXBuildFile; fileRef = 73A2BC0024FF2CFE98EF54DA; };
 		24425833CF9F13D2F27E34A3 /* XboxController_Input.cpp */ = {isa = PBXBuildFile; fileRef = 3C9DABB4B88263887347D0DB; };
+		2B624F31B3FB3A99DA63FB38 /* include_juce_gui_extra.mm */ = {isa = PBXBuildFile; fileRef = 7E76CF2843E9D32EA651EA7C; };
 		31B4E3AE540344DFBCDBF43D /* Foundation.framework */ = {isa = PBXBuildFile; fileRef = 59D7B2784C958621473D68CD; };
 		354C5F422CE5FFAF6226252C /* Security.framework */ = {isa = PBXBuildFile; fileRef = A41A8D2C79EB7B3BE3F9DE16; };
 		437662FEF65B7945765B603A /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = 8EF1A5F445BF993323DA3736; };
@@ -19,6 +20,7 @@
 		52655D0A04683BB0ECBD40D9 /* include_juce_events.mm */ = {isa = PBXBuildFile; fileRef = 60F582DEFEF78E46596CE36A; };
 		54F903276965C171E56BE237 /* HID_IO.cpp */ = {isa = PBXBuildFile; fileRef = 44F2038ED2E8C3F8B3311BAF; };
 		58E1A012773B90B04E8345A2 /* include_juce_data_structures.mm */ = {isa = PBXBuildFile; fileRef = CC8AF84D7B98AB9A819CDE94; };
+		70B96F558D89BB1710331EA0 /* WebKit.framework */ = {isa = PBXBuildFile; fileRef = 9B84F91106D5B1E7B99BD760; };
 		798E6B3CE1C73DD5252C983A /* App */ = {isa = PBXBuildFile; fileRef = C5ED5E5221FE97E324529602; };
 		7A0BB930522D134C4959EF80 /* XboxController_UI.cpp */ = {isa = PBXBuildFile; fileRef = 8D6C215FB0A3FFFB050F2B16; };
 		7EEB93E10DCE47D8C650D8EE /* Main.cpp */ = {isa = PBXBuildFile; fileRef = A33E8D0C79428F78D1774F43; };
@@ -43,6 +45,7 @@
 		2C0DE1A72ED3BFE24A77848B /* include_juce_graphics.mm */ /* include_juce_graphics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_graphics.mm; path = ../../JuceLibraryCode/include_juce_graphics.mm; sourceTree = SOURCE_ROOT; };
 		2C69A46DEC99C52ED8CFDA9B /* XboxControllerState.h */ /* XboxControllerState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XboxControllerState.h; path = ../../Source/XboxControllerState.h; sourceTree = SOURCE_ROOT; };
 		3049057331B2B23EB6747254 /* StickGUI.h */ /* StickGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StickGUI.h; path = ../../Source/StickGUI.h; sourceTree = SOURCE_ROOT; };
+		31AAEF235CCB90B93C41819F /* juce_gui_extra */ /* juce_gui_extra */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_extra; path = /Users/hongshuofan/Documents/JUCE/modules/juce_gui_extra; sourceTree = "<absolute>"; };
 		357255BCE00B80150326189B /* ListHID.h */ /* ListHID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ListHID.h; path = ../../Source/ListHID.h; sourceTree = SOURCE_ROOT; };
 		3B19C651B029D252CF366851 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = /Users/hongshuofan/Documents/JUCE/modules/juce_data_structures; sourceTree = "<absolute>"; };
 		3BFF4447BE24D2522DE8BC5A /* HIDMenu.cpp */ /* HIDMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HIDMenu.cpp; path = ../../Source/HIDMenu.cpp; sourceTree = SOURCE_ROOT; };
@@ -62,10 +65,12 @@
 		6E4BF7F057E083E2043D45E3 /* include_juce_osc.cpp */ /* include_juce_osc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_osc.cpp; path = ../../JuceLibraryCode/include_juce_osc.cpp; sourceTree = SOURCE_ROOT; };
 		736646C43064F98E987B0FF6 /* Cocoa.framework */ /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		73A2BC0024FF2CFE98EF54DA /* include_juce_core.mm */ /* include_juce_core.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_core.mm; path = ../../JuceLibraryCode/include_juce_core.mm; sourceTree = SOURCE_ROOT; };
+		7E76CF2843E9D32EA651EA7C /* include_juce_gui_extra.mm */ /* include_juce_gui_extra.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_extra.mm; path = ../../JuceLibraryCode/include_juce_gui_extra.mm; sourceTree = SOURCE_ROOT; };
 		8B257BFFF4E6D90B0F3242F8 /* ListHID.cpp */ /* ListHID.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ListHID.cpp; path = ../../Source/ListHID.cpp; sourceTree = SOURCE_ROOT; };
 		8D6C215FB0A3FFFB050F2B16 /* XboxController_UI.cpp */ /* XboxController_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = XboxController_UI.cpp; path = ../../Source/XboxController_UI.cpp; sourceTree = SOURCE_ROOT; };
 		8EF1A5F445BF993323DA3736 /* QuartzCore.framework */ /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8F745212082B93D241F5F1AA /* hidAPI_IO.h */ /* hidAPI_IO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hidAPI_IO.h; path = ../../Source/hidAPI_IO.h; sourceTree = SOURCE_ROOT; };
+		9B84F91106D5B1E7B99BD760 /* WebKit.framework */ /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		9F0B7BC24E4A71EE50B31E2B /* Info-App.plist */ /* Info-App.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-App.plist"; path = "Info-App.plist"; sourceTree = SOURCE_ROOT; };
 		A32F60142AABE304BC850D4B /* HIDMenu.h */ /* HIDMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HIDMenu.h; path = ../../Source/HIDMenu.h; sourceTree = SOURCE_ROOT; };
 		A33E8D0C79428F78D1774F43 /* Main.cpp */ /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Source/Main.cpp; sourceTree = SOURCE_ROOT; };
@@ -96,6 +101,7 @@
 				9B5673E09190F96226F9DCFF,
 				437662FEF65B7945765B603A,
 				354C5F422CE5FFAF6226252C,
+				70B96F558D89BB1710331EA0,
 				056DACCBB35F84C288986541,
 				B151F5E5CB1A4F178686C26B,
 			);
@@ -151,6 +157,7 @@
 				1BC1DBE43DEAF9AE28EBF369,
 				68B87DD60338E256DC76A69B,
 				2A13B06E2A1427B147937B02,
+				31AAEF235CCB90B93C41819F,
 				AC14E912234BD08FF731E23C,
 			);
 			name = "JUCE Modules";
@@ -173,6 +180,7 @@
 				60F582DEFEF78E46596CE36A,
 				2C0DE1A72ED3BFE24A77848B,
 				5F1B2DA4751CDED59D653556,
+				7E76CF2843E9D32EA651EA7C,
 				6E4BF7F057E083E2043D45E3,
 				D5AD8F470B1BFEF2A0320D31,
 			);
@@ -208,6 +216,7 @@
 				6703FBDD34240B55E3C6F196,
 				8EF1A5F445BF993323DA3736,
 				A41A8D2C79EB7B3BE3F9DE16,
+				9B84F91106D5B1E7B99BD760,
 				4D8E641104DF78957EE8110D,
 				619928B320E5DAD973D8BF05,
 			);
@@ -316,6 +325,7 @@
 				52655D0A04683BB0ECBD40D9,
 				84AD779BB766858C6EC2E709,
 				B68ECD2BD97EFEE0B56D9522,
+				2B624F31B3FB3A99DA63FB38,
 				D4F9F297134C31D4D9DBCD6F,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +357,7 @@
 					"JUCE_MODULE_AVAILABLE_juce_events=1",
 					"JUCE_MODULE_AVAILABLE_juce_graphics=1",
 					"JUCE_MODULE_AVAILABLE_juce_gui_basics=1",
+					"JUCE_MODULE_AVAILABLE_juce_gui_extra=1",
 					"JUCE_MODULE_AVAILABLE_juce_osc=1",
 					"JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1",
 					"JUCE_STRICT_REFCOUNTEDPOINTER=1",
@@ -454,6 +465,7 @@
 					"JUCE_MODULE_AVAILABLE_juce_events=1",
 					"JUCE_MODULE_AVAILABLE_juce_graphics=1",
 					"JUCE_MODULE_AVAILABLE_juce_gui_basics=1",
+					"JUCE_MODULE_AVAILABLE_juce_gui_extra=1",
 					"JUCE_MODULE_AVAILABLE_juce_osc=1",
 					"JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1",
 					"JUCE_STRICT_REFCOUNTEDPOINTER=1",

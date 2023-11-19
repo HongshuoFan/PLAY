@@ -54,6 +54,7 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     float Stickwidth = 52.0f, Stickheight = 52.0f;
+    float previousMouseX = 0, previousMouseY = 0;
     float px = Stickwidth/2, py = Stickheight/2;
     juce::Colour pointColour = juce::Colours::black;
     juce::Colour offColour = juce::Colours::black;

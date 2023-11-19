@@ -47,6 +47,7 @@
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
@@ -67,6 +68,7 @@
         <MODULEPATH id="juce_graphics" path="../../../../../Documents/JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../../../Documents/JUCE/modules"/>
         <MODULEPATH id="juce_osc" path="../../../../../Documents/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../../../Documents/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>

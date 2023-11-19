@@ -34,7 +34,7 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class XboxController_UI  : public juce::Component,
+class XboxController_UI  : public juce::AnimatedAppComponent,
                            public juce::Button::Listener,
                            public juce::Slider::Listener
 {
@@ -51,7 +51,7 @@ public:
     void resized() override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
     void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
-
+    void update() override;
     // Binary resources:
     static const char* fab86afd63d645a9862f798e5e45cda2_jpg;
     static const int fab86afd63d645a9862f798e5e45cda2_jpgSize;
