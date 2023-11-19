@@ -131,12 +131,14 @@ XboxController_UI::XboxController_UI ()
 
 
     //[UserPreSize]
+    
     //[/UserPreSize]
 
     setSize (600, 340);
 
 
     //[Constructor] You can add your own custom stuff here..
+    setFramesPerSecond (1);
     //[/Constructor]
 }
 
@@ -312,7 +314,9 @@ void XboxController_UI::sliderValueChanged (juce::Slider* sliderThatWasMoved)
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void XboxController_UI::update()
 {
-    Left_Stick.paint();
+//    setFramesPerSecond (20);
+    std::cout<< "test" <<"\n";
+    //Left_Stick.updatePoint(0.2,0.1,1);
 }
 //[/MiscUserCode]
 

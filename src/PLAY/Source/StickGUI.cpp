@@ -107,7 +107,7 @@ void StickGUI::mouseDrag (const juce::MouseEvent& e)
     py += Y_diff;
     
 //    std::cout<< nX<<"\n";
-//    updatePoint(nX,nY,0);
+    updatePoint(px,py,0);
     //[/UserCode_mouseDrag]
     previousMouseX = mouseOffsetX;
     previousMouseY = mouseOffsetY;
@@ -117,7 +117,7 @@ void StickGUI::updatePoint(float x, float y, bool button) {
     
     px = x * Stickwidth;
     px = fmax(2, fmin(px, getWidth()));
-    
+    std::cout<< px <<"\n";
     py = Stickheight - (y * Stickheight);
     py = fmax(2, fmin(py, getHeight()));
     
