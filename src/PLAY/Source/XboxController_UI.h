@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
+#include "StickGUI.h"
 //[/Headers]
 
 
@@ -34,7 +35,8 @@
                                                                     //[/Comments]
 */
 class XboxController_UI  : public juce::Component,
-                           public juce::Button::Listener
+                           public juce::Button::Listener,
+                           public juce::Slider::Listener
 {
 public:
     //==============================================================================
@@ -48,6 +50,7 @@ public:
     void paint (juce::Graphics& g) override;
     void resized() override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
+    void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
 
     // Binary resources:
     static const char* fab86afd63d645a9862f798e5e45cda2_jpg;
@@ -56,10 +59,26 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    StickGUI Left_Stick;
+    StickGUI Right_Stick;
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<juce::TextButton> juce__textButton2;
+    std::unique_ptr<juce::TextButton> juce__textButtonX;
+    std::unique_ptr<juce::TextButton> juce__textButtonY;
+    std::unique_ptr<juce::TextButton> juce__textButtonA;
+    std::unique_ptr<juce::TextButton> juce__textButtonB;
+    std::unique_ptr<juce::TextButton> juce__textButtonView;
+    std::unique_ptr<juce::TextButton> juce__textButtonL;
+    std::unique_ptr<juce::TextButton> juce__textButtonUp;
+    std::unique_ptr<juce::TextButton> juce__textButtonDown;
+    std::unique_ptr<juce::TextButton> juce__textButtonRight;
+    std::unique_ptr<juce::TextButton> juce__textButtonShare;
+    std::unique_ptr<juce::TextButton> juce__textButtonMenu;
+    std::unique_ptr<juce::TextButton> juce__textButtonLB;
+    std::unique_ptr<juce::TextButton> juce__textButtonRB;
+    std::unique_ptr<juce::Slider> juce__slider_L_Trigger;
+    std::unique_ptr<juce::Slider> juce__slider_R_Trigger;
     juce::Image cachedImage_fab86afd63d645a9862f798e5e45cda2_jpg_1;
     juce::Path internalPath2;
 

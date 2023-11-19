@@ -30,11 +30,95 @@
 XboxController_UI::XboxController_UI ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
+
+
+    Left_Stick.setBounds(150, 65, 80, 80);
+    Left_Stick.resized();
+    addAndMakeVisible(Left_Stick);
+
+    Right_Stick.setBounds(318, 130, 80, 80);
+    Right_Stick.resized();
+    addAndMakeVisible(Right_Stick);
     //[/Constructor_pre]
 
-    juce__textButton2.reset (new juce::TextButton ("X"));
-    addAndMakeVisible (juce__textButton2.get());
-    juce__textButton2->addListener (this);
+    juce__textButtonX.reset (new juce::TextButton ("ButtonX"));
+    addAndMakeVisible (juce__textButtonX.get());
+    juce__textButtonX->setButtonText (TRANS ("X"));
+    juce__textButtonX->addListener (this);
+
+    juce__textButtonY.reset (new juce::TextButton ("ButtonY"));
+    addAndMakeVisible (juce__textButtonY.get());
+    juce__textButtonY->setButtonText (TRANS ("Y"));
+    juce__textButtonY->addListener (this);
+
+    juce__textButtonA.reset (new juce::TextButton ("ButtonA"));
+    addAndMakeVisible (juce__textButtonA.get());
+    juce__textButtonA->setButtonText (TRANS ("A"));
+    juce__textButtonA->addListener (this);
+
+    juce__textButtonB.reset (new juce::TextButton ("ButtonB"));
+    addAndMakeVisible (juce__textButtonB.get());
+    juce__textButtonB->setButtonText (TRANS ("B"));
+    juce__textButtonB->addListener (this);
+
+    juce__textButtonView.reset (new juce::TextButton ("ButtonView"));
+    addAndMakeVisible (juce__textButtonView.get());
+    juce__textButtonView->setButtonText (TRANS ("View"));
+    juce__textButtonView->addListener (this);
+
+    juce__textButtonL.reset (new juce::TextButton ("ButtonLeft"));
+    addAndMakeVisible (juce__textButtonL.get());
+    juce__textButtonL->setButtonText (TRANS ("L"));
+    juce__textButtonL->addListener (this);
+
+    juce__textButtonUp.reset (new juce::TextButton ("ButtonUp"));
+    addAndMakeVisible (juce__textButtonUp.get());
+    juce__textButtonUp->setButtonText (TRANS ("U"));
+    juce__textButtonUp->addListener (this);
+
+    juce__textButtonDown.reset (new juce::TextButton ("ButtonDown"));
+    addAndMakeVisible (juce__textButtonDown.get());
+    juce__textButtonDown->setButtonText (TRANS ("D"));
+    juce__textButtonDown->addListener (this);
+
+    juce__textButtonRight.reset (new juce::TextButton ("ButtonRight"));
+    addAndMakeVisible (juce__textButtonRight.get());
+    juce__textButtonRight->setButtonText (TRANS ("R"));
+    juce__textButtonRight->addListener (this);
+
+    juce__textButtonShare.reset (new juce::TextButton ("ButtonShare"));
+    addAndMakeVisible (juce__textButtonShare.get());
+    juce__textButtonShare->setButtonText (TRANS ("Share"));
+    juce__textButtonShare->addListener (this);
+
+    juce__textButtonMenu.reset (new juce::TextButton ("ButtonMenu"));
+    addAndMakeVisible (juce__textButtonMenu.get());
+    juce__textButtonMenu->setButtonText (TRANS ("Menu"));
+    juce__textButtonMenu->addListener (this);
+
+    juce__textButtonLB.reset (new juce::TextButton ("ButtonLB"));
+    addAndMakeVisible (juce__textButtonLB.get());
+    juce__textButtonLB->setButtonText (TRANS ("LB"));
+    juce__textButtonLB->addListener (this);
+
+    juce__textButtonRB.reset (new juce::TextButton ("ButtonRB"));
+    addAndMakeVisible (juce__textButtonRB.get());
+    juce__textButtonRB->setButtonText (TRANS ("RB"));
+    juce__textButtonRB->addListener (this);
+
+    juce__slider_L_Trigger.reset (new juce::Slider ("L_Trigger"));
+    addAndMakeVisible (juce__slider_L_Trigger.get());
+    juce__slider_L_Trigger->setRange (0, 1, 0);
+    juce__slider_L_Trigger->setSliderStyle (juce::Slider::LinearVertical);
+    juce__slider_L_Trigger->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 60, 20);
+    juce__slider_L_Trigger->addListener (this);
+
+    juce__slider_R_Trigger.reset (new juce::Slider ("R_Trigger"));
+    addAndMakeVisible (juce__slider_R_Trigger.get());
+    juce__slider_R_Trigger->setRange (0, 1, 0);
+    juce__slider_R_Trigger->setSliderStyle (juce::Slider::LinearVertical);
+    juce__slider_R_Trigger->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 60, 20);
+    juce__slider_R_Trigger->addListener (this);
 
     cachedImage_fab86afd63d645a9862f798e5e45cda2_jpg_1 = juce::ImageCache::getFromMemory (fab86afd63d645a9862f798e5e45cda2_jpg, fab86afd63d645a9862f798e5e45cda2_jpgSize);
     internalPath2.startNewSubPath (304.0f, 40.0f);
@@ -62,7 +146,21 @@ XboxController_UI::~XboxController_UI()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    juce__textButton2 = nullptr;
+    juce__textButtonX = nullptr;
+    juce__textButtonY = nullptr;
+    juce__textButtonA = nullptr;
+    juce__textButtonB = nullptr;
+    juce__textButtonView = nullptr;
+    juce__textButtonL = nullptr;
+    juce__textButtonUp = nullptr;
+    juce__textButtonDown = nullptr;
+    juce__textButtonRight = nullptr;
+    juce__textButtonShare = nullptr;
+    juce__textButtonMenu = nullptr;
+    juce__textButtonLB = nullptr;
+    juce__textButtonRB = nullptr;
+    juce__slider_L_Trigger = nullptr;
+    juce__slider_R_Trigger = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -106,8 +204,23 @@ void XboxController_UI::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    juce__textButton2->setBounds (360, 128, proportionOfWidth (0.1750f), proportionOfHeight (0.0529f));
+    juce__textButtonX->setBounds (proportionOfWidth (0.6133f), proportionOfHeight (0.2706f), 25, 25);
+    juce__textButtonY->setBounds (proportionOfWidth (0.6633f), proportionOfHeight (0.1853f), 25, 25);
+    juce__textButtonA->setBounds (proportionOfWidth (0.6633f), proportionOfHeight (0.3559f), 25, 25);
+    juce__textButtonB->setBounds (proportionOfWidth (0.7100f), proportionOfHeight (0.2706f), 25, 25);
+    juce__textButtonView->setBounds (proportionOfWidth (0.4250f), proportionOfHeight (0.2794f), 30, 15);
+    juce__textButtonL->setBounds (proportionOfWidth (0.3550f), proportionOfHeight (0.4794f), 20, 20);
+    juce__textButtonUp->setBounds (proportionOfWidth (0.3900f), proportionOfHeight (0.4206f), 20, 20);
+    juce__textButtonDown->setBounds (proportionOfWidth (0.3900f), proportionOfHeight (0.5412f), 20, 20);
+    juce__textButtonRight->setBounds (proportionOfWidth (0.4250f), proportionOfHeight (0.4794f), 20, 20);
+    juce__textButtonShare->setBounds (proportionOfWidth (0.4750f), proportionOfHeight (0.3529f), 30, 15);
+    juce__textButtonMenu->setBounds (proportionOfWidth (0.5283f), proportionOfHeight (0.2794f), 30, 15);
+    juce__textButtonLB->setBounds (proportionOfWidth (0.2900f), proportionOfHeight (0.0400f), 50, 20);
+    juce__textButtonRB->setBounds (proportionOfWidth (0.6250f), proportionOfHeight (0.0400f), 50, 20);
+    juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0300f), proportionOfHeight (0.1000f), proportionOfWidth (0.1083f), proportionOfHeight (0.6000f));
+    juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8700f), proportionOfHeight (0.1000f), proportionOfWidth (0.1000f), proportionOfHeight (0.6000f));
     //[UserResized] Add your own custom resize handling here..
+
     //[/UserResized]
 }
 
@@ -116,14 +229,94 @@ void XboxController_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
 
-    if (buttonThatWasClicked == juce__textButton2.get())
+    if (buttonThatWasClicked == juce__textButtonX.get())
     {
-        //[UserButtonCode_juce__textButton2] -- add your button handler code here..
-        //[/UserButtonCode_juce__textButton2]
+        //[UserButtonCode_juce__textButtonX] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonX]
+    }
+    else if (buttonThatWasClicked == juce__textButtonY.get())
+    {
+        //[UserButtonCode_juce__textButtonY] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonY]
+    }
+    else if (buttonThatWasClicked == juce__textButtonA.get())
+    {
+        //[UserButtonCode_juce__textButtonA] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonA]
+    }
+    else if (buttonThatWasClicked == juce__textButtonB.get())
+    {
+        //[UserButtonCode_juce__textButtonB] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonB]
+    }
+    else if (buttonThatWasClicked == juce__textButtonView.get())
+    {
+        //[UserButtonCode_juce__textButtonView] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonView]
+    }
+    else if (buttonThatWasClicked == juce__textButtonL.get())
+    {
+        //[UserButtonCode_juce__textButtonL] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonL]
+    }
+    else if (buttonThatWasClicked == juce__textButtonUp.get())
+    {
+        //[UserButtonCode_juce__textButtonUp] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonUp]
+    }
+    else if (buttonThatWasClicked == juce__textButtonDown.get())
+    {
+        //[UserButtonCode_juce__textButtonDown] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonDown]
+    }
+    else if (buttonThatWasClicked == juce__textButtonRight.get())
+    {
+        //[UserButtonCode_juce__textButtonRight] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonRight]
+    }
+    else if (buttonThatWasClicked == juce__textButtonShare.get())
+    {
+        //[UserButtonCode_juce__textButtonShare] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonShare]
+    }
+    else if (buttonThatWasClicked == juce__textButtonMenu.get())
+    {
+        //[UserButtonCode_juce__textButtonMenu] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonMenu]
+    }
+    else if (buttonThatWasClicked == juce__textButtonLB.get())
+    {
+        //[UserButtonCode_juce__textButtonLB] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonLB]
+    }
+    else if (buttonThatWasClicked == juce__textButtonRB.get())
+    {
+        //[UserButtonCode_juce__textButtonRB] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButtonRB]
     }
 
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
+}
+
+void XboxController_UI::sliderValueChanged (juce::Slider* sliderThatWasMoved)
+{
+    //[UsersliderValueChanged_Pre]
+    //[/UsersliderValueChanged_Pre]
+
+    if (sliderThatWasMoved == juce__slider_L_Trigger.get())
+    {
+        //[UserSliderCode_juce__slider_L_Trigger] -- add your slider handling code here..
+        //[/UserSliderCode_juce__slider_L_Trigger]
+    }
+    else if (sliderThatWasMoved == juce__slider_R_Trigger.get())
+    {
+        //[UserSliderCode_juce__slider_R_Trigger] -- add your slider handling code here..
+        //[/UserSliderCode_juce__slider_R_Trigger]
+    }
+
+    //[UsersliderValueChanged_Post]
+    //[/UsersliderValueChanged_Post]
 }
 
 
@@ -143,7 +336,7 @@ BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="XboxController_UI" componentName=""
                  parentClasses="public juce::Component" constructorParams="" variableInitialisers=""
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
+                 snapPixels="8" snapActive="0" snapShown="0" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="600" initialHeight="340">
   <BACKGROUND backgroundColour="ff323e44">
     <IMAGE pos="0 0 600 344" resource="fab86afd63d645a9862f798e5e45cda2_jpg"
@@ -151,9 +344,57 @@ BEGIN_JUCER_METADATA
     <PATH pos="0 0 100 100" fill="solid: 642aa5" hasStroke="1" stroke="5, mitered, butt"
           strokeColour="solid: ff232323" nonZeroWinding="1">s 304 40 l 440 40 c 456 72 568 288  480 320 q 456 320 400 240 l 200 240 q 152 312 128 320 c 48 312 112 96  160 40 x</PATH>
   </BACKGROUND>
-  <TEXTBUTTON name="X" id="dbbbdb024f1ff6a0" memberName="juce__textButton2"
-              virtualName="" explicitFocusOrder="0" pos="360 128 17.5% 5.294%"
+  <TEXTBUTTON name="ButtonX" id="dbbbdb024f1ff6a0" memberName="juce__textButtonX"
+              virtualName="" explicitFocusOrder="0" pos="61.333% 27.059% 25 25"
               buttonText="X" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonY" id="4a5ce7bc3858ac8" memberName="juce__textButtonY"
+              virtualName="" explicitFocusOrder="0" pos="66.333% 18.529% 25 25"
+              posRelativeW="dbbbdb024f1ff6a0" posRelativeH="dbbbdb024f1ff6a0"
+              buttonText="Y" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonA" id="4732bb47b4196ef4" memberName="juce__textButtonA"
+              virtualName="" explicitFocusOrder="0" pos="66.333% 35.588% 25 25"
+              buttonText="A" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonB" id="b2f40fb4daba0b" memberName="juce__textButtonB"
+              virtualName="" explicitFocusOrder="0" pos="71% 27.059% 25 25"
+              buttonText="B" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonView" id="2ec1cc9996d74cb6" memberName="juce__textButtonView"
+              virtualName="" explicitFocusOrder="0" pos="42.5% 27.941% 30 15"
+              buttonText="View" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonLeft" id="9d943df2d7e5a92c" memberName="juce__textButtonL"
+              virtualName="" explicitFocusOrder="0" pos="35.5% 47.941% 20 20"
+              buttonText="L" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonUp" id="8eb72bdfaab10e19" memberName="juce__textButtonUp"
+              virtualName="" explicitFocusOrder="0" pos="39% 42.059% 20 20"
+              posRelativeW="dbbbdb024f1ff6a0" posRelativeH="dbbbdb024f1ff6a0"
+              buttonText="U" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonDown" id="1662ca70f842ff72" memberName="juce__textButtonDown"
+              virtualName="" explicitFocusOrder="0" pos="39% 54.118% 20 20"
+              buttonText="D" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonRight" id="37e4b6bd1ab69340" memberName="juce__textButtonRight"
+              virtualName="" explicitFocusOrder="0" pos="42.5% 47.941% 20 20"
+              buttonText="R" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonShare" id="2d216db01c9308fa" memberName="juce__textButtonShare"
+              virtualName="" explicitFocusOrder="0" pos="47.5% 35.294% 30 15"
+              buttonText="Share" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonMenu" id="544df2d3cd2b549e" memberName="juce__textButtonMenu"
+              virtualName="" explicitFocusOrder="0" pos="52.833% 27.941% 30 15"
+              buttonText="Menu" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonLB" id="14cf67a7e5cde685" memberName="juce__textButtonLB"
+              virtualName="" explicitFocusOrder="0" pos="29% 4.118% 50 20"
+              buttonText="LB" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ButtonRB" id="5c36d320842a89c3" memberName="juce__textButtonRB"
+              virtualName="" explicitFocusOrder="0" pos="62.5% 4.118% 50 20"
+              buttonText="RB" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <SLIDER name="L_Trigger" id="108db3ed35a76737" memberName="juce__slider_L_Trigger"
+          virtualName="" explicitFocusOrder="0" pos="3% 10% 10.833% 60%"
+          min="0.0" max="1.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxBelow"
+          textBoxEditable="1" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="1"/>
+  <SLIDER name="R_Trigger" id="154ab14c02d0fc10" memberName="juce__slider_R_Trigger"
+          virtualName="" explicitFocusOrder="0" pos="87% 10% 10% 60%" min="0.0"
+          max="1.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxBelow"
+          textBoxEditable="1" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
@@ -163,7 +404,7 @@ END_JUCER_METADATA
 //==============================================================================
 // Binary resources - be careful not to edit any of these sections!
 
-// JUCER_RESOURCE: fab86afd63d645a9862f798e5e45cda2_jpg, 108456, "../../../../../PRiSM/fab86afd-63d6-45a9-862f-798e5e45cda2.jpg"
+// JUCER_RESOURCE: fab86afd63d645a9862f798e5e45cda2_jpg, 108456, "../Resource/XboxController.jpg"
 static const unsigned char resource_XboxController_UI_fab86afd63d645a9862f798e5e45cda2_jpg[] = { 255,216,255,219,0,132,0,4,3,3,3,3,3,4,3,3,4,6,4,3,4,6,7,5,4,4,5,7,8,6,6,7,6,6,8,10,8,9,9,9,9,8,10,10,12,
 12,12,12,12,10,12,12,13,13,12,12,17,17,17,17,17,20,20,20,20,20,20,20,20,20,20,1,4,5,5,8,7,8,15,10,10,15,20,14,14,14,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,255,221,0,4,0,169,255,238,0,14,65,100,111,98,101,0,100,192,0,0,0,1,255,192,0,17,8,2,247,5,70,3,0,17,0,1,17,1,2,17,1,255,196,1,162,0,1,
