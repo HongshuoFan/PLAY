@@ -33,11 +33,17 @@ private:
     // Your private member variables go here...
     // write a new funciton 
     HIDMenu m_HIDMenu;
+    
     HID_IO hidIO;
+    uint8_t InputData;
+    
     DualSense_Input DS_input;
+    
     XboxController_Input XC_input;
 //    DualSense_Output DS_output;
     XboxController_UI xbxUI;
+    
+    
     
     void onHIDMenuChanged();
     void onDataReceived();

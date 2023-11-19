@@ -41,9 +41,12 @@ void MainComponent::onHIDMenuChanged()
     std::cout << m_HIDMenu.selectedKey << std::endl;
     char* charPointer = new char[m_HIDMenu.selectedKey.length() + 1];
     m_HIDMenu.selectedKey.copyToUTF8(charPointer, m_HIDMenu.selectedKey.length()+1);
+    
     hidIO.device_name = charPointer;
     
     if(hidIO.connect()){
+        
+        m_HIDMenu.setVisible(false);
         
         if(strcmp("DualSense Wireless Controller", hidIO.device_name) == 0){
             std::cout << "connect to DualSense Wireless Controller" << std::endl;
