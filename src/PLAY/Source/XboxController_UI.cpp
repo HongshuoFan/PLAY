@@ -131,14 +131,14 @@ XboxController_UI::XboxController_UI ()
 
 
     //[UserPreSize]
-    
+
     //[/UserPreSize]
 
     setSize (600, 340);
 
 
     //[Constructor] You can add your own custom stuff here..
-    setFramesPerSecond (1);
+    //setFramesPerSecond (1);
     //[/Constructor]
 }
 
@@ -315,7 +315,17 @@ void XboxController_UI::sliderValueChanged (juce::Slider* sliderThatWasMoved)
 void XboxController_UI::update()
 {
 //    setFramesPerSecond (20);
-    std::cout<< "test" <<"\n";
+    if (isConnected){
+        //setFramesPerSecond (20);
+        juce__textButtonA->setState((_input.buttons.a) ? onState:offState);
+        juce__textButtonB->setState((_input.buttons.b) ? onState:offState);
+        juce__textButtonX->setState((_input.buttons.x) ? onState:offState);
+        juce__textButtonY->setState((_input.buttons.y) ? onState:offState);
+    }else{
+        //setFramesPerSecond (5);
+    }
+   
+    
     //Left_Stick.updatePoint(0.2,0.1,1);
 }
 //[/MiscUserCode]

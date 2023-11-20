@@ -79,5 +79,8 @@ void MainComponent::onDualSense_DataReceived()
 
 void MainComponent::onXboxController_DataReceived() { 
     XC_input.evaluateXboxCotrollerHidInputBuffer(hidIO.reportData);
+    xbxUI._input = XC_input.XC_input;
+    xbxUI.isConnected = true;
+    xbxUI.update();
 }
 
