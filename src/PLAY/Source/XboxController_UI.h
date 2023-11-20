@@ -35,7 +35,7 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class XboxController_UI  : public juce::Component,
+class XboxController_UI  : public juce::AnimatedAppComponent,
                            public juce::Button::Listener,
                            public juce::Slider::Listener
 {
@@ -46,30 +46,27 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    void update();
+    void update() override;
     XboxCotroller::XboxCotrollerInputState _input;
     bool isConnected;
     //[/UserMethods]
-    
+
     void paint (juce::Graphics& g) override;
     void resized() override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
     void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
 
-    // Binary resources:
-    static const char* fab86afd63d645a9862f798e5e45cda2_jpg;
-    static const int fab86afd63d645a9862f798e5e45cda2_jpgSize;
 
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     StickGUI Left_Stick;
     StickGUI Right_Stick;
-    juce::Button::ButtonState onState = juce::Button::buttonDown;
-    juce::Button::ButtonState offState = juce::Button::buttonNormal;
-    
+//    juce::Button::ButtonState onState = juce::Button::buttonDown;
+//    juce::Button::ButtonState offState = juce::Button::buttonNormal;
+
     //std::thread UI_Thread;
-    
+
     //[/UserVariables]
 
     //==============================================================================
@@ -78,7 +75,7 @@ private:
     std::unique_ptr<juce::TextButton> juce__textButtonA;
     std::unique_ptr<juce::TextButton> juce__textButtonB;
     std::unique_ptr<juce::TextButton> juce__textButtonView;
-    std::unique_ptr<juce::TextButton> juce__textButtonL;
+    std::unique_ptr<juce::TextButton> juce__textButtonLeft;
     std::unique_ptr<juce::TextButton> juce__textButtonUp;
     std::unique_ptr<juce::TextButton> juce__textButtonDown;
     std::unique_ptr<juce::TextButton> juce__textButtonRight;

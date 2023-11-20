@@ -70,13 +70,13 @@ void StickGUI::paint (juce::Graphics& g)
     }
 
     {
-        px = static_cast<float> (proportionOfWidth (0.5000f) - (10 / 2));
-        py = static_cast<float> (proportionOfHeight (0.5000f) - (10 / 2));
+//        px = static_cast<float> (proportionOfWidth (0.5000f) - (10 / 2));
+//        py = static_cast<float> (proportionOfHeight (0.5000f) - (10 / 2));
         float width = 10.0f, height = 10.0f;
-        juce::Colour fillColour = juce::Colour (0xffa5302a);
+        //juce::Colour fillColour = juce::Colour (0xffa5302a);
         //[UserPaintCustomArguments] Customize the painting arguments here..
         //[/UserPaintCustomArguments]
-        g.setColour (fillColour);
+        g.setColour (pointColour);
         g.fillEllipse (px, py, width, height);
     }
 
@@ -116,10 +116,10 @@ void StickGUI::mouseDrag (const juce::MouseEvent& e)
 void StickGUI::updatePoint(float x, float y, bool button) {
     
     px = x * Stickwidth;
-    px = fmax(2, fmin(px, getWidth()));
-    std::cout<< px <<"\n";
+    px = fmax(1, fmin(px, getWidth()-12));
+   
     py = Stickheight - (y * Stickheight);
-    py = fmax(2, fmin(py, getHeight()));
+    py = fmax(1, fmin(py, getHeight()-12));
     
     if (button){
         pointColour = onColour;

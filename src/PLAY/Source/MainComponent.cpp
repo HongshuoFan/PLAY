@@ -59,6 +59,7 @@ void MainComponent::onHIDMenuChanged()
             std::cout << "connect to Xbox Wireless Controller" << std::endl;
             hidIO.dataReceivedCallback = [this]{onXboxController_DataReceived();};
             addAndMakeVisible(xbxUI);
+            xbxUI.isConnected = true;
         }
     }
     
@@ -80,7 +81,6 @@ void MainComponent::onDualSense_DataReceived()
 void MainComponent::onXboxController_DataReceived() { 
     XC_input.evaluateXboxCotrollerHidInputBuffer(hidIO.reportData);
     xbxUI._input = XC_input.XC_input;
-    xbxUI.isConnected = true;
-    xbxUI.update();
+    
 }
 

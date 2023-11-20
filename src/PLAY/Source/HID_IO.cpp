@@ -264,7 +264,7 @@ void HID_IO::InputReportCallbackStub(void* context, IOReturn result, void* sende
 void HID_IO::InputReportCallback(DEVICE_INFO* deviceInfo, IOReturn result, void* sender, IOHIDReportType type, uint32_t reportID, uint8_t* report, CFIndex reportLength)
 {
     reportData = report;
-    printReport();
+    //printReport();
     dataReceivedCallback();
     
 //    std::cout<<  report[1] << "\n";

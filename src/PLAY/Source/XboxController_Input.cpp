@@ -26,15 +26,22 @@ XboxController_Input::~XboxController_Input()
 void XboxController_Input::evaluateXboxCotrollerHidInputBuffer(uint8_t *_reportData) {
     
     // Convert sticks bit to int
-    XC_input.leftStick.x = (_reportData[2] << 8) | (_reportData[1] & 0xFF);
-    XC_input.leftStick.y = (_reportData[4] << 8) | (_reportData[3] & 0xFF);
-    XC_input.rightStick.x = (_reportData[6] << 8) | (_reportData[5] & 0xFF);
-    XC_input.rightStick.y = (_reportData[8] << 8) | (_reportData[7] & 0xFF);
+    XC_input.leftStick.x = (_reportData[2] << 4) | (_reportData[1] & 0xFF);
+    XC_input.leftStick.x = XC_input.leftStick.x / 4095.;
+    XC_input.leftStick.y = (_reportData[4] << 4) | (_reportData[3] & 0xFF);
+    XC_input.leftStick.y = 1. - XC_input.leftStick.y / 4095.;
     
+    XC_input.rightStick.x = (_reportData[6] << 4) | (_reportData[5] & 0xFF);
+    XC_input.rightStick.x = XC_input.rightStick.x /4095.;
+    XC_input.rightStick.y = (_reportData[8] << 4) | (_reportData[7] & 0xFF);
+    XC_input.rightStick.y = 1. - XC_input.rightStick.y / 4095.;
+   
     // Convert trigger to bit to int
     XC_input.leftTrigger = (_reportData[10] << 8) | (_reportData[9] & 0xFF);
+    XC_input.leftTrigger = XC_input.leftTrigger / 1023;
     XC_input.rightTrigger = (_reportData[12] << 8) | (_reportData[11] & 0xFF);
-    
+    XC_input.rightTrigger = XC_input.rightTrigger / 1023;
+//    std::cout<<XC_input.leftTrigger<<"\n";
     // Dpad
    
     int dpadState = static_cast<int>(_reportData[13]);

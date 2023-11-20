@@ -19,8 +19,8 @@
 #define XBOX_LB               0x4000
 #define XBOX_RB               0x8000
 
-#define XBOX_LeftStick        0x0040
-#define XBOX_RightStick       0x0020
+#define XBOX_LeftStick        0x0020
+#define XBOX_RightStick       0x0040
 
 #define XBOX_MENU             0x0800
 #define XBOX_VIEW             0x0400
@@ -29,8 +29,8 @@ namespace XboxCotroller {
 
     typedef struct _AnalogStick {
         
-        int x;
-        int y;
+        float x;
+        float y;
         bool stickPress;
         
     } AnalogStick;
@@ -67,8 +67,8 @@ namespace XboxCotroller {
         
         Buttons buttons;
         
-        unsigned int leftTrigger;
-        unsigned int rightTrigger;
+        double leftTrigger;
+        double rightTrigger;
         
     } XboxCotrollerInputState;
 

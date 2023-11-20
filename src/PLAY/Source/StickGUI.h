@@ -57,10 +57,10 @@ private:
     float previousMouseX = 0, previousMouseY = 0;
     float px = Stickwidth/2, py = Stickheight/2;
     juce::Colour pointColour = juce::Colours::black;
-    juce::Colour offColour = juce::Colours::black;
-    juce::Colour onColour = juce::Colours::grey;
-    juce::Colour leftColour = juce::Colours::green;
-    juce::Colour rightColour = juce::Colour (0xffc83e67);
+    juce::Colour offColour = juce::Colours::grey;
+    juce::Colour onColour = juce::Colours::red;
+//    juce::Colour leftColour = juce::Colours::green;
+//    juce::Colour rightColour = juce::Colour (0xffc83e67);
     //[/UserVariables]
 
     //==============================================================================
