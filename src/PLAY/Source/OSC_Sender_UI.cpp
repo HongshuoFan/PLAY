@@ -93,6 +93,7 @@ OSC_Sender_UI::~OSC_Sender_UI()
 
 
     //[Destructor]. You can add your own custom destruction code here..
+    _oscSender.disconnect();
     //[/Destructor]
 }
 
@@ -167,7 +168,7 @@ void OSC_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
             std::cout<<"Not Valid port " << newPort << "\n";
         }
         // reconnect
-        if(_oscSender.disconnect()){
+        if(_oscSender.disconnect() && juce__toggleButton_OSC->getToggleState()){
             if(_oscSender.connect(ip, port)){
                 std::cout<<"OSC connect \n";
             }else{
@@ -234,6 +235,26 @@ bool OSC_Sender_UI::isValidPort(juce::String portString)
     // Convert to integer and check the range
         int port = portString.getIntValue();
         return port >= 0 && port <= 65535;
+}
+
+void OSC_Sender_UI::disConnect(){
+    juce__toggleButton_OSC->setToggleState(false, juce::sendNotification);
+}
+
+void OSC_Sender_UI::sendXbox_OSC_message()
+{
+    if(juce__toggleButton_OSC->getToggleState()){
+        
+   
+    if (_xboxInput.leftStick.x != last_xboxInput.leftStick.x){
+        
+        if( _oscSender.send("/leftStick/x", _xboxInput.leftStick.x)){
+            last_xboxInput.leftStick.x = _xboxInput.leftStick.x;
+            //std::cout<<"_xboxInput.leftStick.x";
+        }
+        
+    }
+    }
 }
 //[/MiscUserCode]
 

@@ -21,7 +21,7 @@ public:
     XboxController_Input();
     ~XboxController_Input() override;
     
-    XboxCotroller::XboxCotrollerInputState XC_input;
+    XboxCotroller::XboxCotrollerInputState xbox_input;
     void evaluateXboxCotrollerHidInputBuffer(uint8_t* _reportData);
     
 private:

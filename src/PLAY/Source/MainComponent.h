@@ -27,7 +27,7 @@ public:
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
-    
+    void userTriedToCloseWindow() override;
     
 private:
     //==============================================================================

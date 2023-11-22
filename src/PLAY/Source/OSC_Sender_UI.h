@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
+#include "XboxControllerState.h"
 //[/Headers]
 
 
@@ -43,13 +44,16 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    void sendXbox_OSC_message();
+    XboxCotroller::XboxCotrollerInputState _xboxInput;
+    juce::OSCSender _oscSender;
+    void disConnect();
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
     void resized() override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
-
-
+     
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
@@ -57,7 +61,9 @@ private:
     bool isValidPort(juce::String new_port);
     juce::String ip = "127.0.0.1";
     int port = 9001;
-    juce::OSCSender _oscSender;
+    
+    XboxCotroller::XboxCotrollerInputState last_xboxInput;
+   
     //[/UserVariables]
 
     //==============================================================================

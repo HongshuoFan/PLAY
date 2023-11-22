@@ -17,6 +17,7 @@ MainComponent::MainComponent()
 
 MainComponent::~MainComponent()
 {
+    OSC_Sender._oscSender.disconnect();
 }
 
 //==============================================================================
@@ -82,7 +83,14 @@ void MainComponent::onDualSense_DataReceived()
 
 void MainComponent::onXboxController_DataReceived() { 
     XC_input.evaluateXboxCotrollerHidInputBuffer(hidIO.reportData);
-    xbxUI._input = XC_input.XC_input;
-    
+    xbxUI._input = XC_input.xbox_input;
+    OSC_Sender._xboxInput = XC_input.xbox_input;
+    OSC_Sender.sendXbox_OSC_message();
 }
 
+void MainComponent::userTriedToCloseWindow(){
+//
+    std::cout<<"User Tried To Close Window \n";
+    hidIO.stopReadingThread();
+    OSC_Sender.disConnect();
+}
