@@ -28,8 +28,6 @@
     <FILE id="utjFkL" name="InputProvider.h" compile="0" resource="0" file="Source/InputProvider.h"/>
     <FILE id="OJJ0ov" name="ListHID.cpp" compile="1" resource="0" file="Source/ListHID.cpp"/>
     <FILE id="SDbuee" name="ListHID.h" compile="0" resource="0" file="Source/ListHID.h"/>
-    <FILE id="aXUi9w" name="OSC_Sender.cpp" compile="1" resource="0" file="Source/OSC_Sender.cpp"/>
-    <FILE id="GAL9yI" name="OSC_Sender.h" compile="0" resource="0" file="Source/OSC_Sender.h"/>
     <FILE id="eOpVNi" name="OSC_Sender_UI.cpp" compile="1" resource="0"
           file="Source/OSC_Sender_UI.cpp"/>
     <FILE id="kz5h5q" name="OSC_Sender_UI.h" compile="0" resource="0" file="Source/OSC_Sender_UI.h"/>

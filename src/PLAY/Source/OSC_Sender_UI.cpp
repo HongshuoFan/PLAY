@@ -77,7 +77,7 @@ OSC_Sender_UI::OSC_Sender_UI ()
 
     //[Constructor] You can add your own custom stuff here..
     juce__textEditor_IP->setText(ip);
-    juce__textEditor_port->setText(port);
+    juce__textEditor_port->setText("9001");
     //[/Constructor]
 }
 
@@ -150,7 +150,7 @@ void OSC_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     if (buttonThatWasClicked == juce__textButton_update.get())
     {
         //[UserButtonCode_juce__textButton_update] -- add your button handler code here..
-        
+
         juce::String newIP = juce__textEditor_IP->getText();
         if(isValidIPAddress(newIP)){
             ip = newIP;
@@ -158,20 +158,39 @@ void OSC_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
             std::cout<<"Not Valid IP " << newIP << "\n";
             juce__textEditor_IP->setText(ip);
         }
-        
+
         juce::String newPort = juce__textEditor_port->getText();
         if(isValidPort(newPort)){
-            port = newPort;
+            port = newPort.getIntValue();
         }else{
-            juce__textEditor_port->setText(port);
+            juce__textEditor_port->setText("9001");
             std::cout<<"Not Valid port " << newPort << "\n";
         }
-        
+        // reconnect
+        if(_oscSender.disconnect()){
+            if(_oscSender.connect(ip, port)){
+                std::cout<<"OSC connect \n";
+            }else{
+                std::cout<<"OSC not connect \n";
+            }
+        }
         //[/UserButtonCode_juce__textButton_update]
     }
     else if (buttonThatWasClicked == juce__toggleButton_OSC.get())
     {
         //[UserButtonCode_juce__toggleButton_OSC] -- add your button handler code here..
+        if(juce__toggleButton_OSC->getToggleState()){
+            if(_oscSender.connect(ip, port)){
+                std::cout<<"OSC connect \n";
+                _oscSender.send("/test", 1);
+            }else{
+                std::cout<<"OSC not connect \n";
+            }
+        }else{
+            if(_oscSender.disconnect()){
+                std::cout<<"OSC disconnect \n";
+            }
+        }
         //[/UserButtonCode_juce__toggleButton_OSC]
     }
 
@@ -186,11 +205,11 @@ bool OSC_Sender_UI::isValidIPAddress(juce::String new_ip)
 {
     juce::StringArray parts;
     parts.addTokens(new_ip, ".", "");
-    
+
     if (parts.size() != 4) {
             return false;
         }
-    
+
     for (const auto& part : parts) {
         // Check if the string contains only digits
             if (part.isEmpty() || part.length() > 3 || !part.containsOnly("0123456789")) {

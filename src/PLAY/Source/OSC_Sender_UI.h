@@ -56,7 +56,8 @@ private:
     bool isValidIPAddress(juce::String new_ip);
     bool isValidPort(juce::String new_port);
     juce::String ip = "127.0.0.1";
-    juce::String port = "9001";
+    int port = 9001;
+    juce::OSCSender _oscSender;
     //[/UserVariables]
 
     //==============================================================================
