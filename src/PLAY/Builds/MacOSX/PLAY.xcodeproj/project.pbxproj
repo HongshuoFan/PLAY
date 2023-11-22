@@ -30,6 +30,7 @@
 		B151F5E5CB1A4F178686C26B /* MetalKit.framework */ = {isa = PBXBuildFile; fileRef = 619928B320E5DAD973D8BF05; settings = { ATTRIBUTES = (Weak, ); }; };
 		B17F054EA1A8BADBFB7264FC /* DualSense_Input.cpp */ = {isa = PBXBuildFile; fileRef = C5F96CC5C6790B83DF77188E; };
 		B68ECD2BD97EFEE0B56D9522 /* include_juce_gui_basics.mm */ = {isa = PBXBuildFile; fileRef = 5F1B2DA4751CDED59D653556; };
+		C00AA02EB6397B640C414A1E /* OSC_UI.cpp */ = {isa = PBXBuildFile; fileRef = 387051CE9F490D033684F6B5; };
 		C87D4760C84D3F70560EF1F9 /* RecentFilesMenuTemplate.nib */ = {isa = PBXBuildFile; fileRef = DF04D0A21A079C65549ECEB9; };
 		D2B2951F34D6E02A7DCE3415 /* HIDMenu.cpp */ = {isa = PBXBuildFile; fileRef = 3BFF4447BE24D2522DE8BC5A; };
 		D4F9F297134C31D4D9DBCD6F /* include_juce_osc.cpp */ = {isa = PBXBuildFile; fileRef = 6E4BF7F057E083E2043D45E3; };
@@ -46,7 +47,9 @@
 		2C69A46DEC99C52ED8CFDA9B /* XboxControllerState.h */ /* XboxControllerState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XboxControllerState.h; path = ../../Source/XboxControllerState.h; sourceTree = SOURCE_ROOT; };
 		3049057331B2B23EB6747254 /* StickGUI.h */ /* StickGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StickGUI.h; path = ../../Source/StickGUI.h; sourceTree = SOURCE_ROOT; };
 		31AAEF235CCB90B93C41819F /* juce_gui_extra */ /* juce_gui_extra */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_extra; path = /Users/hongshuofan/Documents/JUCE/modules/juce_gui_extra; sourceTree = "<absolute>"; };
+		347A0012166026F230EF56EC /* OSC_UI.h */ /* OSC_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSC_UI.h; path = ../../Source/OSC_UI.h; sourceTree = SOURCE_ROOT; };
 		357255BCE00B80150326189B /* ListHID.h */ /* ListHID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ListHID.h; path = ../../Source/ListHID.h; sourceTree = SOURCE_ROOT; };
+		387051CE9F490D033684F6B5 /* OSC_UI.cpp */ /* OSC_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OSC_UI.cpp; path = ../../Source/OSC_UI.cpp; sourceTree = SOURCE_ROOT; };
 		3B19C651B029D252CF366851 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = /Users/hongshuofan/Documents/JUCE/modules/juce_data_structures; sourceTree = "<absolute>"; };
 		3BFF4447BE24D2522DE8BC5A /* HIDMenu.cpp */ /* HIDMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HIDMenu.cpp; path = ../../Source/HIDMenu.cpp; sourceTree = SOURCE_ROOT; };
 		3C9DABB4B88263887347D0DB /* XboxController_Input.cpp */ /* XboxController_Input.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = XboxController_Input.cpp; path = ../../Source/XboxController_Input.cpp; sourceTree = SOURCE_ROOT; };
@@ -128,6 +131,8 @@
 				F1C452940280CE33FDD84A0E,
 				8B257BFFF4E6D90B0F3242F8,
 				357255BCE00B80150326189B,
+				387051CE9F490D033684F6B5,
+				347A0012166026F230EF56EC,
 				BBF288FFC40541D4C1D3AE1A,
 				3049057331B2B23EB6747254,
 				3C9DABB4B88263887347D0DB,
@@ -317,6 +322,7 @@
 				12887836995149239BD0B218,
 				D2B2951F34D6E02A7DCE3415,
 				51480E87AFFD5751D02DB901,
+				C00AA02EB6397B640C414A1E,
 				916EEBF144F393F3D6DB5914,
 				24425833CF9F13D2F27E34A3,
 				7A0BB930522D134C4959EF80,
@@ -351,7 +357,7 @@
 					"NDEBUG=1",
 					"JUCE_DISPLAY_SPLASH_SCREEN=1",
 					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x70008",
+					"JUCE_PROJUCER_VERSION=0x70009",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
 					"JUCE_MODULE_AVAILABLE_juce_events=1",
@@ -459,7 +465,7 @@
 					"DEBUG=1",
 					"JUCE_DISPLAY_SPLASH_SCREEN=1",
 					"JUCE_USE_DARK_SPLASH_SCREEN=1",
-					"JUCE_PROJUCER_VERSION=0x70008",
+					"JUCE_PROJUCER_VERSION=0x70009",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
 					"JUCE_MODULE_AVAILABLE_juce_events=1",

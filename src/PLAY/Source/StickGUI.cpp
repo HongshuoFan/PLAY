@@ -115,11 +115,11 @@ void StickGUI::mouseDrag (const juce::MouseEvent& e)
 
 void StickGUI::updatePoint(float x, float y, bool button) {
     
-    px = x * Stickwidth;
-    px = fmax(1, fmin(px, getWidth()-12));
+    px = x * Stickwidth*0.95;
+    px = fmax(1, fmin(px, getWidth()*0.85));
    
-    py = Stickheight - (y * Stickheight);
-    py = fmax(1, fmin(py, getHeight()-12));
+    py = Stickheight - (y * Stickheight*1.05);
+    py = fmax(1, fmin(py, getHeight()*0.85));
     
     if (button){
         pointColour = onColour;

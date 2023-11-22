@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.8
+  Created with Projucer version: 7.0.9
 
   ------------------------------------------------------------------------------
 
@@ -330,7 +330,7 @@ void XboxController_UI::update()
 {
 //    setFramesPerSecond (20);
     if (isConnected){
-        setFramesPerSecond (20);
+        setFramesPerSecond (12);
 
         juce__textButtonA->setToggleState(_input.buttons.a,  juce::sendNotification);
         juce__textButtonB->setToggleState(_input.buttons.b,  juce::sendNotification);
@@ -343,20 +343,20 @@ void XboxController_UI::update()
         juce__textButtonView->setToggleState(_input.buttons.view,  juce::sendNotification);
         juce__textButtonShare->setToggleState(_input.buttons.share,  juce::sendNotification);
         juce__textButtonMenu->setToggleState(_input.buttons.menu,  juce::sendNotification);
-        
+
         juce__textButtonUp->setToggleState(_input.dpad.up,  juce::sendNotification);
         juce__textButtonDown->setToggleState(_input.dpad.down,  juce::sendNotification);
         juce__textButtonLeft->setToggleState(_input.dpad.left,  juce::sendNotification);
         juce__textButtonRight->setToggleState(_input.dpad.right,  juce::sendNotification);
-        //std::cout<<static_cast<int16_t>(_input.leftStick.x)<<"\n";
+        
         Left_Stick.updatePoint(_input.leftStick.x, _input.leftStick.y, _input.leftStick.stickPress);
         Right_Stick.updatePoint(_input.rightStick.x, _input.rightStick.y, _input.rightStick.stickPress);
-        
+
         juce__slider_L_Trigger->setValue(_input.leftTrigger);
         juce__slider_R_Trigger->setValue(_input.rightTrigger);
-        
+
     }else{
-        setFramesPerSecond (5);
+        setFramesPerSecond (1);
     }
 
 
