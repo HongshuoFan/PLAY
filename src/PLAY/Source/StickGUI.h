@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.8
+  Created with Projucer version: 7.0.9
 
   ------------------------------------------------------------------------------
 
@@ -42,14 +42,14 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    
+
     void updatePoint(float x, float y, bool button);
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
     void resized() override;
     void mouseDrag (const juce::MouseEvent& e) override;
-   
+
 
 
 private:
@@ -65,7 +65,7 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-   
+
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StickGUI)
