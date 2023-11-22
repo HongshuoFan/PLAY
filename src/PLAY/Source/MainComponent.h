@@ -3,6 +3,7 @@
 #include <JuceHeader.h>
 #include "HIDMenu.h"
 #include "HID_IO.h"
+#include "OSC_Sender_UI.h"
 #include "DualSense_Input.h"
 //#include "DualSense_Output.h"
 #include "XboxController_Input.h"
@@ -42,7 +43,7 @@ private:
     XboxController_Input XC_input;
 //    DualSense_Output DS_output;
     XboxController_UI xbxUI;
-    
+    OSC_Sender_UI OSC_Sender;
     
     
     void onHIDMenuChanged();

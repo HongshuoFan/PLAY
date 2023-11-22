@@ -28,8 +28,9 @@
     <FILE id="utjFkL" name="InputProvider.h" compile="0" resource="0" file="Source/InputProvider.h"/>
     <FILE id="OJJ0ov" name="ListHID.cpp" compile="1" resource="0" file="Source/ListHID.cpp"/>
     <FILE id="SDbuee" name="ListHID.h" compile="0" resource="0" file="Source/ListHID.h"/>
-    <FILE id="eOpVNi" name="OSC_UI.cpp" compile="1" resource="0" file="Source/OSC_UI.cpp"/>
-    <FILE id="kz5h5q" name="OSC_UI.h" compile="0" resource="0" file="Source/OSC_UI.h"/>
+    <FILE id="eOpVNi" name="OSC_Sender_UI.cpp" compile="1" resource="0"
+          file="Source/OSC_Sender_UI.cpp"/>
+    <FILE id="kz5h5q" name="OSC_Sender_UI.h" compile="0" resource="0" file="Source/OSC_Sender_UI.h"/>
     <FILE id="MJMvtF" name="StickGUI.cpp" compile="1" resource="0" file="Source/StickGUI.cpp"/>
     <FILE id="pIGOHd" name="StickGUI.h" compile="0" resource="0" file="Source/StickGUI.h"/>
     <FILE id="HqqPQv" name="XboxController_Input.cpp" compile="1" resource="0"

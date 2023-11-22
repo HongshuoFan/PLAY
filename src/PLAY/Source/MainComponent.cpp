@@ -7,7 +7,8 @@ MainComponent::MainComponent()
     
     // Create HIDmenu compoent and add it to the MainComponent
     addAndMakeVisible(m_HIDMenu);
-    
+    OSC_Sender.setBounds(0, proportionOfHeight (0.9f), 600, 40);
+    addAndMakeVisible(OSC_Sender);
     
     // Add a listener to the m_HIDMenu
     m_HIDMenu.onHIDMenuChanged = [this]{onHIDMenuChanged();};
@@ -34,6 +35,7 @@ void MainComponent::resized()
     // This is called when the MainComponent is resized.
     // If you add any child components, this is where you should
     // update their positions.
+    OSC_Sender.setBounds(0, proportionOfHeight (0.9f), 600, 40);
 }
 
 void MainComponent::onHIDMenuChanged()

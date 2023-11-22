@@ -25,12 +25,12 @@
 		7A0BB930522D134C4959EF80 /* XboxController_UI.cpp */ = {isa = PBXBuildFile; fileRef = 8D6C215FB0A3FFFB050F2B16; };
 		7EEB93E10DCE47D8C650D8EE /* Main.cpp */ = {isa = PBXBuildFile; fileRef = A33E8D0C79428F78D1774F43; };
 		84AD779BB766858C6EC2E709 /* include_juce_graphics.mm */ = {isa = PBXBuildFile; fileRef = 2C0DE1A72ED3BFE24A77848B; };
+		9160E060DFB28A467407BEF3 /* OSC_Sender_UI.cpp */ = {isa = PBXBuildFile; fileRef = F541EC5CAC71F97FFCE87EEB; };
 		916EEBF144F393F3D6DB5914 /* StickGUI.cpp */ = {isa = PBXBuildFile; fileRef = BBF288FFC40541D4C1D3AE1A; };
 		9B5673E09190F96226F9DCFF /* IOKit.framework */ = {isa = PBXBuildFile; fileRef = 6703FBDD34240B55E3C6F196; };
 		B151F5E5CB1A4F178686C26B /* MetalKit.framework */ = {isa = PBXBuildFile; fileRef = 619928B320E5DAD973D8BF05; settings = { ATTRIBUTES = (Weak, ); }; };
 		B17F054EA1A8BADBFB7264FC /* DualSense_Input.cpp */ = {isa = PBXBuildFile; fileRef = C5F96CC5C6790B83DF77188E; };
 		B68ECD2BD97EFEE0B56D9522 /* include_juce_gui_basics.mm */ = {isa = PBXBuildFile; fileRef = 5F1B2DA4751CDED59D653556; };
-		C00AA02EB6397B640C414A1E /* OSC_UI.cpp */ = {isa = PBXBuildFile; fileRef = 387051CE9F490D033684F6B5; };
 		C87D4760C84D3F70560EF1F9 /* RecentFilesMenuTemplate.nib */ = {isa = PBXBuildFile; fileRef = DF04D0A21A079C65549ECEB9; };
 		D2B2951F34D6E02A7DCE3415 /* HIDMenu.cpp */ = {isa = PBXBuildFile; fileRef = 3BFF4447BE24D2522DE8BC5A; };
 		D4F9F297134C31D4D9DBCD6F /* include_juce_osc.cpp */ = {isa = PBXBuildFile; fileRef = 6E4BF7F057E083E2043D45E3; };
@@ -47,9 +47,7 @@
 		2C69A46DEC99C52ED8CFDA9B /* XboxControllerState.h */ /* XboxControllerState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XboxControllerState.h; path = ../../Source/XboxControllerState.h; sourceTree = SOURCE_ROOT; };
 		3049057331B2B23EB6747254 /* StickGUI.h */ /* StickGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StickGUI.h; path = ../../Source/StickGUI.h; sourceTree = SOURCE_ROOT; };
 		31AAEF235CCB90B93C41819F /* juce_gui_extra */ /* juce_gui_extra */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_extra; path = /Users/hongshuofan/Documents/JUCE/modules/juce_gui_extra; sourceTree = "<absolute>"; };
-		347A0012166026F230EF56EC /* OSC_UI.h */ /* OSC_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSC_UI.h; path = ../../Source/OSC_UI.h; sourceTree = SOURCE_ROOT; };
 		357255BCE00B80150326189B /* ListHID.h */ /* ListHID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ListHID.h; path = ../../Source/ListHID.h; sourceTree = SOURCE_ROOT; };
-		387051CE9F490D033684F6B5 /* OSC_UI.cpp */ /* OSC_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OSC_UI.cpp; path = ../../Source/OSC_UI.cpp; sourceTree = SOURCE_ROOT; };
 		3B19C651B029D252CF366851 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = /Users/hongshuofan/Documents/JUCE/modules/juce_data_structures; sourceTree = "<absolute>"; };
 		3BFF4447BE24D2522DE8BC5A /* HIDMenu.cpp */ /* HIDMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HIDMenu.cpp; path = ../../Source/HIDMenu.cpp; sourceTree = SOURCE_ROOT; };
 		3C9DABB4B88263887347D0DB /* XboxController_Input.cpp */ /* XboxController_Input.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = XboxController_Input.cpp; path = ../../Source/XboxController_Input.cpp; sourceTree = SOURCE_ROOT; };
@@ -85,12 +83,14 @@
 		C5ED5E5221FE97E324529602 /* App */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PLAY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5F96CC5C6790B83DF77188E /* DualSense_Input.cpp */ /* DualSense_Input.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DualSense_Input.cpp; path = ../../Source/DualSense_Input.cpp; sourceTree = SOURCE_ROOT; };
 		C9D4D59B11CF7D07DECC1409 /* DualSense_Output.h */ /* DualSense_Output.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DualSense_Output.h; path = ../../Source/DualSense_Output.h; sourceTree = SOURCE_ROOT; };
+		CB9822EFC560F7F33283D63B /* OSC_Sender_UI.h */ /* OSC_Sender_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSC_Sender_UI.h; path = ../../Source/OSC_Sender_UI.h; sourceTree = SOURCE_ROOT; };
 		CC8AF84D7B98AB9A819CDE94 /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
 		D5AD8F470B1BFEF2A0320D31 /* JuceHeader.h */ /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		DF04D0A21A079C65549ECEB9 /* RecentFilesMenuTemplate.nib */ /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
 		E76DFF909541EC9905DF7EF3 /* HID_IO.h */ /* HID_IO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HID_IO.h; path = ../../Source/HID_IO.h; sourceTree = SOURCE_ROOT; };
 		F1C452940280CE33FDD84A0E /* InputProvider.h */ /* InputProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InputProvider.h; path = ../../Source/InputProvider.h; sourceTree = SOURCE_ROOT; };
 		F444FED6CF8535FB7F5350CD /* juce_core */ /* juce_core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_core; path = /Users/hongshuofan/Documents/JUCE/modules/juce_core; sourceTree = "<absolute>"; };
+		F541EC5CAC71F97FFCE87EEB /* OSC_Sender_UI.cpp */ /* OSC_Sender_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OSC_Sender_UI.cpp; path = ../../Source/OSC_Sender_UI.cpp; sourceTree = SOURCE_ROOT; };
 		F9D44C63C22BAF796CE8ED49 /* MainComponent.cpp */ /* MainComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainComponent.cpp; path = ../../Source/MainComponent.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -131,8 +131,8 @@
 				F1C452940280CE33FDD84A0E,
 				8B257BFFF4E6D90B0F3242F8,
 				357255BCE00B80150326189B,
-				387051CE9F490D033684F6B5,
-				347A0012166026F230EF56EC,
+				F541EC5CAC71F97FFCE87EEB,
+				CB9822EFC560F7F33283D63B,
 				BBF288FFC40541D4C1D3AE1A,
 				3049057331B2B23EB6747254,
 				3C9DABB4B88263887347D0DB,
@@ -322,7 +322,7 @@
 				12887836995149239BD0B218,
 				D2B2951F34D6E02A7DCE3415,
 				51480E87AFFD5751D02DB901,
-				C00AA02EB6397B640C414A1E,
+				9160E060DFB28A467407BEF3,
 				916EEBF144F393F3D6DB5914,
 				24425833CF9F13D2F27E34A3,
 				7A0BB930522D134C4959EF80,
