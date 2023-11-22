@@ -63,14 +63,13 @@ public:
     
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    std::unique_ptr<juce::ComboBox> HIDcombox__comboBox;
-    std::unique_ptr<juce::TextButton> Refresh__textButton;
     std::map<juce::String, IOHIDDeviceRef> devicesMap;
     void updateHIDcombox();
     //[/UserVariables]
 
     //==============================================================================
-   
+    std::unique_ptr<juce::ComboBox> HIDcombox__comboBox;
+    std::unique_ptr<juce::TextButton> Refresh__textButton;
 //    HIDMenuListener* listener = nullptr;
 //    void onHIDMenuChanged();
     //==============================================================================

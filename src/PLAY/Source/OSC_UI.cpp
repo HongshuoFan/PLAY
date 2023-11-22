@@ -36,7 +36,7 @@ OSC_UI::OSC_UI ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (100, 400);
+    setSize (400, 40);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -93,7 +93,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="OSC_UI" componentName=""
                  parentClasses="public juce::Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="100" initialHeight="400">
+                 fixedSize="1" initialWidth="400" initialHeight="40">
   <BACKGROUND backgroundColour="ff323e44"/>
 </JUCER_COMPONENT>
 

@@ -58,8 +58,9 @@ HIDMenu::HIDMenu ()
 
     setSize (400, 40);
 
-    Refresh__textButton->triggerClick();
+    
     //[Constructor] You can add your own custom stuff here..
+    Refresh__textButton->triggerClick();
     //[/Constructor]
 }
 
@@ -96,10 +97,11 @@ void HIDMenu::paint (juce::Graphics& g)
                     juce::Justification::centredLeft, true);
     }
     
+    
+    //[UserPaint] Add your own custom painting code here..
     if(HIDDeviceChanged){
         HIDDeviceChanged = false;
     }
-    //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
 }
 
@@ -117,6 +119,9 @@ void HIDMenu::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
     //[UsercomboBoxChanged_Pre]
     //[/UsercomboBoxChanged_Pre]
 
+   
+
+    //[UsercomboBoxChanged_Post]
     if (comboBoxThatHasChanged == HIDcombox__comboBox.get())
     {
         selectedKey = HIDcombox__comboBox->getText();
@@ -124,8 +129,6 @@ void HIDMenu::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
         HIDDeviceChanged = true;
         onHIDMenuChanged();
     }
-
-    //[UsercomboBoxChanged_Post]
     //[/UsercomboBoxChanged_Post]
 }
 
@@ -134,6 +137,9 @@ void HIDMenu::buttonClicked (juce::Button* buttonThatWasClicked)
     
     // cilcked refresh the HID list
 
+    
+
+    //[UserbuttonClicked_Post]
     if (buttonThatWasClicked == Refresh__textButton.get())
     {
         //get the HID list
@@ -149,13 +155,11 @@ void HIDMenu::buttonClicked (juce::Button* buttonThatWasClicked)
         }
         
     }
-
-    //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
 }
 
 
-//[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+//[MiscUserCode] 
 void HIDMenu::updateHIDcombox()
 {
     
