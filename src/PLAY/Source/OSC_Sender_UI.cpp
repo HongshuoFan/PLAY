@@ -76,6 +76,8 @@ OSC_Sender_UI::OSC_Sender_UI ()
 
 
     //[Constructor] You can add your own custom stuff here..
+    juce__textEditor_IP->setText(ip);
+    juce__textEditor_port->setText(port);
     //[/Constructor]
 }
 
@@ -148,6 +150,23 @@ void OSC_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     if (buttonThatWasClicked == juce__textButton_update.get())
     {
         //[UserButtonCode_juce__textButton_update] -- add your button handler code here..
+        
+        juce::String newIP = juce__textEditor_IP->getText();
+        if(isValidIPAddress(newIP)){
+            ip = newIP;
+        }else{
+            std::cout<<"Not Valid IP " << newIP << "\n";
+            juce__textEditor_IP->setText(ip);
+        }
+        
+        juce::String newPort = juce__textEditor_port->getText();
+        if(isValidPort(newPort)){
+            port = newPort;
+        }else{
+            juce__textEditor_port->setText(port);
+            std::cout<<"Not Valid port " << newPort << "\n";
+        }
+        
         //[/UserButtonCode_juce__textButton_update]
     }
     else if (buttonThatWasClicked == juce__toggleButton_OSC.get())
@@ -163,6 +182,40 @@ void OSC_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+bool OSC_Sender_UI::isValidIPAddress(juce::String new_ip)
+{
+    juce::StringArray parts;
+    parts.addTokens(new_ip, ".", "");
+    
+    if (parts.size() != 4) {
+            return false;
+        }
+    
+    for (const auto& part : parts) {
+        // Check if the string contains only digits
+            if (part.isEmpty() || part.length() > 3 || !part.containsOnly("0123456789")) {
+                return false;
+            }
+
+            int num = part.getIntValue();
+            if (num < 0 || num > 255) {
+                return false;
+            }
+        }
+
+        return true;
+}
+
+bool OSC_Sender_UI::isValidPort(juce::String portString)
+{
+    // Check if the string contains only digits
+        if (!portString.containsOnly("0123456789")) {
+            return false;
+        }
+    // Convert to integer and check the range
+        int port = portString.getIntValue();
+        return port >= 0 && port <= 65535;
+}
 //[/MiscUserCode]
 
 

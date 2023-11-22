@@ -16,6 +16,7 @@
 		31B4E3AE540344DFBCDBF43D /* Foundation.framework */ = {isa = PBXBuildFile; fileRef = 59D7B2784C958621473D68CD; };
 		354C5F422CE5FFAF6226252C /* Security.framework */ = {isa = PBXBuildFile; fileRef = A41A8D2C79EB7B3BE3F9DE16; };
 		437662FEF65B7945765B603A /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = 8EF1A5F445BF993323DA3736; };
+		4CA43ADCE047933B4530F18C /* OSC_Sender.cpp */ = {isa = PBXBuildFile; fileRef = 9FE9FE8884B94A67398B7F64; };
 		51480E87AFFD5751D02DB901 /* ListHID.cpp */ = {isa = PBXBuildFile; fileRef = 8B257BFFF4E6D90B0F3242F8; };
 		52655D0A04683BB0ECBD40D9 /* include_juce_events.mm */ = {isa = PBXBuildFile; fileRef = 60F582DEFEF78E46596CE36A; };
 		54F903276965C171E56BE237 /* HID_IO.cpp */ = {isa = PBXBuildFile; fileRef = 44F2038ED2E8C3F8B3311BAF; };
@@ -66,6 +67,7 @@
 		6E4BF7F057E083E2043D45E3 /* include_juce_osc.cpp */ /* include_juce_osc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_osc.cpp; path = ../../JuceLibraryCode/include_juce_osc.cpp; sourceTree = SOURCE_ROOT; };
 		736646C43064F98E987B0FF6 /* Cocoa.framework */ /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		73A2BC0024FF2CFE98EF54DA /* include_juce_core.mm */ /* include_juce_core.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_core.mm; path = ../../JuceLibraryCode/include_juce_core.mm; sourceTree = SOURCE_ROOT; };
+		786A68D23C2DAF55D2A4FD9B /* OSC_Sender.h */ /* OSC_Sender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSC_Sender.h; path = ../../Source/OSC_Sender.h; sourceTree = SOURCE_ROOT; };
 		7E76CF2843E9D32EA651EA7C /* include_juce_gui_extra.mm */ /* include_juce_gui_extra.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_extra.mm; path = ../../JuceLibraryCode/include_juce_gui_extra.mm; sourceTree = SOURCE_ROOT; };
 		8B257BFFF4E6D90B0F3242F8 /* ListHID.cpp */ /* ListHID.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ListHID.cpp; path = ../../Source/ListHID.cpp; sourceTree = SOURCE_ROOT; };
 		8D6C215FB0A3FFFB050F2B16 /* XboxController_UI.cpp */ /* XboxController_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = XboxController_UI.cpp; path = ../../Source/XboxController_UI.cpp; sourceTree = SOURCE_ROOT; };
@@ -73,6 +75,7 @@
 		8F745212082B93D241F5F1AA /* hidAPI_IO.h */ /* hidAPI_IO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hidAPI_IO.h; path = ../../Source/hidAPI_IO.h; sourceTree = SOURCE_ROOT; };
 		9B84F91106D5B1E7B99BD760 /* WebKit.framework */ /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		9F0B7BC24E4A71EE50B31E2B /* Info-App.plist */ /* Info-App.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-App.plist"; path = "Info-App.plist"; sourceTree = SOURCE_ROOT; };
+		9FE9FE8884B94A67398B7F64 /* OSC_Sender.cpp */ /* OSC_Sender.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OSC_Sender.cpp; path = ../../Source/OSC_Sender.cpp; sourceTree = SOURCE_ROOT; };
 		A32F60142AABE304BC850D4B /* HIDMenu.h */ /* HIDMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HIDMenu.h; path = ../../Source/HIDMenu.h; sourceTree = SOURCE_ROOT; };
 		A33E8D0C79428F78D1774F43 /* Main.cpp */ /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Source/Main.cpp; sourceTree = SOURCE_ROOT; };
 		A41A8D2C79EB7B3BE3F9DE16 /* Security.framework */ /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -131,6 +134,8 @@
 				F1C452940280CE33FDD84A0E,
 				8B257BFFF4E6D90B0F3242F8,
 				357255BCE00B80150326189B,
+				9FE9FE8884B94A67398B7F64,
+				786A68D23C2DAF55D2A4FD9B,
 				F541EC5CAC71F97FFCE87EEB,
 				CB9822EFC560F7F33283D63B,
 				BBF288FFC40541D4C1D3AE1A,
@@ -322,6 +327,7 @@
 				12887836995149239BD0B218,
 				D2B2951F34D6E02A7DCE3415,
 				51480E87AFFD5751D02DB901,
+				4CA43ADCE047933B4530F18C,
 				9160E060DFB28A467407BEF3,
 				916EEBF144F393F3D6DB5914,
 				24425833CF9F13D2F27E34A3,

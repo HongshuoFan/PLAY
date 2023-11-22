@@ -53,6 +53,10 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    bool isValidIPAddress(juce::String new_ip);
+    bool isValidPort(juce::String new_port);
+    juce::String ip = "127.0.0.1";
+    juce::String port = "9001";
     //[/UserVariables]
 
     //==============================================================================
