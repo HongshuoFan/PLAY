@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.8
+  Created with Projucer version: 7.0.9
 
   ------------------------------------------------------------------------------
 
@@ -47,20 +47,17 @@ public:
     bool HIDDeviceChanged;
     juce::String selectedKey;
     IOHIDDeviceRef seletedDevice;
-    
+
     std::function<void()> onHIDMenuChanged;
     //[/UserMethods]
-    //virtual void HIDMenuChanged (HIDMenu* HIDMenuThatHasChanged) = 0;
-    
+
     void paint (juce::Graphics& g) override;
     void resized() override;
     void comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged) override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
-    
-//    void addListener(HIDMenuListener* newListener);
-    //std::unique_ptr<juce::ComboBox> HIDcombox__comboBox;
-   
-    
+
+
+
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     std::map<juce::String, IOHIDDeviceRef> devicesMap;
@@ -70,8 +67,8 @@ private:
     //==============================================================================
     std::unique_ptr<juce::ComboBox> HIDcombox__comboBox;
     std::unique_ptr<juce::TextButton> Refresh__textButton;
-//    HIDMenuListener* listener = nullptr;
-//    void onHIDMenuChanged();
+
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HIDMenu)
 };
