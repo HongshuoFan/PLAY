@@ -42,12 +42,13 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    void mouseDrag (const juce::MouseEvent& e) override;
+    
     void updatePoint(float x, float y, bool button);
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
     void resized() override;
+    void mouseDrag (const juce::MouseEvent& e) override;
    
 
 

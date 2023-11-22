@@ -36,10 +36,11 @@ StickGUI::StickGUI ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (Stickheight*2, Stickheight*2);
+    
 
 
     //[Constructor] You can add your own custom stuff here..
+    setSize (Stickheight*2, Stickheight*2);
     //[/Constructor]
 }
 
@@ -113,6 +114,9 @@ void StickGUI::mouseDrag (const juce::MouseEvent& e)
     previousMouseY = mouseOffsetY;
 }
 
+
+//[MiscUserCode]
+
 void StickGUI::updatePoint(float x, float y, bool button) {
     
     px = x * Stickwidth*0.95;
@@ -129,10 +133,6 @@ void StickGUI::updatePoint(float x, float y, bool button) {
     
 }
 
-
-
-
-//[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 //[/MiscUserCode]
 
 
