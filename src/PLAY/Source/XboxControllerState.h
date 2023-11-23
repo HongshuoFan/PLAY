@@ -67,8 +67,8 @@ namespace XboxCotroller {
         
         Buttons buttons;
         
-        double leftTrigger;
-        double rightTrigger;
+        float leftTrigger;
+        float rightTrigger;
         
     } XboxCotrollerInputState;
 
