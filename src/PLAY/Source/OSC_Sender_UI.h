@@ -44,8 +44,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    void sendXbox_OSC_message();
-    XboxCotroller::XboxCotrollerInputState _xboxInput;
+    void send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState _xboxInput);
     juce::OSCSender _oscSender;
     void disConnect();
     //[/UserMethods]
@@ -53,17 +52,19 @@ public:
     void paint (juce::Graphics& g) override;
     void resized() override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
-     
+
+
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    bool isValidIPAddress(juce::String new_ip);
-    bool isValidPort(juce::String new_port);
+    bool isValidIPAddress(const juce::String new_ip);
+    bool isValidPort(const juce::String new_port);
     juce::String ip = "127.0.0.1";
     int port = 9001;
-    
+    void ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p);
+    void ConvertAndSend_bool(const bool buttonState, const bool pre_buttonStat, const juce::String address, bool& pre_buttonStat);
     XboxCotroller::XboxCotrollerInputState last_xboxInput;
-   
+
     //[/UserVariables]
 
     //==============================================================================

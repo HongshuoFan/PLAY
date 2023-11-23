@@ -84,8 +84,8 @@ void MainComponent::onDualSense_DataReceived()
 void MainComponent::onXboxController_DataReceived() { 
     XC_input.evaluateXboxCotrollerHidInputBuffer(hidIO.reportData);
     xbxUI._input = XC_input.xbox_input;
-    OSC_Sender._xboxInput = XC_input.xbox_input;
-    OSC_Sender.sendXbox_OSC_message();
+//    OSC_Sender._xboxInput = XC_input.xbox_input;
+    OSC_Sender.send_Xbox_OSC_message(XC_input.xbox_input);
 }
 
 void MainComponent::userTriedToCloseWindow(){

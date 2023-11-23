@@ -183,7 +183,7 @@ void OSC_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         if(juce__toggleButton_OSC->getToggleState()){
             if(_oscSender.connect(ip, port)){
                 std::cout<<"OSC connect \n";
-                _oscSender.send("/test", 1);
+                _oscSender.send("/play", 1);
             }else{
                 std::cout<<"OSC not connect \n";
             }
@@ -202,7 +202,7 @@ void OSC_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-bool OSC_Sender_UI::isValidIPAddress(juce::String new_ip)
+bool OSC_Sender_UI::isValidIPAddress(const juce::String new_ip)
 {
     juce::StringArray parts;
     parts.addTokens(new_ip, ".", "");
@@ -226,7 +226,7 @@ bool OSC_Sender_UI::isValidIPAddress(juce::String new_ip)
         return true;
 }
 
-bool OSC_Sender_UI::isValidPort(juce::String portString)
+bool OSC_Sender_UI::isValidPort(const juce::String portString)
 {
     // Check if the string contains only digits
         if (!portString.containsOnly("0123456789")) {
@@ -241,21 +241,28 @@ void OSC_Sender_UI::disConnect(){
     juce__toggleButton_OSC->setToggleState(false, juce::sendNotification);
 }
 
-void OSC_Sender_UI::sendXbox_OSC_message()
+void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState _xboxInput)
 {
     if(juce__toggleButton_OSC->getToggleState()){
-        
-   
-    if (_xboxInput.leftStick.x != last_xboxInput.leftStick.x){
-        
-        if( _oscSender.send("/leftStick/x", _xboxInput.leftStick.x)){
-            last_xboxInput.leftStick.x = _xboxInput.leftStick.x;
-            //std::cout<<"_xboxInput.leftStick.x";
-        }
-        
-    }
+
+        ConvertAndSend_float(_xboxInput.leftStick.x, last_xboxInput.leftStick.x, "/leftStick/x", last_xboxInput.leftStick.x);
+        ConvertAndSend_float(_xboxInput.leftStick.y, last_xboxInput.leftStick.y, "/leftStick/y", last_xboxInput.leftStick.y);
+        ConvertAndSend_float(_xboxInput.rightStick.x, last_xboxInput.rightStick.x, "/rightStick/x", last_xboxInput.leftStick.x);
+        ConvertAndSend_float(_xboxInput.rightStick.y, last_xboxInput.rightStick.y, "/rightStick/y", last_xboxInput.leftStick.y);
+        ConvertAndSend_float(_xboxInput.leftTrigger, last_xboxInput.leftTrigger, "/leftTrigger", last_xboxInput.leftStick.x);
+        ConvertAndSend_float(_xboxInput.rightTrigger, last_xboxInput.rightTrigger, "/rightTrigger", last_xboxInput.leftStick.y);
     }
 }
+
+void OSC_Sender_UI::ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p)
+{ 
+    if(val != pre_val){
+        if(_oscSender.send(address, val)){
+            pre_val_p = val;
+        }
+    }
+}
+
 //[/MiscUserCode]
 
 
