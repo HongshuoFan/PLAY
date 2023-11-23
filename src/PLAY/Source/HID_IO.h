@@ -47,6 +47,8 @@ public:
     void startReadingThread();
     void stopReadingThread();
     
+    void printReport();
+    
     uint8_t* reportData;
     uint8_t* OuputData;
     
@@ -65,7 +67,7 @@ private:
 //        uint8_t prev_btn_state[50];
     };
     
-    void printReport();
+    
     
     //DataReceivedCallback dataReceivedCallback;
     

@@ -63,6 +63,9 @@ void MainComponent::onHIDMenuChanged()
             hidIO.dataReceivedCallback = [this]{onXboxController_DataReceived();};
             addAndMakeVisible(xbxUI);
             xbxUI.isConnected = true;
+        }else{
+            std::cout << "connect to unknown Controller" << std::endl;
+            hidIO.dataReceivedCallback = [this]{onDataReceived();};
         }
     }
     
@@ -72,6 +75,9 @@ void MainComponent::onHIDMenuChanged()
 void MainComponent::onDataReceived()
 {
 //        std::cout << std::endl;
+    if(hidIO.connect()){
+        hidIO.printReport();
+    }
 }
 
 void MainComponent::onDualSense_DataReceived()
