@@ -63,9 +63,15 @@ void MainComponent::onHIDMenuChanged()
             hidIO.dataReceivedCallback = [this]{onXboxController_DataReceived();};
             addAndMakeVisible(xbxUI);
             xbxUI.isConnected = true;
+            xbxUI.XboxVibration = [this]{EnableXboxControllerVibration();};
+            
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+//
+            EnableXboxControllerVibration();
         }else{
             std::cout << "connect to unknown Controller" << std::endl;
             hidIO.dataReceivedCallback = [this]{onDataReceived();};
+            
         }
     }
     
@@ -83,8 +89,9 @@ void MainComponent::onDataReceived()
 void MainComponent::onDualSense_DataReceived()
 {
 //    std::cout<<  hidIO.reportData[1] << "\n";
-    DS_input.evaluateDualSenseHidInputBuffer(hidIO.reportData);
     
+    DS_input.evaluateDualSenseHidInputBuffer(hidIO.reportData);
+    hidIO.printReport();
 }
 
 void MainComponent::onXboxController_DataReceived() { 
@@ -92,6 +99,7 @@ void MainComponent::onXboxController_DataReceived() {
     xbxUI._input = XC_input.xbox_input;
 //    OSC_Sender._xboxInput = XC_input.xbox_input;
     OSC_Sender.send_Xbox_OSC_message(XC_input.xbox_input);
+    
 }
 
 void MainComponent::userTriedToCloseWindow(){
@@ -99,4 +107,14 @@ void MainComponent::userTriedToCloseWindow(){
     std::cout<<"User Tried To Close Window \n";
     hidIO.stopReadingThread();
     OSC_Sender.disConnect();
+}
+
+void MainComponent::EnableXboxControllerVibration(){
+    
+    if(hidIO.isConneted){
+        std::cout<<"EnableXboxControllerVibration \n";
+        hidIO.writeRawData(xbxUI.VibrationData, 0x03, 9);
+        
+    }
+    
 }

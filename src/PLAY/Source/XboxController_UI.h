@@ -49,6 +49,9 @@ public:
     void update() override;
     XboxCotroller::XboxCotrollerInputState _input;
     bool isConnected;
+    std::function<void()> XboxVibration;
+    uint8_t VibrationData[9];
+    void setVibrationData();
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -85,6 +88,7 @@ private:
     std::unique_ptr<juce::TextButton> juce__textButtonRB;
     std::unique_ptr<juce::Slider> juce__slider_L_Trigger;
     std::unique_ptr<juce::Slider> juce__slider_R_Trigger;
+    std::unique_ptr<juce::TextButton> juce__textButton_vibration;
     juce::Path internalPath1;
 
 

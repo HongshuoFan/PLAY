@@ -92,14 +92,17 @@ void HID_IO::disconnect() {
 }
 
 
-bool HID_IO::writeRawData(const uint8_t* data, CFIndex index){
-    std::cout << "send test data to Xbox Controller"<< std::endl;
+bool HID_IO::writeRawData(const uint8_t* data, CFIndex index, CFIndex Length){
+
+    IOReturn result = kIOReturnError;
     if (deviceRF) {
-        IOReturn result = IOHIDDeviceSetReport(deviceRF, kIOHIDReportTypeOutput, index, data, 11);
+        result = IOHIDDeviceSetReport(deviceRF, kIOHIDReportTypeOutput, index, data, Length);
         std::cout<< mach_error_string(result) << "\n";
         return result == kIOReturnSuccess;
+    }else{
+        std::cout << "IOReturn error: " << result << " - " << mach_error_string(result) << std::endl;
     }
-    return kIOReturnError;
+    return result;
 }
 
 //void HID_IO::setDataReceivedCallback(DataReceivedCallback callback) {
@@ -223,7 +226,7 @@ void HID_IO::OnDeviceMatched(IOReturn result, void* sender, IOHIDDeviceRef devic
     CFStringEncoding encodingMethod = CFStringGetSystemEncoding();
     const char *name = CFStringGetCStringPtr(name_cf, encodingMethod);
     
-    std::cout<< "check "<< name  <<" is match? \n";
+    //std::cout<< "check "<< name  <<" is match? \n";
     
     if(!stopThreadFlag){
         if (strcmp(name, device_name) == 0){
@@ -233,10 +236,10 @@ void HID_IO::OnDeviceMatched(IOReturn result, void* sender, IOHIDDeviceRef devic
             uint8_t* report_buffer = static_cast<uint8_t*>(calloc(max_input_report_size, sizeof(uint8_t)));
             auto InputReportCallbackStub = GetCallback(device);
             IOHIDDeviceRegisterInputReportCallback(device, report_buffer, max_input_report_size, InputReportCallbackStub, &deviceInfo);
-            std::cout<< name <<" is available \n";
-            std::cout<< max_input_report_size <<"  max_input_report_size \n";
-
-
+//            std::cout<< name <<" is available \n";
+//            std::cout<< max_input_report_size <<"  max_input_report_size \n";
+            isConneted = true;
+            return ;
         }else{
             
             std::cout<< name <<" Not match \n";

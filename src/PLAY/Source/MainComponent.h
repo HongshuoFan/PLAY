@@ -50,7 +50,7 @@ private:
     void onDataReceived();
     void onDualSense_DataReceived();
     void onXboxController_DataReceived();
-
+    void EnableXboxControllerVibration();
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

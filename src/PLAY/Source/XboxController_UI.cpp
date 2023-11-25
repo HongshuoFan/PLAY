@@ -133,6 +133,10 @@ XboxController_UI::XboxController_UI ()
     juce__slider_R_Trigger->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 60, 20);
     juce__slider_R_Trigger->addListener (this);
 
+    juce__textButton_vibration.reset (new juce::TextButton ("vibration"));
+    addAndMakeVisible (juce__textButton_vibration.get());
+    juce__textButton_vibration->addListener (this);
+
     internalPath1.startNewSubPath (304.0f, 40.0f);
     internalPath1.lineTo (440.0f, 40.0f);
     internalPath1.cubicTo (456.0f, 72.0f, 568.0f, 288.0f, 480.0f, 320.0f);
@@ -152,6 +156,7 @@ XboxController_UI::XboxController_UI ()
 
     //[Constructor] You can add your own custom stuff here..
     setFramesPerSecond (1);
+    setVibrationData();
     //[/Constructor]
 }
 
@@ -175,6 +180,7 @@ XboxController_UI::~XboxController_UI()
     juce__textButtonRB = nullptr;
     juce__slider_L_Trigger = nullptr;
     juce__slider_R_Trigger = nullptr;
+    juce__textButton_vibration = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -222,6 +228,7 @@ void XboxController_UI::resized()
     juce__textButtonRB->setBounds (proportionOfWidth (0.6250f), proportionOfHeight (0.0412f), 50, 20);
     juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0300f), proportionOfHeight (0.1000f), proportionOfWidth (0.1083f), proportionOfHeight (0.6000f));
     juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8700f), proportionOfHeight (0.1000f), proportionOfWidth (0.1000f), proportionOfHeight (0.6000f));
+    juce__textButton_vibration->setBounds (proportionOfWidth (0.3750f), proportionOfHeight (0.8000f), 150, 24);
     //[UserResized] Add your own custom resize handling here..
 
     //[/UserResized]
@@ -297,6 +304,13 @@ void XboxController_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         //[UserButtonCode_juce__textButtonRB] -- add your button handler code here..
         //[/UserButtonCode_juce__textButtonRB]
     }
+    else if (buttonThatWasClicked == juce__textButton_vibration.get())
+    {
+        //[UserButtonCode_juce__textButton_vibration] -- add your button handler code here..
+        
+        XboxVibration();
+        //[/UserButtonCode_juce__textButton_vibration]
+    }
 
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
@@ -348,7 +362,7 @@ void XboxController_UI::update()
         juce__textButtonDown->setToggleState(_input.dpad.down,  juce::sendNotification);
         juce__textButtonLeft->setToggleState(_input.dpad.left,  juce::sendNotification);
         juce__textButtonRight->setToggleState(_input.dpad.right,  juce::sendNotification);
-        
+
         Left_Stick.updatePoint(_input.leftStick.x, _input.leftStick.y, _input.leftStick.stickPress);
         Right_Stick.updatePoint(_input.rightStick.x, _input.rightStick.y, _input.rightStick.stickPress);
 
@@ -361,6 +375,21 @@ void XboxController_UI::update()
 
 
     //Left_Stick.updatePoint(0.2,0.1,1);
+}
+void XboxController_UI::setVibrationData()
+{
+    // https://github.com/quantus/xbox-one-controller-protocol
+    VibrationData[0] = 0x07;
+    VibrationData[1] = 0x0F; // Atleast one of 0x07 bits must be on
+    VibrationData[2] = 0x00; // Dummy ?
+    VibrationData[3] = 0x20; // L force
+    VibrationData[4] = 0x20; // R force
+    VibrationData[5] = 0x10; // length
+    VibrationData[6] = 0x10; // period
+    VibrationData[7] = 0x01; // Effect extra play count (0x02 means that effect is played 1+2 times)
+    VibrationData[8] = 0x00; // Dummy ?
+    
+    return ;
 }
 //[/MiscUserCode]
 
@@ -446,6 +475,9 @@ BEGIN_JUCER_METADATA
           max="1.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxBelow"
           textBoxEditable="1" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
+  <TEXTBUTTON name="vibration" id="feb507671c52498c" memberName="juce__textButton_vibration"
+              virtualName="" explicitFocusOrder="0" pos="37.5% 80% 150 24"
+              buttonText="vibration" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

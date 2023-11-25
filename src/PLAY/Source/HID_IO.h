@@ -38,8 +38,9 @@ public:
  
     bool connect();
     void disconnect();
+    bool isConneted;
     
-    bool writeRawData(const uint8_t* data, CFIndex index);
+    bool writeRawData(const uint8_t* data, CFIndex index, CFIndex Length);
 //    bool readRawData(unsigned char* buffer, int bufferSize);
     
     void setDataReceivedCallback(DataReceivedCallback callback);
@@ -86,6 +87,6 @@ private:
     
     std::thread readingThread;
     bool stopThreadFlag;
-    bool isConneted;
+   
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HID_IO)
 };
