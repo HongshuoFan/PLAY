@@ -4,6 +4,7 @@
 #include "HIDMenu.h"
 #include "HID_IO.h"
 #include "OSC_Sender_UI.h"
+#include "OSC_Receiver.h"
 #include "DualSense_Input.h"
 //#include "DualSense_Output.h"
 #include "XboxController_Input.h"
@@ -44,7 +45,7 @@ private:
 //    DualSense_Output DS_output;
     XboxController_UI xbxUI;
     OSC_Sender_UI OSC_Sender;
-    
+    OSC_Receiver osc_receiver;
     
     void onHIDMenuChanged();
     void onDataReceived();

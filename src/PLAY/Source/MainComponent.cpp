@@ -64,7 +64,7 @@ void MainComponent::onHIDMenuChanged()
             addAndMakeVisible(xbxUI);
             xbxUI.isConnected = true;
             xbxUI.XboxVibration = [this]{EnableXboxControllerVibration();};
-            
+            osc_receiver.TriggerVibration = [this]{EnableXboxControllerVibration();};
             std::this_thread::sleep_for(std::chrono::seconds(1));
 //
             EnableXboxControllerVibration();

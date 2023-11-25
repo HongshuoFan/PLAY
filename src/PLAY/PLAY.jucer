@@ -26,9 +26,9 @@
     <FILE id="utjFkL" name="InputProvider.h" compile="0" resource="0" file="Source/InputProvider.h"/>
     <FILE id="OJJ0ov" name="ListHID.cpp" compile="1" resource="0" file="Source/ListHID.cpp"/>
     <FILE id="SDbuee" name="ListHID.h" compile="0" resource="0" file="Source/ListHID.h"/>
-    <FILE id="bKaHMt" name="OSC_Receiver.cpp" compile="1" resource="0"
+    <FILE id="X7REyB" name="OSC_Receiver.cpp" compile="1" resource="0"
           file="Source/OSC_Receiver.cpp"/>
-    <FILE id="cDxhaU" name="OSC_Receiver.h" compile="0" resource="0" file="Source/OSC_Receiver.h"/>
+    <FILE id="b3VDeu" name="OSC_Receiver.h" compile="0" resource="0" file="Source/OSC_Receiver.h"/>
     <FILE id="eOpVNi" name="OSC_Sender_UI.cpp" compile="1" resource="0"
           file="Source/OSC_Sender_UI.cpp"/>
     <FILE id="kz5h5q" name="OSC_Sender_UI.h" compile="0" resource="0" file="Source/OSC_Sender_UI.h"/>
