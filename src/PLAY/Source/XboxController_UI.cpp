@@ -307,7 +307,7 @@ void XboxController_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == juce__textButton_vibration.get())
     {
         //[UserButtonCode_juce__textButton_vibration] -- add your button handler code here..
-        
+
         XboxVibration();
         //[/UserButtonCode_juce__textButton_vibration]
     }
@@ -388,7 +388,7 @@ void XboxController_UI::setVibrationData()
     VibrationData[6] = 0x10; // period
     VibrationData[7] = 0x01; // Effect extra play count (0x02 means that effect is played 1+2 times)
     VibrationData[8] = 0x00; // Dummy ?
-    
+
     return ;
 }
 //[/MiscUserCode]
