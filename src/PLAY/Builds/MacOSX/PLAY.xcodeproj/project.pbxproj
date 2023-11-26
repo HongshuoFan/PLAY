@@ -21,6 +21,7 @@
 		58E1A012773B90B04E8345A2 /* include_juce_data_structures.mm */ = {isa = PBXBuildFile; fileRef = CC8AF84D7B98AB9A819CDE94; };
 		70B96F558D89BB1710331EA0 /* WebKit.framework */ = {isa = PBXBuildFile; fileRef = 9B84F91106D5B1E7B99BD760; };
 		764D2D31C2810875FE889C21 /* OSC_Receiver.cpp */ = {isa = PBXBuildFile; fileRef = FCEAB21BA770B51AE6851B8A; };
+		77EE89641CCEEBFA52B0CC24 /* DualSense_CRC32.cpp */ = {isa = PBXBuildFile; fileRef = D45EEA78C38E473C9C420DF2; };
 		798E6B3CE1C73DD5252C983A /* App */ = {isa = PBXBuildFile; fileRef = C5ED5E5221FE97E324529602; };
 		7A0BB930522D134C4959EF80 /* XboxController_UI.cpp */ = {isa = PBXBuildFile; fileRef = 8D6C215FB0A3FFFB050F2B16; };
 		7EEB93E10DCE47D8C650D8EE /* Main.cpp */ = {isa = PBXBuildFile; fileRef = A33E8D0C79428F78D1774F43; };
@@ -84,7 +85,9 @@
 		C9D4D59B11CF7D07DECC1409 /* DualSense_Output.h */ /* DualSense_Output.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DualSense_Output.h; path = ../../Source/DualSense_Output.h; sourceTree = SOURCE_ROOT; };
 		CB9822EFC560F7F33283D63B /* OSC_Sender_UI.h */ /* OSC_Sender_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSC_Sender_UI.h; path = ../../Source/OSC_Sender_UI.h; sourceTree = SOURCE_ROOT; };
 		CC8AF84D7B98AB9A819CDE94 /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
+		D45EEA78C38E473C9C420DF2 /* DualSense_CRC32.cpp */ /* DualSense_CRC32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DualSense_CRC32.cpp; path = ../../Source/DualSense_CRC32.cpp; sourceTree = SOURCE_ROOT; };
 		D5AD8F470B1BFEF2A0320D31 /* JuceHeader.h */ /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
+		DB9F8F7950ACCF1B24BEF422 /* DualSense_CRC32.h */ /* DualSense_CRC32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DualSense_CRC32.h; path = ../../Source/DualSense_CRC32.h; sourceTree = SOURCE_ROOT; };
 		DF04D0A21A079C65549ECEB9 /* RecentFilesMenuTemplate.nib */ /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
 		E76DFF909541EC9905DF7EF3 /* HID_IO.h */ /* HID_IO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HID_IO.h; path = ../../Source/HID_IO.h; sourceTree = SOURCE_ROOT; };
 		F1C452940280CE33FDD84A0E /* InputProvider.h */ /* InputProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InputProvider.h; path = ../../Source/InputProvider.h; sourceTree = SOURCE_ROOT; };
@@ -117,6 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				4B754B909D8EE3BF8517C13A,
+				D45EEA78C38E473C9C420DF2,
+				DB9F8F7950ACCF1B24BEF422,
 				C5F96CC5C6790B83DF77188E,
 				4C12FD7E8FEEA9E15F722535,
 				4F87F4A18294DFCDE34C0CFF,
@@ -316,6 +321,7 @@
 			files = (
 				7EEB93E10DCE47D8C650D8EE,
 				168EC2BD77573E94476EE10D,
+				77EE89641CCEEBFA52B0CC24,
 				B17F054EA1A8BADBFB7264FC,
 				DA9805F5B7636E76A10E2363,
 				54F903276965C171E56BE237,

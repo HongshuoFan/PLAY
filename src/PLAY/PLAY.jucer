@@ -9,6 +9,10 @@
       <FILE id="RLQ7zR" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
     </GROUP>
+    <FILE id="rxiHLn" name="DualSense_CRC32.cpp" compile="1" resource="0"
+          file="Source/DualSense_CRC32.cpp"/>
+    <FILE id="u0jOHt" name="DualSense_CRC32.h" compile="0" resource="0"
+          file="Source/DualSense_CRC32.h"/>
     <FILE id="uVr0Af" name="DualSense_Input.cpp" compile="1" resource="0"
           file="Source/DualSense_Input.cpp"/>
     <FILE id="U9axhB" name="DualSense_Input.h" compile="0" resource="0"

@@ -53,10 +53,46 @@ void MainComponent::onHIDMenuChanged()
         
         if(strcmp("DualSense Wireless Controller", hidIO.device_name) == 0){
             std::cout << "connect to DualSense Wireless Controller" << std::endl;
-            hidIO.dataReceivedCallback = [this]{onDualSense_DataReceived();};
             
-//            DS_output.createDualSenseOutput();
-//            hidIO.writeRawData(DS_output.DS_output, 0x01);
+            
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            
+            uint8_t bufWrite[78];
+                bufWrite[0] = 0x31;
+                bufWrite[1] = 0x02;
+                bufWrite[2] = 0x03; // 0xff, 0x03 rumble??
+            
+                bufWrite[3] = 0x54;// 0xff disable all LEDs - top LED, bottom LED, Mic LED (this just if bufWrite[63] == 0x02)// 0xf3 disable top LED// 0xf4 enable all LEDs - top LED, bottom LED, Mic LED (this just if buf[63] == 0x02)
+            // Right motor power
+                //bufWrite[4] = 0x20;  // Right motor power
+//                bufWrite[5] = 0x85;  // Left motor power
+                //bufWrite[10] = 0x00;  // off Mic LED (if buf[2] == f7)
+//                /* ... */
+//                bufWrite[44] = 0xc1; // LEDs from left to right -> 0xc1 0xa2 0xc4 0xc8 0xd0// 0x00 all OFF, 0xff all ON
+//                bufWrite[45] =  0x80; // R
+//                bufWrite[46] =  0x80; // G
+//                bufWrite[47] = 0x80; // B
+//                /* ... */
+//                bufWrite[63] = 0x02; // Short Blink bottom led
+//                /* ... */
+               
+//                bufWrite[66] = 0x02; // If both are set to 0xff it will turn OFF Motors and LEDs
+//                bufWrite[67] = 0x02; // else if both are set 0x02 it will turn ON Motors and LEDs
+           
+            
+            uint32_t crc_Data = ds_crc32.compute(bufWrite, 74);
+            bufWrite[0x4A] = (unsigned char)((crc_Data & 0x000000FF) >> 0UL);
+            bufWrite[0x4B] = (unsigned char)((crc_Data & 0x0000FF00) >> 8UL);
+            bufWrite[0x4C] = (unsigned char)((crc_Data & 0x00FF0000) >> 16UL);
+            bufWrite[0x4D] = (unsigned char)((crc_Data & 0xFF000000) >> 24UL);
+            
+            hidIO.writeRawData(bufWrite, 0xa2, 78);
+            
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            
+            hidIO.dataReceivedCallback = [this]{onDualSense_DataReceived();};
+            //DS_output.createDualSenseOutput();
+            //hidIO.writeRawData(DS_output.DS_output, 0x01);
             
         }else if(strcmp("Xbox Wireless Controller", hidIO.device_name) == 0){
             std::cout << "connect to Xbox Wireless Controller" << std::endl;
@@ -81,8 +117,8 @@ void MainComponent::onHIDMenuChanged()
 void MainComponent::onDataReceived()
 {
 //        std::cout << std::endl;
-    if(hidIO.connect()){
-        hidIO.printReport();
+    if(hidIO.isConneted){
+        //hidIO.printReport();
     }
 }
 

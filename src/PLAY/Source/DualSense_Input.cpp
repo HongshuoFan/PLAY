@@ -114,7 +114,7 @@ void DualSense_Input::evaluateDualSenseHidInputBuffer(uint8_t *_reportData) {
    
     
 //    int test = (int)(_reportData[17] & 0xF0);
-//    std::cout<< test << "\n";
+    //std::cout<<  DS_input.leftStick.x << "\n";
 }
 
 
