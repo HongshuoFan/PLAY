@@ -19,6 +19,7 @@
 		52655D0A04683BB0ECBD40D9 /* include_juce_events.mm */ = {isa = PBXBuildFile; fileRef = 60F582DEFEF78E46596CE36A; };
 		54F903276965C171E56BE237 /* HID_IO.cpp */ = {isa = PBXBuildFile; fileRef = 44F2038ED2E8C3F8B3311BAF; };
 		58E1A012773B90B04E8345A2 /* include_juce_data_structures.mm */ = {isa = PBXBuildFile; fileRef = CC8AF84D7B98AB9A819CDE94; };
+		64667F046A0BD6BC679A90C5 /* DualSense_UI.cpp */ = {isa = PBXBuildFile; fileRef = 247664B21DA3594C9685B1FE; };
 		70B96F558D89BB1710331EA0 /* WebKit.framework */ = {isa = PBXBuildFile; fileRef = 9B84F91106D5B1E7B99BD760; };
 		764D2D31C2810875FE889C21 /* OSC_Receiver.cpp */ = {isa = PBXBuildFile; fileRef = FCEAB21BA770B51AE6851B8A; };
 		77EE89641CCEEBFA52B0CC24 /* DualSense_CRC32.cpp */ = {isa = PBXBuildFile; fileRef = D45EEA78C38E473C9C420DF2; };
@@ -43,6 +44,7 @@
 		01ADF8F7171770CBB5EC7B38 /* MainComponent.h */ /* MainComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainComponent.h; path = ../../Source/MainComponent.h; sourceTree = SOURCE_ROOT; };
 		0D2F99BD4EE42B050117D852 /* OSC_Receiver.h */ /* OSC_Receiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSC_Receiver.h; path = ../../Source/OSC_Receiver.h; sourceTree = SOURCE_ROOT; };
 		1BC1DBE43DEAF9AE28EBF369 /* juce_events */ /* juce_events */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_events; path = /Users/hongshuofan/Documents/JUCE/modules/juce_events; sourceTree = "<absolute>"; };
+		247664B21DA3594C9685B1FE /* DualSense_UI.cpp */ /* DualSense_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DualSense_UI.cpp; path = ../../Source/DualSense_UI.cpp; sourceTree = SOURCE_ROOT; };
 		25ED4C4E18894EA65F700B79 /* XboxController_Input.h */ /* XboxController_Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XboxController_Input.h; path = ../../Source/XboxController_Input.h; sourceTree = SOURCE_ROOT; };
 		2A13B06E2A1427B147937B02 /* juce_gui_basics */ /* juce_gui_basics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_basics; path = /Users/hongshuofan/Documents/JUCE/modules/juce_gui_basics; sourceTree = "<absolute>"; };
 		2C0DE1A72ED3BFE24A77848B /* include_juce_graphics.mm */ /* include_juce_graphics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_graphics.mm; path = ../../JuceLibraryCode/include_juce_graphics.mm; sourceTree = SOURCE_ROOT; };
@@ -82,6 +84,7 @@
 		BBF288FFC40541D4C1D3AE1A /* StickGUI.cpp */ /* StickGUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StickGUI.cpp; path = ../../Source/StickGUI.cpp; sourceTree = SOURCE_ROOT; };
 		C5ED5E5221FE97E324529602 /* App */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PLAY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5F96CC5C6790B83DF77188E /* DualSense_Input.cpp */ /* DualSense_Input.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DualSense_Input.cpp; path = ../../Source/DualSense_Input.cpp; sourceTree = SOURCE_ROOT; };
+		C7012C9511A587FBD0CF5F47 /* DualSense_UI.h */ /* DualSense_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DualSense_UI.h; path = ../../Source/DualSense_UI.h; sourceTree = SOURCE_ROOT; };
 		C9D4D59B11CF7D07DECC1409 /* DualSense_Output.h */ /* DualSense_Output.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DualSense_Output.h; path = ../../Source/DualSense_Output.h; sourceTree = SOURCE_ROOT; };
 		CB9822EFC560F7F33283D63B /* OSC_Sender_UI.h */ /* OSC_Sender_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSC_Sender_UI.h; path = ../../Source/OSC_Sender_UI.h; sourceTree = SOURCE_ROOT; };
 		CC8AF84D7B98AB9A819CDE94 /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
@@ -116,35 +119,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		438D2FC16F7F889B95956C21 /* PLAY */ = {
+		2B0CB2348C0E70117D21AC00 /* DualSense */ = {
 			isa = PBXGroup;
 			children = (
-				4B754B909D8EE3BF8517C13A,
 				D45EEA78C38E473C9C420DF2,
 				DB9F8F7950ACCF1B24BEF422,
 				C5F96CC5C6790B83DF77188E,
 				4C12FD7E8FEEA9E15F722535,
 				4F87F4A18294DFCDE34C0CFF,
 				C9D4D59B11CF7D07DECC1409,
+				247664B21DA3594C9685B1FE,
+				C7012C9511A587FBD0CF5F47,
 				B70A7A61274579060DE5E53E,
-				44F2038ED2E8C3F8B3311BAF,
-				E76DFF909541EC9905DF7EF3,
-				3BFF4447BE24D2522DE8BC5A,
-				A32F60142AABE304BC850D4B,
-				F1C452940280CE33FDD84A0E,
-				8B257BFFF4E6D90B0F3242F8,
-				357255BCE00B80150326189B,
-				FCEAB21BA770B51AE6851B8A,
-				0D2F99BD4EE42B050117D852,
-				F541EC5CAC71F97FFCE87EEB,
-				CB9822EFC560F7F33283D63B,
+			);
+			name = DualSense;
+			sourceTree = "<group>";
+		};
+		438D2FC16F7F889B95956C21 /* PLAY */ = {
+			isa = PBXGroup;
+			children = (
+				4B754B909D8EE3BF8517C13A,
 				BBF288FFC40541D4C1D3AE1A,
 				3049057331B2B23EB6747254,
-				3C9DABB4B88263887347D0DB,
-				25ED4C4E18894EA65F700B79,
-				8D6C215FB0A3FFFB050F2B16,
-				A9DA51F09B32FDF29BAA77AC,
-				2C69A46DEC99C52ED8CFDA9B,
 			);
 			name = PLAY;
 			sourceTree = "<group>";
@@ -152,11 +148,26 @@
 		4B754B909D8EE3BF8517C13A /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A0F9CAF89416BBCF311F66C4,
+				CC9BDA617485195E0DEE8E70,
+				2B0CB2348C0E70117D21AC00,
 				A33E8D0C79428F78D1774F43,
+				EF34AE32F086C631AF4DD982,
 				01ADF8F7171770CBB5EC7B38,
 				F9D44C63C22BAF796CE8ED49,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		A0F9CAF89416BBCF311F66C4 /* OSC */ = {
+			isa = PBXGroup;
+			children = (
+				FCEAB21BA770B51AE6851B8A,
+				0D2F99BD4EE42B050117D852,
+				F541EC5CAC71F97FFCE87EEB,
+				CB9822EFC560F7F33283D63B,
+			);
+			name = OSC;
 			sourceTree = "<group>";
 		};
 		A3C4E3776C7963B30CCB6027 /* JUCE Modules */ = {
@@ -197,6 +208,20 @@
 			name = "JUCE Library Code";
 			sourceTree = "<group>";
 		};
+		CC9BDA617485195E0DEE8E70 /* HID */ = {
+			isa = PBXGroup;
+			children = (
+				44F2038ED2E8C3F8B3311BAF,
+				E76DFF909541EC9905DF7EF3,
+				3BFF4447BE24D2522DE8BC5A,
+				A32F60142AABE304BC850D4B,
+				F1C452940280CE33FDD84A0E,
+				8B257BFFF4E6D90B0F3242F8,
+				357255BCE00B80150326189B,
+			);
+			name = HID;
+			sourceTree = "<group>";
+		};
 		DA20D9A97099B94379A13525 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +241,18 @@
 				C5ED5E5221FE97E324529602,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EF34AE32F086C631AF4DD982 /* Xbox */ = {
+			isa = PBXGroup;
+			children = (
+				3C9DABB4B88263887347D0DB,
+				25ED4C4E18894EA65F700B79,
+				8D6C215FB0A3FFFB050F2B16,
+				A9DA51F09B32FDF29BAA77AC,
+				2C69A46DEC99C52ED8CFDA9B,
+			);
+			name = Xbox;
 			sourceTree = "<group>";
 		};
 		F208B6CCBDE41F06254B9BB5 /* Frameworks */ = {
@@ -319,19 +356,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EEB93E10DCE47D8C650D8EE,
-				168EC2BD77573E94476EE10D,
-				77EE89641CCEEBFA52B0CC24,
-				B17F054EA1A8BADBFB7264FC,
-				DA9805F5B7636E76A10E2363,
+				764D2D31C2810875FE889C21,
+				9160E060DFB28A467407BEF3,
 				54F903276965C171E56BE237,
 				D2B2951F34D6E02A7DCE3415,
 				51480E87AFFD5751D02DB901,
-				764D2D31C2810875FE889C21,
-				9160E060DFB28A467407BEF3,
-				916EEBF144F393F3D6DB5914,
+				77EE89641CCEEBFA52B0CC24,
+				B17F054EA1A8BADBFB7264FC,
+				DA9805F5B7636E76A10E2363,
+				64667F046A0BD6BC679A90C5,
+				7EEB93E10DCE47D8C650D8EE,
 				24425833CF9F13D2F27E34A3,
 				7A0BB930522D134C4959EF80,
+				168EC2BD77573E94476EE10D,
+				916EEBF144F393F3D6DB5914,
 				1CD59ED1B524B5F93651171F,
 				58E1A012773B90B04E8345A2,
 				52655D0A04683BB0ECBD40D9,

@@ -260,7 +260,7 @@ void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState
                              "/leftTrigger", last_xboxInput.leftTrigger);
         ConvertAndSend_float(_xboxInput.rightTrigger, last_xboxInput.rightTrigger,
                              "/rightTrigger", last_xboxInput.rightTrigger);
-        
+
         ConvertAndSend_bool(_xboxInput.buttons.a, last_xboxInput.buttons.a,
                             "/buttons/a", last_xboxInput.buttons.a);
         ConvertAndSend_bool(_xboxInput.buttons.b, last_xboxInput.buttons.b,
@@ -269,20 +269,20 @@ void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState
                             "/buttons/x", last_xboxInput.buttons.x);
         ConvertAndSend_bool(_xboxInput.buttons.y, last_xboxInput.buttons.y,
                             "/buttons/y", last_xboxInput.buttons.y);
-        
+
         ConvertAndSend_bool(_xboxInput.buttons.view, last_xboxInput.buttons.view,
                             "/buttons/view", last_xboxInput.buttons.view);
         ConvertAndSend_bool(_xboxInput.buttons.share, last_xboxInput.buttons.share,
                             "/buttons/share", last_xboxInput.buttons.share);
         ConvertAndSend_bool(_xboxInput.buttons.menu, last_xboxInput.buttons.menu,
                             "/buttons/menu", last_xboxInput.buttons.menu);
-        
+
         ConvertAndSend_bool(_xboxInput.buttons.lb, last_xboxInput.buttons.lb,
                             "/buttons/lb", last_xboxInput.buttons.lb);
         ConvertAndSend_bool(_xboxInput.buttons.rb, last_xboxInput.buttons.rb,
                             "/buttons/rb", last_xboxInput.buttons.rb);
-        
-        
+
+
         ConvertAndSend_bool(_xboxInput.dpad.up, last_xboxInput.dpad.up,
                             "/dpad/up", last_xboxInput.dpad.up);
         ConvertAndSend_bool(_xboxInput.dpad.down, last_xboxInput.dpad.down,
@@ -291,12 +291,12 @@ void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState
                             "/dpad/left", last_xboxInput.dpad.left);
         ConvertAndSend_bool(_xboxInput.dpad.right, last_xboxInput.dpad.right,
                             "/dpad/right", last_xboxInput.dpad.right);
-        
+
     }
 }
 
 void OSC_Sender_UI::ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p)
-{ 
+{
     if(val != pre_val && abs(val-pre_val) >= 0.001){
         if(_oscSender.send(address, val)){
             pre_val_p = val;

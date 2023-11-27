@@ -4,50 +4,61 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="TCfcQn" name="PLAY">
     <GROUP id="{4C14A28B-FA5B-9764-48EE-FA55E98BF1A1}" name="Source">
+      <GROUP id="{9A19ECD9-9608-8A35-33F2-F3D5D9270EFD}" name="OSC">
+        <FILE id="X7REyB" name="OSC_Receiver.cpp" compile="1" resource="0"
+              file="Source/OSC_Receiver.cpp"/>
+        <FILE id="b3VDeu" name="OSC_Receiver.h" compile="0" resource="0" file="Source/OSC_Receiver.h"/>
+        <FILE id="eOpVNi" name="OSC_Sender_UI.cpp" compile="1" resource="0"
+              file="Source/OSC_Sender_UI.cpp"/>
+        <FILE id="kz5h5q" name="OSC_Sender_UI.h" compile="0" resource="0" file="Source/OSC_Sender_UI.h"/>
+      </GROUP>
+      <GROUP id="{4C2DD010-8FD4-1A5E-A422-8741ABA77820}" name="HID">
+        <FILE id="tGyaT3" name="HID_IO.cpp" compile="1" resource="0" file="Source/HID_IO.cpp"/>
+        <FILE id="rXo96D" name="HID_IO.h" compile="0" resource="0" file="Source/HID_IO.h"/>
+        <FILE id="ngNx0O" name="HIDMenu.cpp" compile="1" resource="0" file="Source/HIDMenu.cpp"/>
+        <FILE id="Obri31" name="HIDMenu.h" compile="0" resource="0" file="Source/HIDMenu.h"/>
+        <FILE id="utjFkL" name="InputProvider.h" compile="0" resource="0" file="Source/InputProvider.h"/>
+        <FILE id="OJJ0ov" name="ListHID.cpp" compile="1" resource="0" file="Source/ListHID.cpp"/>
+        <FILE id="SDbuee" name="ListHID.h" compile="0" resource="0" file="Source/ListHID.h"/>
+      </GROUP>
+      <GROUP id="{CA55C71D-F775-655C-C1D6-D428A80D2CD1}" name="DualSense">
+        <FILE id="rxiHLn" name="DualSense_CRC32.cpp" compile="1" resource="0"
+              file="Source/DualSense_CRC32.cpp"/>
+        <FILE id="u0jOHt" name="DualSense_CRC32.h" compile="0" resource="0"
+              file="Source/DualSense_CRC32.h"/>
+        <FILE id="uVr0Af" name="DualSense_Input.cpp" compile="1" resource="0"
+              file="Source/DualSense_Input.cpp"/>
+        <FILE id="U9axhB" name="DualSense_Input.h" compile="0" resource="0"
+              file="Source/DualSense_Input.h"/>
+        <FILE id="NZp2Yb" name="DualSense_Output.cpp" compile="1" resource="0"
+              file="Source/DualSense_Output.cpp"/>
+        <FILE id="IlMQkk" name="DualSense_Output.h" compile="0" resource="0"
+              file="Source/DualSense_Output.h"/>
+        <FILE id="aaWo5r" name="DualSense_UI.cpp" compile="1" resource="0"
+              file="Source/DualSense_UI.cpp"/>
+        <FILE id="ETfnBH" name="DualSense_UI.h" compile="0" resource="0" file="Source/DualSense_UI.h"/>
+        <FILE id="rUtEAU" name="DualSenseState.h" compile="0" resource="0"
+              file="Source/DualSenseState.h"/>
+      </GROUP>
       <FILE id="RyHUas" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <GROUP id="{E3010344-309A-BD5F-96A7-88F0FD54A07E}" name="Xbox">
+        <FILE id="HqqPQv" name="XboxController_Input.cpp" compile="1" resource="0"
+              file="Source/XboxController_Input.cpp"/>
+        <FILE id="zfnOXw" name="XboxController_Input.h" compile="0" resource="0"
+              file="Source/XboxController_Input.h"/>
+        <FILE id="fcnBLq" name="XboxController_UI.cpp" compile="1" resource="0"
+              file="Source/XboxController_UI.cpp"/>
+        <FILE id="ZLAaDB" name="XboxController_UI.h" compile="0" resource="0"
+              file="Source/XboxController_UI.h"/>
+        <FILE id="fQLKVy" name="XboxControllerState.h" compile="0" resource="0"
+              file="Source/XboxControllerState.h"/>
+      </GROUP>
       <FILE id="lTksY9" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="RLQ7zR" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
     </GROUP>
-    <FILE id="rxiHLn" name="DualSense_CRC32.cpp" compile="1" resource="0"
-          file="Source/DualSense_CRC32.cpp"/>
-    <FILE id="u0jOHt" name="DualSense_CRC32.h" compile="0" resource="0"
-          file="Source/DualSense_CRC32.h"/>
-    <FILE id="uVr0Af" name="DualSense_Input.cpp" compile="1" resource="0"
-          file="Source/DualSense_Input.cpp"/>
-    <FILE id="U9axhB" name="DualSense_Input.h" compile="0" resource="0"
-          file="Source/DualSense_Input.h"/>
-    <FILE id="NZp2Yb" name="DualSense_Output.cpp" compile="1" resource="0"
-          file="Source/DualSense_Output.cpp"/>
-    <FILE id="IlMQkk" name="DualSense_Output.h" compile="0" resource="0"
-          file="Source/DualSense_Output.h"/>
-    <FILE id="rUtEAU" name="DualSenseState.h" compile="0" resource="0"
-          file="Source/DualSenseState.h"/>
-    <FILE id="tGyaT3" name="HID_IO.cpp" compile="1" resource="0" file="Source/HID_IO.cpp"/>
-    <FILE id="rXo96D" name="HID_IO.h" compile="0" resource="0" file="Source/HID_IO.h"/>
-    <FILE id="ngNx0O" name="HIDMenu.cpp" compile="1" resource="0" file="Source/HIDMenu.cpp"/>
-    <FILE id="Obri31" name="HIDMenu.h" compile="0" resource="0" file="Source/HIDMenu.h"/>
-    <FILE id="utjFkL" name="InputProvider.h" compile="0" resource="0" file="Source/InputProvider.h"/>
-    <FILE id="OJJ0ov" name="ListHID.cpp" compile="1" resource="0" file="Source/ListHID.cpp"/>
-    <FILE id="SDbuee" name="ListHID.h" compile="0" resource="0" file="Source/ListHID.h"/>
-    <FILE id="X7REyB" name="OSC_Receiver.cpp" compile="1" resource="0"
-          file="Source/OSC_Receiver.cpp"/>
-    <FILE id="b3VDeu" name="OSC_Receiver.h" compile="0" resource="0" file="Source/OSC_Receiver.h"/>
-    <FILE id="eOpVNi" name="OSC_Sender_UI.cpp" compile="1" resource="0"
-          file="Source/OSC_Sender_UI.cpp"/>
-    <FILE id="kz5h5q" name="OSC_Sender_UI.h" compile="0" resource="0" file="Source/OSC_Sender_UI.h"/>
     <FILE id="MJMvtF" name="StickGUI.cpp" compile="1" resource="0" file="Source/StickGUI.cpp"/>
     <FILE id="pIGOHd" name="StickGUI.h" compile="0" resource="0" file="Source/StickGUI.h"/>
-    <FILE id="HqqPQv" name="XboxController_Input.cpp" compile="1" resource="0"
-          file="Source/XboxController_Input.cpp"/>
-    <FILE id="zfnOXw" name="XboxController_Input.h" compile="0" resource="0"
-          file="Source/XboxController_Input.h"/>
-    <FILE id="fcnBLq" name="XboxController_UI.cpp" compile="1" resource="0"
-          file="Source/XboxController_UI.cpp"/>
-    <FILE id="ZLAaDB" name="XboxController_UI.h" compile="0" resource="0"
-          file="Source/XboxController_UI.h"/>
-    <FILE id="fQLKVy" name="XboxControllerState.h" compile="0" resource="0"
-          file="Source/XboxControllerState.h"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
