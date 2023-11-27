@@ -279,6 +279,7 @@ void HID_IO::printReport() {
         uint8_t* packet = reportData;
         uint32_t max_input_report_size = GetIntProperty(deviceRF, CFSTR(kIOHIDMaxInputReportSizeKey));
         for(int i = 0; i < max_input_report_size; i++){
+            std::cout<< i << ":";
             printf("%02x ", packet[i]);
         }
         printf("\n");

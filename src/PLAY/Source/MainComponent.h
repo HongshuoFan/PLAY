@@ -6,7 +6,7 @@
 #include "OSC_Sender_UI.h"
 #include "OSC_Receiver.h"
 #include "DualSense_Input.h"
-//#include "DualSense_Output.h"
+#include "DualSense_Output.h"
 #include "DualSense_CRC32.h"
 #include "XboxController_Input.h"
 #include "XboxController_UI.h"
@@ -41,7 +41,7 @@ private:
     uint8_t InputData;
     
     DualSense_Input DS_input;
-    __DS5W::CRC32 ds_crc32;
+    DualSense_Output DS_output;
     
     XboxController_Input XC_input;
     XboxController_UI xbxUI;

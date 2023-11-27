@@ -11,7 +11,7 @@
 
 #include "DualSense_CRC32.h"
 
-
+//https://github.com/Ohjurot/DualSense-Windows/blob/main/VS19_Solution/DualSenseWindows/src/DualSenseWindows/DS_CRC32.h
 // Hash tabel
 const uint32_t __DS5W::CRC32::hashTable[256] = {
     0xd202ef8d, 0xa505df1b, 0x3c0c8ea1, 0x4b0bbe37, 0xd56f2b94, 0xa2681b02, 0x3b614ab8, 0x4c667a2e,

@@ -12,6 +12,7 @@
 
 #include <JuceHeader.h>
 #include "DualSenseState.h"
+#include "DualSense_CRC32.h"
 //==============================================================================
 /*
 */
@@ -22,9 +23,12 @@ public:
     ~DualSense_Output() override;
     
     //DualSense::DualSenseOutputState DS_output;
-    uint8_t DS_output[50];
+    uint8_t _output[78];
     void createDualSenseOutput();
+    void initialOuput();
+    void disConnectOutput();
 
 private:
+    __DS5W::CRC32 ds_crc32;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DualSense_Output)
 };

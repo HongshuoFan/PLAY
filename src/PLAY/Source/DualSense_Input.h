@@ -25,7 +25,7 @@ public:
     DualSense::DualSenseInputState DS_input;
     
     void evaluateDualSenseHidInputBuffer(uint8_t* _reportData);
-   
+    
     
 private:
     int16_t uint16_to_int16(uint16_t a);

@@ -47,12 +47,12 @@ namespace DualSense {
         /// <summary>
         /// X Position of stick (0 = Center)
         /// </summary>
-        int x;
+        float x;
 
         /// <summary>
         /// Y Posistion of stick (0 = Center)
         /// </summary>
-        int y;
+        float y;
         
         bool stickPress;
         
@@ -62,9 +62,9 @@ namespace DualSense {
     /// 3 Component vector
     /// </summary>
     typedef struct _Vec3 {
-        short x;
-        short y;
-        short z;
+        float x;
+        float y;
+        float z;
     } Vector3, Vec3;
 
     /// <summary>
@@ -94,6 +94,7 @@ namespace DualSense {
         bool menu;
         bool r1;
         bool l1;
+        bool touchPad;
 
     } Buttons;
     /// <summary>
@@ -103,12 +104,12 @@ namespace DualSense {
         /// <summary>
         /// X positon of finger (~ 0 - 2000)
         /// </summary>
-        unsigned int x;
+        float x;
 
         /// <summary>
         /// Y position of finger (~ 0 - 2048)
         /// </summary>
-        unsigned int y;
+        float y;
 
         /// <summary>
         /// Touch is down
@@ -118,7 +119,7 @@ namespace DualSense {
         /// <summary>
         /// 7-bit ID for touch
         /// </summary>
-        unsigned char id;
+        int id;
     } Touch;
 
     typedef struct _Battery {
@@ -340,12 +341,12 @@ namespace DualSense {
         /// <summary>
         /// Left trigger position
         /// </summary>
-        unsigned int leftTrigger;
+        float leftTrigger;
 
         /// <summary>
         /// Right trigger position
         /// </summary>
-        unsigned int rightTrigger;
+        float rightTrigger;
 
         Dpad dpad;
         
