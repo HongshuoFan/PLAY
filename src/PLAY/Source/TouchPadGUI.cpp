@@ -74,15 +74,19 @@ void TouchPadGUI::paint (juce::Graphics& g)
     }
 
     //[UserPaint] Add your own custom painting code here..
-    if(touchPoint1.down){
-
-        g.setColour (onColour);
-        g.fillEllipse (touchPoint1.x, touchPoint1.y, pointSize, pointSize);
+    {
+        if(touchPoint1.down){
+            
+            g.setColour (onColour);
+            g.fillEllipse (touchPoint1.x, touchPoint1.y, pointSize, pointSize);
+        }
     }
 
-    if(touchPoint2.down){
-        g.setColour (onColour);
-        g.fillEllipse (touchPoint2.x, touchPoint2.x, pointSize, pointSize);
+    {
+        if(touchPoint2.down){
+            g.setColour (onColour);
+            g.fillEllipse (touchPoint2.x, touchPoint2.x, pointSize, pointSize);
+        }
     }
     //[/UserPaint]
 }

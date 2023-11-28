@@ -85,6 +85,10 @@ private:
     std::unique_ptr<juce::Label> juce__label_acc;
     std::unique_ptr<juce::Slider> juce__slider_acc_y;
     std::unique_ptr<juce::Slider> juce__slider_acc_z;
+    std::unique_ptr<juce::Label> juce__label_Gyroscope;
+    std::unique_ptr<juce::Slider> juce__slider_gyr_x;
+    std::unique_ptr<juce::Slider> juce__slider_gyr_y;
+    std::unique_ptr<juce::Slider> juce__slider_gyr_z;
     juce::Path internalPath1;
 
 

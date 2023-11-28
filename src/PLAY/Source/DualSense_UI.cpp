@@ -133,7 +133,7 @@ DualSense_UI::DualSense_UI ()
     addAndMakeVisible (juce__slider_acc_x.get());
     juce__slider_acc_x->setRange (-1, 1, 0);
     juce__slider_acc_x->setSliderStyle (juce::Slider::LinearHorizontal);
-    juce__slider_acc_x->setTextBoxStyle (juce::Slider::NoTextBox, true, 80, 20);
+    juce__slider_acc_x->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
     juce__slider_acc_x->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
     juce__slider_acc_x->setColour (juce::Slider::trackColourId, juce::Colour (0xff263238));
     juce__slider_acc_x->setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xff263238));
@@ -142,7 +142,7 @@ DualSense_UI::DualSense_UI ()
     juce__label_acc.reset (new juce::Label ("accelerometer",
                                             TRANS ("Accelerometer")));
     addAndMakeVisible (juce__label_acc.get());
-    juce__label_acc->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+    juce__label_acc->setFont (juce::Font (10.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
     juce__label_acc->setJustificationType (juce::Justification::centredTop);
     juce__label_acc->setEditable (false, false, false);
     juce__label_acc->setColour (juce::TextEditor::textColourId, juce::Colours::black);
@@ -152,7 +152,7 @@ DualSense_UI::DualSense_UI ()
     addAndMakeVisible (juce__slider_acc_y.get());
     juce__slider_acc_y->setRange (-1, 1, 0);
     juce__slider_acc_y->setSliderStyle (juce::Slider::LinearHorizontal);
-    juce__slider_acc_y->setTextBoxStyle (juce::Slider::NoTextBox, true, 80, 20);
+    juce__slider_acc_y->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
     juce__slider_acc_y->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
     juce__slider_acc_y->setColour (juce::Slider::trackColourId, juce::Colour (0xff263238));
     juce__slider_acc_y->setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xff263238));
@@ -162,11 +162,50 @@ DualSense_UI::DualSense_UI ()
     addAndMakeVisible (juce__slider_acc_z.get());
     juce__slider_acc_z->setRange (-1, 1, 0);
     juce__slider_acc_z->setSliderStyle (juce::Slider::LinearHorizontal);
-    juce__slider_acc_z->setTextBoxStyle (juce::Slider::NoTextBox, true, 80, 20);
+    juce__slider_acc_z->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
     juce__slider_acc_z->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
     juce__slider_acc_z->setColour (juce::Slider::trackColourId, juce::Colour (0xff263238));
     juce__slider_acc_z->setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xff263238));
     juce__slider_acc_z->addListener (this);
+
+    juce__label_Gyroscope.reset (new juce::Label ("G",
+                                                  TRANS ("Gyroscope")));
+    addAndMakeVisible (juce__label_Gyroscope.get());
+    juce__label_Gyroscope->setFont (juce::Font (10.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+    juce__label_Gyroscope->setJustificationType (juce::Justification::centredTop);
+    juce__label_Gyroscope->setEditable (false, false, false);
+    juce__label_Gyroscope->setColour (juce::TextEditor::textColourId, juce::Colours::black);
+    juce__label_Gyroscope->setColour (juce::TextEditor::backgroundColourId, juce::Colour (0x00000000));
+
+    juce__slider_gyr_x.reset (new juce::Slider ("Gyr_x"));
+    addAndMakeVisible (juce__slider_gyr_x.get());
+    juce__slider_gyr_x->setRange (-1000, 500, 0);
+    juce__slider_gyr_x->setSliderStyle (juce::Slider::LinearHorizontal);
+    juce__slider_gyr_x->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
+    juce__slider_gyr_x->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
+    juce__slider_gyr_x->setColour (juce::Slider::trackColourId, juce::Colour (0xff263238));
+    juce__slider_gyr_x->setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xff263238));
+    juce__slider_gyr_x->addListener (this);
+
+    juce__slider_gyr_y.reset (new juce::Slider ("Gyr_y"));
+    addAndMakeVisible (juce__slider_gyr_y.get());
+    juce__slider_gyr_y->setRange (-1000, 1000, 0);
+    juce__slider_gyr_y->setSliderStyle (juce::Slider::LinearHorizontal);
+    juce__slider_gyr_y->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
+    juce__slider_gyr_y->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
+    juce__slider_gyr_y->setColour (juce::Slider::trackColourId, juce::Colour (0xff263238));
+    juce__slider_gyr_y->setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xff263238));
+    juce__slider_gyr_y->addListener (this);
+
+    juce__slider_gyr_z.reset (new juce::Slider ("Gyr_z"));
+    addAndMakeVisible (juce__slider_gyr_z.get());
+    juce__slider_gyr_z->setRange (-1000, 1000, 0);
+    juce__slider_gyr_z->setSliderStyle (juce::Slider::LinearHorizontal);
+    juce__slider_gyr_z->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
+    juce__slider_gyr_z->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
+    juce__slider_gyr_z->setColour (juce::Slider::trackColourId, juce::Colour (0xff263238));
+    juce__slider_gyr_z->setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xff263238));
+    juce__slider_gyr_z->addListener (this);
 
     internalPath1.startNewSubPath (300.0f, 216.0f);
     internalPath1.lineTo (384.0f, 216.0f);
@@ -222,6 +261,10 @@ DualSense_UI::~DualSense_UI()
     juce__label_acc = nullptr;
     juce__slider_acc_y = nullptr;
     juce__slider_acc_z = nullptr;
+    juce__label_Gyroscope = nullptr;
+    juce__slider_gyr_x = nullptr;
+    juce__slider_gyr_y = nullptr;
+    juce__slider_gyr_z = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -266,12 +309,16 @@ void DualSense_UI::resized()
     juce__textButton_r1->setBounds (proportionOfWidth (0.7200f), proportionOfHeight (0.0265f), proportionOfWidth (0.0600f), proportionOfHeight (0.0500f));
     juce__textButton_Select->setBounds (proportionOfWidth (0.2950f), proportionOfHeight (0.1382f), proportionOfWidth (0.0417f), proportionOfHeight (0.0323f));
     juce__textButton_menu->setBounds (proportionOfWidth (0.6617f), proportionOfHeight (0.1441f), proportionOfWidth (0.0417f), proportionOfHeight (0.0323f));
-    juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0100f), proportionOfHeight (0.0294f), proportionOfWidth (0.0750f), proportionOfHeight (0.5000f));
-    juce__slider_R_Trigger->setBounds (proportionOfWidth (0.9100f), proportionOfHeight (0.0294f), proportionOfWidth (0.0750f), proportionOfHeight (0.5000f));
-    juce__slider_acc_x->setBounds (proportionOfWidth (0.2917f), proportionOfHeight (0.7294f), proportionOfWidth (0.1200f), proportionOfHeight (0.0500f));
-    juce__label_acc->setBounds (proportionOfWidth (0.3667f), proportionOfHeight (0.6647f), 150, 24);
-    juce__slider_acc_y->setBounds (proportionOfWidth (0.4300f), proportionOfHeight (0.7294f), proportionOfWidth (0.1200f), proportionOfHeight (0.0500f));
-    juce__slider_acc_z->setBounds (proportionOfWidth (0.5800f), proportionOfHeight (0.7294f), proportionOfWidth (0.1200f), proportionOfHeight (0.0500f));
+    juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0100f), proportionOfHeight (0.0294f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
+    juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8850f), proportionOfHeight (0.0294f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
+    juce__slider_acc_x->setBounds (proportionOfWidth (0.2867f), proportionOfHeight (0.7088f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__label_acc->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.6618f), 75, 12);
+    juce__slider_acc_y->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.7088f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__slider_acc_z->setBounds (proportionOfWidth (0.5800f), proportionOfHeight (0.7088f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__label_Gyroscope->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.8294f), 75, 12);
+    juce__slider_gyr_x->setBounds (proportionOfWidth (0.2867f), proportionOfHeight (0.8794f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__slider_gyr_y->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.8794f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__slider_gyr_z->setBounds (proportionOfWidth (0.5800f), proportionOfHeight (0.8794f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -376,6 +423,21 @@ void DualSense_UI::sliderValueChanged (juce::Slider* sliderThatWasMoved)
         //[UserSliderCode_juce__slider_acc_z] -- add your slider handling code here..
         //[/UserSliderCode_juce__slider_acc_z]
     }
+    else if (sliderThatWasMoved == juce__slider_gyr_x.get())
+    {
+        //[UserSliderCode_juce__slider_gyr_x] -- add your slider handling code here..
+        //[/UserSliderCode_juce__slider_gyr_x]
+    }
+    else if (sliderThatWasMoved == juce__slider_gyr_y.get())
+    {
+        //[UserSliderCode_juce__slider_gyr_y] -- add your slider handling code here..
+        //[/UserSliderCode_juce__slider_gyr_y]
+    }
+    else if (sliderThatWasMoved == juce__slider_gyr_z.get())
+    {
+        //[UserSliderCode_juce__slider_gyr_z] -- add your slider handling code here..
+        //[/UserSliderCode_juce__slider_gyr_z]
+    }
 
     //[UsersliderValueChanged_Post]
     //[/UsersliderValueChanged_Post]
@@ -416,6 +478,10 @@ void DualSense_UI::update()
         juce__slider_acc_x->setValue(DS_UI_input.accelerometer.x);
         juce__slider_acc_y->setValue(DS_UI_input.accelerometer.y);
         juce__slider_acc_z->setValue(DS_UI_input.accelerometer.z);
+
+        juce__slider_gyr_x->setValue(DS_UI_input.gyroscope.x);
+        juce__slider_gyr_y->setValue(DS_UI_input.gyroscope.y);
+        juce__slider_gyr_z->setValue(DS_UI_input.gyroscope.z);
 
     }else{
         setFramesPerSecond(1);
@@ -491,38 +557,61 @@ BEGIN_JUCER_METADATA
               bgColOn="ff5f9ea0" buttonText="Menu" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <SLIDER name="L_Trigger" id="108db3ed35a76737" memberName="juce__slider_L_Trigger"
-          virtualName="" explicitFocusOrder="0" pos="1% 2.941% 7.5% 50%"
+          virtualName="" explicitFocusOrder="0" pos="1% 2.941% 10% 50%"
           min="0.0" max="1.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="R_Trigger" id="e9ba45a333eabc57" memberName="juce__slider_R_Trigger"
-          virtualName="" explicitFocusOrder="0" pos="91% 2.941% 7.5% 50%"
+          virtualName="" explicitFocusOrder="0" pos="88.5% 2.941% 10% 50%"
           min="0.0" max="1.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="Acc_x" id="24cea3497d731f4b" memberName="juce__slider_acc_x"
-          virtualName="" explicitFocusOrder="0" pos="29.167% 72.941% 12% 5%"
+          virtualName="" explicitFocusOrder="0" pos="28.667% 70.882% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
-          min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="NoTextBox"
+          min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <LABEL name="accelerometer" id="cc65c8b747b37e4d" memberName="juce__label_acc"
-         virtualName="" explicitFocusOrder="0" pos="36.667% 66.471% 150 24"
+         virtualName="" explicitFocusOrder="0" pos="43.5% 66.176% 75 12"
          edTextCol="ff000000" edBkgCol="0" labelText="Accelerometer" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="12"/>
+         fontsize="10.0" kerning="0.0" bold="0" italic="0" justification="12"/>
   <SLIDER name="Acc_y" id="b462cd929d8fbad4" memberName="juce__slider_acc_y"
-          virtualName="" explicitFocusOrder="0" pos="43% 72.941% 12% 5%"
+          virtualName="" explicitFocusOrder="0" pos="43.5% 70.882% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
-          min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="NoTextBox"
+          min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="Acc_z" id="208dc18dd2ea7d8b" memberName="juce__slider_acc_z"
-          virtualName="" explicitFocusOrder="0" pos="58% 72.941% 12% 5%"
+          virtualName="" explicitFocusOrder="0" pos="58% 70.882% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
-          min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="NoTextBox"
+          min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
+  <LABEL name="G" id="8ab528613d592fe" memberName="juce__label_Gyroscope"
+         virtualName="" explicitFocusOrder="0" pos="43.5% 82.941% 75 12"
+         edTextCol="ff000000" edBkgCol="0" labelText="Gyroscope" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="10.0" kerning="0.0" bold="0" italic="0" justification="12"/>
+  <SLIDER name="Gyr_x" id="1c1a4acc7ac21ffd" memberName="juce__slider_gyr_x"
+          virtualName="" explicitFocusOrder="0" pos="28.667% 87.941% 12% 10%"
+          bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
+          min="-1000.0" max="500.0" int="0.0" style="LinearHorizontal"
+          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="80"
+          textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
+  <SLIDER name="Gyr_y" id="71cda18e92b1fc54" memberName="juce__slider_gyr_y"
+          virtualName="" explicitFocusOrder="0" pos="43.5% 87.941% 12% 10%"
+          bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
+          min="-1000.0" max="1000.0" int="0.0" style="LinearHorizontal"
+          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="80"
+          textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
+  <SLIDER name="Gyr_z" id="de553fe4aa9c3cf4" memberName="juce__slider_gyr_z"
+          virtualName="" explicitFocusOrder="0" pos="58% 87.941% 12% 10%"
+          bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
+          min="-1000.0" max="1000.0" int="0.0" style="LinearHorizontal"
+          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="80"
+          textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
