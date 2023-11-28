@@ -21,6 +21,8 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
+#include "StickGUI.h"
+#include "DualSenseState.h"
 //[/Headers]
 
 
@@ -33,7 +35,9 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class DualSense_UI  : public juce::Component
+class DualSense_UI  : public juce::AnimatedAppComponent,
+                      public juce::Button::Listener,
+                      public juce::Slider::Listener
 {
 public:
     //==============================================================================
@@ -42,18 +46,44 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    void update() override;
+    DualSense::DualSenseInputState DS_UI_input;
+    bool isConnected;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
     void resized() override;
+    void buttonClicked (juce::Button* buttonThatWasClicked) override;
+    void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
 
+    // Binary resources:
+    static const char* dualSense_png;
+    static const int dualSense_pngSize;
 
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    StickGUI Left_Stick;
+    StickGUI Right_Stick;
     //[/UserVariables]
 
     //==============================================================================
+    std::unique_ptr<juce::TextButton> juce__textButton_triangle;
+    std::unique_ptr<juce::TextButton> juce__textButton_circle;
+    std::unique_ptr<juce::TextButton> juce__textButton_square;
+    std::unique_ptr<juce::TextButton> juce__textButton_cross;
+    std::unique_ptr<juce::TextButton> juce__textButton_up;
+    std::unique_ptr<juce::TextButton> juce__textButton_left;
+    std::unique_ptr<juce::TextButton> juce__textButton_right;
+    std::unique_ptr<juce::TextButton> juce__textButton_down;
+    std::unique_ptr<juce::TextButton> juce__textButton_l1;
+    std::unique_ptr<juce::TextButton> juce__textButton_r1;
+    std::unique_ptr<juce::TextButton> juce__textButton_Select;
+    std::unique_ptr<juce::TextButton> juce__textButton_menu;
+    std::unique_ptr<juce::Slider> juce__slider_L_Trigger;
+    std::unique_ptr<juce::Slider> juce__slider_R_Trigger;
+    juce::Image cachedImage_dualSense_png_1;
+    juce::Path internalPath2;
 
 
     //==============================================================================

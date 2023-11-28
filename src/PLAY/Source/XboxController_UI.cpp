@@ -156,6 +156,7 @@ XboxController_UI::XboxController_UI ()
 
     //[Constructor] You can add your own custom stuff here..
     setFramesPerSecond (1);
+    isConnected = false;
     setVibrationData();
     //[/Constructor]
 }

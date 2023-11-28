@@ -5,9 +5,11 @@
 #include "HID_IO.h"
 #include "OSC_Sender_UI.h"
 #include "OSC_Receiver.h"
+
 #include "DualSense_Input.h"
 #include "DualSense_Output.h"
-#include "DualSense_CRC32.h"
+#include "DualSense_UI.h"
+
 #include "XboxController_Input.h"
 #include "XboxController_UI.h"
 
@@ -42,6 +44,7 @@ private:
     
     DualSense_Input DS_input;
     DualSense_Output DS_output;
+    DualSense_UI DS_UI;
     
     XboxController_Input XC_input;
     XboxController_UI xbxUI;

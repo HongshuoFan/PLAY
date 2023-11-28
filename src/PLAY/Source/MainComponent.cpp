@@ -60,10 +60,12 @@ void MainComponent::onHIDMenuChanged()
             // initial duel sense
             DS_output.initialOuput();
             hidIO.writeRawData(DS_output._output, 0x01, 78);
-    
+            
             std::this_thread::sleep_for(std::chrono::seconds(1));
             
             hidIO.dataReceivedCallback = [this]{onDualSense_DataReceived();};
+            addAndMakeVisible(DS_UI);
+            DS_UI.isConnected = true;
             //DS_output.createDualSenseOutput();
             //hidIO.writeRawData(DS_output.DS_output, 0x01);
             
@@ -100,7 +102,8 @@ void MainComponent::onDualSense_DataReceived()
 //    std::cout<<  hidIO.reportData[1] << "\n";
     
     DS_input.evaluateDualSenseHidInputBuffer(hidIO.reportData);
-    hidIO.printReport();
+    DS_UI.DS_UI_input = DS_input.DS_input;
+    //hidIO.printReport();
 }
 
 void MainComponent::onXboxController_DataReceived() { 
