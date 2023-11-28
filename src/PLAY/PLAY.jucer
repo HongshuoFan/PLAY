@@ -59,6 +59,8 @@
     </GROUP>
     <FILE id="MJMvtF" name="StickGUI.cpp" compile="1" resource="0" file="Source/StickGUI.cpp"/>
     <FILE id="pIGOHd" name="StickGUI.h" compile="0" resource="0" file="Source/StickGUI.h"/>
+    <FILE id="M5ExM4" name="TouchPadGUI.cpp" compile="1" resource="0" file="Source/TouchPadGUI.cpp"/>
+    <FILE id="ZrxBMX" name="TouchPadGUI.h" compile="0" resource="0" file="Source/TouchPadGUI.h"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

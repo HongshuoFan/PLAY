@@ -117,7 +117,7 @@ void MainComponent::onXboxController_DataReceived() {
 void MainComponent::userTriedToCloseWindow(){
 //
     std::cout<<"User Tried To Close Window \n";
-    if(strcmp("DualSense Wireless Controller", hidIO.device_name) == 0){
+    if(DS_UI.isConnected){
         DS_output.disConnectOutput();
         hidIO.writeRawData(DS_output._output, 0xa2, 78);
     }

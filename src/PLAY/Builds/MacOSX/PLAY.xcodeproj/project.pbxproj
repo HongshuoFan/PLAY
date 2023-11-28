@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		056DACCBB35F84C288986541 /* Metal.framework */ = {isa = PBXBuildFile; fileRef = 4D8E641104DF78957EE8110D; settings = { ATTRIBUTES = (Weak, ); }; };
+		0BA5F297D15D2526E307370F /* TouchPadGUI.cpp */ = {isa = PBXBuildFile; fileRef = 3BEE9FEB8427D677E7227076; };
 		168EC2BD77573E94476EE10D /* MainComponent.cpp */ = {isa = PBXBuildFile; fileRef = F9D44C63C22BAF796CE8ED49; };
 		1CD59ED1B524B5F93651171F /* include_juce_core.mm */ = {isa = PBXBuildFile; fileRef = 73A2BC0024FF2CFE98EF54DA; };
 		24425833CF9F13D2F27E34A3 /* XboxController_Input.cpp */ = {isa = PBXBuildFile; fileRef = 3C9DABB4B88263887347D0DB; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		01ADF8F7171770CBB5EC7B38 /* MainComponent.h */ /* MainComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainComponent.h; path = ../../Source/MainComponent.h; sourceTree = SOURCE_ROOT; };
 		0D2F99BD4EE42B050117D852 /* OSC_Receiver.h */ /* OSC_Receiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSC_Receiver.h; path = ../../Source/OSC_Receiver.h; sourceTree = SOURCE_ROOT; };
+		131D98D4B1A16D29B26A6378 /* TouchPadGUI.h */ /* TouchPadGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TouchPadGUI.h; path = ../../Source/TouchPadGUI.h; sourceTree = SOURCE_ROOT; };
 		1BC1DBE43DEAF9AE28EBF369 /* juce_events */ /* juce_events */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_events; path = /Users/hongshuofan/Documents/JUCE/modules/juce_events; sourceTree = "<absolute>"; };
 		247664B21DA3594C9685B1FE /* DualSense_UI.cpp */ /* DualSense_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DualSense_UI.cpp; path = ../../Source/DualSense_UI.cpp; sourceTree = SOURCE_ROOT; };
 		25ED4C4E18894EA65F700B79 /* XboxController_Input.h */ /* XboxController_Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XboxController_Input.h; path = ../../Source/XboxController_Input.h; sourceTree = SOURCE_ROOT; };
@@ -53,6 +55,7 @@
 		31AAEF235CCB90B93C41819F /* juce_gui_extra */ /* juce_gui_extra */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_extra; path = /Users/hongshuofan/Documents/JUCE/modules/juce_gui_extra; sourceTree = "<absolute>"; };
 		357255BCE00B80150326189B /* ListHID.h */ /* ListHID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ListHID.h; path = ../../Source/ListHID.h; sourceTree = SOURCE_ROOT; };
 		3B19C651B029D252CF366851 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = /Users/hongshuofan/Documents/JUCE/modules/juce_data_structures; sourceTree = "<absolute>"; };
+		3BEE9FEB8427D677E7227076 /* TouchPadGUI.cpp */ /* TouchPadGUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TouchPadGUI.cpp; path = ../../Source/TouchPadGUI.cpp; sourceTree = SOURCE_ROOT; };
 		3BFF4447BE24D2522DE8BC5A /* HIDMenu.cpp */ /* HIDMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HIDMenu.cpp; path = ../../Source/HIDMenu.cpp; sourceTree = SOURCE_ROOT; };
 		3C9DABB4B88263887347D0DB /* XboxController_Input.cpp */ /* XboxController_Input.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = XboxController_Input.cpp; path = ../../Source/XboxController_Input.cpp; sourceTree = SOURCE_ROOT; };
 		44F2038ED2E8C3F8B3311BAF /* HID_IO.cpp */ /* HID_IO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HID_IO.cpp; path = ../../Source/HID_IO.cpp; sourceTree = SOURCE_ROOT; };
@@ -141,6 +144,8 @@
 				4B754B909D8EE3BF8517C13A,
 				BBF288FFC40541D4C1D3AE1A,
 				3049057331B2B23EB6747254,
+				3BEE9FEB8427D677E7227076,
+				131D98D4B1A16D29B26A6378,
 			);
 			name = PLAY;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 				7A0BB930522D134C4959EF80,
 				168EC2BD77573E94476EE10D,
 				916EEBF144F393F3D6DB5914,
+				0BA5F297D15D2526E307370F,
 				1CD59ED1B524B5F93651171F,
 				58E1A012773B90B04E8345A2,
 				52655D0A04683BB0ECBD40D9,

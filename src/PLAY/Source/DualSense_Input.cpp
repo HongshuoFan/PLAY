@@ -45,7 +45,7 @@ void DualSense_Input::evaluateDualSenseHidInputBuffer(uint8_t *_reportData) {
     DS_input.buttons.triangle = (buttonData & DualSense_ISTATE_BTX_TRIANGLE) != 0;
     
     // Dpad
-    int dpadState = static_cast<int>(buttonData);
+    uint8_t dpadState = _reportData[9] & 0x0f;
     switch (dpadState) {
             // Up
         case 8:
@@ -126,10 +126,10 @@ void DualSense_Input::evaluateDualSenseHidInputBuffer(uint8_t *_reportData) {
     DS_input.touchPoint2.down = (_reportData[38]& 0x80) == 0;
     
     DS_input.touchPoint1.x = (_reportData[35] | (_reportData[36] & 0x0F) << 8) / 1920.0f;
-    DS_input.touchPoint1.y = ((_reportData[36] & 0xF0) >> 4 | _reportData[37] << 4) / 1079.0f;
+    DS_input.touchPoint1.y = 1.f - ((_reportData[36] & 0xF0) >> 4 | _reportData[37] << 4) / 1079.0f;
    
     DS_input.touchPoint2.x = (_reportData[39] | (_reportData[40] & 0x0F) << 8) / 1920.0f;
-    DS_input.touchPoint2.y = ((_reportData[40] & 0xF0) >> 4 | _reportData[41] << 4) / 1079.0f;
+    DS_input.touchPoint2.y = 1.f - ((_reportData[40] & 0xF0) >> 4 | _reportData[41] << 4) / 1079.0f;
     
 }
 

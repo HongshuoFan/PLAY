@@ -21,8 +21,6 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
-#include "StickGUI.h"
-#include "TouchPadGUI.h"
 #include "DualSenseState.h"
 //[/Headers]
 
@@ -36,56 +34,41 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class DualSense_UI  : public juce::AnimatedAppComponent,
-                      public juce::Button::Listener,
-                      public juce::Slider::Listener
+class TouchPadGUI  : public juce::Component
 {
 public:
     //==============================================================================
-    DualSense_UI ();
-    ~DualSense_UI() override;
+    TouchPadGUI ();
+    ~TouchPadGUI() override;
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    void update() override;
-    DualSense::DualSenseInputState DS_UI_input;
-    bool isConnected;
+    void updateTouchPad_1(DualSense::Touch Point1);
+    void updateTouchPad_2(DualSense::Touch Point2);
+    bool pressTouchPad;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
     void resized() override;
-    void buttonClicked (juce::Button* buttonThatWasClicked) override;
-    void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
 
 
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    StickGUI Left_Stick;
-    StickGUI Right_Stick;
-    TouchPadGUI touchPad;
+    juce::Colour pointColour = juce::Colours::black;
+    juce::Colour offColour = juce::Colours::grey;
+    juce::Colour onColour = juce::Colours::red;
+
+    DualSense::Touch touchPoint1;
+    DualSense::Touch touchPoint2;
+    float pointSize = 10.f;
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<juce::TextButton> juce__textButton_triangle;
-    std::unique_ptr<juce::TextButton> juce__textButton_circle;
-    std::unique_ptr<juce::TextButton> juce__textButton_square;
-    std::unique_ptr<juce::TextButton> juce__textButton_cross;
-    std::unique_ptr<juce::TextButton> juce__textButton_up;
-    std::unique_ptr<juce::TextButton> juce__textButton_left;
-    std::unique_ptr<juce::TextButton> juce__textButton_right;
-    std::unique_ptr<juce::TextButton> juce__textButton_down;
-    std::unique_ptr<juce::TextButton> juce__textButton_l1;
-    std::unique_ptr<juce::TextButton> juce__textButton_r1;
-    std::unique_ptr<juce::TextButton> juce__textButton_Select;
-    std::unique_ptr<juce::TextButton> juce__textButton_menu;
-    std::unique_ptr<juce::Slider> juce__slider_L_Trigger;
-    std::unique_ptr<juce::Slider> juce__slider_R_Trigger;
-    juce::Path internalPath1;
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DualSense_UI)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TouchPadGUI)
 };
 
 //[EndFile] You can add extra defines here...
