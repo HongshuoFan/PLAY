@@ -81,6 +81,10 @@ private:
     std::unique_ptr<juce::TextButton> juce__textButton_menu;
     std::unique_ptr<juce::Slider> juce__slider_L_Trigger;
     std::unique_ptr<juce::Slider> juce__slider_R_Trigger;
+    std::unique_ptr<juce::Slider> juce__slider_acc_x;
+    std::unique_ptr<juce::Label> juce__label_acc;
+    std::unique_ptr<juce::Slider> juce__slider_acc_y;
+    std::unique_ptr<juce::Slider> juce__slider_acc_z;
     juce::Path internalPath1;
 
 

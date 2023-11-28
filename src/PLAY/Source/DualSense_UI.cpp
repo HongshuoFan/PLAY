@@ -129,6 +129,45 @@ DualSense_UI::DualSense_UI ()
     juce__slider_R_Trigger->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 60, 20);
     juce__slider_R_Trigger->addListener (this);
 
+    juce__slider_acc_x.reset (new juce::Slider ("Acc_x"));
+    addAndMakeVisible (juce__slider_acc_x.get());
+    juce__slider_acc_x->setRange (-1, 1, 0);
+    juce__slider_acc_x->setSliderStyle (juce::Slider::LinearHorizontal);
+    juce__slider_acc_x->setTextBoxStyle (juce::Slider::NoTextBox, true, 80, 20);
+    juce__slider_acc_x->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
+    juce__slider_acc_x->setColour (juce::Slider::trackColourId, juce::Colour (0xff263238));
+    juce__slider_acc_x->setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xff263238));
+    juce__slider_acc_x->addListener (this);
+
+    juce__label_acc.reset (new juce::Label ("accelerometer",
+                                            TRANS ("Accelerometer")));
+    addAndMakeVisible (juce__label_acc.get());
+    juce__label_acc->setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+    juce__label_acc->setJustificationType (juce::Justification::centredTop);
+    juce__label_acc->setEditable (false, false, false);
+    juce__label_acc->setColour (juce::TextEditor::textColourId, juce::Colours::black);
+    juce__label_acc->setColour (juce::TextEditor::backgroundColourId, juce::Colour (0x00000000));
+
+    juce__slider_acc_y.reset (new juce::Slider ("Acc_y"));
+    addAndMakeVisible (juce__slider_acc_y.get());
+    juce__slider_acc_y->setRange (-1, 1, 0);
+    juce__slider_acc_y->setSliderStyle (juce::Slider::LinearHorizontal);
+    juce__slider_acc_y->setTextBoxStyle (juce::Slider::NoTextBox, true, 80, 20);
+    juce__slider_acc_y->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
+    juce__slider_acc_y->setColour (juce::Slider::trackColourId, juce::Colour (0xff263238));
+    juce__slider_acc_y->setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xff263238));
+    juce__slider_acc_y->addListener (this);
+
+    juce__slider_acc_z.reset (new juce::Slider ("Acc_z"));
+    addAndMakeVisible (juce__slider_acc_z.get());
+    juce__slider_acc_z->setRange (-1, 1, 0);
+    juce__slider_acc_z->setSliderStyle (juce::Slider::LinearHorizontal);
+    juce__slider_acc_z->setTextBoxStyle (juce::Slider::NoTextBox, true, 80, 20);
+    juce__slider_acc_z->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
+    juce__slider_acc_z->setColour (juce::Slider::trackColourId, juce::Colour (0xff263238));
+    juce__slider_acc_z->setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xff263238));
+    juce__slider_acc_z->addListener (this);
+
     internalPath1.startNewSubPath (300.0f, 216.0f);
     internalPath1.lineTo (384.0f, 216.0f);
     internalPath1.quadraticTo (406.0f, 213.0f, 432.0f, 240.0f);
@@ -179,6 +218,10 @@ DualSense_UI::~DualSense_UI()
     juce__textButton_menu = nullptr;
     juce__slider_L_Trigger = nullptr;
     juce__slider_R_Trigger = nullptr;
+    juce__slider_acc_x = nullptr;
+    juce__label_acc = nullptr;
+    juce__slider_acc_y = nullptr;
+    juce__slider_acc_z = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -225,6 +268,10 @@ void DualSense_UI::resized()
     juce__textButton_menu->setBounds (proportionOfWidth (0.6617f), proportionOfHeight (0.1441f), proportionOfWidth (0.0417f), proportionOfHeight (0.0323f));
     juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0100f), proportionOfHeight (0.0294f), proportionOfWidth (0.0750f), proportionOfHeight (0.5000f));
     juce__slider_R_Trigger->setBounds (proportionOfWidth (0.9100f), proportionOfHeight (0.0294f), proportionOfWidth (0.0750f), proportionOfHeight (0.5000f));
+    juce__slider_acc_x->setBounds (proportionOfWidth (0.2917f), proportionOfHeight (0.7294f), proportionOfWidth (0.1200f), proportionOfHeight (0.0500f));
+    juce__label_acc->setBounds (proportionOfWidth (0.3667f), proportionOfHeight (0.6647f), 150, 24);
+    juce__slider_acc_y->setBounds (proportionOfWidth (0.4300f), proportionOfHeight (0.7294f), proportionOfWidth (0.1200f), proportionOfHeight (0.0500f));
+    juce__slider_acc_z->setBounds (proportionOfWidth (0.5800f), proportionOfHeight (0.7294f), proportionOfWidth (0.1200f), proportionOfHeight (0.0500f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -314,6 +361,21 @@ void DualSense_UI::sliderValueChanged (juce::Slider* sliderThatWasMoved)
         //[UserSliderCode_juce__slider_R_Trigger] -- add your slider handling code here..
         //[/UserSliderCode_juce__slider_R_Trigger]
     }
+    else if (sliderThatWasMoved == juce__slider_acc_x.get())
+    {
+        //[UserSliderCode_juce__slider_acc_x] -- add your slider handling code here..
+        //[/UserSliderCode_juce__slider_acc_x]
+    }
+    else if (sliderThatWasMoved == juce__slider_acc_y.get())
+    {
+        //[UserSliderCode_juce__slider_acc_y] -- add your slider handling code here..
+        //[/UserSliderCode_juce__slider_acc_y]
+    }
+    else if (sliderThatWasMoved == juce__slider_acc_z.get())
+    {
+        //[UserSliderCode_juce__slider_acc_z] -- add your slider handling code here..
+        //[/UserSliderCode_juce__slider_acc_z]
+    }
 
     //[UsersliderValueChanged_Post]
     //[/UsersliderValueChanged_Post]
@@ -350,6 +412,10 @@ void DualSense_UI::update()
         touchPad.updateTouchPad_1(DS_UI_input.touchPoint1);
         touchPad.updateTouchPad_2(DS_UI_input.touchPoint2);
         touchPad.pressTouchPad = DS_UI_input.buttons.touchPad;
+
+        juce__slider_acc_x->setValue(DS_UI_input.accelerometer.x);
+        juce__slider_acc_y->setValue(DS_UI_input.accelerometer.y);
+        juce__slider_acc_z->setValue(DS_UI_input.accelerometer.z);
 
     }else{
         setFramesPerSecond(1);
@@ -433,6 +499,29 @@ BEGIN_JUCER_METADATA
           virtualName="" explicitFocusOrder="0" pos="91% 2.941% 7.5% 50%"
           min="0.0" max="1.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="1"/>
+  <SLIDER name="Acc_x" id="24cea3497d731f4b" memberName="juce__slider_acc_x"
+          virtualName="" explicitFocusOrder="0" pos="29.167% 72.941% 12% 5%"
+          bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
+          min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="NoTextBox"
+          textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="1"/>
+  <LABEL name="accelerometer" id="cc65c8b747b37e4d" memberName="juce__label_acc"
+         virtualName="" explicitFocusOrder="0" pos="36.667% 66.471% 150 24"
+         edTextCol="ff000000" edBkgCol="0" labelText="Accelerometer" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="12"/>
+  <SLIDER name="Acc_y" id="b462cd929d8fbad4" memberName="juce__slider_acc_y"
+          virtualName="" explicitFocusOrder="0" pos="43% 72.941% 12% 5%"
+          bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
+          min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="NoTextBox"
+          textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="1"/>
+  <SLIDER name="Acc_z" id="208dc18dd2ea7d8b" memberName="juce__slider_acc_z"
+          virtualName="" explicitFocusOrder="0" pos="58% 72.941% 12% 5%"
+          bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
+          min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="NoTextBox"
+          textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
 </JUCER_COMPONENT>
 
