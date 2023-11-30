@@ -31,14 +31,15 @@ XboxController_UI::XboxController_UI ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
 
-
-    Left_Stick.setBounds(150, 65, 80, 80);
-    Left_Stick.resized();
-    addAndMakeVisible(Left_Stick);
-
-    Right_Stick.setBounds(317, 130, 80, 80);
-    Right_Stick.resized();
-    addAndMakeVisible(Right_Stick);
+    Left_Stick.reset(new StickGUI());
+    addAndMakeVisible(Left_Stick.get());
+    Left_Stick->setBounds(150, 65, 80, 80);
+    Left_Stick->resized();
+    
+    Right_Stick.reset(new StickGUI());
+    Right_Stick->setBounds(317, 130, 80, 80);
+    Right_Stick->resized();
+    addAndMakeVisible(Right_Stick.get());
     //[/Constructor_pre]
 
     juce__textButtonX.reset (new juce::TextButton ("ButtonX"));
@@ -185,6 +186,8 @@ XboxController_UI::~XboxController_UI()
 
 
     //[Destructor]. You can add your own custom destruction code here..
+    Left_Stick = nullptr;
+    Right_Stick = nullptr;
     //[/Destructor]
 }
 
@@ -364,8 +367,8 @@ void XboxController_UI::update()
         juce__textButtonLeft->setToggleState(_input.dpad.left,  juce::sendNotification);
         juce__textButtonRight->setToggleState(_input.dpad.right,  juce::sendNotification);
 
-        Left_Stick.updatePoint(_input.leftStick.x, _input.leftStick.y, _input.leftStick.stickPress);
-        Right_Stick.updatePoint(_input.rightStick.x, _input.rightStick.y, _input.rightStick.stickPress);
+        Left_Stick->updatePoint(_input.leftStick.x, _input.leftStick.y, _input.leftStick.stickPress);
+        Right_Stick->updatePoint(_input.rightStick.x, _input.rightStick.y, _input.rightStick.stickPress);
 
         juce__slider_L_Trigger->setValue(_input.leftTrigger);
         juce__slider_R_Trigger->setValue(_input.rightTrigger);

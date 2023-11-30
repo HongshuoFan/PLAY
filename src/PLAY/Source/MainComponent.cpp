@@ -13,6 +13,8 @@ MainComponent::MainComponent()
     // Add a listener to the m_HIDMenu
     m_HIDMenu.onHIDMenuChanged = [this]{onHIDMenuChanged();};
     hidIO.dataReceivedCallback = [this]{onDataReceived();};
+    
+    //xbxUI.reset (new XboxController_UI);
 }
 
 MainComponent::~MainComponent()
@@ -72,9 +74,12 @@ void MainComponent::onHIDMenuChanged()
         }else if(strcmp("Xbox Wireless Controller", hidIO.device_name) == 0){
             std::cout << "connect to Xbox Wireless Controller" << std::endl;
             hidIO.dataReceivedCallback = [this]{onXboxController_DataReceived();};
+            
+           
             addAndMakeVisible(xbxUI);
             xbxUI.isConnected = true;
             xbxUI.XboxVibration = [this]{EnableXboxControllerVibration();};
+            
             osc_receiver.TriggerVibration = [this]{EnableXboxControllerVibration();};
             std::this_thread::sleep_for(std::chrono::seconds(1));
 //

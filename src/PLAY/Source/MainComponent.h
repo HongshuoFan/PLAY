@@ -47,6 +47,7 @@ private:
     DualSense_UI DS_UI;
     
     XboxController_Input XC_input;
+    //std::unique_ptr<XboxController_UI> xbxUI;
     XboxController_UI xbxUI;
     
     OSC_Sender_UI OSC_Sender;

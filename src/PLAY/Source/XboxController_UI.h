@@ -63,8 +63,10 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    StickGUI Left_Stick;
-    StickGUI Right_Stick;
+    std::unique_ptr<StickGUI> Left_Stick;
+    std::unique_ptr<StickGUI> Right_Stick;
+    //StickGUI Left_Stick;
+    //StickGUI Right_Stick;
 //    juce::Button::ButtonState onState = juce::Button::buttonDown;
 //    juce::Button::ButtonState offState = juce::Button::buttonNormal;
 
