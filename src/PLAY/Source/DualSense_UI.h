@@ -61,9 +61,10 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    StickGUI Left_Stick;
-    StickGUI Right_Stick;
-    TouchPadGUI touchPad;
+    std::unique_ptr<StickGUI> Left_Stick;
+    std::unique_ptr<StickGUI> Right_Stick;
+    std::unique_ptr<TouchPadGUI> TouchPad;
+    //TouchPadGUI touchPad;
     //[/UserVariables]
 
     //==============================================================================

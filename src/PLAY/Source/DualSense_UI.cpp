@@ -30,17 +30,20 @@
 DualSense_UI::DualSense_UI ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
-    Left_Stick.setBounds(185, 130, 80, 80);
-    Left_Stick.resized();
-    addAndMakeVisible(Left_Stick);
-
-    Right_Stick.setBounds(333, 130, 80, 80);
-    Right_Stick.resized();
-    addAndMakeVisible(Right_Stick);
-
-    touchPad.setBounds(224, 25, 160, 100);
-    touchPad.resized();
-    addAndMakeVisible(touchPad);
+    Left_Stick.reset(new StickGUI());
+    addAndMakeVisible(Left_Stick.get());
+    Left_Stick->setBounds(185, 130, 80, 80);
+    Left_Stick->resized();
+    
+    Right_Stick.reset(new StickGUI());
+    addAndMakeVisible(Right_Stick.get());
+    Right_Stick->setBounds(333, 130, 80, 80);
+    Right_Stick->resized();
+    
+    TouchPad.reset(new TouchPadGUI);
+    addAndMakeVisible(TouchPad.get());
+    TouchPad->setBounds(224, 25, 160, 100);
+    TouchPad->resized();
     //[/Constructor_pre]
 
     juce__textButton_triangle.reset (new juce::TextButton ("triangle_button"));
@@ -268,6 +271,9 @@ DualSense_UI::~DualSense_UI()
 
 
     //[Destructor]. You can add your own custom destruction code here..
+    Left_Stick = nullptr;
+    Right_Stick = nullptr;
+    TouchPad = nullptr;
     //[/Destructor]
 }
 
@@ -465,15 +471,15 @@ void DualSense_UI::update()
         juce__textButton_left->setToggleState(DS_UI_input.dpad.left, juce::sendNotification);
         juce__textButton_down->setToggleState(DS_UI_input.dpad.down, juce::sendNotification);
 
-        Left_Stick.updatePoint(DS_UI_input.leftStick.x, DS_UI_input.leftStick.y, DS_UI_input.leftStick.stickPress);
-        Right_Stick.updatePoint(DS_UI_input.rightStick.x, DS_UI_input.rightStick.y, DS_UI_input.rightStick.stickPress);
+        Left_Stick->updatePoint(DS_UI_input.leftStick.x, DS_UI_input.leftStick.y, DS_UI_input.leftStick.stickPress);
+        Right_Stick->updatePoint(DS_UI_input.rightStick.x, DS_UI_input.rightStick.y, DS_UI_input.rightStick.stickPress);
 
         juce__slider_L_Trigger->setValue(DS_UI_input.leftTrigger);
         juce__slider_R_Trigger->setValue(DS_UI_input.rightTrigger);
 
-        touchPad.updateTouchPad_1(DS_UI_input.touchPoint1);
-        touchPad.updateTouchPad_2(DS_UI_input.touchPoint2);
-        touchPad.pressTouchPad = DS_UI_input.buttons.touchPad;
+        TouchPad->updateTouchPad_1(DS_UI_input.touchPoint1);
+        TouchPad->updateTouchPad_2(DS_UI_input.touchPoint2);
+        TouchPad->pressTouchPad = DS_UI_input.buttons.touchPad;
 
         juce__slider_acc_x->setValue(DS_UI_input.accelerometer.x);
         juce__slider_acc_y->setValue(DS_UI_input.accelerometer.y);
