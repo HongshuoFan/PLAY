@@ -6,12 +6,14 @@ MainComponent::MainComponent()
     setSize (600, 400);
     
     // Create HIDmenu compoent and add it to the MainComponent
-    addAndMakeVisible(m_HIDMenu);
+    m_HIDMenu.reset(new HIDMenu());
+    addAndMakeVisible(m_HIDMenu.get());
+    
     OSC_Sender.setBounds(0, proportionOfHeight (0.9f), 600, 40);
     addAndMakeVisible(OSC_Sender);
     
     // Add a listener to the m_HIDMenu
-    m_HIDMenu.onHIDMenuChanged = [this]{onHIDMenuChanged();};
+    m_HIDMenu->onHIDMenuChanged = [this]{onHIDMenuChanged();};
     hidIO.dataReceivedCallback = [this]{onDataReceived();};
     
     //xbxUI.reset (new XboxController_UI);
@@ -43,15 +45,16 @@ void MainComponent::resized()
 
 void MainComponent::onHIDMenuChanged()
 {
-    std::cout << m_HIDMenu.selectedKey << std::endl;
-    char* charPointer = new char[m_HIDMenu.selectedKey.length() + 1];
-    m_HIDMenu.selectedKey.copyToUTF8(charPointer, m_HIDMenu.selectedKey.length()+1);
+    std::cout << m_HIDMenu->selectedKey << std::endl;
+    char* charPointer = new char[m_HIDMenu->selectedKey.length() + 1];
+    m_HIDMenu->selectedKey.copyToUTF8(charPointer, m_HIDMenu->selectedKey.length()+1);
     
     hidIO.device_name = charPointer;
     
     if(hidIO.connect()){
         
-        m_HIDMenu.setVisible(false);
+        m_HIDMenu->setVisible(false);
+        m_HIDMenu = nullptr;
         
         if(strcmp("DualSense Wireless Controller", hidIO.device_name) == 0){
             std::cout << "connect to DualSense Wireless Controller" << std::endl;

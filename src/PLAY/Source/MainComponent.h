@@ -37,7 +37,8 @@ private:
     //==============================================================================
     // Your private member variables go here...
     // write a new funciton 
-    HIDMenu m_HIDMenu;
+    std::unique_ptr<HIDMenu> m_HIDMenu;
+    //HIDMenu m_HIDMenu;
     
     HID_IO hidIO;
     uint8_t InputData;
