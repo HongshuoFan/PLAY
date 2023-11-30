@@ -369,9 +369,9 @@ void XboxController_UI::update()
 
         Left_Stick->updatePoint(_input.leftStick.x, _input.leftStick.y, _input.leftStick.stickPress);
         Right_Stick->updatePoint(_input.rightStick.x, _input.rightStick.y, _input.rightStick.stickPress);
-
-        juce__slider_L_Trigger->setValue(_input.leftTrigger);
-        juce__slider_R_Trigger->setValue(_input.rightTrigger);
+        
+        juce__slider_L_Trigger->setValue(std::clamp(_input.leftTrigger, 0.f, 1.0f));
+        juce__slider_R_Trigger->setValue(std::clamp(_input.rightTrigger, 0.f, 1.0f));
 
     }else{
         setFramesPerSecond (1);

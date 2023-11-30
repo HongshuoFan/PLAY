@@ -64,6 +64,7 @@ private:
     std::unique_ptr<StickGUI> Left_Stick;
     std::unique_ptr<StickGUI> Right_Stick;
     std::unique_ptr<TouchPadGUI> TouchPad;
+    //float clamp(float v, float min, float max);
     //TouchPadGUI touchPad;
     //[/UserVariables]
 

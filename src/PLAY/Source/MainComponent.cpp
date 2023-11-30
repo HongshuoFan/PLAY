@@ -7,14 +7,13 @@ MainComponent::MainComponent()
     
     // Create HIDmenu compoent and add it to the MainComponent
     m_HIDMenu.reset(new HIDMenu());
+    m_HIDMenu->onHIDMenuChanged = [this]{onHIDMenuChanged();};
     addAndMakeVisible(m_HIDMenu.get());
     
     OSC_Sender.setBounds(0, proportionOfHeight (0.9f), 600, 40);
     addAndMakeVisible(OSC_Sender);
     
     // Add a listener to the m_HIDMenu
-    m_HIDMenu->onHIDMenuChanged = [this]{onHIDMenuChanged();};
-    hidIO.dataReceivedCallback = [this]{onDataReceived();};
     
     //xbxUI.reset (new XboxController_UI);
 }
@@ -22,6 +21,9 @@ MainComponent::MainComponent()
 MainComponent::~MainComponent()
 {
     OSC_Sender._oscSender.disconnect();
+    hidIO     = nullptr;
+    XC_input  = nullptr;
+    m_HIDMenu = nullptr;
 }
 
 //==============================================================================
@@ -49,14 +51,17 @@ void MainComponent::onHIDMenuChanged()
     char* charPointer = new char[m_HIDMenu->selectedKey.length() + 1];
     m_HIDMenu->selectedKey.copyToUTF8(charPointer, m_HIDMenu->selectedKey.length()+1);
     
-    hidIO.device_name = charPointer;
     
-    if(hidIO.connect()){
+    hidIO.reset(new HID_IO());
+    hidIO->dataReceivedCallback = [this]{onDataReceived();};
+    hidIO->device_name = charPointer;
+    
+    if(hidIO->connect()){
         
         m_HIDMenu->setVisible(false);
         m_HIDMenu = nullptr;
         
-        if(strcmp("DualSense Wireless Controller", hidIO.device_name) == 0){
+        if(strcmp("DualSense Wireless Controller", hidIO->device_name) == 0){
             std::cout << "connect to DualSense Wireless Controller" << std::endl;
             
             
@@ -64,24 +69,26 @@ void MainComponent::onHIDMenuChanged()
             
             // initial duel sense
             DS_output.initialOuput();
-            hidIO.writeRawData(DS_output._output, 0x01, 78);
+            hidIO->writeRawData(DS_output._output, 0x01, 78);
             
             std::this_thread::sleep_for(std::chrono::seconds(1));
             
-            hidIO.dataReceivedCallback = [this]{onDualSense_DataReceived();};
+            hidIO->dataReceivedCallback = [this]{onDualSense_DataReceived();};
             addAndMakeVisible(DS_UI);
             DS_UI.isConnected = true;
             //DS_output.createDualSenseOutput();
             //hidIO.writeRawData(DS_output.DS_output, 0x01);
             
-        }else if(strcmp("Xbox Wireless Controller", hidIO.device_name) == 0){
+        }else if(strcmp("Xbox Wireless Controller", hidIO->device_name) == 0){
             std::cout << "connect to Xbox Wireless Controller" << std::endl;
-            hidIO.dataReceivedCallback = [this]{onXboxController_DataReceived();};
+            hidIO->dataReceivedCallback = [this]{onXboxController_DataReceived();};
             
            
             addAndMakeVisible(xbxUI);
             xbxUI.isConnected = true;
             xbxUI.XboxVibration = [this]{EnableXboxControllerVibration();};
+            
+            XC_input.reset(new XboxController_Input());
             
             osc_receiver.TriggerVibration = [this]{EnableXboxControllerVibration();};
             std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -89,7 +96,7 @@ void MainComponent::onHIDMenuChanged()
             EnableXboxControllerVibration();
         }else{
             std::cout << "connect to unknown Controller" << std::endl;
-            hidIO.dataReceivedCallback = [this]{onDataReceived();};
+            hidIO->dataReceivedCallback = [this]{onDataReceived();};
             
         }
     }
@@ -100,7 +107,7 @@ void MainComponent::onHIDMenuChanged()
 void MainComponent::onDataReceived()
 {
 //        std::cout << std::endl;
-    if(hidIO.isConneted){
+    if(hidIO->isConneted){
         //hidIO.printReport();
     }
 }
@@ -109,16 +116,16 @@ void MainComponent::onDualSense_DataReceived()
 {
 //    std::cout<<  hidIO.reportData[1] << "\n";
     
-    DS_input.evaluateDualSenseHidInputBuffer(hidIO.reportData);
+    DS_input.evaluateDualSenseHidInputBuffer(hidIO->reportData);
     DS_UI.DS_UI_input = DS_input.DS_input;
     //hidIO.printReport();
 }
 
 void MainComponent::onXboxController_DataReceived() { 
-    XC_input.evaluateXboxCotrollerHidInputBuffer(hidIO.reportData);
-    xbxUI._input = XC_input.xbox_input;
+    XC_input->evaluateXboxCotrollerHidInputBuffer(hidIO->reportData);
+    xbxUI._input = XC_input->xbox_input;
 //    OSC_Sender._xboxInput = XC_input.xbox_input;
-    OSC_Sender.send_Xbox_OSC_message(XC_input.xbox_input);
+    OSC_Sender.send_Xbox_OSC_message(XC_input->xbox_input);
     
 }
 
@@ -127,17 +134,20 @@ void MainComponent::userTriedToCloseWindow(){
     std::cout<<"User Tried To Close Window \n";
     if(DS_UI.isConnected){
         DS_output.disConnectOutput();
-        hidIO.writeRawData(DS_output._output, 0xa2, 78);
+        hidIO->writeRawData(DS_output._output, 0xa2, 78);
     }
-    hidIO.stopReadingThread();
+    
+    hidIO->stopReadingThread();
+    hidIO = nullptr;
+    
     OSC_Sender.disConnect();
 }
 
 void MainComponent::EnableXboxControllerVibration(){
     
-    if(hidIO.isConneted){
+    if(hidIO->isConneted){
         std::cout<<"EnableXboxControllerVibration \n";
-        hidIO.writeRawData(xbxUI.VibrationData, 0x03, 9);
+        hidIO->writeRawData(xbxUI.VibrationData, 0x03, 9);
         
     }
     

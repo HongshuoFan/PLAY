@@ -40,14 +40,16 @@ private:
     std::unique_ptr<HIDMenu> m_HIDMenu;
     //HIDMenu m_HIDMenu;
     
-    HID_IO hidIO;
+    std::unique_ptr<HID_IO> hidIO;
+    //HID_IO hidIO;
     uint8_t InputData;
     
     DualSense_Input DS_input;
     DualSense_Output DS_output;
     DualSense_UI DS_UI;
     
-    XboxController_Input XC_input;
+    std::unique_ptr<XboxController_Input> XC_input;
+    //XboxController_Input XC_input;
     //std::unique_ptr<XboxController_UI> xbxUI;
     XboxController_UI xbxUI;
     

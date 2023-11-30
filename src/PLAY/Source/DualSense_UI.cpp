@@ -34,12 +34,12 @@ DualSense_UI::DualSense_UI ()
     addAndMakeVisible(Left_Stick.get());
     Left_Stick->setBounds(185, 130, 80, 80);
     Left_Stick->resized();
-    
+
     Right_Stick.reset(new StickGUI());
     addAndMakeVisible(Right_Stick.get());
     Right_Stick->setBounds(333, 130, 80, 80);
     Right_Stick->resized();
-    
+
     TouchPad.reset(new TouchPadGUI);
     addAndMakeVisible(TouchPad.get());
     TouchPad->setBounds(224, 25, 160, 100);
@@ -474,26 +474,31 @@ void DualSense_UI::update()
         Left_Stick->updatePoint(DS_UI_input.leftStick.x, DS_UI_input.leftStick.y, DS_UI_input.leftStick.stickPress);
         Right_Stick->updatePoint(DS_UI_input.rightStick.x, DS_UI_input.rightStick.y, DS_UI_input.rightStick.stickPress);
 
-        juce__slider_L_Trigger->setValue(DS_UI_input.leftTrigger);
-        juce__slider_R_Trigger->setValue(DS_UI_input.rightTrigger);
+        juce__slider_L_Trigger->setValue(std::clamp(DS_UI_input.leftTrigger, 0.f, 1.0f));
+        juce__slider_R_Trigger->setValue(std::clamp(DS_UI_input.rightTrigger, 0.f, 1.0f));
 
         TouchPad->updateTouchPad_1(DS_UI_input.touchPoint1);
         TouchPad->updateTouchPad_2(DS_UI_input.touchPoint2);
         TouchPad->pressTouchPad = DS_UI_input.buttons.touchPad;
 
-        juce__slider_acc_x->setValue(DS_UI_input.accelerometer.x);
-        juce__slider_acc_y->setValue(DS_UI_input.accelerometer.y);
-        juce__slider_acc_z->setValue(DS_UI_input.accelerometer.z);
+        juce__slider_acc_x->setValue(std::clamp(DS_UI_input.accelerometer.x, -1.0f, 1.0f));
+        juce__slider_acc_y->setValue(std::clamp(DS_UI_input.accelerometer.y, -1.0f, 1.0f));
+        juce__slider_acc_z->setValue(std::clamp(DS_UI_input.accelerometer.z, -1.0f, 1.0f));
 
-        juce__slider_gyr_x->setValue(DS_UI_input.gyroscope.x);
-        juce__slider_gyr_y->setValue(DS_UI_input.gyroscope.y);
-        juce__slider_gyr_z->setValue(DS_UI_input.gyroscope.z);
+        juce__slider_gyr_x->setValue(std::clamp(DS_UI_input.gyroscope.x, -1000.0f, 1000.0f));
+        juce__slider_gyr_y->setValue(std::clamp(DS_UI_input.gyroscope.y, -1000.0f, 1000.0f));
+        juce__slider_gyr_z->setValue(std::clamp(DS_UI_input.gyroscope.z, -1000.0f, 1000.0f));
 
     }else{
         setFramesPerSecond(1);
     }
 
 }
+//
+//static float _clamp(float v, float min, float max)
+//{
+//    return fmax(min, fmin(v, max));
+//}
 //[/MiscUserCode]
 
 
