@@ -85,7 +85,7 @@ void TouchPadGUI::paint (juce::Graphics& g)
     {
         if(touchPoint2.down){
            
-            g.fillEllipse (touchPoint2.x, touchPoint2.x, pointSize, pointSize);
+            g.fillEllipse (touchPoint2.x, touchPoint2.y, pointSize, pointSize);
         }
     }
     //[/UserPaint]
@@ -112,7 +112,7 @@ void TouchPadGUI::updateTouchPad_1(DualSense::Touch Point1)
 
         touchPoint1.y = proportionOfHeight (0.9f) - (Point1.y * proportionOfHeight (0.9f));
         touchPoint1.y = fmax(1, fmin(touchPoint1.y, getHeight()));
-        std::cout<<"1:"<< touchPoint1.x << " "<<  touchPoint1.y<<"\n";
+        //std::cout<<"1:"<< touchPoint1.x << " "<<  touchPoint1.y<<"\n";
     }else{
         touchPoint1.down = false;
         
@@ -126,10 +126,10 @@ void TouchPadGUI::updateTouchPad_2(DualSense::Touch Point2)
         touchPoint2.down = true;
         touchPoint2.x = Point2.x * proportionOfWidth (0.9f);
         touchPoint2.x = fmax(1, fmin(touchPoint2.x, getWidth()));
-
+        
         touchPoint2.y = proportionOfHeight (0.9f) - (Point2.y * proportionOfHeight (0.9f));
         touchPoint2.y = fmax(1, fmin(touchPoint2.y, getHeight()));
-        std::cout<<"2:"<< touchPoint2.x << " "<< touchPoint2.y<<"\n";
+  
     }else{
         touchPoint2.down = false;
         
