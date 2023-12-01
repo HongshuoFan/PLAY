@@ -10,9 +10,11 @@ MainComponent::MainComponent()
     m_HIDMenu->onHIDMenuChanged = [this]{onHIDMenuChanged();};
     addAndMakeVisible(m_HIDMenu.get());
     
-    OSC_Sender.setBounds(0, proportionOfHeight (0.9f), 600, 40);
-    addAndMakeVisible(OSC_Sender);
+    OSC_Sender.reset(new OSC_Sender_UI);
+    OSC_Sender->setBounds(0, proportionOfHeight (0.9f), 600, 40);
+    addAndMakeVisible(OSC_Sender.get());
     
+    osc_receiver.reset(new OSC_Receiver);
     // Add a listener to the m_HIDMenu
     
     //xbxUI.reset (new XboxController_UI);
@@ -20,12 +22,14 @@ MainComponent::MainComponent()
 
 MainComponent::~MainComponent()
 {
-    OSC_Sender._oscSender.disconnect();
+    //OSC_Sender->_oscSender.disconnect();
     hidIO     = nullptr;
     XC_input  = nullptr;
     m_HIDMenu = nullptr;
     DS_input  = nullptr;
     DS_output = nullptr;
+    osc_receiver = nullptr;
+    OSC_Sender = nullptr;
 }
 
 //==============================================================================
@@ -44,7 +48,10 @@ void MainComponent::resized()
     // This is called when the MainComponent is resized.
     // If you add any child components, this is where you should
     // update their positions.
-    OSC_Sender.setBounds(0, proportionOfHeight (0.9f), 600, 40);
+    if(OSC_Sender){
+        OSC_Sender->setBounds(0, proportionOfHeight (0.9f), 600, 40);
+    }
+    
 }
 
 void MainComponent::onHIDMenuChanged()
@@ -95,7 +102,7 @@ void MainComponent::onHIDMenuChanged()
             
             XC_input.reset(new XboxController_Input());
             
-            osc_receiver.TriggerVibration = [this]{EnableXboxControllerVibration();};
+            osc_receiver->TriggerVibration = [this]{EnableXboxControllerVibration();};
             std::this_thread::sleep_for(std::chrono::seconds(1));
 //
             EnableXboxControllerVibration();
@@ -130,7 +137,7 @@ void MainComponent::onXboxController_DataReceived() {
     XC_input->evaluateXboxCotrollerHidInputBuffer(hidIO->reportData);
     xbxUI._input = XC_input->xbox_input;
 //    OSC_Sender._xboxInput = XC_input.xbox_input;
-    OSC_Sender.send_Xbox_OSC_message(XC_input->xbox_input);
+    OSC_Sender->send_Xbox_OSC_message(XC_input->xbox_input);
     
 }
 
@@ -145,7 +152,7 @@ void MainComponent::userTriedToCloseWindow(){
     hidIO->stopReadingThread();
     hidIO = nullptr;
     
-    OSC_Sender.disConnect();
+    OSC_Sender->disConnect();
 }
 
 void MainComponent::EnableXboxControllerVibration(){

@@ -55,8 +55,10 @@ private:
     //std::unique_ptr<XboxController_UI> xbxUI;
     XboxController_UI xbxUI;
     
-    OSC_Sender_UI OSC_Sender;
-    OSC_Receiver osc_receiver;
+    std::unique_ptr<OSC_Sender_UI> OSC_Sender;
+    std::unique_ptr<OSC_Receiver> osc_receiver;
+    //OSC_Sender_UI OSC_Sender;
+    //OSC_Receiver osc_receiver;
     
     void onHIDMenuChanged();
     void onDataReceived();
