@@ -294,6 +294,56 @@ void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState
 
     }
 }
+void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput)
+{
+    if(juce__toggleButton_OSC->getToggleState()){
+        
+        ConvertAndSend_float(_dualSenseInput.leftStick.x, last_dualSenseInput.leftStick.x,
+                             "/leftStick/x", last_dualSenseInput.leftStick.x);
+        ConvertAndSend_float(_dualSenseInput.leftStick.y, last_dualSenseInput.leftStick.y,
+                             "/leftStick/y", last_dualSenseInput.leftStick.y);
+        ConvertAndSend_float(_dualSenseInput.rightStick.x, last_xboxInput.rightStick.x,
+                             "/rightStick/x", last_xboxInput.leftStick.x);
+        ConvertAndSend_float(_dualSenseInput.rightStick.y, last_xboxInput.rightStick.y,
+                             "/rightStick/y", last_xboxInput.leftStick.y);
+        ConvertAndSend_float(_dualSenseInput.leftTrigger, last_xboxInput.leftTrigger,
+                             "/leftTrigger", last_xboxInput.leftTrigger);
+        ConvertAndSend_float(_dualSenseInput.rightTrigger, last_xboxInput.rightTrigger,
+                             "/rightTrigger", last_xboxInput.rightTrigger);
+
+        ConvertAndSend_bool(_dualSenseInput.buttons.square, last_dualSenseInput.buttons.square,
+                            "/buttons/square", last_dualSenseInput.buttons.square);
+        ConvertAndSend_bool(_dualSenseInput.buttons.cross, last_dualSenseInput.buttons.cross,
+                            "/buttons/cross", last_dualSenseInput.buttons.cross);
+        ConvertAndSend_bool(_dualSenseInput.buttons.circle, last_dualSenseInput.buttons.circle,
+                            "/buttons/circle", last_dualSenseInput.buttons.circle);
+        ConvertAndSend_bool(_dualSenseInput.buttons.triangle, last_dualSenseInput.buttons.triangle,
+                            "/buttons/triangle", last_dualSenseInput.buttons.triangle);
+        ConvertAndSend_bool(_dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad,
+                            "/buttons/touchPad", last_dualSenseInput.buttons.touchPad);
+
+        ConvertAndSend_bool(_dualSenseInput.buttons.select, last_dualSenseInput.buttons.select,
+                            "/buttons/select", last_dualSenseInput.buttons.select);
+        ConvertAndSend_bool(_dualSenseInput.buttons.menu, last_dualSenseInput.buttons.menu,
+                            "/buttons/menu", last_dualSenseInput.buttons.menu);
+
+        ConvertAndSend_bool(_dualSenseInput.buttons.l1, last_dualSenseInput.buttons.l1,
+                            "/buttons/l1", last_dualSenseInput.buttons.l1);
+        ConvertAndSend_bool(_dualSenseInput.buttons.r1, last_dualSenseInput.buttons.r1,
+                            "/buttons/r1", last_dualSenseInput.buttons.r1);
+
+        ConvertAndSend_bool(_dualSenseInput.dpad.up, last_dualSenseInput.dpad.up,
+                            "/dpad/up", last_xboxInput.dpad.up);
+        ConvertAndSend_bool(_dualSenseInput.dpad.down, last_dualSenseInput.dpad.down,
+                            "/dpad/down", last_dualSenseInput.dpad.down);
+        ConvertAndSend_bool(_dualSenseInput.dpad.left, last_dualSenseInput.dpad.left,
+                            "/dpad/left", last_dualSenseInput.dpad.left);
+        ConvertAndSend_bool(_dualSenseInput.dpad.right, last_dualSenseInput.dpad.right,
+                            "/dpad/right", last_dualSenseInput.dpad.right);
+        
+    }
+    
+}
 
 void OSC_Sender_UI::ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p)
 {

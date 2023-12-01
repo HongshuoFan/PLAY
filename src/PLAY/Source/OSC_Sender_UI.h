@@ -22,6 +22,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
 #include "XboxControllerState.h"
+#include "DualSenseState.h"
 //[/Headers]
 
 
@@ -45,6 +46,7 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     void send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState _xboxInput);
+    void send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput);
     juce::OSCSender _oscSender;
     void disConnect();
     //[/UserMethods]
@@ -64,7 +66,7 @@ private:
     void ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p);
     void ConvertAndSend_bool(const bool buttonState, const bool pre_buttonStat, const juce::String address, bool& pre_buttonStat_p);
     XboxCotroller::XboxCotrollerInputState last_xboxInput;
-
+    DualSense::DualSenseInputState last_dualSenseInput;
     //[/UserVariables]
 
     //==============================================================================

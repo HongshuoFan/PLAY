@@ -15,6 +15,7 @@ MainComponent::MainComponent()
     addAndMakeVisible(OSC_Sender.get());
     
     osc_receiver.reset(new OSC_Receiver);
+    osc_receiver->TriggerVibration = [this]{onDataReceived();};
     // Add a listener to the m_HIDMenu
     
     //xbxUI.reset (new XboxController_UI);
@@ -73,39 +74,34 @@ void MainComponent::onHIDMenuChanged()
         if(strcmp("DualSense Wireless Controller", hidIO->device_name) == 0){
             std::cout << "connect to DualSense Wireless Controller" << std::endl;
             
-            
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-            
             // initial duel sense
             DS_input.reset(new DualSense_Input());
             DS_output.reset(new DualSense_Output);
+            
+            std::this_thread::sleep_for(std::chrono::seconds(1));
             
             DS_output->initialOuput();
             hidIO->writeRawData(DS_output->_output, 0x01, 78);
             
             std::this_thread::sleep_for(std::chrono::seconds(1));
-            
+            //
             hidIO->dataReceivedCallback = [this]{onDualSense_DataReceived();};
             addAndMakeVisible(DS_UI);
             DS_UI.isConnected = true;
-            //DS_output.createDualSenseOutput();
-            //hidIO.writeRawData(DS_output.DS_output, 0x01);
-            
+
         }else if(strcmp("Xbox Wireless Controller", hidIO->device_name) == 0){
             std::cout << "connect to Xbox Wireless Controller" << std::endl;
-            hidIO->dataReceivedCallback = [this]{onXboxController_DataReceived();};
             
-           
+            hidIO->dataReceivedCallback = [this]{onXboxController_DataReceived();};
+            XC_input.reset(new XboxController_Input());
+    
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            osc_receiver->TriggerVibration = [this]{EnableXboxControllerVibration();};
             addAndMakeVisible(xbxUI);
             xbxUI.isConnected = true;
             xbxUI.XboxVibration = [this]{EnableXboxControllerVibration();};
-            
-            XC_input.reset(new XboxController_Input());
-            
-            osc_receiver->TriggerVibration = [this]{EnableXboxControllerVibration();};
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-//
             EnableXboxControllerVibration();
+            
         }else{
             std::cout << "connect to unknown Controller" << std::endl;
             hidIO->dataReceivedCallback = [this]{onDataReceived();};
@@ -130,6 +126,7 @@ void MainComponent::onDualSense_DataReceived()
     
     DS_input->evaluateDualSenseHidInputBuffer(hidIO->reportData);
     DS_UI.DS_UI_input = DS_input->DS_input;
+    OSC_Sender->send_DualSense_OSC_message(DS_input->DS_input);
     //hidIO.printReport();
 }
 
