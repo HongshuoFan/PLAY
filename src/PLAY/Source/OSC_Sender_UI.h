@@ -63,6 +63,7 @@ private:
     bool isValidPort(const juce::String new_port);
     juce::String ip = "127.0.0.1";
     int port = 9001;
+    void ConvertAndSend_int(const int val, const int pre_val, const juce::String address, int& pre_val_p);
     void ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p);
     void ConvertAndSend_bool(const bool buttonState, const bool pre_buttonStat, const juce::String address, bool& pre_buttonStat_p);
     XboxCotroller::XboxCotrollerInputState last_xboxInput;

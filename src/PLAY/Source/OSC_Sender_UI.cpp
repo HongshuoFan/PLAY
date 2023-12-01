@@ -319,8 +319,6 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
                             "/buttons/circle", last_dualSenseInput.buttons.circle);
         ConvertAndSend_bool(_dualSenseInput.buttons.triangle, last_dualSenseInput.buttons.triangle,
                             "/buttons/triangle", last_dualSenseInput.buttons.triangle);
-        ConvertAndSend_bool(_dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad,
-                            "/buttons/touchPad", last_dualSenseInput.buttons.touchPad);
 
         ConvertAndSend_bool(_dualSenseInput.buttons.select, last_dualSenseInput.buttons.select,
                             "/buttons/select", last_dualSenseInput.buttons.select);
@@ -341,6 +339,40 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
         ConvertAndSend_bool(_dualSenseInput.dpad.right, last_dualSenseInput.dpad.right,
                             "/dpad/right", last_dualSenseInput.dpad.right);
         
+        ConvertAndSend_bool(_dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad,
+                            "/buttons/touchPad", last_dualSenseInput.buttons.touchPad);
+        ConvertAndSend_int(_dualSenseInput.touchPoint1.id, last_dualSenseInput.touchPoint1.id,
+                            "/touchPoint1/id", last_dualSenseInput.touchPoint1.id);
+        ConvertAndSend_bool(_dualSenseInput.touchPoint1.down, last_dualSenseInput.touchPoint1.down,
+                            "/touchPoint1/down", last_dualSenseInput.touchPoint1.down);
+        ConvertAndSend_float(_dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x,
+                            "/touchPoint1/x", last_dualSenseInput.touchPoint1.x);
+        ConvertAndSend_float(_dualSenseInput.touchPoint1.y, last_dualSenseInput.touchPoint1.y,
+                            "/touchPoint1/y", last_dualSenseInput.touchPoint1.y);
+        
+        ConvertAndSend_int(_dualSenseInput.touchPoint2.id, last_dualSenseInput.touchPoint2.id,
+                            "/touchPoint2/id", last_dualSenseInput.touchPoint2.id);
+        ConvertAndSend_bool(_dualSenseInput.touchPoint2.down, last_dualSenseInput.touchPoint2.down,
+                            "/touchPoint2/down", last_dualSenseInput.touchPoint2.down);
+        ConvertAndSend_float(_dualSenseInput.touchPoint2.x, last_dualSenseInput.touchPoint2.x,
+                            "/touchPoint2/x", last_dualSenseInput.touchPoint2.x);
+        ConvertAndSend_float(_dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y,
+                            "/touchPoint2/y", last_dualSenseInput.touchPoint2.y);
+        
+        ConvertAndSend_float(_dualSenseInput.accelerometer.x, last_dualSenseInput.accelerometer.x,
+                            "/accelerometer/x", last_dualSenseInput.accelerometer.x);
+        ConvertAndSend_float(_dualSenseInput.accelerometer.y, last_dualSenseInput.accelerometer.y,
+                            "/accelerometer/y", last_dualSenseInput.accelerometer.y);
+        ConvertAndSend_float(_dualSenseInput.accelerometer.z, last_dualSenseInput.accelerometer.z,
+                            "/accelerometer/z", last_dualSenseInput.accelerometer.z);
+        
+        ConvertAndSend_float(_dualSenseInput.gyroscope.x, last_dualSenseInput.gyroscope.x,
+                            "/gyroscope/x", last_dualSenseInput.gyroscope.x);
+        ConvertAndSend_float(_dualSenseInput.gyroscope.y, last_dualSenseInput.gyroscope.y,
+                            "/gyroscope/y", last_dualSenseInput.gyroscope.y);
+        ConvertAndSend_float(_dualSenseInput.gyroscope.z, last_dualSenseInput.gyroscope.z,
+                            "/gyroscope/z", last_dualSenseInput.gyroscope.z);
+        
     }
     
 }
@@ -348,6 +380,15 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
 void OSC_Sender_UI::ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p)
 {
     if(val != pre_val && abs(val-pre_val) >= 0.001){
+        if(_oscSender.send(address, val)){
+            pre_val_p = val;
+        }
+    }
+}
+
+void OSC_Sender_UI::ConvertAndSend_int(const int val, const int pre_val, const juce::String address, int& pre_val_p)
+{
+    if(val != pre_val){
         if(_oscSender.send(address, val)){
             pre_val_p = val;
         }
