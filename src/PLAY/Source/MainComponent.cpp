@@ -24,6 +24,8 @@ MainComponent::~MainComponent()
     hidIO     = nullptr;
     XC_input  = nullptr;
     m_HIDMenu = nullptr;
+    DS_input  = nullptr;
+    DS_output = nullptr;
 }
 
 //==============================================================================
@@ -68,8 +70,11 @@ void MainComponent::onHIDMenuChanged()
             std::this_thread::sleep_for(std::chrono::seconds(1));
             
             // initial duel sense
-            DS_output.initialOuput();
-            hidIO->writeRawData(DS_output._output, 0x01, 78);
+            DS_input.reset(new DualSense_Input());
+            DS_output.reset(new DualSense_Output);
+            
+            DS_output->initialOuput();
+            hidIO->writeRawData(DS_output->_output, 0x01, 78);
             
             std::this_thread::sleep_for(std::chrono::seconds(1));
             
@@ -116,8 +121,8 @@ void MainComponent::onDualSense_DataReceived()
 {
 //    std::cout<<  hidIO.reportData[1] << "\n";
     
-    DS_input.evaluateDualSenseHidInputBuffer(hidIO->reportData);
-    DS_UI.DS_UI_input = DS_input.DS_input;
+    DS_input->evaluateDualSenseHidInputBuffer(hidIO->reportData);
+    DS_UI.DS_UI_input = DS_input->DS_input;
     //hidIO.printReport();
 }
 
@@ -133,8 +138,8 @@ void MainComponent::userTriedToCloseWindow(){
 //
     std::cout<<"User Tried To Close Window \n";
     if(DS_UI.isConnected){
-        DS_output.disConnectOutput();
-        hidIO->writeRawData(DS_output._output, 0xa2, 78);
+        DS_output->disConnectOutput();
+        hidIO->writeRawData(DS_output->_output, 0xa2, 78);
     }
     
     hidIO->stopReadingThread();
