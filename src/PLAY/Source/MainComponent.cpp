@@ -12,7 +12,6 @@ MainComponent::MainComponent()
     
     OSC_Sender.reset(new OSC_Sender_UI);
     OSC_Sender->setBounds(0, proportionOfHeight (0.9f), 600, 40);
-    addAndMakeVisible(OSC_Sender.get());
     
     osc_receiver.reset(new OSC_Receiver);
     osc_receiver->TriggerVibration = [this]{onDataReceived();};
@@ -68,10 +67,13 @@ void MainComponent::onHIDMenuChanged()
     
     if(hidIO->connect()){
         
-        m_HIDMenu->setVisible(false);
-        m_HIDMenu = nullptr;
+        
         
         if(strcmp("DualSense Wireless Controller", hidIO->device_name) == 0){
+            
+            m_HIDMenu->setVisible(false);
+            m_HIDMenu = nullptr;
+            addAndMakeVisible(OSC_Sender.get());
             std::cout << "connect to DualSense Wireless Controller" << std::endl;
             
             // initial duel sense
@@ -88,8 +90,13 @@ void MainComponent::onHIDMenuChanged()
             hidIO->dataReceivedCallback = [this]{onDualSense_DataReceived();};
             addAndMakeVisible(DS_UI);
             DS_UI.isConnected = true;
+            
 
         }else if(strcmp("Xbox Wireless Controller", hidIO->device_name) == 0){
+            
+            m_HIDMenu->setVisible(false);
+            m_HIDMenu = nullptr;
+            addAndMakeVisible(OSC_Sender.get());
             std::cout << "connect to Xbox Wireless Controller" << std::endl;
             
             hidIO->dataReceivedCallback = [this]{onXboxController_DataReceived();};
@@ -104,6 +111,10 @@ void MainComponent::onHIDMenuChanged()
             
         }else{
             std::cout << "connect to unknown Controller" << std::endl;
+            juce::AlertWindow::showMessageBoxAsync (juce::AlertWindow::WarningIcon,
+                                                    "Error",
+                                                    "Unsupported device",
+                                                    "OK");
             hidIO->dataReceivedCallback = [this]{onDataReceived();};
             
         }
