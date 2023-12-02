@@ -128,25 +128,6 @@ void HID_IO::stopReadingThread() {
 }
 
 
-//bool HID_IO::readRawData(unsigned char* buffer, int bufferSize) {
-//    if (deviceRF) {
-//        CFIndex reportID = 6; // Set the appropriate report ID if necessary
-//        
-//        uint32_t max_input_report_size = GetIntProperty(deviceRF, CFSTR(kIOHIDMaxInputReportSizeKey));
-//        uint8_t* report_buffer = static_cast<uint8_t*>(calloc(max_input_report_size, sizeof(uint8_t)));
-//        CFIndex reportLength = max_input_report_size;
-//        IOReturn result = IOHIDDeviceGetReport(deviceRF, kIOHIDReportTypeInput, reportID, report_buffer, &reportLength);
-//
-//        
-//        return result == kIOReturnSuccess;
-//    }
-//    return false;
-//}
-
-//uint8_t* HID_IO::getInputData() {
-//    return reportData;
-//}
-
 void HID_IO::creatConncet()
 {
     manager = IOHIDManagerCreate(kCFAllocatorDefault, kIOHIDOptionsTypeNone);
