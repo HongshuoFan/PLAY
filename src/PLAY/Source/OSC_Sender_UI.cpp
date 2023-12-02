@@ -331,7 +331,7 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
                             "/buttons/r1", last_dualSenseInput.buttons.r1);
 
         ConvertAndSend_bool(_dualSenseInput.dpad.up, last_dualSenseInput.dpad.up,
-                            "/dpad/up", last_xboxInput.dpad.up);
+                            "/dpad/up", last_dualSenseInput.dpad.up);
         ConvertAndSend_bool(_dualSenseInput.dpad.down, last_dualSenseInput.dpad.down,
                             "/dpad/down", last_dualSenseInput.dpad.down);
         ConvertAndSend_bool(_dualSenseInput.dpad.left, last_dualSenseInput.dpad.left,
