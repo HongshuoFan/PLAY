@@ -40,7 +40,8 @@ private:
     std::unique_ptr<HIDMenu> m_HIDMenu;
     //HIDMenu m_HIDMenu;
     
-    std::unique_ptr<HID_IO> hidIO;
+    std::unique_ptr<HID_IO> hidIO_1;
+    std::unique_ptr<HID_IO> hidIO_2;
     //HID_IO hidIO;
     uint8_t InputData;
     
@@ -64,7 +65,10 @@ private:
     void onDataReceived();
     void onDualSense_DataReceived();
     void onXboxController_DataReceived();
+    void onJoyCon_L_DataReceived();
+    void onJoyCon_R_DataReceived();
     void EnableXboxControllerVibration();
+    void initialConnection(juce::String nameOfDevice);
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

@@ -23,7 +23,8 @@ MainComponent::MainComponent()
 MainComponent::~MainComponent()
 {
     //OSC_Sender->_oscSender.disconnect();
-    hidIO     = nullptr;
+    hidIO_1     = nullptr;
+    hidIO_2     = nullptr;
     XC_input  = nullptr;
     m_HIDMenu = nullptr;
     DS_input  = nullptr;
@@ -61,20 +62,17 @@ void MainComponent::onHIDMenuChanged()
     m_HIDMenu->selectedKey.copyToUTF8(charPointer, m_HIDMenu->selectedKey.length()+1);
     
     
-    hidIO.reset(new HID_IO());
-    hidIO->dataReceivedCallback = [this]{onDataReceived();};
-    hidIO->device_name = charPointer;
+    hidIO_1.reset(new HID_IO());
+    hidIO_1->dataReceivedCallback = [this]{onDataReceived();};
+    hidIO_1->device_name = charPointer;
     
-    if(hidIO->connect()){
+    if(hidIO_1->connect()){
         
         
         
-        if(strcmp("DualSense Wireless Controller", hidIO->device_name) == 0){
+        if(strcmp("DualSense Wireless Controller", charPointer) == 0){
             
-            m_HIDMenu->setVisible(false);
-            m_HIDMenu = nullptr;
-            addAndMakeVisible(OSC_Sender.get());
-            std::cout << "connect to DualSense Wireless Controller" << std::endl;
+            initialConnection("DualSense Wireless Controller");
             
             // initial duel sense
             DS_input.reset(new DualSense_Input());
@@ -83,23 +81,20 @@ void MainComponent::onHIDMenuChanged()
             std::this_thread::sleep_for(std::chrono::seconds(1));
             
             DS_output->initialOuput();
-            hidIO->writeRawData(DS_output->_output, 0x01, 78);
+            hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
             
             std::this_thread::sleep_for(std::chrono::seconds(1));
             //
-            hidIO->dataReceivedCallback = [this]{onDualSense_DataReceived();};
+            hidIO_1->dataReceivedCallback = [this]{onDualSense_DataReceived();};
             addAndMakeVisible(DS_UI);
             DS_UI.isConnected = true;
             
 
-        }else if(strcmp("Xbox Wireless Controller", hidIO->device_name) == 0){
+        }else if(strcmp("Xbox Wireless Controller", charPointer) == 0){
             
-            m_HIDMenu->setVisible(false);
-            m_HIDMenu = nullptr;
-            addAndMakeVisible(OSC_Sender.get());
-            std::cout << "connect to Xbox Wireless Controller" << std::endl;
+            initialConnection("Xbox Wireless Controller");
             
-            hidIO->dataReceivedCallback = [this]{onXboxController_DataReceived();};
+            hidIO_1->dataReceivedCallback = [this]{onXboxController_DataReceived();};
             XC_input.reset(new XboxController_Input());
     
             std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -109,13 +104,22 @@ void MainComponent::onHIDMenuChanged()
             xbxUI.XboxVibration = [this]{EnableXboxControllerVibration();};
             EnableXboxControllerVibration();
             
+        }else if(strcmp("Joy-Con (L)", charPointer) == 0 || strcmp("Joy-Con (R)", charPointer) == 0){
+            
+            initialConnection("Joy-Con");
+            
+            hidIO_2.reset(new HID_IO());
+            
+            hidIO_1->dataReceivedCallback = [this]{onJoyCon_L_DataReceived();};
+            hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
+            
         }else{
             std::cout << "connect to unknown Controller" << std::endl;
             juce::AlertWindow::showMessageBoxAsync (juce::AlertWindow::WarningIcon,
                                                     "Error",
                                                     "Unsupported device",
                                                     "OK");
-            hidIO->dataReceivedCallback = [this]{onDataReceived();};
+            //hidIO_1->dataReceivedCallback = [this]{onDataReceived();};
             
         }
     }
@@ -123,11 +127,19 @@ void MainComponent::onHIDMenuChanged()
 
 };
 
+void MainComponent::initialConnection(juce::String nameOfDevice)
+{
+    m_HIDMenu->setVisible(false);
+    m_HIDMenu = nullptr;
+    addAndMakeVisible(OSC_Sender.get());
+    std::cout << "connect to " << nameOfDevice << std::endl;
+}
+
 void MainComponent::onDataReceived()
 {
 //        std::cout << std::endl;
-    if(hidIO->isConneted){
-        //hidIO.printReport();
+    if(hidIO_1->isConneted){
+        hidIO_1->printReport();
     }
 }
 
@@ -135,17 +147,28 @@ void MainComponent::onDualSense_DataReceived()
 {
 //    std::cout<<  hidIO.reportData[1] << "\n";
     
-    DS_input->evaluateDualSenseHidInputBuffer(hidIO->reportData);
+    DS_input->evaluateDualSenseHidInputBuffer(hidIO_1->reportData);
     DS_UI.DS_UI_input = DS_input->DS_input;
     OSC_Sender->send_DualSense_OSC_message(DS_input->DS_input);
     //hidIO.printReport();
 }
 
 void MainComponent::onXboxController_DataReceived() { 
-    XC_input->evaluateXboxCotrollerHidInputBuffer(hidIO->reportData);
+    XC_input->evaluateXboxCotrollerHidInputBuffer(hidIO_1->reportData);
     xbxUI._input = XC_input->xbox_input;
 //    OSC_Sender._xboxInput = XC_input.xbox_input;
     OSC_Sender->send_Xbox_OSC_message(XC_input->xbox_input);
+    
+}
+
+
+void MainComponent::onJoyCon_L_DataReceived() {
+
+    
+}
+
+void MainComponent::onJoyCon_R_DataReceived() {
+
     
 }
 
@@ -154,20 +177,20 @@ void MainComponent::userTriedToCloseWindow(){
     std::cout<<"User Tried To Close Window \n";
     if(DS_UI.isConnected){
         DS_output->disConnectOutput();
-        hidIO->writeRawData(DS_output->_output, 0xa2, 78);
+        hidIO_1->writeRawData(DS_output->_output, 0xa2, 78);
     }
     
-    hidIO->stopReadingThread();
-    hidIO = nullptr;
-    
+    hidIO_1->stopReadingThread();
+    hidIO_1 = nullptr;
+    hidIO_2 = nullptr;
     OSC_Sender->disConnect();
 }
 
 void MainComponent::EnableXboxControllerVibration(){
     
-    if(hidIO->isConneted){
+    if(hidIO_1->isConneted){
         std::cout<<"EnableXboxControllerVibration \n";
-        hidIO->writeRawData(xbxUI.VibrationData, 0x03, 9);
+        hidIO_1->writeRawData(xbxUI.VibrationData, 0x03, 9);
         
     }
     
