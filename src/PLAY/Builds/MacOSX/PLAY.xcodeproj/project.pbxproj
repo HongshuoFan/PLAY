@@ -70,6 +70,7 @@
 		68B87DD60338E256DC76A69B /* juce_graphics */ /* juce_graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_graphics; path = /Users/hongshuofan/Documents/JUCE/modules/juce_graphics; sourceTree = "<absolute>"; };
 		6E2FBD0E7B1A625F3DB41E4D /* App.entitlements */ /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = App.entitlements; path = App.entitlements; sourceTree = SOURCE_ROOT; };
 		6E4BF7F057E083E2043D45E3 /* include_juce_osc.cpp */ /* include_juce_osc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_osc.cpp; path = ../../JuceLibraryCode/include_juce_osc.cpp; sourceTree = SOURCE_ROOT; };
+		7153E74B1A8DA0019FCEDC6C /* JoyConState.h */ /* JoyConState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JoyConState.h; path = ../../Source/JoyConState.h; sourceTree = SOURCE_ROOT; };
 		736646C43064F98E987B0FF6 /* Cocoa.framework */ /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		73A2BC0024FF2CFE98EF54DA /* include_juce_core.mm */ /* include_juce_core.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_core.mm; path = ../../JuceLibraryCode/include_juce_core.mm; sourceTree = SOURCE_ROOT; };
 		7E76CF2843E9D32EA651EA7C /* include_juce_gui_extra.mm */ /* include_juce_gui_extra.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_extra.mm; path = ../../JuceLibraryCode/include_juce_gui_extra.mm; sourceTree = SOURCE_ROOT; };
@@ -122,6 +123,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03E758FCC8177B12053A014E /* JoyCone */ = {
+			isa = PBXGroup;
+			children = (
+				7153E74B1A8DA0019FCEDC6C,
+			);
+			name = JoyCone;
+			sourceTree = "<group>";
+		};
 		2B0CB2348C0E70117D21AC00 /* DualSense */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				A0F9CAF89416BBCF311F66C4,
+				03E758FCC8177B12053A014E,
 				CC9BDA617485195E0DEE8E70,
 				2B0CB2348C0E70117D21AC00,
 				A33E8D0C79428F78D1774F43,
