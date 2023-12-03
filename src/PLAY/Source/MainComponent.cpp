@@ -3,6 +3,7 @@
 //==============================================================================
 MainComponent::MainComponent()
 {
+    //initialize();
     setSize (600, 400);
     
     // Create HIDmenu compoent and add it to the MainComponent
@@ -23,6 +24,7 @@ MainComponent::MainComponent()
 MainComponent::~MainComponent()
 {
     //OSC_Sender->_oscSender.disconnect();
+    //kill all the components 
     hidIO_1     = nullptr;
     hidIO_2     = nullptr;
     XC_input  = nullptr;
@@ -57,11 +59,12 @@ void MainComponent::resized()
 
 void MainComponent::onHIDMenuChanged()
 {
+    //on HID menu changed copy the selected key to a char pointer
     std::cout << m_HIDMenu->selectedKey << std::endl;
     char* charPointer = new char[m_HIDMenu->selectedKey.length() + 1];
     m_HIDMenu->selectedKey.copyToUTF8(charPointer, m_HIDMenu->selectedKey.length()+1);
     
-    
+    //initialize hidIO
     hidIO_1.reset(new HID_IO());
     hidIO_1->dataReceivedCallback = [this]{onDataReceived();};
     hidIO_1->device_name = charPointer;
@@ -69,7 +72,7 @@ void MainComponent::onHIDMenuChanged()
     if(hidIO_1->connect()){
         
         
-        
+        //handle different controller
         if(strcmp("DualSense Wireless Controller", charPointer) == 0){
             
             initialConnection("DualSense Wireless Controller");
@@ -79,12 +82,12 @@ void MainComponent::onHIDMenuChanged()
             DS_output.reset(new DualSense_Output);
             
             std::this_thread::sleep_for(std::chrono::seconds(1));
-            
+            // enable dual sense controller
             DS_output->initialOuput();
             hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
             
             std::this_thread::sleep_for(std::chrono::seconds(1));
-            //
+            // add callback function and start reading thread
             hidIO_1->dataReceivedCallback = [this]{onDualSense_DataReceived();};
             addAndMakeVisible(DS_UI);
             DS_UI.isConnected = true;
@@ -94,14 +97,17 @@ void MainComponent::onHIDMenuChanged()
             
             initialConnection("Xbox Wireless Controller");
             
-            hidIO_1->dataReceivedCallback = [this]{onXboxController_DataReceived();};
+            //enable xbox controller
             XC_input.reset(new XboxController_Input());
-    
+            hidIO_1->dataReceivedCallback = [this]{onXboxController_DataReceived();};
+
             std::this_thread::sleep_for(std::chrono::seconds(1));
+            //add callback function and start reading thread
             osc_receiver->TriggerVibration = [this]{EnableXboxControllerVibration();};
-            addAndMakeVisible(xbxUI);
             xbxUI.isConnected = true;
             xbxUI.XboxVibration = [this]{EnableXboxControllerVibration();};
+            //enable the UI
+            addAndMakeVisible(xbxUI);
             EnableXboxControllerVibration();
             
         }else if(strcmp("Joy-Con (L)", charPointer) == 0 || strcmp("Joy-Con (R)", charPointer) == 0){
@@ -125,16 +131,18 @@ void MainComponent::onHIDMenuChanged()
 };
 
 void MainComponent::initialConnection(juce::String nameOfDevice)
-{
+{   
+    //initial Connection, kill the HIDMenu
     m_HIDMenu->setVisible(false);
     m_HIDMenu = nullptr;
+    //add OSC_SenderUI
     addAndMakeVisible(OSC_Sender.get());
     std::cout << "connect to " << nameOfDevice << std::endl;
 }
 
 void MainComponent::onDataReceived()
 {
-//        std::cout << std::endl;
+    //debug and placeholder function
     if(hidIO_1->isConneted){
         hidIO_1->printReport();
     }
@@ -142,44 +150,56 @@ void MainComponent::onDataReceived()
 
 void MainComponent::onDualSense_DataReceived()
 {
-//    std::cout<<  hidIO.reportData[1] << "\n";
-    
+    //handle the DualSense input data
     DS_input->evaluateDualSenseHidInputBuffer(hidIO_1->reportData);
     DS_UI.DS_UI_input = DS_input->DS_input;
+    //send DualSense data via OSC
     OSC_Sender->send_DualSense_OSC_message(DS_input->DS_input);
-    //hidIO.printReport();
+
 }
 
-void MainComponent::onXboxController_DataReceived() { 
+void MainComponent::onXboxController_DataReceived() {
+    //handle the Xbox Controller input data 
     XC_input->evaluateXboxCotrollerHidInputBuffer(hidIO_1->reportData);
     xbxUI._input = XC_input->xbox_input;
-//    OSC_Sender._xboxInput = XC_input.xbox_input;
+    //send Xbox Controller data via OSC
     OSC_Sender->send_Xbox_OSC_message(XC_input->xbox_input);
     
 }
 
 
-void MainComponent::onJoyCon_L_DataReceived() {
+void MainComponent::onJoyCon_L_DataReceived() 
+{
+    
+    
+}
+
+void MainComponent::onJoyCon_R_DataReceived()
+{
 
     
 }
 
-void MainComponent::onJoyCon_R_DataReceived() {
-
-    
-}
-
-void MainComponent::userTriedToCloseWindow(){
-//
+void MainComponent::userTriedToCloseWindow()
+{
+    //if the user tried to close the window
     std::cout<<"User Tried To Close Window \n";
+
     if(DS_UI.isConnected){
+        //disable dual sense controller
         DS_output->disConnectOutput();
         hidIO_1->writeRawData(DS_output->_output, 0xa2, 78);
     }
-    
-    hidIO_1->stopReadingThread();
-    hidIO_1 = nullptr;
-    hidIO_2 = nullptr;
+    //kill hidIO threads
+    if(hidIO_1){
+        hidIO_1->stopReadingThread();
+        hidIO_1 = nullptr;
+    }
+    if(hidIO_2){
+        hidIO_2->stopReadingThread();
+        hidIO_2 = nullptr;
+    }
+    //disconnect OSC
     OSC_Sender->disConnect();
 }
 

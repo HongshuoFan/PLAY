@@ -13,6 +13,7 @@
 		1CD59ED1B524B5F93651171F /* include_juce_core.mm */ = {isa = PBXBuildFile; fileRef = 73A2BC0024FF2CFE98EF54DA; };
 		24425833CF9F13D2F27E34A3 /* XboxController_Input.cpp */ = {isa = PBXBuildFile; fileRef = 3C9DABB4B88263887347D0DB; };
 		2B624F31B3FB3A99DA63FB38 /* include_juce_gui_extra.mm */ = {isa = PBXBuildFile; fileRef = 7E76CF2843E9D32EA651EA7C; };
+		2D469A83056275768B7998AC /* JoyCon_Input.cpp */ = {isa = PBXBuildFile; fileRef = DEBF28DFADC66842E1694D6A; };
 		31B4E3AE540344DFBCDBF43D /* Foundation.framework */ = {isa = PBXBuildFile; fileRef = 59D7B2784C958621473D68CD; };
 		354C5F422CE5FFAF6226252C /* Security.framework */ = {isa = PBXBuildFile; fileRef = A41A8D2C79EB7B3BE3F9DE16; };
 		437662FEF65B7945765B603A /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = 8EF1A5F445BF993323DA3736; };
@@ -54,6 +55,7 @@
 		3049057331B2B23EB6747254 /* StickGUI.h */ /* StickGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StickGUI.h; path = ../../Source/StickGUI.h; sourceTree = SOURCE_ROOT; };
 		31AAEF235CCB90B93C41819F /* juce_gui_extra */ /* juce_gui_extra */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_extra; path = /Users/hongshuofan/Documents/JUCE/modules/juce_gui_extra; sourceTree = "<absolute>"; };
 		357255BCE00B80150326189B /* ListHID.h */ /* ListHID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ListHID.h; path = ../../Source/ListHID.h; sourceTree = SOURCE_ROOT; };
+		3668FF98E07DE2F2C52B0484 /* JoyCon_Input.h */ /* JoyCon_Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JoyCon_Input.h; path = ../../Source/JoyCon_Input.h; sourceTree = SOURCE_ROOT; };
 		3B19C651B029D252CF366851 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = /Users/hongshuofan/Documents/JUCE/modules/juce_data_structures; sourceTree = "<absolute>"; };
 		3BEE9FEB8427D677E7227076 /* TouchPadGUI.cpp */ /* TouchPadGUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TouchPadGUI.cpp; path = ../../Source/TouchPadGUI.cpp; sourceTree = SOURCE_ROOT; };
 		3BFF4447BE24D2522DE8BC5A /* HIDMenu.cpp */ /* HIDMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HIDMenu.cpp; path = ../../Source/HIDMenu.cpp; sourceTree = SOURCE_ROOT; };
@@ -95,6 +97,7 @@
 		D45EEA78C38E473C9C420DF2 /* DualSense_CRC32.cpp */ /* DualSense_CRC32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DualSense_CRC32.cpp; path = ../../Source/DualSense_CRC32.cpp; sourceTree = SOURCE_ROOT; };
 		D5AD8F470B1BFEF2A0320D31 /* JuceHeader.h */ /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		DB9F8F7950ACCF1B24BEF422 /* DualSense_CRC32.h */ /* DualSense_CRC32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DualSense_CRC32.h; path = ../../Source/DualSense_CRC32.h; sourceTree = SOURCE_ROOT; };
+		DEBF28DFADC66842E1694D6A /* JoyCon_Input.cpp */ /* JoyCon_Input.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = JoyCon_Input.cpp; path = ../../Source/JoyCon_Input.cpp; sourceTree = SOURCE_ROOT; };
 		DF04D0A21A079C65549ECEB9 /* RecentFilesMenuTemplate.nib */ /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
 		E76DFF909541EC9905DF7EF3 /* HID_IO.h */ /* HID_IO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HID_IO.h; path = ../../Source/HID_IO.h; sourceTree = SOURCE_ROOT; };
 		F1C452940280CE33FDD84A0E /* InputProvider.h */ /* InputProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InputProvider.h; path = ../../Source/InputProvider.h; sourceTree = SOURCE_ROOT; };
@@ -126,6 +129,8 @@
 		03E758FCC8177B12053A014E /* JoyCone */ = {
 			isa = PBXGroup;
 			children = (
+				DEBF28DFADC66842E1694D6A,
+				3668FF98E07DE2F2C52B0484,
 				7153E74B1A8DA0019FCEDC6C,
 			);
 			name = JoyCone;
@@ -373,6 +378,7 @@
 			files = (
 				764D2D31C2810875FE889C21,
 				9160E060DFB28A467407BEF3,
+				2D469A83056275768B7998AC,
 				54F903276965C171E56BE237,
 				D2B2951F34D6E02A7DCE3415,
 				51480E87AFFD5751D02DB901,

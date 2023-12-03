@@ -13,6 +13,8 @@
 #include "XboxController_Input.h"
 #include "XboxController_UI.h"
 
+#include "JoyCon_Input.h"
+
 /*
   ==============================================================================
 
@@ -35,32 +37,28 @@ public:
     
 private:
     //==============================================================================
-    // Your private member variables go here...
-    // write a new funciton 
+    // HID manager and relative stuffs.
     std::unique_ptr<HIDMenu> m_HIDMenu;
-    //HIDMenu m_HIDMenu;
-    
     std::unique_ptr<HID_IO> hidIO_1;
     std::unique_ptr<HID_IO> hidIO_2;
-    //HID_IO hidIO;
     uint8_t InputData;
-    
+
+    // DualSense stuffs.
     std::unique_ptr<DualSense_Input> DS_input;
     std::unique_ptr<DualSense_Output> DS_output;
-    //DualSense_Input DS_input;
-    //DualSense_Output DS_output;
     DualSense_UI DS_UI;
     
+    // Xbox Controller stuffs.
     std::unique_ptr<XboxController_Input> XC_input;
-    //XboxController_Input XC_input;
-    //std::unique_ptr<XboxController_UI> xbxUI;
     XboxController_UI xbxUI;
+
+    // JoyCon stuffs.
+    std::unique_ptr<JoyCon_Input> JC_input;
     
+    // OSC stuffs.
     std::unique_ptr<OSC_Sender_UI> OSC_Sender;
     std::unique_ptr<OSC_Receiver> osc_receiver;
-    //OSC_Sender_UI OSC_Sender;
-    //OSC_Receiver osc_receiver;
-    
+
     void onHIDMenuChanged();
     void onDataReceived();
     

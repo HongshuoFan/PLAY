@@ -89,16 +89,16 @@ void StickGUI::resized()
 void StickGUI::mouseDrag (const juce::MouseEvent& e)
 {
     //[UserCode_mouseDrag] -- Add your code here...
-
-    float mouseOffsetX = e.getOffsetFromDragStart().getX();
-    float mouseOffsetY = e.getOffsetFromDragStart().getY();
-    float X_diff = previousMouseX - mouseOffsetX;
-    float Y_diff = previousMouseY - mouseOffsetY;
-    px += X_diff;
-    py += Y_diff;
-
-//    std::cout<< nX<<"\n";
-    updatePoint(px,py,0);
+//
+//    float mouseOffsetX = e.getOffsetFromDragStart().getX();
+//    float mouseOffsetY = e.getOffsetFromDragStart().getY();
+//    float X_diff = previousMouseX - mouseOffsetX;
+//    float Y_diff = previousMouseY - mouseOffsetY;
+//    px += X_diff;
+//    py += Y_diff;
+//
+////    std::cout<< nX<<"\n";
+//    updatePoint(px,py,0);
     //[/UserCode_mouseDrag]
 }
 
