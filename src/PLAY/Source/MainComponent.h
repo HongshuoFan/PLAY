@@ -63,11 +63,16 @@ private:
     
     void onHIDMenuChanged();
     void onDataReceived();
+    
     void onDualSense_DataReceived();
+    
     void onXboxController_DataReceived();
+    void EnableXboxControllerVibration();
+    
     void onJoyCon_L_DataReceived();
     void onJoyCon_R_DataReceived();
-    void EnableXboxControllerVibration();
+    
+    void WarningWindow(juce::String WarningMessage);
     void initialConnection(juce::String nameOfDevice);
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)

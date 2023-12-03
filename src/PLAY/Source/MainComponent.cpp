@@ -115,10 +115,7 @@ void MainComponent::onHIDMenuChanged()
             
         }else{
             std::cout << "connect to unknown Controller" << std::endl;
-            juce::AlertWindow::showMessageBoxAsync (juce::AlertWindow::WarningIcon,
-                                                    "Error",
-                                                    "Unsupported device",
-                                                    "OK");
+            WarningWindow("Unsupported device");
             //hidIO_1->dataReceivedCallback = [this]{onDataReceived();};
             
         }
@@ -194,4 +191,12 @@ void MainComponent::EnableXboxControllerVibration(){
         
     }
     
+}
+
+void MainComponent::WarningWindow(juce::String WarningMessage)
+{
+    juce::AlertWindow::showMessageBoxAsync (juce::AlertWindow::WarningIcon,
+                                            "Error",
+                                            WarningMessage,
+                                            "OK");
 }
