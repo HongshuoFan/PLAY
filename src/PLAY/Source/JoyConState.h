@@ -17,6 +17,10 @@ namespace JoyCon {
         float x = 0.f;
         float y = 0.f;
         bool stickPress = false;
+        float x_max = -1000.f;
+        float x_min = 1000.f;
+        float y_max = -1000.f;
+        float y_min = 1000.f;
     
     } AnalogStick;
     
@@ -56,9 +60,9 @@ namespace JoyCon {
     } Buttons_R;
 
     typedef struct _Vec3 {
-        float x = 0;
-        float y = 0;
-        float z = 0;
+        float x = 1000.f;
+        float y = 1000.f;
+        float z = 1000.f;
     } Vector3, Vec3;
 
     typedef struct _JoyCon_L_InputState {
@@ -67,7 +71,11 @@ namespace JoyCon {
         Buttons_L buttons;
         Dpad dpad;
         Vector3 accelerometer;
+        Vector3 accelerometer_max;
+        Vector3 accelerometer_min;
         Vector3 gyroscope;
+        Vector3 gyroscope_max;
+        Vector3 gyroscope_min;
         
     } L_JoyCon_InputState;
 

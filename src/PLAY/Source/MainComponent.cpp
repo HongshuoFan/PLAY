@@ -121,13 +121,12 @@ void MainComponent::onHIDMenuChanged()
 //            hidIO_2.reset(new HID_IO());
 //            hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
 //            hidIO_2->device_name = (char*) "Joy-Con (R)";
-            JC_output.reset(new JoyCon_Output());
-            JC_output->trunIMU(true);
-            
             JC_input.reset(new JoyCon_Input());
-            
+            JC_output.reset(new JoyCon_Output());
+            JC_output->changeMode(2);
+            hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
             std::this_thread::sleep_for(std::chrono::seconds(1));
-            
+            JC_output->trunIMU(true);
             hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
             
             hidIO_1->dataReceivedCallback = [this]{onJoyCon_L_DataReceived();};
@@ -203,14 +202,14 @@ void MainComponent::onXboxController_DataReceived() {
 
 void MainComponent::onJoyCon_L_DataReceived() 
 {
-    
+    hidIO_1->printReport();
     JC_input->evaluate_L_JC_HidInputBuffer(hidIO_1->reportData);
     
 }
 
 void MainComponent::onJoyCon_R_DataReceived()
 {
-//    hidIO_2->printReport();
+    //hidIO_2->printReport();
 //    JC_input->evaluate_R_JC_HidInputBuffer(hidIO_2->reportData);
     
 }

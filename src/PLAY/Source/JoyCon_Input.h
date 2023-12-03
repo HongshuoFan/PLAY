@@ -31,5 +31,11 @@ public:
 
 private:
     int16_t uint16_to_int16(uint16_t a);
+    
+    void CalcAnalogStickSub(JoyCon::AnalogStick* InputStick);
+    
+    void NormalizVec3(JoyCon::Vec3* InV3, JoyCon::Vec3* v3min, JoyCon::Vec3* v3max);
+    
+    float clamp(float a, float min, float max);
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JoyCon_Input)
 };

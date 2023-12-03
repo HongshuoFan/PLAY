@@ -74,6 +74,9 @@ void JoyCon_Output::changeMode(int ModeIndex)
         case 2:
             _output[11] = 0x31;
             break;
+        case 3:
+            _output[11] = 0x00;
+            break;
     }
 }
 
