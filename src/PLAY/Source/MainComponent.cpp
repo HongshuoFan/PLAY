@@ -121,13 +121,14 @@ void MainComponent::onHIDMenuChanged()
 //            hidIO_2.reset(new HID_IO());
 //            hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
 //            hidIO_2->device_name = (char*) "Joy-Con (R)";
-            
-            std::this_thread::sleep_for(std::chrono::seconds(1));
             JC_output.reset(new JoyCon_Output());
             JC_output->trunIMU(true);
-            hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
+            
+            JC_input.reset(new JoyCon_Input());
             
             std::this_thread::sleep_for(std::chrono::seconds(1));
+            
+            hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
             
             hidIO_1->dataReceivedCallback = [this]{onJoyCon_L_DataReceived();};
 //            if(hidIO_2->connect()){

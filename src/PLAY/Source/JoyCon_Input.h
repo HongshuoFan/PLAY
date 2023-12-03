@@ -23,7 +23,7 @@ public:
     ~JoyCon_Input() override;
     
     JoyCon::L_JoyCon_InputState l_jc_input;
-    //JoyCon::R_JoyCon_InputState r_jc_input;
+    JoyCon::R_JoyCon_InputState r_jc_input;
     
     void evaluate_L_JC_HidInputBuffer(uint8_t* _reportData);
     void evaluate_R_JC_HidInputBuffer(uint8_t* _reportData);
