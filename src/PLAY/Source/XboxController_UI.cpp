@@ -35,7 +35,7 @@ XboxController_UI::XboxController_UI ()
     addAndMakeVisible(Left_Stick.get());
     Left_Stick->setBounds(150, 65, 80, 80);
     Left_Stick->resized();
-    
+
     Right_Stick.reset(new StickGUI());
     Right_Stick->setBounds(317, 130, 80, 80);
     Right_Stick->resized();
@@ -369,7 +369,7 @@ void XboxController_UI::update()
 
         Left_Stick->updatePoint(_input.leftStick.x, _input.leftStick.y, _input.leftStick.stickPress);
         Right_Stick->updatePoint(_input.rightStick.x, _input.rightStick.y, _input.rightStick.stickPress);
-        
+
         juce__slider_L_Trigger->setValue(std::clamp(_input.leftTrigger, 0.f, 1.0f));
         juce__slider_R_Trigger->setValue(std::clamp(_input.rightTrigger, 0.f, 1.0f));
 
