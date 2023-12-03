@@ -122,7 +122,6 @@ void MainComponent::onHIDMenuChanged()
         }else{
             std::cout << "connect to unknown Controller" << std::endl;
             WarningWindow("Unsupported device");
-            //hidIO_1->dataReceivedCallback = [this]{onDataReceived();};
             
         }
     }
