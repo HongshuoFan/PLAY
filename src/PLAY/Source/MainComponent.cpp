@@ -11,8 +11,8 @@ MainComponent::MainComponent()
     m_HIDMenu->onHIDMenuChanged = [this]{onHIDMenuChanged();};
     addAndMakeVisible(m_HIDMenu.get());
     
-    OSC_Sender.reset(new OSC_Sender_UI);
-    OSC_Sender->setBounds(0, proportionOfHeight (0.9f), 600, 40);
+    osc_sender.reset(new OSC_Sender_UI);
+    osc_sender->setBounds(0, proportionOfHeight (0.9f), 600, 40);
     
     osc_receiver.reset(new OSC_Receiver);
     osc_receiver->TriggerVibration = [this]{onDataReceived();};
@@ -32,7 +32,7 @@ MainComponent::~MainComponent()
     DS_input  = nullptr;
     DS_output = nullptr;
     osc_receiver = nullptr;
-    OSC_Sender = nullptr;
+    osc_sender = nullptr;
 }
 
 //==============================================================================
@@ -51,8 +51,8 @@ void MainComponent::resized()
     // This is called when the MainComponent is resized.
     // If you add any child components, this is where you should
     // update their positions.
-    if(OSC_Sender){
-        OSC_Sender->setBounds(0, proportionOfHeight (0.9f), 600, 40);
+    if(osc_sender){
+        osc_sender->setBounds(0, proportionOfHeight (0.9f), 600, 40);
     }
     
 }
@@ -114,10 +114,43 @@ void MainComponent::onHIDMenuChanged()
             
             initialConnection("Joy-Con");
             
-            hidIO_2.reset(new HID_IO());
+            
+//            hidIO_1->device_name = (char*)"Joy-Con (L)";
+            
+//            std::this_thread::sleep_for(std::chrono::seconds(1));
+//            hidIO_2.reset(new HID_IO());
+//            hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
+//            hidIO_2->device_name = (char*) "Joy-Con (R)";
+            
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            JC_output.reset(new JoyCon_Output());
+            JC_output->trunIMU(true);
+            hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
+            
+            std::this_thread::sleep_for(std::chrono::seconds(1));
             
             hidIO_1->dataReceivedCallback = [this]{onJoyCon_L_DataReceived();};
-            hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
+//            if(hidIO_2->connect()){
+//
+//                std::this_thread::sleep_for(std::chrono::seconds(1));
+//                //JC_output->Vibration(200, 0.5, 100, 0.2, false);
+//                JC_output->trunIMU(true);
+//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+//
+//            }
+            
+            
+            
+
+            
+            
+            
+            
+            //JC_output->Vibration(200, 0.5, 100, 0.2, true);
+            //JC_output->changeMode(0);
+            //hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+
+
             
         }else{
             std::cout << "connect to unknown Controller" << std::endl;
@@ -135,7 +168,7 @@ void MainComponent::initialConnection(juce::String nameOfDevice)
     m_HIDMenu->setVisible(false);
     m_HIDMenu = nullptr;
     //add OSC_SenderUI
-    addAndMakeVisible(OSC_Sender.get());
+    addAndMakeVisible(osc_sender.get());
     std::cout << "connect to " << nameOfDevice << std::endl;
 }
 
@@ -153,7 +186,7 @@ void MainComponent::onDualSense_DataReceived()
     DS_input->evaluateDualSenseHidInputBuffer(hidIO_1->reportData);
     DS_UI.DS_UI_input = DS_input->DS_input;
     //send DualSense data via OSC
-    OSC_Sender->send_DualSense_OSC_message(DS_input->DS_input);
+    osc_sender->send_DualSense_OSC_message(DS_input->DS_input);
 
 }
 
@@ -162,7 +195,7 @@ void MainComponent::onXboxController_DataReceived() {
     XC_input->evaluateXboxCotrollerHidInputBuffer(hidIO_1->reportData);
     xbxUI._input = XC_input->xbox_input;
     //send Xbox Controller data via OSC
-    OSC_Sender->send_Xbox_OSC_message(XC_input->xbox_input);
+    osc_sender->send_Xbox_OSC_message(XC_input->xbox_input);
     
 }
 
@@ -170,12 +203,14 @@ void MainComponent::onXboxController_DataReceived() {
 void MainComponent::onJoyCon_L_DataReceived() 
 {
     
+    JC_input->evaluate_L_JC_HidInputBuffer(hidIO_1->reportData);
     
 }
 
 void MainComponent::onJoyCon_R_DataReceived()
 {
-
+//    hidIO_2->printReport();
+//    JC_input->evaluate_R_JC_HidInputBuffer(hidIO_2->reportData);
     
 }
 
@@ -199,7 +234,7 @@ void MainComponent::userTriedToCloseWindow()
         hidIO_2 = nullptr;
     }
     //disconnect OSC
-    OSC_Sender->disConnect();
+    osc_sender->disConnect();
 }
 
 void MainComponent::EnableXboxControllerVibration(){

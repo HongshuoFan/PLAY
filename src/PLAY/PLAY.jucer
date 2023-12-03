@@ -16,6 +16,9 @@
         <FILE id="bsrGpP" name="JoyCon_Input.cpp" compile="1" resource="0"
               file="Source/JoyCon_Input.cpp"/>
         <FILE id="acClHJ" name="JoyCon_Input.h" compile="0" resource="0" file="Source/JoyCon_Input.h"/>
+        <FILE id="s9Ubao" name="JoyCon_Output.cpp" compile="1" resource="0"
+              file="Source/JoyCon_Output.cpp"/>
+        <FILE id="HhNXTj" name="JoyCon_Output.h" compile="0" resource="0" file="Source/JoyCon_Output.h"/>
         <FILE id="L7PYxI" name="JoyConState.h" compile="0" resource="0" file="Source/JoyConState.h"/>
       </GROUP>
       <GROUP id="{4C2DD010-8FD4-1A5E-A422-8741ABA77820}" name="HID">

@@ -31,6 +31,7 @@
 		84AD779BB766858C6EC2E709 /* include_juce_graphics.mm */ = {isa = PBXBuildFile; fileRef = 2C0DE1A72ED3BFE24A77848B; };
 		9160E060DFB28A467407BEF3 /* OSC_Sender_UI.cpp */ = {isa = PBXBuildFile; fileRef = F541EC5CAC71F97FFCE87EEB; };
 		916EEBF144F393F3D6DB5914 /* StickGUI.cpp */ = {isa = PBXBuildFile; fileRef = BBF288FFC40541D4C1D3AE1A; };
+		97F657568E0F216CAB29D3FD /* JoyCon_Output.cpp */ = {isa = PBXBuildFile; fileRef = 4EF4C610AF182F9140AECA64; };
 		9B5673E09190F96226F9DCFF /* IOKit.framework */ = {isa = PBXBuildFile; fileRef = 6703FBDD34240B55E3C6F196; };
 		B151F5E5CB1A4F178686C26B /* MetalKit.framework */ = {isa = PBXBuildFile; fileRef = 619928B320E5DAD973D8BF05; settings = { ATTRIBUTES = (Weak, ); }; };
 		B17F054EA1A8BADBFB7264FC /* DualSense_Input.cpp */ = {isa = PBXBuildFile; fileRef = C5F96CC5C6790B83DF77188E; };
@@ -63,6 +64,7 @@
 		44F2038ED2E8C3F8B3311BAF /* HID_IO.cpp */ /* HID_IO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HID_IO.cpp; path = ../../Source/HID_IO.cpp; sourceTree = SOURCE_ROOT; };
 		4C12FD7E8FEEA9E15F722535 /* DualSense_Input.h */ /* DualSense_Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DualSense_Input.h; path = ../../Source/DualSense_Input.h; sourceTree = SOURCE_ROOT; };
 		4D8E641104DF78957EE8110D /* Metal.framework */ /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		4EF4C610AF182F9140AECA64 /* JoyCon_Output.cpp */ /* JoyCon_Output.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = JoyCon_Output.cpp; path = ../../Source/JoyCon_Output.cpp; sourceTree = SOURCE_ROOT; };
 		4F87F4A18294DFCDE34C0CFF /* DualSense_Output.cpp */ /* DualSense_Output.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DualSense_Output.cpp; path = ../../Source/DualSense_Output.cpp; sourceTree = SOURCE_ROOT; };
 		59D7B2784C958621473D68CD /* Foundation.framework */ /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5F1B2DA4751CDED59D653556 /* include_juce_gui_basics.mm */ /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
@@ -102,6 +104,7 @@
 		E76DFF909541EC9905DF7EF3 /* HID_IO.h */ /* HID_IO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HID_IO.h; path = ../../Source/HID_IO.h; sourceTree = SOURCE_ROOT; };
 		F1C452940280CE33FDD84A0E /* InputProvider.h */ /* InputProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InputProvider.h; path = ../../Source/InputProvider.h; sourceTree = SOURCE_ROOT; };
 		F444FED6CF8535FB7F5350CD /* juce_core */ /* juce_core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_core; path = /Users/hongshuofan/Documents/JUCE/modules/juce_core; sourceTree = "<absolute>"; };
+		F453698319A5D0B082900DD9 /* JoyCon_Output.h */ /* JoyCon_Output.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JoyCon_Output.h; path = ../../Source/JoyCon_Output.h; sourceTree = SOURCE_ROOT; };
 		F541EC5CAC71F97FFCE87EEB /* OSC_Sender_UI.cpp */ /* OSC_Sender_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OSC_Sender_UI.cpp; path = ../../Source/OSC_Sender_UI.cpp; sourceTree = SOURCE_ROOT; };
 		F9D44C63C22BAF796CE8ED49 /* MainComponent.cpp */ /* MainComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainComponent.cpp; path = ../../Source/MainComponent.cpp; sourceTree = SOURCE_ROOT; };
 		FCEAB21BA770B51AE6851B8A /* OSC_Receiver.cpp */ /* OSC_Receiver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OSC_Receiver.cpp; path = ../../Source/OSC_Receiver.cpp; sourceTree = SOURCE_ROOT; };
@@ -131,6 +134,8 @@
 			children = (
 				DEBF28DFADC66842E1694D6A,
 				3668FF98E07DE2F2C52B0484,
+				4EF4C610AF182F9140AECA64,
+				F453698319A5D0B082900DD9,
 				7153E74B1A8DA0019FCEDC6C,
 			);
 			name = JoyCone;
@@ -379,6 +384,7 @@
 				764D2D31C2810875FE889C21,
 				9160E060DFB28A467407BEF3,
 				2D469A83056275768B7998AC,
+				97F657568E0F216CAB29D3FD,
 				54F903276965C171E56BE237,
 				D2B2951F34D6E02A7DCE3415,
 				51480E87AFFD5751D02DB901,

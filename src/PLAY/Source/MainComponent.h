@@ -14,6 +14,7 @@
 #include "XboxController_UI.h"
 
 #include "JoyCon_Input.h"
+#include "JoyCon_Output.h"
 
 /*
   ==============================================================================
@@ -54,9 +55,10 @@ private:
 
     // JoyCon stuffs.
     std::unique_ptr<JoyCon_Input> JC_input;
+    std::unique_ptr<JoyCon_Output> JC_output;
     
     // OSC stuffs.
-    std::unique_ptr<OSC_Sender_UI> OSC_Sender;
+    std::unique_ptr<OSC_Sender_UI> osc_sender;
     std::unique_ptr<OSC_Receiver> osc_receiver;
 
     void onHIDMenuChanged();

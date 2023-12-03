@@ -14,38 +14,38 @@ namespace JoyCon {
 
     typedef struct _AnalogStick {
     
-        float x;
-        float y;
-        bool stickPress;
+        float x = 0.f;
+        float y = 0.f;
+        bool stickPress = false;
     
     } AnalogStick;
     
     typedef struct _Dpad{
     
-        bool up;
-        bool down;
-        bool left;
-        bool right;
+        bool up = false;
+        bool down = false;
+        bool left = false;
+        bool right = false;
 
     } Dpad;
 
     typedef struct _Buttons_L{
-        
-        bool capture;
-        bool minus;
-        bool sr;
-        bool sl;
-        bool l;
-        bool zl;
+            
+            bool capture;
+            bool minus;
+            bool sr;
+            bool sl;
+            bool l;
+            bool zl;
 
     } Buttons_L;
 
     typedef struct _Buttons_R{
         
-        bool a;
-        bool b;
-        bool x;
-        bool y;
+        bool a = false;
+        bool b = false;
+        bool x = false;
+        bool y = false;
         bool home;
         bool plus;
         bool sr;
@@ -56,9 +56,9 @@ namespace JoyCon {
     } Buttons_R;
 
     typedef struct _Vec3 {
-        float x;
-        float y;
-        float z;
+        float x = 0;
+        float y = 0;
+        float z = 0;
     } Vector3, Vec3;
 
     typedef struct _JoyCon_L_InputState {
