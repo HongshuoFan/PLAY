@@ -78,16 +78,60 @@ void JoyCon_Input::evaluate_L_JC_HidInputBuffer(uint8_t* _reportData)
                                     * (2000.0f / 32767.0f);
             
             //NormalizVec3(&l_jc_input.gyroscope, &l_jc_input.gyroscope_min, &l_jc_input.gyroscope_max);
-            
-            std::cout<<l_jc_input.gyroscope.x << "\n";
-            std::cout<<l_jc_input.gyroscope.y << "\n";
-            std::cout<<l_jc_input.gyroscope.z << "\n";
+//
+//            std::cout<<l_jc_input.gyroscope.x << "\n";
+//            std::cout<<l_jc_input.gyroscope.y << "\n";
+//            std::cout<<l_jc_input.gyroscope.z << "\n";
         }
     }
 }
 
 void JoyCon_Input::evaluate_R_JC_HidInputBuffer(uint8_t* _reportData)
 {
+    
+    if(_reportData){
+        
+        uint8_t *btn_data = _reportData + 3;
+        uint16_t states = 0;
+        states = (btn_data[1] << 8) | (btn_data[0] & 0xFF);
+        
+        r_jc_input.buttons.y = (states & (1 << 0)) ? 1 : 0;
+        r_jc_input.buttons.x = (states & (1 << 1)) ? 1 : 0;
+        r_jc_input.buttons.b = (states & (1 << 2)) ? 1 : 0;
+        r_jc_input.buttons.a = (states & (1 << 3)) ? 1 : 0;
+        r_jc_input.buttons.sr = (states & (1 << 4)) ? 1 : 0;
+        r_jc_input.buttons.sl = (states & (1 << 5)) ? 1 : 0;
+        r_jc_input.buttons.r = (states & (1 << 6)) ? 1 : 0;
+        r_jc_input.buttons.zr = (states & (1 << 7)) ? 1 : 0;
+        r_jc_input.buttons.plus = (states & (1 << 9)) ? 1 : 0;
+        r_jc_input.stick.stickPress = (states & (1 << 10)) ? 1 : 0;
+        r_jc_input.buttons.home = (states & (1 << 12)) ? 1 : 0;
+        
+        
+        uint8_t *stick_data = _reportData + 9;
+        r_jc_input.stick.x = stick_data[0] | ((stick_data[1] & 0xF) << 8);
+        r_jc_input.stick.y = (stick_data[1] >> 4) | (stick_data[2] << 4);
+        CalcAnalogStickSub(&r_jc_input.stick);
+
+        if(_reportData[0] == 0x30 || _reportData[0] == 0x31)
+        {
+            // Accelerometer:
+            // Accelerometer data is absolute (m/s^2)
+            r_jc_input.accelerometer.x = (float)(uint16_to_int16(_reportData[13] | ((_reportData[14] << 8) & 0xFF00)));
+            r_jc_input.accelerometer.y = (float)(uint16_to_int16(_reportData[15] | ((_reportData[16] << 8) & 0xFF00)));
+            r_jc_input.accelerometer.z = (float)(uint16_to_int16(_reportData[17] | ((_reportData[18] << 8) & 0xFF00)));
+            
+            NormalizVec3(&r_jc_input.accelerometer, &r_jc_input.accelerometer_min, &r_jc_input.accelerometer_max);
+            
+            r_jc_input.gyroscope.x = (float)(uint16_to_int16(_reportData[19] | ((_reportData[20] << 8) & 0xFF00)))
+                                    * (2000.0f / 32767.0f);
+            r_jc_input.gyroscope.y = (float)(uint16_to_int16(_reportData[21] | ((_reportData[22] << 8) & 0xFF00)))
+                                    * (2000.0f / 32767.0f);
+            r_jc_input.gyroscope.z = (float)(uint16_to_int16(_reportData[23] | ((_reportData[24] << 8) & 0xFF00)))
+                                    * (2000.0f / 32767.0f);
+
+        }
+    }
     
 }
 

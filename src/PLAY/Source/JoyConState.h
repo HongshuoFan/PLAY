@@ -70,9 +70,11 @@ namespace JoyCon {
         AnalogStick stick;
         Buttons_L buttons;
         Dpad dpad;
+        
         Vector3 accelerometer;
         Vector3 accelerometer_max;
         Vector3 accelerometer_min;
+        
         Vector3 gyroscope;
         Vector3 gyroscope_max;
         Vector3 gyroscope_min;
@@ -83,8 +85,14 @@ namespace JoyCon {
         
         AnalogStick stick;
         Buttons_R buttons;
+        
         Vector3 accelerometer;
+        Vector3 accelerometer_max;
+        Vector3 accelerometer_min;
+        
         Vector3 gyroscope;
+        Vector3 gyroscope_max;
+        Vector3 gyroscope_min;
         
     } R_JoyCon_InputState;
 }
