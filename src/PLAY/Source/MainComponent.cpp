@@ -134,11 +134,38 @@ void MainComponent::onHIDMenuChanged()
             
             if(hidIO_2->connect()){
                 hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
-                std::this_thread::sleep_for(std::chrono::seconds(1));
+               
                 //JC_output->Vibration(200, 0.5, 100, 0.2, false);
-                JC_output->trunIMU(true);
+               
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+               
+                JC_output->changeMode(0x31);
                 hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
-
+                
+                JC_output->enableIR();
+                hidIO_2->writeRawData(JC_output->_output, 0x11, 12);
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+                //std::this_thread::sleep_for(std::chrono::seconds(1));
+//                JC_output->changeMode(0x01);
+//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+//                JC_output->changeMode(0x00);
+//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+//                hidIO_2->printReport();
+//                std::this_thread::sleep_for(std::chrono::seconds(1));
+//                JC_output->changeMode(0x01);
+//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+//                std::this_thread::sleep_for(std::chrono::seconds(1));
+//                JC_output->changeMode(0x02);
+//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+//                std::this_thread::sleep_for(std::chrono::seconds(1));
+//                JC_output->changeMode(0x03);
+//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+//                std::this_thread::sleep_for(std::chrono::seconds(1));
+//                JC_output->changeMode(0x31);
+//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+                
+//                std::this_thread::sleep_for(std::chrono::seconds(1));
+//                hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
             }
             
             
@@ -211,7 +238,10 @@ void MainComponent::onJoyCon_L_DataReceived()
 
 void MainComponent::onJoyCon_R_DataReceived()
 {
+    //hidIO_2->printReport();
+    
     hidIO_2->printReport();
+    
     JC_input->evaluate_R_JC_HidInputBuffer(hidIO_2->reportData);
     
 }

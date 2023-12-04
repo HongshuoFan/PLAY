@@ -22,9 +22,10 @@ public:
     ~JoyCon_Output() override;
     uint8_t _output[15];
     void trunIMU(bool on_off);
-    void changeMode(int ModeIndex);
+    void changeMode(uint8_t arg);
     void Vibration(double highFreq, double highAmp, double lowFreq, double lowAmp, bool isLeft);
-
+    void enableIR();
+    
 private:
     
     void initBasicOutput();

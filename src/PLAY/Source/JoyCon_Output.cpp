@@ -55,29 +55,14 @@ void JoyCon_Output::trunIMU(bool on_off)
     _output[11] = on_off ? 0x01 : 0x00;
 }
 
-void JoyCon_Output::changeMode(int ModeIndex)
+void JoyCon_Output::changeMode(uint8_t arg)
 {
     initBasicOutput();
     _output[10] = 0x03;
     // x3F    Simple HID mode. Pushes updates with every button press
     // x30    Standard full mode. Pushes current state @60Hz
     // x31    NFC/IR mode. Pushes large packets @60Hz
-    switch (ModeIndex) {
-        case 0:
-            _output[11] = 0x3F;
-            break;
-            
-        case 1:
-            _output[11] = 0x30;
-            break;
-            
-        case 2:
-            _output[11] = 0x31;
-            break;
-        case 3:
-            _output[11] = 0x00;
-            break;
-    }
+    _output[11] = arg;
 }
 
 void JoyCon_Output::Vibration(double highFreq, double highAmp, double lowFreq, double lowAmp, bool isLeft)
@@ -162,4 +147,16 @@ uint16_t JoyCon_Output::__encodeLowAmp(double Amp){
         // if you wanted to combine them:
     uint16_t byte = (uint16_t(bytes1) << 8) | uint16_t(bytes2);
     return byte;
+}
+
+void JoyCon_Output::enableIR()
+{
+    initBasicOutput();
+    //_output[0] = 0x01;
+    _output[10] = 0x01;
+    _output[11] = 0x00;
+    _output[12] = 0x01;
+    _output[13] = 0x02;
+    _output[13] = 0x03;
+    
 }
