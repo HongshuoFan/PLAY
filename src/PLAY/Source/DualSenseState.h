@@ -117,7 +117,7 @@ namespace DualSense {
         bool down;
 
         /// <summary>
-        /// 7-bit ID for touch
+        /// int ID for touch
         /// </summary>
         int id;
     } Touch;

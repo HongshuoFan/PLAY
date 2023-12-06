@@ -83,8 +83,8 @@ void MainComponent::onHIDMenuChanged()
             
             std::this_thread::sleep_for(std::chrono::seconds(1));
             // enable dual sense controller
-            DS_output->initialOuput();
-            hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
+            //DS_output->initialOuput();
+            //hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
             
             std::this_thread::sleep_for(std::chrono::seconds(1));
             // add callback function and start reading thread
