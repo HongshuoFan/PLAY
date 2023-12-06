@@ -209,7 +209,7 @@ void HID_IO::OnDeviceMatched(IOReturn result, void* sender, IOHIDDeviceRef devic
     
     //std::cout<< "check "<< name  <<" is match? \n";
     
-    if(!stopThreadFlag){
+    if(!stopThreadFlag && name){
         if (strcmp(name, device_name) == 0){
             
             deviceRF = device;
