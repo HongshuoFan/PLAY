@@ -205,7 +205,7 @@ void MainComponent::onDataReceived()
 {
     //debug and placeholder function
     if(hidIO_1->isConneted){
-        hidIO_1->printReport();
+        //hidIO_1->printReport();
     }
 }
 

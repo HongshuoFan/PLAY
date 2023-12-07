@@ -16,7 +16,7 @@ DualSense_Output::DualSense_Output()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
-
+    //ds_crc32.InitializeTable(0xedb88320u);
 }
 
 DualSense_Output::~DualSense_Output()
@@ -27,10 +27,10 @@ void DualSense_Output::createDualSenseOutput() {
   
 
     uint32_t crc_Data = ds_crc32.compute(_output, 74);
-    _output[74] = (uint8_t)((crc_Data & 0x000000FF) >> 0UL);
-    _output[75] = (uint8_t)((crc_Data & 0x0000FF00) >> 8UL);
-    _output[76] = (uint8_t)((crc_Data & 0x00FF0000) >> 16UL);
-    _output[77] = (uint8_t)((crc_Data & 0xFF000000) >> 24UL);
+    _output[0x4A] = (uint8_t)((crc_Data & 0x000000FF) >> 0UL);
+    _output[0x4B] = (uint8_t)((crc_Data & 0x0000FF00) >> 8UL);
+    _output[0x4C] = (uint8_t)((crc_Data & 0x00FF0000) >> 16UL);
+    _output[0x4D] = (uint8_t)((crc_Data & 0xFF000000) >> 24UL);
     
 }
 
@@ -38,7 +38,38 @@ void DualSense_Output::initialOuput() {
     
     _output[0] = 0x31;
     _output[1] = 0x02;
-    _output[2] = 0x15; // 0xff, 0x03 rumble??
+    //_output[2] = 0x15;
+    
+    _output[2] = 0xFF;
+    _output[3] = 0xF7;
+    
+    uint16_t lrmbl = 0.;
+    uint16_t rrmbl = 499;
+    int btMul = 10;
+    
+    lrmbl = fmax(lrmbl - 0x200 / btMul, 0);
+    rrmbl = fmax(rrmbl - 0x100 / btMul, 0);
+    
+    uint8_t leftRumble = (lrmbl & 0xFF00)  >> 8UL;
+    uint8_t rightRumble = (rrmbl & 0xFF00) >> 8UL;
+    
+    std::cout<<lrmbl<<"\n";
+    printf("%u", leftRumble);
+    
+    std::cout<<rrmbl<<"\n";
+    printf("%u", rightRumble);
+    
+    //std::cout<<lrmbl<<"\n";
+    
+    //std::cout<<rrmbl<<"\n";
+    
+    _output[4] = leftRumble;
+    _output[5] = rightRumble;
+
+        // Mic led
+    _output[10] = 0x02;
+    
+    // 0xff, 0x03 rumble??
 //
 //    _output[3] = 0xF7; // 0xff disable all LEDs - top LED, bottom LED, Mic LED (this just if bufWrite[63] == 0x02)// 0xf3 disable top LED// 0xf4 enable all LEDs - top LED, bottom LED, Mic LED (this just if buf[63] == 0x02) // 0x54 all led without mic led
 //// Right motor power

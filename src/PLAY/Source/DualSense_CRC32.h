@@ -33,14 +33,14 @@ namespace __DS5W {
         
 //        const static uint32_t DefaultPolynomial;
 //        const static uint32_t DefaultSeed;
-//
+////
 //        uint32_t testLook[256];
 //
 //        bool secondTablePop = false;
 //
         
     public:
-        
+        //CRC32();
         /// <summary>
         /// Compute the CRC32 Hash
         /// </summary>
@@ -49,7 +49,7 @@ namespace __DS5W {
         /// <returns>Computed crc value</returns>
         static uint32_t compute(unsigned char* buffer, size_t len);
         //uint32_t CalculateBasicHash(unsigned char* buffer, int offset, int size);
-        //void InitializeTable(uint32_t polynomial);
+       // void InitializeTable(uint32_t polynomial);
     };
 }
 
