@@ -21,6 +21,8 @@
               file="Source/JoyCon_Output.cpp"/>
         <FILE id="HhNXTj" name="JoyCon_Output.h" compile="0" resource="0" file="Source/JoyCon_Output.h"/>
         <FILE id="L7PYxI" name="JoyConState.h" compile="0" resource="0" file="Source/JoyConState.h"/>
+        <FILE id="B67CCB" name="JoyCon_UI.cpp" compile="1" resource="0" file="Source/JoyCon_UI.cpp"/>
+        <FILE id="YTyVBg" name="JoyCon_UI.h" compile="0" resource="0" file="Source/JoyCon_UI.h"/>
       </GROUP>
       <GROUP id="{4C2DD010-8FD4-1A5E-A422-8741ABA77820}" name="HID">
         <FILE id="tGyaT3" name="HID_IO.cpp" compile="1" resource="0" file="Source/HID_IO.cpp"/>

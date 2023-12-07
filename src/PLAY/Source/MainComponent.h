@@ -15,6 +15,7 @@
 
 #include "JoyCon_Input.h"
 #include "JoyCon_Output.h"
+#include "JoyCon_UI.h"
 
 /*
   ==============================================================================
@@ -56,6 +57,7 @@ private:
     // JoyCon stuffs.
     std::unique_ptr<JoyCon_Input> JC_input;
     std::unique_ptr<JoyCon_Output> JC_output;
+    JoyCon_UI JC_UI;
     
     // OSC stuffs.
     std::unique_ptr<OSC_Sender_UI> osc_sender;

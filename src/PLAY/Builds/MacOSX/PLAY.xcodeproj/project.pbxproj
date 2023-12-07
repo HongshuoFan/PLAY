@@ -17,6 +17,7 @@
 		31B4E3AE540344DFBCDBF43D /* Foundation.framework */ = {isa = PBXBuildFile; fileRef = 59D7B2784C958621473D68CD; };
 		354C5F422CE5FFAF6226252C /* Security.framework */ = {isa = PBXBuildFile; fileRef = A41A8D2C79EB7B3BE3F9DE16; };
 		437662FEF65B7945765B603A /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = 8EF1A5F445BF993323DA3736; };
+		43B5B40425C6F9CAE7B842C0 /* JoyCon_UI.cpp */ = {isa = PBXBuildFile; fileRef = 68737C5270897BBA75289243; };
 		51480E87AFFD5751D02DB901 /* ListHID.cpp */ = {isa = PBXBuildFile; fileRef = 8B257BFFF4E6D90B0F3242F8; };
 		52655D0A04683BB0ECBD40D9 /* include_juce_events.mm */ = {isa = PBXBuildFile; fileRef = 60F582DEFEF78E46596CE36A; };
 		54F903276965C171E56BE237 /* HID_IO.cpp */ = {isa = PBXBuildFile; fileRef = 44F2038ED2E8C3F8B3311BAF; };
@@ -71,6 +72,7 @@
 		60F582DEFEF78E46596CE36A /* include_juce_events.mm */ /* include_juce_events.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_events.mm; path = ../../JuceLibraryCode/include_juce_events.mm; sourceTree = SOURCE_ROOT; };
 		619928B320E5DAD973D8BF05 /* MetalKit.framework */ /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		6703FBDD34240B55E3C6F196 /* IOKit.framework */ /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		68737C5270897BBA75289243 /* JoyCon_UI.cpp */ /* JoyCon_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = JoyCon_UI.cpp; path = ../../Source/JoyCon_UI.cpp; sourceTree = SOURCE_ROOT; };
 		68B87DD60338E256DC76A69B /* juce_graphics */ /* juce_graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_graphics; path = /Users/hongshuofan/Documents/JUCE/modules/juce_graphics; sourceTree = "<absolute>"; };
 		6E2FBD0E7B1A625F3DB41E4D /* App.entitlements */ /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = App.entitlements; path = App.entitlements; sourceTree = SOURCE_ROOT; };
 		6E4BF7F057E083E2043D45E3 /* include_juce_osc.cpp */ /* include_juce_osc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_osc.cpp; path = ../../JuceLibraryCode/include_juce_osc.cpp; sourceTree = SOURCE_ROOT; };
@@ -109,6 +111,7 @@
 		F541EC5CAC71F97FFCE87EEB /* OSC_Sender_UI.cpp */ /* OSC_Sender_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OSC_Sender_UI.cpp; path = ../../Source/OSC_Sender_UI.cpp; sourceTree = SOURCE_ROOT; };
 		F9D44C63C22BAF796CE8ED49 /* MainComponent.cpp */ /* MainComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainComponent.cpp; path = ../../Source/MainComponent.cpp; sourceTree = SOURCE_ROOT; };
 		FCEAB21BA770B51AE6851B8A /* OSC_Receiver.cpp */ /* OSC_Receiver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OSC_Receiver.cpp; path = ../../Source/OSC_Receiver.cpp; sourceTree = SOURCE_ROOT; };
+		FFE37F98E92779DB2701FF3A /* JoyCon_UI.h */ /* JoyCon_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JoyCon_UI.h; path = ../../Source/JoyCon_UI.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,8 @@
 				4EF4C610AF182F9140AECA64,
 				F453698319A5D0B082900DD9,
 				7153E74B1A8DA0019FCEDC6C,
+				68737C5270897BBA75289243,
+				FFE37F98E92779DB2701FF3A,
 			);
 			name = JoyCone;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 				9160E060DFB28A467407BEF3,
 				2D469A83056275768B7998AC,
 				97F657568E0F216CAB29D3FD,
+				43B5B40425C6F9CAE7B842C0,
 				54F903276965C171E56BE237,
 				D2B2951F34D6E02A7DCE3415,
 				51480E87AFFD5751D02DB901,

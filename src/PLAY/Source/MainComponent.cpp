@@ -33,6 +33,9 @@ MainComponent::~MainComponent()
     DS_output = nullptr;
     osc_receiver = nullptr;
     osc_sender = nullptr;
+    JC_output = nullptr;
+    JC_input = nullptr;
+
 }
 
 //==============================================================================
@@ -123,7 +126,7 @@ void MainComponent::onHIDMenuChanged()
             
             JC_input.reset(new JoyCon_Input());
             JC_output.reset(new JoyCon_Output());
-            JC_output->changeMode(2);
+            JC_output->changeMode(0x31);
             hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
             
             std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -137,51 +140,22 @@ void MainComponent::onHIDMenuChanged()
                
                 //JC_output->Vibration(200, 0.5, 100, 0.2, false);
                
-                std::this_thread::sleep_for(std::chrono::seconds(1));
-               
                 JC_output->changeMode(0x31);
                 hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
                 
-                JC_output->enableMCU();
-                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
                 std::this_thread::sleep_for(std::chrono::seconds(1));
-                JC_output->setMCUMode();
-                hidIO_2->writeRawData(JC_output->_output, 0x01, 49);
-                //std::this_thread::sleep_for(std::chrono::seconds(1));
-//                JC_output->changeMode(0x01);
-//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
-//                JC_output->changeMode(0x00);
-//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
-//                hidIO_2->printReport();
-//                std::this_thread::sleep_for(std::chrono::seconds(1));
-//                JC_output->changeMode(0x01);
-//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
-//                std::this_thread::sleep_for(std::chrono::seconds(1));
-//                JC_output->changeMode(0x02);
-//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
-//                std::this_thread::sleep_for(std::chrono::seconds(1));
-//                JC_output->changeMode(0x03);
-//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
-//                std::this_thread::sleep_for(std::chrono::seconds(1));
-//                JC_output->changeMode(0x31);
-//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
                 
+                JC_output->trunIMU(true);
+                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+//                JC_output->enableMCU();
+//                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
 //                std::this_thread::sleep_for(std::chrono::seconds(1));
-//                hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
+//                JC_output->setMCUMode();
+//                hidIO_2->writeRawData(JC_output->_output, 0x01, 49);
+               
             }
             
-            
-            
-
-            
-            
-            
-            
-            //JC_output->Vibration(200, 0.5, 100, 0.2, true);
-            //JC_output->changeMode(0);
-            //hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
-
-
+            addAndMakeVisible(JC_UI);
             
         }else{
             std::cout << "connect to unknown Controller" << std::endl;
@@ -234,6 +208,7 @@ void MainComponent::onXboxController_DataReceived() {
 void MainComponent::onJoyCon_L_DataReceived() 
 {
     //hidIO_1->printReport();
+    
     JC_input->evaluate_L_JC_HidInputBuffer(hidIO_1->reportData);
     
 }
@@ -242,7 +217,7 @@ void MainComponent::onJoyCon_R_DataReceived()
 {
     //hidIO_2->printReport();
     
-    hidIO_2->printReport();
+    //hidIO_2->printReport();
     
     JC_input->evaluate_R_JC_HidInputBuffer(hidIO_2->reportData);
     
