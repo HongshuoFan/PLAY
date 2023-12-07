@@ -182,7 +182,7 @@ DualSense_UI::DualSense_UI ()
 
     juce__slider_gyr_x.reset (new juce::Slider ("Gyr_x"));
     addAndMakeVisible (juce__slider_gyr_x.get());
-    juce__slider_gyr_x->setRange (-1000, 1000, 0);
+    juce__slider_gyr_x->setRange (-500, 500, 0);
     juce__slider_gyr_x->setSliderStyle (juce::Slider::LinearHorizontal);
     juce__slider_gyr_x->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
     juce__slider_gyr_x->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
@@ -192,7 +192,7 @@ DualSense_UI::DualSense_UI ()
 
     juce__slider_gyr_y.reset (new juce::Slider ("Gyr_y"));
     addAndMakeVisible (juce__slider_gyr_y.get());
-    juce__slider_gyr_y->setRange (-1000, 1000, 0);
+    juce__slider_gyr_y->setRange (-500, 500, 0);
     juce__slider_gyr_y->setSliderStyle (juce::Slider::LinearHorizontal);
     juce__slider_gyr_y->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
     juce__slider_gyr_y->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
@@ -202,7 +202,7 @@ DualSense_UI::DualSense_UI ()
 
     juce__slider_gyr_z.reset (new juce::Slider ("Gyr_z"));
     addAndMakeVisible (juce__slider_gyr_z.get());
-    juce__slider_gyr_z->setRange (-1000, 1000, 0);
+    juce__slider_gyr_z->setRange (-500, 1000, 0);
     juce__slider_gyr_z->setSliderStyle (juce::Slider::LinearHorizontal);
     juce__slider_gyr_z->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
     juce__slider_gyr_z->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
@@ -608,19 +608,19 @@ BEGIN_JUCER_METADATA
   <SLIDER name="Gyr_x" id="1c1a4acc7ac21ffd" memberName="juce__slider_gyr_x"
           virtualName="" explicitFocusOrder="0" pos="28.667% 87.941% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
-          min="-1000.0" max="1000.0" int="0.0" style="LinearHorizontal"
-          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="80"
-          textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
+          min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
+          textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="1"/>
   <SLIDER name="Gyr_y" id="71cda18e92b1fc54" memberName="juce__slider_gyr_y"
           virtualName="" explicitFocusOrder="0" pos="43.5% 87.941% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
-          min="-1000.0" max="1000.0" int="0.0" style="LinearHorizontal"
-          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="80"
-          textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
+          min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
+          textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="1"/>
   <SLIDER name="Gyr_z" id="de553fe4aa9c3cf4" memberName="juce__slider_gyr_z"
           virtualName="" explicitFocusOrder="0" pos="58% 87.941% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
-          min="-1000.0" max="1000.0" int="0.0" style="LinearHorizontal"
+          min="-500.0" max="1000.0" int="0.0" style="LinearHorizontal"
           textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="80"
           textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
 </JUCER_COMPONENT>

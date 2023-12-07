@@ -72,11 +72,6 @@ void DualSense_Output::createDualSenseOutput() {
 
 void DualSense_Output::initialOuput() {
     
-//    _output[0] = 0x31;
-//    _output[1] = 0x02;
-//
-//    _output[2] = 0xFF;
-//    _output[3] = 0xF7;
     
     uint16_t lrmbl = 0.;
     uint16_t rrmbl = 0.;
@@ -98,10 +93,14 @@ void DualSense_Output::initialOuput() {
 //    DS_output.leftTriggerEffect.Section.startPosition = 0x00;
 //    DS_output.leftTriggerEffect.Section.endPosition = 0x60;
 //
-//    // Right trigger is forcy
-//    DS_output.rightTriggerEffect.effectType = DualSense::TriggerEffectType::ContinuousResitance;
-//    DS_output.rightTriggerEffect.Continuous.force = 0xff;
-//    DS_output.rightTriggerEffect.Continuous.startPosition = 0x00;
+    // Right trigger is forcy
+    DS_output.rightTriggerEffect.effectType = DualSense::TriggerEffectType::ContinuousResitance;
+    DS_output.rightTriggerEffect.Continuous.force = 0x01;
+    DS_output.rightTriggerEffect.Continuous.startPosition = 0x00;
+    
+    DS_output.leftTriggerEffect.effectType = DualSense::TriggerEffectType::ContinuousResitance;
+    DS_output.leftTriggerEffect.Continuous.force = 0x01;
+    DS_output.leftTriggerEffect.Continuous.startPosition = 0x00;
     
     createDualSenseOutput();
 }

@@ -136,6 +136,20 @@ void DualSense_Input::evaluateDualSenseHidInputBuffer(uint8_t *_reportData) {
     DS_input.touchPoint2.x = (_reportData[39 + index_shift] | (_reportData[40 + index_shift] & 0x0F) << 8) / 1920.0f;
     DS_input.touchPoint2.y = 1.f - ((_reportData[40 + index_shift] & 0xF0) >> 4 | _reportData[41 + index_shift] << 4) / 1079.0f;
     
+    // Evaluate headphone input
+    DS_input.headPhoneConnected = _reportData[0x37 + index_shift] & 0x01;
+    
+    // Trigger force feedback
+    DS_input.leftTriggerFeedback = _reportData[0x2A + 2 + index_shift];
+    DS_input.rightTriggerFeedback = _reportData[0x29 + 2 + index_shift];
+    
+    
+    // Battery
+    DS_input.battery.chargin = (_reportData[0x35 + 2 + index_shift] & 0x08);
+    DS_input.battery.fullyCharged = (_reportData[0x36 + 2 + index_shift] & 0x20);
+    DS_input.battery.level = (_reportData[0x36 + 2 + index_shift] & 0x0F);
+   
+    
 }
 
 
