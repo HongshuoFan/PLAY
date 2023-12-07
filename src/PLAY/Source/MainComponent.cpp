@@ -142,9 +142,11 @@ void MainComponent::onHIDMenuChanged()
                 JC_output->changeMode(0x31);
                 hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
                 
-                JC_output->enableIR();
-                hidIO_2->writeRawData(JC_output->_output, 0x11, 12);
+                JC_output->enableMCU();
+                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
                 std::this_thread::sleep_for(std::chrono::seconds(1));
+                JC_output->setMCUMode();
+                hidIO_2->writeRawData(JC_output->_output, 0x01, 49);
                 //std::this_thread::sleep_for(std::chrono::seconds(1));
 //                JC_output->changeMode(0x01);
 //                hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
@@ -216,7 +218,7 @@ void MainComponent::onDualSense_DataReceived()
     DS_UI.DS_UI_input = DS_input->DS_input;
     //send DualSense data via OSC
     osc_sender->send_DualSense_OSC_message(DS_input->DS_input);
-    hidIO_1->printReport();
+   
 }
 
 void MainComponent::onXboxController_DataReceived() {

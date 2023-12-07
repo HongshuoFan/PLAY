@@ -11,7 +11,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-
+#include "ir_sensor.h"
 //==============================================================================
 /*
 */
@@ -20,13 +20,17 @@ class JoyCon_Output  : public juce::Component
 public:
     JoyCon_Output();
     ~JoyCon_Output() override;
-    uint8_t _output[15];
+    uint8_t _output[49];
     void trunIMU(bool on_off);
     void changeMode(uint8_t arg);
     void Vibration(double highFreq, double highAmp, double lowFreq, double lowAmp, bool isLeft);
-    void enableIR();
+    
+    void enableMCU();
+    void setMCUMode();
     
 private:
+    
+    uint8_t mcu_crc8_calc(uint8_t *buf, uint8_t size);
     
     void initBasicOutput();
     

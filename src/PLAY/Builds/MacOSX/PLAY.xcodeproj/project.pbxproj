@@ -88,6 +88,7 @@
 		A41A8D2C79EB7B3BE3F9DE16 /* Security.framework */ /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A9DA51F09B32FDF29BAA77AC /* XboxController_UI.h */ /* XboxController_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XboxController_UI.h; path = ../../Source/XboxController_UI.h; sourceTree = SOURCE_ROOT; };
 		AC14E912234BD08FF731E23C /* juce_osc */ /* juce_osc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_osc; path = /Users/hongshuofan/Documents/JUCE/modules/juce_osc; sourceTree = "<absolute>"; };
+		AEB7889FF3470D590D9CBB4C /* ir_sensor.h */ /* ir_sensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ir_sensor.h; path = ../../Source/ir_sensor.h; sourceTree = SOURCE_ROOT; };
 		B70A7A61274579060DE5E53E /* DualSenseState.h */ /* DualSenseState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DualSenseState.h; path = ../../Source/DualSenseState.h; sourceTree = SOURCE_ROOT; };
 		BBF288FFC40541D4C1D3AE1A /* StickGUI.cpp */ /* StickGUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StickGUI.cpp; path = ../../Source/StickGUI.cpp; sourceTree = SOURCE_ROOT; };
 		C5ED5E5221FE97E324529602 /* App */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PLAY.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +133,7 @@
 		03E758FCC8177B12053A014E /* JoyCone */ = {
 			isa = PBXGroup;
 			children = (
+				AEB7889FF3470D590D9CBB4C,
 				DEBF28DFADC66842E1694D6A,
 				3668FF98E07DE2F2C52B0484,
 				4EF4C610AF182F9140AECA64,

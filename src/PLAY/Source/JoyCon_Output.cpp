@@ -149,14 +149,34 @@ uint16_t JoyCon_Output::__encodeLowAmp(double Amp){
     return byte;
 }
 
-void JoyCon_Output::enableIR()
+void JoyCon_Output::enableMCU()
 {
     initBasicOutput();
     //_output[0] = 0x01;
-    _output[10] = 0x01;
-    _output[11] = 0x00;
-    _output[12] = 0x01;
-    _output[13] = 0x02;
-    _output[13] = 0x03;
+    _output[10] = 0x22;
+    _output[11] = 0x01;
+    _output[12] = 0x05;
+//    _output[13] = 0x02;
+//    _output[13] = 0x03;
     
+}
+
+void JoyCon_Output::setMCUMode()
+{
+    initBasicOutput();
+    //_output[0] = 0x01;
+    _output[10] = 0x21;
+    _output[11] = 0x00;
+    _output[12] = 0x05;
+    _output[48] = mcu_crc8_calc(_output + 12, 36);
+}
+
+uint8_t JoyCon_Output::mcu_crc8_calc(uint8_t *buf, uint8_t size)
+{
+    uint8_t crc8 = 0x0;
+
+    for (int i = 0; i < size; ++i) {
+        crc8 = mcu_crc8_table[(uint8_t)(crc8 ^ buf[i])];
+    }
+    return crc8;
 }

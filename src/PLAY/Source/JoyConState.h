@@ -65,6 +65,21 @@ namespace JoyCon {
         float z = 1000.f;
     } Vector3, Vec3;
 
+    typedef struct _ir_image_config {
+        uint8_t  ir_res_reg;
+        uint16_t ir_exposure;
+        uint8_t  ir_leds; // Leds to enable, Strobe/Flashlight modes
+        uint16_t ir_leds_intensity; // MSByte: Leds 1/2, LSB: Leds 3/4
+        uint8_t  ir_digital_gain;
+        uint8_t  ir_ex_light_filter;
+        uint32_t ir_custom_register; // MSByte: Enable/Disable, Middle Byte: Edge smoothing, LSB: Color interpolation
+        uint16_t ir_buffer_update_time;
+        uint8_t  ir_hand_analysis_mode;
+        uint8_t  ir_hand_analysis_threshold;
+        uint32_t ir_denoise; // MSByte: Enable/Disable, Middle Byte: Edge smoothing, LSB: Color interpolation
+        uint8_t  ir_flip;
+    } IR_image_config;
+
     typedef struct _JoyCon_L_InputState {
         
         AnalogStick stick;
@@ -95,4 +110,5 @@ namespace JoyCon {
         Vector3 gyroscope_min;
         
     } R_JoyCon_InputState;
+
 }

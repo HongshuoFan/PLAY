@@ -202,7 +202,7 @@ DualSense_UI::DualSense_UI ()
 
     juce__slider_gyr_z.reset (new juce::Slider ("Gyr_z"));
     addAndMakeVisible (juce__slider_gyr_z.get());
-    juce__slider_gyr_z->setRange (-500, 1000, 0);
+    juce__slider_gyr_z->setRange (-500, 500, 0);
     juce__slider_gyr_z->setSliderStyle (juce::Slider::LinearHorizontal);
     juce__slider_gyr_z->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
     juce__slider_gyr_z->setColour (juce::Slider::backgroundColourId, juce::Colour (0xff263238));
@@ -620,9 +620,9 @@ BEGIN_JUCER_METADATA
   <SLIDER name="Gyr_z" id="de553fe4aa9c3cf4" memberName="juce__slider_gyr_z"
           virtualName="" explicitFocusOrder="0" pos="58% 87.941% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
-          min="-500.0" max="1000.0" int="0.0" style="LinearHorizontal"
-          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="80"
-          textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
+          min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
+          textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
