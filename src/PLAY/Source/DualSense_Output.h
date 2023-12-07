@@ -27,7 +27,11 @@ public:
     void createDualSenseOutput();
     void initialOuput();
     void disConnectOutput();
-
+    void processTrigger(DualSense::TriggerEffect* ptrEffect, unsigned char* buffer);
+    DualSense::Color color_R8G8B8_UCHAR_A32_FLOAT(unsigned char r, unsigned char g, unsigned char b, float a);
+    
+    DualSense::DualSenseOutputState DS_output;
+    
 private:
     __DS5W::CRC32 ds_crc32;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DualSense_Output)
