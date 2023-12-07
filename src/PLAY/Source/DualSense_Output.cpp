@@ -44,14 +44,14 @@ void DualSense_Output::initialOuput() {
     _output[3] = 0xF7;
     
     uint16_t lrmbl = 0.;
-    uint16_t rrmbl = 499;
+    uint16_t rrmbl = 0.;
     int btMul = 10;
     
     lrmbl = fmax(lrmbl - 0x200 / btMul, 0);
     rrmbl = fmax(rrmbl - 0x100 / btMul, 0);
     
-    uint8_t leftRumble = (lrmbl & 0xFF00)  >> 8UL;
-    uint8_t rightRumble = (rrmbl & 0xFF00) >> 8UL;
+    unsigned char leftRumble = (lrmbl & 0xFF00)  >> 8UL;
+    unsigned char rightRumble = (rrmbl & 0xFF00) >> 8UL;
     
     std::cout<<lrmbl<<"\n";
     printf("%u", leftRumble);
@@ -63,9 +63,12 @@ void DualSense_Output::initialOuput() {
     
     //std::cout<<rrmbl<<"\n";
     
-    _output[4] = leftRumble;
-    _output[5] = rightRumble;
-
+    _output[4] = 0x01;
+    _output[5] = 0x01;
+    
+    _output[6] = 0x00;
+    _output[7] = 0x00;
+    _output[8] = 0x00;
         // Mic led
     _output[10] = 0x02;
     
