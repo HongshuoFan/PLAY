@@ -26,7 +26,7 @@ DualSense_Output::~DualSense_Output()
 void DualSense_Output::createDualSenseOutput() {
   
 
-    uint32_t crc_Data = ds_crc32.CalculateBasicHash(_output, 0, 74);
+    uint32_t crc_Data = ds_crc32.compute(_output, 74);
     _output[74] = (uint8_t)((crc_Data & 0x000000FF) >> 0UL);
     _output[75] = (uint8_t)((crc_Data & 0x0000FF00) >> 8UL);
     _output[76] = (uint8_t)((crc_Data & 0x00FF0000) >> 16UL);

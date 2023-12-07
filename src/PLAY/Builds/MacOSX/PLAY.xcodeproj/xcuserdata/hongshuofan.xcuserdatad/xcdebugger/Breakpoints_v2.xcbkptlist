@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "288EE618-B881-4680-8530-29A593AC2CA0"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Source/DualSense_CRC32.cpp"
@@ -16,8 +16,55 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
             endingLineNumber = "15"
-            landmarkName = "__DS5W::CRC32::CRC32()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "288EE618-B881-4680-8530-29A593AC2CA0 - cd45a43bde0e5719"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__DS5W::CRC32::CRC32()"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/DualSense_CRC32.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  uuid = "288EE618-B881-4680-8530-29A593AC2CA0 - 557ab6a202f7fd5d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__DS5W::CRC32::compute(unsigned char*, unsigned long)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/DualSense_CRC32.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "288EE618-B881-4680-8530-29A593AC2CA0 - 557ab6a202f7fd02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__DS5W::CRC32::compute(unsigned char*, unsigned long)"
+                  moduleName = "PLAY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hongshuofan/Desktop/Development/PLAY/src/PLAY/Source/DualSense_CRC32.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
