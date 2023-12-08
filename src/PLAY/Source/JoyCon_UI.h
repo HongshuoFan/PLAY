@@ -22,6 +22,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
 #include "StickGUI.h"
+#include "JoyConState.h"
 //[/Headers]
 
 
@@ -45,6 +46,9 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     void update() override;
+    JoyCon::L_JoyCon_InputState l_jc_input;
+    JoyCon::R_JoyCon_InputState r_jc_input;
+    bool isConnected = false;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -62,19 +66,19 @@ private:
     //==============================================================================
     std::unique_ptr<juce::TextButton> juce__textButton_zl;
     std::unique_ptr<juce::TextButton> juce__textButton_l;
-    std::unique_ptr<juce::TextButton> juce__textButton_;
+    std::unique_ptr<juce::TextButton> juce__textButton_minus;
     std::unique_ptr<juce::TextButton> juce__textButton_capture;
     std::unique_ptr<juce::TextButton> juce__textButton_UP;
     std::unique_ptr<juce::TextButton> juce__textButton_Left;
     std::unique_ptr<juce::TextButton> juce__textButton_right;
     std::unique_ptr<juce::TextButton> juce__textButton_down;
-    std::unique_ptr<juce::TextButton> juce__textButton_sl;
-    std::unique_ptr<juce::TextButton> juce__textButton_sr;
+    std::unique_ptr<juce::TextButton> juce__textButton_sl_l;
+    std::unique_ptr<juce::TextButton> juce__textButton_sr_l;
     std::unique_ptr<juce::TextButton> juce__textButton_zr;
     std::unique_ptr<juce::TextButton> juce__textButton_r;
-    std::unique_ptr<juce::TextButton> juce__textButton_2;
-    std::unique_ptr<juce::TextButton> juce__textButton_sr2;
-    std::unique_ptr<juce::TextButton> juce__textButton_sl2;
+    std::unique_ptr<juce::TextButton> juce__textButton_plus;
+    std::unique_ptr<juce::TextButton> juce__textButton_sr_r;
+    std::unique_ptr<juce::TextButton> juce__textButton_sl_r;
     std::unique_ptr<juce::TextButton> juce__textButton_x;
     std::unique_ptr<juce::TextButton> juce__textButton_y;
     std::unique_ptr<juce::TextButton> juce__textButton_a;

@@ -37,7 +37,7 @@ JoyCon_UI::JoyCon_UI ()
 
     Right_Stick.reset(new StickGUI());
     addAndMakeVisible(Right_Stick.get());
-    Right_Stick->setBounds(375, 180, 80, 80);
+    Right_Stick->setBounds(372, 180, 80, 80);
     Right_Stick->resized();
     //[/Constructor_pre]
 
@@ -45,101 +45,121 @@ JoyCon_UI::JoyCon_UI ()
     addAndMakeVisible (juce__textButton_zl.get());
     juce__textButton_zl->setButtonText (TRANS ("ZL"));
     juce__textButton_zl->addListener (this);
+    juce__textButton_zl->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_l.reset (new juce::TextButton ("l_button"));
     addAndMakeVisible (juce__textButton_l.get());
     juce__textButton_l->setButtonText (TRANS ("L"));
     juce__textButton_l->addListener (this);
+    juce__textButton_l->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
-    juce__textButton_.reset (new juce::TextButton ("-_button"));
-    addAndMakeVisible (juce__textButton_.get());
-    juce__textButton_->setButtonText (TRANS ("-"));
-    juce__textButton_->addListener (this);
+    juce__textButton_minus.reset (new juce::TextButton ("minus_button"));
+    addAndMakeVisible (juce__textButton_minus.get());
+    juce__textButton_minus->setButtonText (TRANS ("-"));
+    juce__textButton_minus->addListener (this);
+    juce__textButton_minus->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_capture.reset (new juce::TextButton ("capture_button"));
     addAndMakeVisible (juce__textButton_capture.get());
     juce__textButton_capture->setButtonText (TRANS ("Capture"));
     juce__textButton_capture->addListener (this);
+    juce__textButton_capture->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_UP.reset (new juce::TextButton ("up_button"));
     addAndMakeVisible (juce__textButton_UP.get());
     juce__textButton_UP->setButtonText (TRANS ("Up"));
     juce__textButton_UP->addListener (this);
+    juce__textButton_UP->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_Left.reset (new juce::TextButton ("left_button"));
     addAndMakeVisible (juce__textButton_Left.get());
     juce__textButton_Left->setButtonText (TRANS ("Left"));
     juce__textButton_Left->addListener (this);
+    juce__textButton_Left->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_right.reset (new juce::TextButton ("right_button"));
     addAndMakeVisible (juce__textButton_right.get());
     juce__textButton_right->setButtonText (TRANS ("Right"));
     juce__textButton_right->addListener (this);
+    juce__textButton_right->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_down.reset (new juce::TextButton ("down_button"));
     addAndMakeVisible (juce__textButton_down.get());
     juce__textButton_down->setButtonText (TRANS ("Down"));
     juce__textButton_down->addListener (this);
+    juce__textButton_down->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
-    juce__textButton_sl.reset (new juce::TextButton ("sl_button"));
-    addAndMakeVisible (juce__textButton_sl.get());
-    juce__textButton_sl->setButtonText (TRANS ("SL"));
-    juce__textButton_sl->addListener (this);
+    juce__textButton_sl_l.reset (new juce::TextButton ("sl_button"));
+    addAndMakeVisible (juce__textButton_sl_l.get());
+    juce__textButton_sl_l->setButtonText (TRANS ("SL"));
+    juce__textButton_sl_l->addListener (this);
+    juce__textButton_sl_l->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
-    juce__textButton_sr.reset (new juce::TextButton ("sr_button"));
-    addAndMakeVisible (juce__textButton_sr.get());
-    juce__textButton_sr->setButtonText (TRANS ("SR"));
-    juce__textButton_sr->addListener (this);
+    juce__textButton_sr_l.reset (new juce::TextButton ("sr_button"));
+    addAndMakeVisible (juce__textButton_sr_l.get());
+    juce__textButton_sr_l->setButtonText (TRANS ("SR"));
+    juce__textButton_sr_l->addListener (this);
+    juce__textButton_sr_l->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_zr.reset (new juce::TextButton ("zr_button"));
     addAndMakeVisible (juce__textButton_zr.get());
     juce__textButton_zr->setButtonText (TRANS ("ZR"));
     juce__textButton_zr->addListener (this);
+    juce__textButton_zr->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_r.reset (new juce::TextButton ("r_button"));
     addAndMakeVisible (juce__textButton_r.get());
     juce__textButton_r->setButtonText (TRANS ("R"));
     juce__textButton_r->addListener (this);
+    juce__textButton_r->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
-    juce__textButton_2.reset (new juce::TextButton ("+_button"));
-    addAndMakeVisible (juce__textButton_2.get());
-    juce__textButton_2->setButtonText (TRANS ("+"));
-    juce__textButton_2->addListener (this);
+    juce__textButton_plus.reset (new juce::TextButton ("plus_button"));
+    addAndMakeVisible (juce__textButton_plus.get());
+    juce__textButton_plus->setButtonText (TRANS ("+"));
+    juce__textButton_plus->addListener (this);
+    juce__textButton_plus->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
-    juce__textButton_sr2.reset (new juce::TextButton ("sr_button"));
-    addAndMakeVisible (juce__textButton_sr2.get());
-    juce__textButton_sr2->setButtonText (TRANS ("SR"));
-    juce__textButton_sr2->addListener (this);
+    juce__textButton_sr_r.reset (new juce::TextButton ("sr_button"));
+    addAndMakeVisible (juce__textButton_sr_r.get());
+    juce__textButton_sr_r->setButtonText (TRANS ("SR"));
+    juce__textButton_sr_r->addListener (this);
+    juce__textButton_sr_r->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
-    juce__textButton_sl2.reset (new juce::TextButton ("sl_button"));
-    addAndMakeVisible (juce__textButton_sl2.get());
-    juce__textButton_sl2->setButtonText (TRANS ("SL"));
-    juce__textButton_sl2->addListener (this);
+    juce__textButton_sl_r.reset (new juce::TextButton ("sl_button"));
+    addAndMakeVisible (juce__textButton_sl_r.get());
+    juce__textButton_sl_r->setButtonText (TRANS ("SL"));
+    juce__textButton_sl_r->addListener (this);
+    juce__textButton_sl_r->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_x.reset (new juce::TextButton ("x_button"));
     addAndMakeVisible (juce__textButton_x.get());
     juce__textButton_x->setButtonText (TRANS ("X"));
     juce__textButton_x->addListener (this);
+    juce__textButton_x->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_y.reset (new juce::TextButton ("y_button"));
     addAndMakeVisible (juce__textButton_y.get());
     juce__textButton_y->setButtonText (TRANS ("Y"));
     juce__textButton_y->addListener (this);
+    juce__textButton_y->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_a.reset (new juce::TextButton ("a_button"));
     addAndMakeVisible (juce__textButton_a.get());
     juce__textButton_a->setButtonText (TRANS ("A"));
     juce__textButton_a->addListener (this);
+    juce__textButton_a->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_b.reset (new juce::TextButton ("b_button"));
     addAndMakeVisible (juce__textButton_b.get());
     juce__textButton_b->setButtonText (TRANS ("B"));
     juce__textButton_b->addListener (this);
+    juce__textButton_b->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
     juce__textButton_home.reset (new juce::TextButton ("home_button"));
     addAndMakeVisible (juce__textButton_home.get());
     juce__textButton_home->setButtonText (TRANS ("Home"));
     juce__textButton_home->addListener (this);
+    juce__textButton_home->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
 
     //[UserPreSize]
@@ -149,6 +169,7 @@ JoyCon_UI::JoyCon_UI ()
 
 
     //[Constructor] You can add your own custom stuff here..
+    setFramesPerSecond (1);
     //[/Constructor]
 }
 
@@ -159,19 +180,19 @@ JoyCon_UI::~JoyCon_UI()
 
     juce__textButton_zl = nullptr;
     juce__textButton_l = nullptr;
-    juce__textButton_ = nullptr;
+    juce__textButton_minus = nullptr;
     juce__textButton_capture = nullptr;
     juce__textButton_UP = nullptr;
     juce__textButton_Left = nullptr;
     juce__textButton_right = nullptr;
     juce__textButton_down = nullptr;
-    juce__textButton_sl = nullptr;
-    juce__textButton_sr = nullptr;
+    juce__textButton_sl_l = nullptr;
+    juce__textButton_sr_l = nullptr;
     juce__textButton_zr = nullptr;
     juce__textButton_r = nullptr;
-    juce__textButton_2 = nullptr;
-    juce__textButton_sr2 = nullptr;
-    juce__textButton_sl2 = nullptr;
+    juce__textButton_plus = nullptr;
+    juce__textButton_sr_r = nullptr;
+    juce__textButton_sl_r = nullptr;
     juce__textButton_x = nullptr;
     juce__textButton_y = nullptr;
     juce__textButton_a = nullptr;
@@ -180,6 +201,8 @@ JoyCon_UI::~JoyCon_UI()
 
 
     //[Destructor]. You can add your own custom destruction code here..
+    Left_Stick  = nullptr;
+    Right_Stick = nullptr;
     //[/Destructor]
 }
 
@@ -220,19 +243,19 @@ void JoyCon_UI::resized()
 
     juce__textButton_zl->setBounds (proportionOfWidth (0.2500f), proportionOfHeight (0.0353f), proportionOfWidth (0.0583f), proportionOfHeight (0.0471f));
     juce__textButton_l->setBounds (proportionOfWidth (0.3383f), proportionOfHeight (0.0147f), proportionOfWidth (0.0583f), proportionOfHeight (0.0471f));
-    juce__textButton_->setBounds (proportionOfWidth (0.3550f), proportionOfHeight (0.0912f), proportionOfWidth (0.0450f), proportionOfHeight (0.0382f));
+    juce__textButton_minus->setBounds (proportionOfWidth (0.3550f), proportionOfHeight (0.0912f), proportionOfWidth (0.0450f), proportionOfHeight (0.0382f));
     juce__textButton_capture->setBounds (proportionOfWidth (0.3417f), proportionOfHeight (0.8353f), proportionOfWidth (0.0600f), proportionOfHeight (0.0412f));
     juce__textButton_UP->setBounds (proportionOfWidth (0.3033f), proportionOfHeight (0.5265f), proportionOfWidth (0.0517f), proportionOfHeight (0.0412f));
     juce__textButton_Left->setBounds (proportionOfWidth (0.2533f), proportionOfHeight (0.6000f), proportionOfWidth (0.0517f), proportionOfHeight (0.0412f));
     juce__textButton_right->setBounds (proportionOfWidth (0.3483f), proportionOfHeight (0.6000f), proportionOfWidth (0.0517f), proportionOfHeight (0.0412f));
     juce__textButton_down->setBounds (proportionOfWidth (0.3033f), proportionOfHeight (0.6765f), proportionOfWidth (0.0517f), proportionOfHeight (0.0412f));
-    juce__textButton_sl->setBounds (proportionOfWidth (0.4200f), proportionOfHeight (0.1588f), proportionOfWidth (0.0500f), proportionOfHeight (0.1000f));
-    juce__textButton_sr->setBounds (proportionOfWidth (0.4200f), proportionOfHeight (0.6588f), proportionOfWidth (0.0500f), proportionOfHeight (0.1000f));
+    juce__textButton_sl_l->setBounds (proportionOfWidth (0.4200f), proportionOfHeight (0.1588f), proportionOfWidth (0.0500f), proportionOfHeight (0.1000f));
+    juce__textButton_sr_l->setBounds (proportionOfWidth (0.4200f), proportionOfHeight (0.6588f), proportionOfWidth (0.0500f), proportionOfHeight (0.1000f));
     juce__textButton_zr->setBounds (proportionOfWidth (0.7000f), proportionOfHeight (0.0353f), proportionOfWidth (0.0583f), proportionOfHeight (0.0471f));
     juce__textButton_r->setBounds (proportionOfWidth (0.6150f), proportionOfHeight (0.0147f), proportionOfWidth (0.0583f), proportionOfHeight (0.0471f));
-    juce__textButton_2->setBounds (proportionOfWidth (0.6117f), proportionOfHeight (0.0912f), proportionOfWidth (0.0417f), proportionOfHeight (0.0471f));
-    juce__textButton_sr2->setBounds (proportionOfWidth (0.5400f), proportionOfHeight (0.1588f), proportionOfWidth (0.0500f), proportionOfHeight (0.1000f));
-    juce__textButton_sl2->setBounds (proportionOfWidth (0.5400f), proportionOfHeight (0.6588f), proportionOfWidth (0.0500f), proportionOfHeight (0.1000f));
+    juce__textButton_plus->setBounds (proportionOfWidth (0.6117f), proportionOfHeight (0.0912f), proportionOfWidth (0.0417f), proportionOfHeight (0.0471f));
+    juce__textButton_sr_r->setBounds (proportionOfWidth (0.5400f), proportionOfHeight (0.1588f), proportionOfWidth (0.0500f), proportionOfHeight (0.1000f));
+    juce__textButton_sl_r->setBounds (proportionOfWidth (0.5400f), proportionOfHeight (0.6588f), proportionOfWidth (0.0500f), proportionOfHeight (0.1000f));
     juce__textButton_x->setBounds (proportionOfWidth (0.6667f), proportionOfHeight (0.2059f), proportionOfWidth (0.0517f), proportionOfHeight (0.0412f));
     juce__textButton_y->setBounds (proportionOfWidth (0.6200f), proportionOfHeight (0.2765f), proportionOfWidth (0.0517f), proportionOfHeight (0.0412f));
     juce__textButton_a->setBounds (proportionOfWidth (0.7100f), proportionOfHeight (0.2765f), proportionOfWidth (0.0517f), proportionOfHeight (0.0412f));
@@ -272,10 +295,10 @@ void JoyCon_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         //[UserButtonCode_juce__textButton_l] -- add your button handler code here..
         //[/UserButtonCode_juce__textButton_l]
     }
-    else if (buttonThatWasClicked == juce__textButton_.get())
+    else if (buttonThatWasClicked == juce__textButton_minus.get())
     {
-        //[UserButtonCode_juce__textButton_] -- add your button handler code here..
-        //[/UserButtonCode_juce__textButton_]
+        //[UserButtonCode_juce__textButton_minus] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButton_minus]
     }
     else if (buttonThatWasClicked == juce__textButton_capture.get())
     {
@@ -302,15 +325,15 @@ void JoyCon_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         //[UserButtonCode_juce__textButton_down] -- add your button handler code here..
         //[/UserButtonCode_juce__textButton_down]
     }
-    else if (buttonThatWasClicked == juce__textButton_sl.get())
+    else if (buttonThatWasClicked == juce__textButton_sl_l.get())
     {
-        //[UserButtonCode_juce__textButton_sl] -- add your button handler code here..
-        //[/UserButtonCode_juce__textButton_sl]
+        //[UserButtonCode_juce__textButton_sl_l] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButton_sl_l]
     }
-    else if (buttonThatWasClicked == juce__textButton_sr.get())
+    else if (buttonThatWasClicked == juce__textButton_sr_l.get())
     {
-        //[UserButtonCode_juce__textButton_sr] -- add your button handler code here..
-        //[/UserButtonCode_juce__textButton_sr]
+        //[UserButtonCode_juce__textButton_sr_l] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButton_sr_l]
     }
     else if (buttonThatWasClicked == juce__textButton_zr.get())
     {
@@ -322,20 +345,20 @@ void JoyCon_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         //[UserButtonCode_juce__textButton_r] -- add your button handler code here..
         //[/UserButtonCode_juce__textButton_r]
     }
-    else if (buttonThatWasClicked == juce__textButton_2.get())
+    else if (buttonThatWasClicked == juce__textButton_plus.get())
     {
-        //[UserButtonCode_juce__textButton_2] -- add your button handler code here..
-        //[/UserButtonCode_juce__textButton_2]
+        //[UserButtonCode_juce__textButton_plus] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButton_plus]
     }
-    else if (buttonThatWasClicked == juce__textButton_sr2.get())
+    else if (buttonThatWasClicked == juce__textButton_sr_r.get())
     {
-        //[UserButtonCode_juce__textButton_sr2] -- add your button handler code here..
-        //[/UserButtonCode_juce__textButton_sr2]
+        //[UserButtonCode_juce__textButton_sr_r] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButton_sr_r]
     }
-    else if (buttonThatWasClicked == juce__textButton_sl2.get())
+    else if (buttonThatWasClicked == juce__textButton_sl_r.get())
     {
-        //[UserButtonCode_juce__textButton_sl2] -- add your button handler code here..
-        //[/UserButtonCode_juce__textButton_sl2]
+        //[UserButtonCode_juce__textButton_sl_r] -- add your button handler code here..
+        //[/UserButtonCode_juce__textButton_sl_r]
     }
     else if (buttonThatWasClicked == juce__textButton_x.get())
     {
@@ -372,7 +395,39 @@ void JoyCon_UI::buttonClicked (juce::Button* buttonThatWasClicked)
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void JoyCon_UI::update()
 {
+    if(isConnected){
+        setFramesPerSecond(12);
+        juce__textButton_zl->setToggleState(l_jc_input.buttons.zl, juce::sendNotification);
+        juce__textButton_l->setToggleState(l_jc_input.buttons.l, juce::sendNotification);
+        juce__textButton_minus->setToggleState(l_jc_input.buttons.minus, juce::sendNotification);
+        juce__textButton_capture->setToggleState(l_jc_input.buttons.capture, juce::sendNotification);
+        juce__textButton_sl_l->setToggleState(l_jc_input.buttons.sl, juce::sendNotification);
+        juce__textButton_sr_l->setToggleState(l_jc_input.buttons.sr, juce::sendNotification);
 
+        juce__textButton_UP->setToggleState(l_jc_input.dpad.up, juce::sendNotification);
+        juce__textButton_down->setToggleState(l_jc_input.dpad.down, juce::sendNotification);
+        juce__textButton_Left->setToggleState(l_jc_input.dpad.left, juce::sendNotification);
+        juce__textButton_right->setToggleState(l_jc_input.dpad.right, juce::sendNotification);
+
+        Left_Stick->updatePoint(l_jc_input.stick.x, l_jc_input.stick.y, l_jc_input.stick.stickPress);
+
+        juce__textButton_zr->setToggleState(r_jc_input.buttons.zr, juce::sendNotification);
+        juce__textButton_r->setToggleState(r_jc_input.buttons.r, juce::sendNotification);
+        juce__textButton_plus->setToggleState(r_jc_input.buttons.plus, juce::sendNotification);
+        juce__textButton_home->setToggleState(r_jc_input.buttons.home, juce::sendNotification);
+        juce__textButton_sl_r->setToggleState(r_jc_input.buttons.sl, juce::sendNotification);
+        juce__textButton_sr_r->setToggleState(r_jc_input.buttons.sr, juce::sendNotification);
+
+        juce__textButton_x->setToggleState(r_jc_input.buttons.x, juce::sendNotification);
+        juce__textButton_y->setToggleState(r_jc_input.buttons.y, juce::sendNotification);
+        juce__textButton_a->setToggleState(r_jc_input.buttons.a, juce::sendNotification);
+        juce__textButton_b->setToggleState(r_jc_input.buttons.b, juce::sendNotification);
+        
+        Right_Stick->updatePoint(r_jc_input.stick.x, r_jc_input.stick.y, r_jc_input.stick.stickPress);
+
+    }else{
+        setFramesPerSecond(1);
+    }
 }
 //[/MiscUserCode]
 
@@ -398,64 +453,84 @@ BEGIN_JUCER_METADATA
   </BACKGROUND>
   <TEXTBUTTON name="zl_button" id="1cc67156ee26efac" memberName="juce__textButton_zl"
               virtualName="" explicitFocusOrder="0" pos="25% 3.529% 5.833% 4.706%"
-              buttonText="ZL" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="ZL" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="l_button" id="a20fe6afd4607943" memberName="juce__textButton_l"
               virtualName="" explicitFocusOrder="0" pos="33.833% 1.471% 5.833% 4.706%"
-              buttonText="L" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="-_button" id="995bf07d41bd7cf2" memberName="juce__textButton_"
+              bgColOn="ff5f9ea0" buttonText="L" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
+  <TEXTBUTTON name="minus_button" id="995bf07d41bd7cf2" memberName="juce__textButton_minus"
               virtualName="" explicitFocusOrder="0" pos="35.5% 9.118% 4.5% 3.824%"
-              buttonText="-" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="-" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="capture_button" id="dd3b2e191ddd1126" memberName="juce__textButton_capture"
               virtualName="" explicitFocusOrder="0" pos="34.167% 83.529% 6% 4.118%"
-              buttonText="Capture" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="Capture" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="up_button" id="60a341aecef994de" memberName="juce__textButton_UP"
               virtualName="" explicitFocusOrder="0" pos="30.333% 52.647% 5.167% 4.118%"
-              buttonText="Up" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="Up" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="left_button" id="353c25528095ee94" memberName="juce__textButton_Left"
               virtualName="" explicitFocusOrder="0" pos="25.333% 60% 5.167% 4.118%"
-              buttonText="Left" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="Left" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="right_button" id="643e5d0931220731" memberName="juce__textButton_right"
               virtualName="" explicitFocusOrder="0" pos="34.833% 60% 5.167% 4.118%"
-              buttonText="Right" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="Right" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="down_button" id="96446f9ae02af8a5" memberName="juce__textButton_down"
               virtualName="" explicitFocusOrder="0" pos="30.333% 67.647% 5.167% 4.118%"
-              buttonText="Down" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="sl_button" id="5a6ddc9a283427fc" memberName="juce__textButton_sl"
+              bgColOn="ff5f9ea0" buttonText="Down" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
+  <TEXTBUTTON name="sl_button" id="5a6ddc9a283427fc" memberName="juce__textButton_sl_l"
               virtualName="" explicitFocusOrder="0" pos="42% 15.882% 5% 10%"
-              buttonText="SL" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="sr_button" id="55c7c15a26ad5788" memberName="juce__textButton_sr"
+              bgColOn="ff5f9ea0" buttonText="SL" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
+  <TEXTBUTTON name="sr_button" id="55c7c15a26ad5788" memberName="juce__textButton_sr_l"
               virtualName="" explicitFocusOrder="0" pos="42% 65.882% 5% 10%"
-              buttonText="SR" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="SR" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="zr_button" id="612844c53a7abbf0" memberName="juce__textButton_zr"
               virtualName="" explicitFocusOrder="0" pos="70% 3.529% 5.833% 4.706%"
-              buttonText="ZR" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="ZR" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="r_button" id="569fe346efcede6a" memberName="juce__textButton_r"
               virtualName="" explicitFocusOrder="0" pos="61.5% 1.471% 5.833% 4.706%"
-              buttonText="R" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="+_button" id="e13f508f32787f45" memberName="juce__textButton_2"
+              bgColOn="ff5f9ea0" buttonText="R" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
+  <TEXTBUTTON name="plus_button" id="e13f508f32787f45" memberName="juce__textButton_plus"
               virtualName="" explicitFocusOrder="0" pos="61.167% 9.118% 4.167% 4.706%"
-              buttonText="+" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="sr_button" id="82e6498f7ab5583b" memberName="juce__textButton_sr2"
+              bgColOn="ff5f9ea0" buttonText="+" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
+  <TEXTBUTTON name="sr_button" id="82e6498f7ab5583b" memberName="juce__textButton_sr_r"
               virtualName="" explicitFocusOrder="0" pos="54% 15.882% 5% 10%"
-              buttonText="SR" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="sl_button" id="aef97be374c91d95" memberName="juce__textButton_sl2"
+              bgColOn="ff5f9ea0" buttonText="SR" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
+  <TEXTBUTTON name="sl_button" id="aef97be374c91d95" memberName="juce__textButton_sl_r"
               virtualName="" explicitFocusOrder="0" pos="54% 65.882% 5% 10%"
-              buttonText="SL" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="SL" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="x_button" id="f392b142ac2be96d" memberName="juce__textButton_x"
               virtualName="" explicitFocusOrder="0" pos="66.667% 20.588% 5.167% 4.118%"
-              buttonText="X" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="X" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="y_button" id="e1327e3abe5f6601" memberName="juce__textButton_y"
               virtualName="" explicitFocusOrder="0" pos="62% 27.647% 5.167% 4.118%"
-              buttonText="Y" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="Y" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="a_button" id="45678a3db2453320" memberName="juce__textButton_a"
               virtualName="" explicitFocusOrder="0" pos="71% 27.647% 5.167% 4.118%"
-              buttonText="A" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="A" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="b_button" id="b8895522617ca8c8" memberName="juce__textButton_b"
               virtualName="" explicitFocusOrder="0" pos="66.667% 34.706% 5.167% 4.118%"
-              buttonText="B" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="B" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
   <TEXTBUTTON name="home_button" id="c339f80e78117710" memberName="juce__textButton_home"
               virtualName="" explicitFocusOrder="0" pos="61% 83.529% 6% 4.118%"
-              buttonText="Home" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              bgColOn="ff5f9ea0" buttonText="Home" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

@@ -154,7 +154,7 @@ void MainComponent::onHIDMenuChanged()
 //                hidIO_2->writeRawData(JC_output->_output, 0x01, 49);
                
             }
-            
+            JC_UI.isConnected = true;
             addAndMakeVisible(JC_UI);
             
         }else{
@@ -210,6 +210,7 @@ void MainComponent::onJoyCon_L_DataReceived()
     //hidIO_1->printReport();
     
     JC_input->evaluate_L_JC_HidInputBuffer(hidIO_1->reportData);
+    JC_UI.l_jc_input = JC_input->l_jc_input;
     
 }
 
@@ -220,7 +221,7 @@ void MainComponent::onJoyCon_R_DataReceived()
     //hidIO_2->printReport();
     
     JC_input->evaluate_R_JC_HidInputBuffer(hidIO_2->reportData);
-    
+    JC_UI.r_jc_input = JC_input->r_jc_input;
 }
 
 void MainComponent::userTriedToCloseWindow()
