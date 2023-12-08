@@ -23,6 +23,7 @@
 #include <JuceHeader.h>
 #include "XboxControllerState.h"
 #include "DualSenseState.h"
+#include "JoyConState.h"
 //[/Headers]
 
 
@@ -47,6 +48,8 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
     void send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState _xboxInput);
     void send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput);
+    void send_L_JoyCon_OSC_message(JoyCon::L_JoyCon_InputState _l_JC_Input);
+    void send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_Input);
     juce::OSCSender _oscSender;
     void disConnect();
     //[/UserMethods]
@@ -68,6 +71,8 @@ private:
     void ConvertAndSend_bool(const bool buttonState, const bool pre_buttonStat, const juce::String address, bool& pre_buttonStat_p);
     XboxCotroller::XboxCotrollerInputState last_xboxInput;
     DualSense::DualSenseInputState last_dualSenseInput;
+    JoyCon::L_JoyCon_InputState last_l_JC_Input;
+    JoyCon::R_JoyCon_InputState last_r_JC_Input;
     //[/UserVariables]
 
     //==============================================================================

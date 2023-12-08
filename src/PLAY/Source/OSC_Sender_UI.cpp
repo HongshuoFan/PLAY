@@ -294,6 +294,7 @@ void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState
 
     }
 }
+
 void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput)
 {
     if(juce__toggleButton_OSC->getToggleState()){
@@ -377,9 +378,114 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
     
 }
 
+
+void OSC_Sender_UI::send_L_JoyCon_OSC_message(JoyCon::L_JoyCon_InputState _l_JC_Input)
+{
+    if(juce__toggleButton_OSC->getToggleState()){
+        
+        ConvertAndSend_float(_l_JC_Input.stick.x, last_l_JC_Input.stick.x,
+                             "/leftStick/x", last_l_JC_Input.stick.x);
+        ConvertAndSend_float(_l_JC_Input.stick.y, last_l_JC_Input.stick.y,
+                             "/leftStick/y", last_l_JC_Input.stick.y);
+        ConvertAndSend_bool(_l_JC_Input.stick.stickPress, last_l_JC_Input.stick.stickPress,
+                            "/leftStick/press", last_l_JC_Input.stick.stickPress);
+        
+        ConvertAndSend_bool(_l_JC_Input.buttons.l, last_l_JC_Input.buttons.l,
+                            "/buttons/l", last_l_JC_Input.buttons.l);
+        ConvertAndSend_bool(_l_JC_Input.buttons.zl, last_l_JC_Input.buttons.zl,
+                            "/buttons/zl", last_l_JC_Input.buttons.zl);
+        ConvertAndSend_bool(_l_JC_Input.buttons.capture, last_l_JC_Input.buttons.capture,
+                            "/buttons/capture", last_l_JC_Input.buttons.capture);
+        ConvertAndSend_bool(_l_JC_Input.buttons.minus, last_l_JC_Input.buttons.minus,
+                            "/buttons/minus", last_l_JC_Input.buttons.minus);
+        ConvertAndSend_bool(_l_JC_Input.buttons.sl, last_l_JC_Input.buttons.sl,
+                            "/buttons/l_sl", last_l_JC_Input.buttons.sl);
+        ConvertAndSend_bool(_l_JC_Input.buttons.sr, last_l_JC_Input.buttons.sr,
+                            "/buttons/l_sr", last_l_JC_Input.buttons.sr);
+
+        ConvertAndSend_bool(_l_JC_Input.dpad.up, last_l_JC_Input.dpad.up,
+                            "/dpad/up", last_l_JC_Input.dpad.up);
+        ConvertAndSend_bool(_l_JC_Input.dpad.down, last_l_JC_Input.dpad.down,
+                            "/dpad/down", last_l_JC_Input.dpad.down);
+        ConvertAndSend_bool(_l_JC_Input.dpad.left, last_l_JC_Input.dpad.left,
+                            "/dpad/left", last_l_JC_Input.dpad.left);
+        ConvertAndSend_bool(_l_JC_Input.dpad.right, last_l_JC_Input.dpad.right,
+                            "/dpad/right", last_l_JC_Input.dpad.right);
+
+
+        ConvertAndSend_float(_l_JC_Input.accelerometer.x, last_l_JC_Input.accelerometer.x,
+                            "/left/accelerometer/x", last_l_JC_Input.accelerometer.x);
+        ConvertAndSend_float(_l_JC_Input.accelerometer.y, last_l_JC_Input.accelerometer.y,
+                            "/left/accelerometer/y", last_l_JC_Input.accelerometer.y);
+        ConvertAndSend_float(_l_JC_Input.accelerometer.z, last_l_JC_Input.accelerometer.z,
+                            "/left/accelerometer/z", last_l_JC_Input.accelerometer.z);
+
+        ConvertAndSend_float(_l_JC_Input.gyroscope.x, last_l_JC_Input.gyroscope.x,
+                            "/left/gyroscope/x", last_l_JC_Input.gyroscope.x);
+        ConvertAndSend_float(_l_JC_Input.gyroscope.y, last_l_JC_Input.gyroscope.y,
+                            "/left/gyroscope/y", last_l_JC_Input.gyroscope.y);
+        ConvertAndSend_float(_l_JC_Input.gyroscope.z, last_l_JC_Input.gyroscope.z,
+                            "/left/gyroscope/z", last_l_JC_Input.gyroscope.z);
+        
+    }
+    
+}
+
+void OSC_Sender_UI::send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_Input)
+{
+    if(juce__toggleButton_OSC->getToggleState()){
+        
+        ConvertAndSend_float(_r_JC_Input.stick.x, last_r_JC_Input.stick.x,
+                             "/rightStick/x", last_r_JC_Input.stick.x);
+        ConvertAndSend_float(_r_JC_Input.stick.y, last_r_JC_Input.stick.y,
+                             "/rightStick/y", last_r_JC_Input.stick.y);
+        ConvertAndSend_bool(_r_JC_Input.stick.stickPress, last_r_JC_Input.stick.stickPress,
+                            "/rightStick/press", last_r_JC_Input.stick.stickPress);
+        
+        ConvertAndSend_bool(_r_JC_Input.buttons.r, last_r_JC_Input.buttons.r,
+                            "/buttons/r", last_r_JC_Input.buttons.r);
+        ConvertAndSend_bool(_r_JC_Input.buttons.zr, last_r_JC_Input.buttons.zr,
+                            "/buttons/zr", last_r_JC_Input.buttons.zr);
+        ConvertAndSend_bool(_r_JC_Input.buttons.home, last_r_JC_Input.buttons.home,
+                            "/buttons/home", last_r_JC_Input.buttons.home);
+        ConvertAndSend_bool(_r_JC_Input.buttons.plus, last_r_JC_Input.buttons.plus,
+                            "/buttons/plus", last_r_JC_Input.buttons.plus);
+        ConvertAndSend_bool(_r_JC_Input.buttons.sl, last_r_JC_Input.buttons.sl,
+                            "/buttons/r_sl", last_r_JC_Input.buttons.sl);
+        ConvertAndSend_bool(_r_JC_Input.buttons.sr, last_r_JC_Input.buttons.sr,
+                            "/buttons/r_sr", last_r_JC_Input.buttons.sr);
+        
+        ConvertAndSend_bool(_r_JC_Input.buttons.x, last_r_JC_Input.buttons.x,
+                            "/buttons/x", last_r_JC_Input.buttons.x);
+        ConvertAndSend_bool(_r_JC_Input.buttons.y, last_r_JC_Input.buttons.y,
+                            "/buttons/y", last_r_JC_Input.buttons.y);
+        ConvertAndSend_bool(_r_JC_Input.buttons.a, last_r_JC_Input.buttons.a,
+                            "/buttons/a", last_r_JC_Input.buttons.a);
+        ConvertAndSend_bool(_r_JC_Input.buttons.b, last_r_JC_Input.buttons.b,
+                            "/buttons/b", last_r_JC_Input.buttons.b);
+
+
+        ConvertAndSend_float(_r_JC_Input.accelerometer.x, last_r_JC_Input.accelerometer.x,
+                            "/right/accelerometer/x", last_r_JC_Input.accelerometer.x);
+        ConvertAndSend_float(_r_JC_Input.accelerometer.y, last_r_JC_Input.accelerometer.y,
+                            "/right/accelerometer/y", last_r_JC_Input.accelerometer.y);
+        ConvertAndSend_float(_r_JC_Input.accelerometer.z, last_r_JC_Input.accelerometer.z,
+                            "/right/accelerometer/z", last_r_JC_Input.accelerometer.z);
+
+        ConvertAndSend_float(_r_JC_Input.gyroscope.x, last_r_JC_Input.gyroscope.x,
+                            "/right/gyroscope/x", last_r_JC_Input.gyroscope.x);
+        ConvertAndSend_float(_r_JC_Input.gyroscope.y, last_r_JC_Input.gyroscope.y,
+                            "/right/gyroscope/y", last_r_JC_Input.gyroscope.y);
+        ConvertAndSend_float(_r_JC_Input.gyroscope.z, last_r_JC_Input.gyroscope.z,
+                            "/right/gyroscope/z", last_r_JC_Input.gyroscope.z);
+        
+    }
+    
+}
+
 void OSC_Sender_UI::ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p)
 {
-    if(val != pre_val && abs(val-pre_val) >= 0.001){
+    if(val != pre_val && abs(val-pre_val) >= 0.1){
         if(_oscSender.send(address, val)){
             pre_val_p = val;
         }

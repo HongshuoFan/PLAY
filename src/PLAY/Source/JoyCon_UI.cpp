@@ -432,7 +432,7 @@ void JoyCon_UI::resized()
     juce__textButton_y->setBounds (proportionOfWidth (0.6200f), proportionOfHeight (0.2765f), proportionOfWidth (0.0517f), proportionOfHeight (0.0412f));
     juce__textButton_a->setBounds (proportionOfWidth (0.7100f), proportionOfHeight (0.2765f), proportionOfWidth (0.0517f), proportionOfHeight (0.0412f));
     juce__textButton_b->setBounds (proportionOfWidth (0.6667f), proportionOfHeight (0.3471f), proportionOfWidth (0.0517f), proportionOfHeight (0.0412f));
-    juce__textButton_home->setBounds (proportionOfWidth (0.6100f), proportionOfHeight (0.8353f), proportionOfWidth (0.0600f), proportionOfHeight (0.0412f));
+    juce__textButton_home->setBounds (proportionOfWidth (0.6117f), proportionOfHeight (0.8353f), proportionOfWidth (0.0600f), proportionOfHeight (0.0412f));
     juce__label_acc->setBounds (proportionOfWidth (0.0550f), proportionOfHeight (0.0206f), 75, 12);
     juce__slider_l_acc_x->setBounds (proportionOfWidth (0.0200f), proportionOfHeight (0.0823f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
     juce__slider_l_acc_y->setBounds (proportionOfWidth (0.0200f), proportionOfHeight (0.2118f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
@@ -690,7 +690,7 @@ void JoyCon_UI::update()
         juce__textButton_b->setToggleState(r_jc_input.buttons.b, juce::sendNotification);
 
         Right_Stick->updatePoint(r_jc_input.stick.x, r_jc_input.stick.y, r_jc_input.stick.stickPress);
-        
+
         juce__slider_r_acc_x->setValue(std::clamp(r_jc_input.accelerometer.x, .0f, 1.0f));
         juce__slider_r_acc_y->setValue(std::clamp(r_jc_input.accelerometer.y, .0f, 1.0f));
         juce__slider_r_acc_z->setValue(std::clamp(r_jc_input.accelerometer.z, .0f, 1.0f));
@@ -802,7 +802,7 @@ BEGIN_JUCER_METADATA
               bgColOn="ff5f9ea0" buttonText="B" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="home_button" id="c339f80e78117710" memberName="juce__textButton_home"
-              virtualName="" explicitFocusOrder="0" pos="61% 83.529% 6% 4.118%"
+              virtualName="" explicitFocusOrder="0" pos="61.167% 83.529% 6% 4.118%"
               bgColOn="ff5f9ea0" buttonText="Home" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <LABEL name="accelerometer" id="cc65c8b747b37e4d" memberName="juce__label_acc"
