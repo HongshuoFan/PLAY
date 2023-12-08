@@ -234,6 +234,14 @@ void MainComponent::userTriedToCloseWindow()
         DS_output->disConnectOutput();
         hidIO_1->writeRawData(DS_output->_output, 0xa2, 78);
     }
+    
+    if(JC_UI.isConnected){
+        //disable dual sense controller
+        JC_output->trunIMU(false);
+        hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
+        hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+    }
+    
     //kill hidIO threads
     if(hidIO_1){
         hidIO_1->stopReadingThread();

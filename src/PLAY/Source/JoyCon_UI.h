@@ -36,7 +36,8 @@
                                                                     //[/Comments]
 */
 class JoyCon_UI  : public juce::AnimatedAppComponent,
-                   public juce::Button::Listener
+                   public juce::Button::Listener,
+                   public juce::Slider::Listener
 {
 public:
     //==============================================================================
@@ -54,6 +55,7 @@ public:
     void paint (juce::Graphics& g) override;
     void resized() override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
+    void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
 
 
 
@@ -84,6 +86,22 @@ private:
     std::unique_ptr<juce::TextButton> juce__textButton_a;
     std::unique_ptr<juce::TextButton> juce__textButton_b;
     std::unique_ptr<juce::TextButton> juce__textButton_home;
+    std::unique_ptr<juce::Label> juce__label_acc;
+    std::unique_ptr<juce::Slider> juce__slider_l_acc_x;
+    std::unique_ptr<juce::Slider> juce__slider_l_acc_y;
+    std::unique_ptr<juce::Slider> juce__slider_l_acc_z;
+    std::unique_ptr<juce::Label> juce__label_Gyroscope;
+    std::unique_ptr<juce::Slider> juce__slider_l_gyr_x;
+    std::unique_ptr<juce::Slider> juce__slider_l_gyr_y;
+    std::unique_ptr<juce::Slider> juce__slider_l_gyr_z;
+    std::unique_ptr<juce::Label> juce__label_acc2;
+    std::unique_ptr<juce::Label> juce__label_Gyroscope2;
+    std::unique_ptr<juce::Slider> juce__slider_r_acc_x;
+    std::unique_ptr<juce::Slider> juce__slider_r_acc_y;
+    std::unique_ptr<juce::Slider> juce__slider_r_acc_z;
+    std::unique_ptr<juce::Slider> juce__slider_r_gyr_x;
+    std::unique_ptr<juce::Slider> juce__slider_r_gyr_y;
+    std::unique_ptr<juce::Slider> juce__slider_r_gyr_z;
     juce::Path internalPath1;
     juce::Path internalPath2;
 
