@@ -485,7 +485,7 @@ void OSC_Sender_UI::send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_
 
 void OSC_Sender_UI::ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p)
 {
-    if(val != pre_val && abs(val-pre_val) >= 0.1){
+    if(val != pre_val && abs(val - pre_val) >= 0.02){
         if(_oscSender.send(address, val)){
             pre_val_p = val;
         }
