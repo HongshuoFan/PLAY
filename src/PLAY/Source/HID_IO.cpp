@@ -77,7 +77,7 @@ bool HID_IO::connect() {
     }
     startReadingThread();
     
-    return true;
+    return isConneted;
     
     
 //    return false;
@@ -89,6 +89,7 @@ void HID_IO::disconnect() {
 //           IOHIDDeviceClose(device, kIOHIDOptionsTypeNone);
         deviceRF = NULL;
        }
+    isConneted = false;
 }
 
 
@@ -116,6 +117,9 @@ void HID_IO::startReadingThread() {
         readingThread = std::thread([this]() {
             creatConncet();
         });
+        isConneted = true;
+    }else{
+        isConneted = false;
     }
 }
 
@@ -158,10 +162,13 @@ void HID_IO::creatConncet()
     IOHIDManagerScheduleWithRunLoop(manager, CFRunLoopGetCurrent(), CFSTR("CustomLoop"));
     while(CFRunLoopRunInMode(CFSTR("CustomLoop"), 1, true) != kCFRunLoopRunStopped && !stopThreadFlag){
 //        std::cout<<"CFRunLoopRunInMode \n";
+        isConneted = true;
     }
     
     IOHIDManagerClose(manager, 0);
+    isConneted = false;
     std::cout<<"manager closed \n";
+    //stopReadingThread();
 }
 
 CFMutableDictionaryRef HID_IO::CreateDeviceMatchingDictionary(uint32_t usagePage, uint32_t usage)

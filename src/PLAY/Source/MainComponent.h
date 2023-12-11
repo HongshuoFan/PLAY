@@ -58,6 +58,8 @@ private:
     std::unique_ptr<JoyCon_Input> JC_input;
     std::unique_ptr<JoyCon_Output> JC_output;
     JoyCon_UI JC_UI;
+    juce::String L_JoyConName = "Joy-Con (L)";
+    juce::String R_JoyConName = "Joy-Con (R)";
     
     // OSC stuffs.
     std::unique_ptr<OSC_Sender_UI> osc_sender;

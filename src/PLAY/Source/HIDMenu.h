@@ -47,7 +47,7 @@ public:
     bool HIDDeviceChanged;
     juce::String selectedKey;
     IOHIDDeviceRef seletedDevice;
-
+    std::map<juce::String, IOHIDDeviceRef> devicesMap;
     std::function<void()> onHIDMenuChanged;
     //[/UserMethods]
 
@@ -60,7 +60,6 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    std::map<juce::String, IOHIDDeviceRef> devicesMap;
     void updateHIDcombox();
     //[/UserVariables]
 
