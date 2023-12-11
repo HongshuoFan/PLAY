@@ -654,7 +654,7 @@ void JoyCon_UI::sliderValueChanged (juce::Slider* sliderThatWasMoved)
 void JoyCon_UI::update()
 {
     if(isConnected){
-        setFramesPerSecond(12);
+        setFramesPerSecond(10);
         juce__textButton_zl->setToggleState(l_jc_input.buttons.zl, juce::sendNotification);
         juce__textButton_l->setToggleState(l_jc_input.buttons.l, juce::sendNotification);
         juce__textButton_minus->setToggleState(l_jc_input.buttons.minus, juce::sendNotification);
