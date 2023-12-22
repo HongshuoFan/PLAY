@@ -4,7 +4,7 @@
 MainComponent::MainComponent()
 {
     //initialize();
-    setSize (600, 400);
+    setSize (600, 440);
     
     // Create HIDmenu compoent and add it to the MainComponent
     m_HIDMenu.reset(new HIDMenu());
@@ -16,6 +16,9 @@ MainComponent::MainComponent()
     
     osc_receiver.reset(new OSC_Receiver);
     osc_receiver->TriggerVibration = [this]{onDataReceived();};
+    
+    midi_sender.reset(new MIDI_Sender_UI);
+    midi_sender->setBounds(0, proportionOfHeight (0.8f), 600, 40);
     // Add a listener to the m_HIDMenu
     
     //xbxUI.reset (new XboxController_UI);
@@ -56,6 +59,9 @@ void MainComponent::resized()
     // update their positions.
     if(osc_sender){
         osc_sender->setBounds(0, proportionOfHeight (0.9f), 600, 40);
+    }
+    if(midi_sender){
+        midi_sender->setBounds(0, proportionOfHeight (0.8f), 600, 40);
     }
     
 }
@@ -190,6 +196,8 @@ void MainComponent::initialConnection(juce::String nameOfDevice)
     //m_HIDMenu = nullptr;
     //add OSC_SenderUI
     addAndMakeVisible(osc_sender.get());
+    //add MIDI_SenderUI
+    addAndMakeVisible(midi_sender.get());
     std::cout << "connect to " << nameOfDevice << std::endl;
 }
 

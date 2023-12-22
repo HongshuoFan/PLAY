@@ -44,6 +44,7 @@
 		A1995DC184038858EAAE7476 /* DiscRecording.framework */ = {isa = PBXBuildFile; fileRef = BB5CF399B09DF25565D87858; };
 		A8C2279FB39F474E99A423F9 /* AudioToolbox.framework */ = {isa = PBXBuildFile; fileRef = 2D59367AC67DDC158409DF2A; };
 		AA8801728F38A34F245F66F1 /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXBuildFile; fileRef = 87D7A98320FD59D7B2097C6F; };
+		AF5002F553415DF86E71CE3E /* MIDI_Sender_UI.cpp */ = {isa = PBXBuildFile; fileRef = 379BAB2677E3B451F7C4E825; };
 		B151F5E5CB1A4F178686C26B /* MetalKit.framework */ = {isa = PBXBuildFile; fileRef = 619928B320E5DAD973D8BF05; settings = { ATTRIBUTES = (Weak, ); }; };
 		B17F054EA1A8BADBFB7264FC /* DualSense_Input.cpp */ = {isa = PBXBuildFile; fileRef = C5F96CC5C6790B83DF77188E; };
 		B68ECD2BD97EFEE0B56D9522 /* include_juce_gui_basics.mm */ = {isa = PBXBuildFile; fileRef = 5F1B2DA4751CDED59D653556; };
@@ -62,6 +63,7 @@
 		01ADF8F7171770CBB5EC7B38 /* MainComponent.h */ /* MainComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainComponent.h; path = ../../Source/MainComponent.h; sourceTree = SOURCE_ROOT; };
 		0B3915B19408C75A266E4EB0 /* juce_midi_ci */ /* juce_midi_ci */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_midi_ci; path = /Users/hongshuofan/Documents/JUCE/modules/juce_midi_ci; sourceTree = "<absolute>"; };
 		0D2F99BD4EE42B050117D852 /* OSC_Receiver.h */ /* OSC_Receiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSC_Receiver.h; path = ../../Source/OSC_Receiver.h; sourceTree = SOURCE_ROOT; };
+		10FA45DA84C898C7A9F8DC20 /* MIDI_Sender_UI.h */ /* MIDI_Sender_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MIDI_Sender_UI.h; path = ../../Source/MIDI_Sender_UI.h; sourceTree = SOURCE_ROOT; };
 		131D98D4B1A16D29B26A6378 /* TouchPadGUI.h */ /* TouchPadGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TouchPadGUI.h; path = ../../Source/TouchPadGUI.h; sourceTree = SOURCE_ROOT; };
 		155CDD5D4C9203356EAFF016 /* juce_audio_processors */ /* juce_audio_processors */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors; path = /Users/hongshuofan/Documents/JUCE/modules/juce_audio_processors; sourceTree = "<absolute>"; };
 		18A7CD73623EFA64F6A0750C /* include_juce_audio_utils.mm */ /* include_juce_audio_utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_utils.mm; path = ../../JuceLibraryCode/include_juce_audio_utils.mm; sourceTree = SOURCE_ROOT; };
@@ -77,6 +79,7 @@
 		31AAEF235CCB90B93C41819F /* juce_gui_extra */ /* juce_gui_extra */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_extra; path = /Users/hongshuofan/Documents/JUCE/modules/juce_gui_extra; sourceTree = "<absolute>"; };
 		357255BCE00B80150326189B /* ListHID.h */ /* ListHID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ListHID.h; path = ../../Source/ListHID.h; sourceTree = SOURCE_ROOT; };
 		3668FF98E07DE2F2C52B0484 /* JoyCon_Input.h */ /* JoyCon_Input.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JoyCon_Input.h; path = ../../Source/JoyCon_Input.h; sourceTree = SOURCE_ROOT; };
+		379BAB2677E3B451F7C4E825 /* MIDI_Sender_UI.cpp */ /* MIDI_Sender_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MIDI_Sender_UI.cpp; path = ../../Source/MIDI_Sender_UI.cpp; sourceTree = SOURCE_ROOT; };
 		3B19C651B029D252CF366851 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = /Users/hongshuofan/Documents/JUCE/modules/juce_data_structures; sourceTree = "<absolute>"; };
 		3BEE9FEB8427D677E7227076 /* TouchPadGUI.cpp */ /* TouchPadGUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TouchPadGUI.cpp; path = ../../Source/TouchPadGUI.cpp; sourceTree = SOURCE_ROOT; };
 		3BFF4447BE24D2522DE8BC5A /* HIDMenu.cpp */ /* HIDMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HIDMenu.cpp; path = ../../Source/HIDMenu.cpp; sourceTree = SOURCE_ROOT; };
@@ -216,9 +219,19 @@
 			name = PLAY;
 			sourceTree = "<group>";
 		};
+		48DB47841CF21D239127B635 /* MIDI */ = {
+			isa = PBXGroup;
+			children = (
+				379BAB2677E3B451F7C4E825,
+				10FA45DA84C898C7A9F8DC20,
+			);
+			name = MIDI;
+			sourceTree = "<group>";
+		};
 		4B754B909D8EE3BF8517C13A /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				48DB47841CF21D239127B635,
 				A0F9CAF89416BBCF311F66C4,
 				03E758FCC8177B12053A014E,
 				CC9BDA617485195E0DEE8E70,
@@ -448,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF5002F553415DF86E71CE3E,
 				764D2D31C2810875FE889C21,
 				9160E060DFB28A467407BEF3,
 				2D469A83056275768B7998AC,

@@ -339,7 +339,7 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
                             "/dpad/left", last_dualSenseInput.dpad.left);
         ConvertAndSend_bool(_dualSenseInput.dpad.right, last_dualSenseInput.dpad.right,
                             "/dpad/right", last_dualSenseInput.dpad.right);
-        
+
         ConvertAndSend_bool(_dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad,
                             "/buttons/touchPad", last_dualSenseInput.buttons.touchPad);
         ConvertAndSend_int(_dualSenseInput.touchPoint1.id, last_dualSenseInput.touchPoint1.id,
@@ -350,7 +350,7 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
                             "/touchPoint1/x", last_dualSenseInput.touchPoint1.x, stickFliter);
         ConvertAndSend_float(_dualSenseInput.touchPoint1.y, last_dualSenseInput.touchPoint1.y,
                             "/touchPoint1/y", last_dualSenseInput.touchPoint1.y, stickFliter);
-        
+
         ConvertAndSend_int(_dualSenseInput.touchPoint2.id, last_dualSenseInput.touchPoint2.id,
                             "/touchPoint2/id", last_dualSenseInput.touchPoint2.id);
         ConvertAndSend_bool(_dualSenseInput.touchPoint2.down, last_dualSenseInput.touchPoint2.down,
@@ -359,23 +359,23 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
                             "/touchPoint2/x", last_dualSenseInput.touchPoint2.x, stickFliter);
         ConvertAndSend_float(_dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y,
                             "/touchPoint2/y", last_dualSenseInput.touchPoint2.y, stickFliter);
-        
+
         ConvertAndSend_float(_dualSenseInput.accelerometer.x, last_dualSenseInput.accelerometer.x,
                             "/accelerometer/x", last_dualSenseInput.accelerometer.x, stickFliter);
         ConvertAndSend_float(_dualSenseInput.accelerometer.y, last_dualSenseInput.accelerometer.y,
                             "/accelerometer/y", last_dualSenseInput.accelerometer.y, stickFliter);
         ConvertAndSend_float(_dualSenseInput.accelerometer.z, last_dualSenseInput.accelerometer.z,
                             "/accelerometer/z", last_dualSenseInput.accelerometer.z, stickFliter);
-        
+
         ConvertAndSend_float(_dualSenseInput.gyroscope.x, last_dualSenseInput.gyroscope.x,
                             "/gyroscope/x", last_dualSenseInput.gyroscope.x, stickFliter);
         ConvertAndSend_float(_dualSenseInput.gyroscope.y, last_dualSenseInput.gyroscope.y,
                             "/gyroscope/y", last_dualSenseInput.gyroscope.y, stickFliter);
         ConvertAndSend_float(_dualSenseInput.gyroscope.z, last_dualSenseInput.gyroscope.z,
                             "/gyroscope/z", last_dualSenseInput.gyroscope.z, stickFliter);
-        
+
     }
-    
+
 }
 
 
@@ -389,7 +389,7 @@ void OSC_Sender_UI::send_L_JoyCon_OSC_message(JoyCon::L_JoyCon_InputState _l_JC_
                              "/leftStick/y", last_l_JC_Input.stick.y, stickFliter);
         ConvertAndSend_bool(_l_JC_Input.stick.stickPress, last_l_JC_Input.stick.stickPress,
                             "/leftStick/press", last_l_JC_Input.stick.stickPress);
-        
+
         ConvertAndSend_bool(_l_JC_Input.buttons.l, last_l_JC_Input.buttons.l,
                             "/buttons/l", last_l_JC_Input.buttons.l);
         ConvertAndSend_bool(_l_JC_Input.buttons.zl, last_l_JC_Input.buttons.zl,
@@ -426,9 +426,9 @@ void OSC_Sender_UI::send_L_JoyCon_OSC_message(JoyCon::L_JoyCon_InputState _l_JC_
                             "/left/gyroscope/y", last_l_JC_Input.gyroscope.y, gyo_filter);
         ConvertAndSend_float(_l_JC_Input.gyroscope.z, last_l_JC_Input.gyroscope.z,
                             "/left/gyroscope/z", last_l_JC_Input.gyroscope.z, gyo_filter);
-        
+
     }
-    
+
 }
 
 void OSC_Sender_UI::send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_Input)
@@ -441,7 +441,7 @@ void OSC_Sender_UI::send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_
                              "/rightStick/y", last_r_JC_Input.stick.y, stickFliter);
         ConvertAndSend_bool(_r_JC_Input.stick.stickPress, last_r_JC_Input.stick.stickPress,
                             "/rightStick/press", last_r_JC_Input.stick.stickPress);
-        
+
         ConvertAndSend_bool(_r_JC_Input.buttons.r, last_r_JC_Input.buttons.r,
                             "/buttons/r", last_r_JC_Input.buttons.r);
         ConvertAndSend_bool(_r_JC_Input.buttons.zr, last_r_JC_Input.buttons.zr,
@@ -454,7 +454,7 @@ void OSC_Sender_UI::send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_
                             "/buttons/r_sl", last_r_JC_Input.buttons.sl);
         ConvertAndSend_bool(_r_JC_Input.buttons.sr, last_r_JC_Input.buttons.sr,
                             "/buttons/r_sr", last_r_JC_Input.buttons.sr);
-        
+
         ConvertAndSend_bool(_r_JC_Input.buttons.x, last_r_JC_Input.buttons.x,
                             "/buttons/x", last_r_JC_Input.buttons.x);
         ConvertAndSend_bool(_r_JC_Input.buttons.y, last_r_JC_Input.buttons.y,
@@ -478,9 +478,9 @@ void OSC_Sender_UI::send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_
                             "/right/gyroscope/y", last_r_JC_Input.gyroscope.y, gyo_filter);
         ConvertAndSend_float(_r_JC_Input.gyroscope.z, last_r_JC_Input.gyroscope.z,
                             "/right/gyroscope/z", last_r_JC_Input.gyroscope.z, gyo_filter);
-        
+
     }
-    
+
 }
 
 void OSC_Sender_UI::ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p, float filter)

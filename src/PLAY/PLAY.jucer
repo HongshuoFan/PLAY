@@ -4,7 +4,12 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="TCfcQn" name="PLAY">
     <GROUP id="{4C14A28B-FA5B-9764-48EE-FA55E98BF1A1}" name="Source">
-      <GROUP id="{6580E3E3-DFAE-6468-3128-6FD8A7466B11}" name="MIDI"/>
+      <GROUP id="{6580E3E3-DFAE-6468-3128-6FD8A7466B11}" name="MIDI">
+        <FILE id="W5pb3I" name="MIDI_Sender_UI.cpp" compile="1" resource="0"
+              file="Source/MIDI_Sender_UI.cpp"/>
+        <FILE id="nEcTpN" name="MIDI_Sender_UI.h" compile="0" resource="0"
+              file="Source/MIDI_Sender_UI.h"/>
+      </GROUP>
       <GROUP id="{9A19ECD9-9608-8A35-33F2-F3D5D9270EFD}" name="OSC">
         <FILE id="X7REyB" name="OSC_Receiver.cpp" compile="1" resource="0"
               file="Source/OSC_Receiver.cpp"/>

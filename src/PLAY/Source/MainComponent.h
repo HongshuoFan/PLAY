@@ -6,6 +6,8 @@
 #include "OSC_Sender_UI.h"
 #include "OSC_Receiver.h"
 
+#include "MIDI_Sender_UI.h"
+
 #include "DualSense_Input.h"
 #include "DualSense_Output.h"
 #include "DualSense_UI.h"
@@ -64,7 +66,10 @@ private:
     // OSC stuffs.
     std::unique_ptr<OSC_Sender_UI> osc_sender;
     std::unique_ptr<OSC_Receiver> osc_receiver;
-
+    
+    // MIDI stuffs.
+    std::unique_ptr<MIDI_Sender_UI> midi_sender;
+    
     void onHIDMenuChanged();
     void onDataReceived();
     
