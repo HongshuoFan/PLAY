@@ -4,6 +4,7 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="TCfcQn" name="PLAY">
     <GROUP id="{4C14A28B-FA5B-9764-48EE-FA55E98BF1A1}" name="Source">
+      <GROUP id="{6580E3E3-DFAE-6468-3128-6FD8A7466B11}" name="MIDI"/>
       <GROUP id="{9A19ECD9-9608-8A35-33F2-F3D5D9270EFD}" name="OSC">
         <FILE id="X7REyB" name="OSC_Receiver.cpp" compile="1" resource="0"
               file="Source/OSC_Receiver.cpp"/>
@@ -76,6 +77,10 @@
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -104,6 +109,10 @@
         <MODULEPATH id="juce_gui_extra" path="../../../../../Documents/JUCE/modules"/>
         <MODULEPATH id="juce_midi_ci" path="../../../../../Documents/JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../../../Documents/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../../Documents/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../../Documents/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../../Documents/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../../Documents/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
