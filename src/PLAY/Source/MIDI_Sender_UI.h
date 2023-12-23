@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
+#include "XboxControllerState.h"
 //[/Headers]
 
 
@@ -44,7 +45,8 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-
+    void send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputState _xboxInput);
+    int Selected_midiChannel = 1;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -58,6 +60,11 @@ private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     std::unique_ptr<juce::MidiOutput> outDevice;
     juce::Array<juce::MidiDeviceInfo> availableDevices;
+    void sendToOutput(const juce::MidiMessage& msg);
+    void handleNoteOn (int midiChannel, int midiNoteNumber, float velocity);
+    void handleNoteOff (int midiChannel, int midiNoteNumber, float velocity);
+    void handleButton(int midiNoteNumber, bool buttonStat, bool& last_buttonStat_p);
+    XboxCotroller::XboxCotrollerInputState last_xboxInput;
     //[/UserVariables]
 
     //==============================================================================

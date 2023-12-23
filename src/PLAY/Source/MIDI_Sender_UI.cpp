@@ -74,6 +74,8 @@ MIDI_Sender_UI::~MIDI_Sender_UI()
 
 
     //[Destructor]. You can add your own custom destruction code here..
+    outDevice.reset();
+    outDevice = nullptr;
     //[/Destructor]
 }
 
@@ -148,6 +150,20 @@ void MIDI_Sender_UI::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
     if (comboBoxThatHasChanged == juce__comboBox_outputDevicesList.get())
     {
         //[UserComboBoxCode_juce__comboBox_outputDevicesList] -- add your combo box handling code here..
+        int selectedIndex = juce__comboBox_outputDevicesList->getSelectedId() - 1;
+        juce::MidiDeviceInfo selectedDevice = availableDevices[selectedIndex];
+        //std::cout<<selectedIndex<<" "<< selectedDevice.name <<"  selected \n";
+        
+        if (outDevice != nullptr){
+            outDevice.reset();
+        }
+        
+        outDevice = juce::MidiOutput::openDevice (selectedDevice.identifier);
+        //handleNoteOn(1, 60, 1.f);
+        if (outDevice.get() == nullptr)
+        {
+            DBG ("MidiSenderUI::openDevice: open output device for index = " << selectedIndex << " failed!");
+        }
         //[/UserComboBoxCode_juce__comboBox_outputDevicesList]
     }
 
@@ -158,7 +174,58 @@ void MIDI_Sender_UI::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+void MIDI_Sender_UI::sendToOutput(const juce::MidiMessage& msg)
+{
+    if(outDevice != nullptr){
+        outDevice->sendMessageNow(msg);
+    }
+}
 
+void MIDI_Sender_UI::handleNoteOn (int midiChannel, int midiNoteNumber, float velocity)
+{
+    juce::MidiMessage m (juce::MidiMessage::noteOn (midiChannel, midiNoteNumber, velocity));
+    m.setTimeStamp (juce::Time::getMillisecondCounterHiRes() * 0.001);
+    sendToOutput (m);
+}
+
+void MIDI_Sender_UI::handleNoteOff (int midiChannel, int midiNoteNumber, float velocity)
+{
+    juce::MidiMessage m (juce::MidiMessage::noteOff (midiChannel, midiNoteNumber, velocity));
+    m.setTimeStamp (juce::Time::getMillisecondCounterHiRes() * 0.001);
+    sendToOutput (m);
+}
+
+void MIDI_Sender_UI::handleButton(int midiNoteNumber, bool buttonStat,bool& last_buttonStat_p)
+{
+    if(buttonStat != last_buttonStat_p)
+    {
+        if(buttonStat)
+        {
+            handleNoteOn(Selected_midiChannel, midiNoteNumber, 1.f);
+        }else{
+            handleNoteOff(Selected_midiChannel, midiNoteNumber, 0.f);
+        }
+        last_buttonStat_p = buttonStat;
+    }
+}
+
+void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputState _xboxInput)
+{
+    if(juce__toggleButton_MIDI->getToggleState())
+    {
+        handleButton(60, _xboxInput.buttons.a, last_xboxInput.buttons.a);
+        handleButton(61, _xboxInput.buttons.b, last_xboxInput.buttons.b);
+        handleButton(62, _xboxInput.buttons.x, last_xboxInput.buttons.x);
+        handleButton(63, _xboxInput.buttons.y, last_xboxInput.buttons.y);
+        
+        handleButton(64, _xboxInput.dpad.up, last_xboxInput.dpad.up);
+        handleButton(65, _xboxInput.dpad.down, last_xboxInput.dpad.down);
+        handleButton(66, _xboxInput.dpad.left, last_xboxInput.dpad.left);
+        handleButton(67, _xboxInput.dpad.right, last_xboxInput.dpad.right);
+    }
+    
+    
+}
 //[/MiscUserCode]
 
 

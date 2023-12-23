@@ -40,7 +40,9 @@ StickGUI::StickGUI ()
 
 
     //[Constructor] You can add your own custom stuff here..
-    setSize (Stickheight*2, Stickheight*2);
+    //setSize (Stickheight*2, Stickheight*2);
+    px = getWidth()/2.f;
+    py = getHeight()/2.f;
     //[/Constructor]
 }
 
@@ -73,7 +75,11 @@ void StickGUI::paint (juce::Graphics& g)
     //[UserPaint] Add your own custom painting code here..
     float width = 10.0f, height = 10.0f;
     g.setColour (pointColour);
-    g.fillEllipse (std::clamp(px, 1.0f, width),  py = std::clamp(py, 1.0f, height), width, height);
+    if(px && py)
+    {
+        g.fillEllipse (px, py, width, height);
+    }
+    
     //[/UserPaint]
 }
 
