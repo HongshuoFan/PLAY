@@ -44,6 +44,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -55,11 +56,13 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    std::unique_ptr<juce::MidiOutput> outDevice;
+    juce::Array<juce::MidiDeviceInfo> availableDevices;
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<juce::ToggleButton> juce__toggleButton_OSC;
-    std::unique_ptr<juce::ComboBox> juce__comboBox;
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton_MIDI;
+    std::unique_ptr<juce::ComboBox> juce__comboBox_outputDevicesList;
     std::unique_ptr<juce::TextButton> juce__textButton_update;
 
 

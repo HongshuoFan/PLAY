@@ -32,20 +32,20 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    juce__toggleButton_OSC.reset (new juce::ToggleButton ("OSC_activeButton"));
-    addAndMakeVisible (juce__toggleButton_OSC.get());
-    juce__toggleButton_OSC->setButtonText (TRANS ("MIDI"));
-    juce__toggleButton_OSC->addListener (this);
+    juce__toggleButton_MIDI.reset (new juce::ToggleButton ("MIDI_activeButton"));
+    addAndMakeVisible (juce__toggleButton_MIDI.get());
+    juce__toggleButton_MIDI->setButtonText (TRANS ("MIDI"));
+    juce__toggleButton_MIDI->addListener (this);
 
-    juce__toggleButton_OSC->setBounds (2, 5, 70, 30);
+    juce__toggleButton_MIDI->setBounds (2, 5, 70, 30);
 
-    juce__comboBox.reset (new juce::ComboBox ("new combo box"));
-    addAndMakeVisible (juce__comboBox.get());
-    juce__comboBox->setEditableText (false);
-    juce__comboBox->setJustificationType (juce::Justification::centredLeft);
-    juce__comboBox->setTextWhenNothingSelected (juce::String());
-    juce__comboBox->setTextWhenNoChoicesAvailable (TRANS ("(no choices)"));
-    juce__comboBox->addListener (this);
+    juce__comboBox_outputDevicesList.reset (new juce::ComboBox ("MIDI_OuputList"));
+    addAndMakeVisible (juce__comboBox_outputDevicesList.get());
+    juce__comboBox_outputDevicesList->setEditableText (false);
+    juce__comboBox_outputDevicesList->setJustificationType (juce::Justification::centredLeft);
+    juce__comboBox_outputDevicesList->setTextWhenNothingSelected (juce::String());
+    juce__comboBox_outputDevicesList->setTextWhenNoChoicesAvailable (TRANS ("(no choices)"));
+    juce__comboBox_outputDevicesList->addListener (this);
 
     juce__textButton_update.reset (new juce::TextButton ("MIDI_update_button"));
     addAndMakeVisible (juce__textButton_update.get());
@@ -68,8 +68,8 @@ MIDI_Sender_UI::~MIDI_Sender_UI()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    juce__toggleButton_OSC = nullptr;
-    juce__comboBox = nullptr;
+    juce__toggleButton_MIDI = nullptr;
+    juce__comboBox_outputDevicesList = nullptr;
     juce__textButton_update = nullptr;
 
 
@@ -106,7 +106,7 @@ void MIDI_Sender_UI::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    juce__comboBox->setBounds (proportionOfWidth (0.2900f), proportionOfHeight (0.2250f), 283, 24);
+    juce__comboBox_outputDevicesList->setBounds (proportionOfWidth (0.2900f), proportionOfHeight (0.2250f), 283, 24);
     juce__textButton_update->setBounds (490, 10, proportionOfWidth (0.1300f), proportionOfHeight (0.6000f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
@@ -117,14 +117,22 @@ void MIDI_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
 
-    if (buttonThatWasClicked == juce__toggleButton_OSC.get())
+    if (buttonThatWasClicked == juce__toggleButton_MIDI.get())
     {
-        //[UserButtonCode_juce__toggleButton_OSC] -- add your button handler code here..
-        //[/UserButtonCode_juce__toggleButton_OSC]
+        //[UserButtonCode_juce__toggleButton_MIDI] -- add your button handler code here..
+        //[/UserButtonCode_juce__toggleButton_MIDI]
     }
     else if (buttonThatWasClicked == juce__textButton_update.get())
     {
         //[UserButtonCode_juce__textButton_update] -- add your button handler code here..
+        availableDevices = juce::MidiOutput::getAvailableDevices();
+        juce__comboBox_outputDevicesList->clear();
+        int index = 1;
+        for (auto& newDevice : availableDevices)
+        {
+            juce__comboBox_outputDevicesList->addItem(newDevice.name, index);
+            index += 1;
+        }
         //[/UserButtonCode_juce__textButton_update]
     }
 
@@ -137,10 +145,10 @@ void MIDI_Sender_UI::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
     //[UsercomboBoxChanged_Pre]
     //[/UsercomboBoxChanged_Pre]
 
-    if (comboBoxThatHasChanged == juce__comboBox.get())
+    if (comboBoxThatHasChanged == juce__comboBox_outputDevicesList.get())
     {
-        //[UserComboBoxCode_juce__comboBox] -- add your combo box handling code here..
-        //[/UserComboBoxCode_juce__comboBox]
+        //[UserComboBoxCode_juce__comboBox_outputDevicesList] -- add your combo box handling code here..
+        //[/UserComboBoxCode_juce__comboBox_outputDevicesList]
     }
 
     //[UsercomboBoxChanged_Post]
@@ -150,6 +158,7 @@ void MIDI_Sender_UI::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+
 //[/MiscUserCode]
 
 
@@ -171,10 +180,10 @@ BEGIN_JUCER_METADATA
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
   </BACKGROUND>
-  <TOGGLEBUTTON name="OSC_activeButton" id="dc04b5e769d393aa" memberName="juce__toggleButton_OSC"
+  <TOGGLEBUTTON name="MIDI_activeButton" id="dc04b5e769d393aa" memberName="juce__toggleButton_MIDI"
                 virtualName="" explicitFocusOrder="0" pos="2 5 70 30" buttonText="MIDI"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
-  <COMBOBOX name="new combo box" id="56bd8f7ca39cfc55" memberName="juce__comboBox"
+  <COMBOBOX name="MIDI_OuputList" id="56bd8f7ca39cfc55" memberName="juce__comboBox_outputDevicesList"
             virtualName="" explicitFocusOrder="0" pos="29% 22.5% 283 24"
             editable="0" layout="33" items="" textWhenNonSelected="" textWhenNoItems="(no choices)"/>
   <TEXTBUTTON name="MIDI_update_button" id="b8439ee890c80617" memberName="juce__textButton_update"

@@ -73,7 +73,7 @@ void StickGUI::paint (juce::Graphics& g)
     //[UserPaint] Add your own custom painting code here..
     float width = 10.0f, height = 10.0f;
     g.setColour (pointColour);
-    g.fillEllipse (px, py, width, height);
+    g.fillEllipse (std::clamp(px, 1.0f, width),  py = std::clamp(py, 1.0f, height), width, height);
     //[/UserPaint]
 }
 
