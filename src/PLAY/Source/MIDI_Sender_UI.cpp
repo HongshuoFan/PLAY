@@ -153,11 +153,11 @@ void MIDI_Sender_UI::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
         int selectedIndex = juce__comboBox_outputDevicesList->getSelectedId() - 1;
         juce::MidiDeviceInfo selectedDevice = availableDevices[selectedIndex];
         //std::cout<<selectedIndex<<" "<< selectedDevice.name <<"  selected \n";
-        
+
         if (outDevice != nullptr){
             outDevice.reset();
         }
-        
+
         outDevice = juce::MidiOutput::openDevice (selectedDevice.identifier);
         //handleNoteOn(1, 60, 1.f);
         if (outDevice.get() == nullptr)
@@ -217,14 +217,14 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
         handleButton(61, _xboxInput.buttons.b, last_xboxInput.buttons.b);
         handleButton(62, _xboxInput.buttons.x, last_xboxInput.buttons.x);
         handleButton(63, _xboxInput.buttons.y, last_xboxInput.buttons.y);
-        
+
         handleButton(64, _xboxInput.dpad.up, last_xboxInput.dpad.up);
         handleButton(65, _xboxInput.dpad.down, last_xboxInput.dpad.down);
         handleButton(66, _xboxInput.dpad.left, last_xboxInput.dpad.left);
         handleButton(67, _xboxInput.dpad.right, last_xboxInput.dpad.right);
     }
-    
-    
+
+
 }
 //[/MiscUserCode]
 
