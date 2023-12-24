@@ -63,7 +63,12 @@ private:
     void sendToOutput(const juce::MidiMessage& msg);
     void handleNoteOn (int midiChannel, int midiNoteNumber, float velocity);
     void handleNoteOff (int midiChannel, int midiNoteNumber, float velocity);
+    void handleContinuousController(int midiChannel, int midiControllerType, int value);
+    
+    
+    void handleTrigger(int midiControllerType, float triggerValue, float& last_triggerValue_p);
     void handleButton(int midiNoteNumber, bool buttonStat, bool& last_buttonStat_p);
+    
     XboxCotroller::XboxCotrollerInputState last_xboxInput;
     //[/UserVariables]
 

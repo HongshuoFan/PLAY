@@ -195,6 +195,12 @@ void MIDI_Sender_UI::handleNoteOff (int midiChannel, int midiNoteNumber, float v
     sendToOutput (m);
 }
 
+void MIDI_Sender_UI::handleContinuousController(int midiChannel, int midiControllerType, int value){
+    juce::MidiMessage CC (juce::MidiMessage::controllerEvent(midiChannel, midiControllerType, value));
+    CC.setTimeStamp (juce::Time::getMillisecondCounterHiRes() * 0.001);
+    sendToOutput (CC);
+}
+
 void MIDI_Sender_UI::handleButton(int midiNoteNumber, bool buttonStat,bool& last_buttonStat_p)
 {
     if(buttonStat != last_buttonStat_p)
@@ -206,6 +212,16 @@ void MIDI_Sender_UI::handleButton(int midiNoteNumber, bool buttonStat,bool& last
             handleNoteOff(Selected_midiChannel, midiNoteNumber, 0.f);
         }
         last_buttonStat_p = buttonStat;
+    }
+}
+
+void MIDI_Sender_UI::handleTrigger(int midiControllerType, float triggerValue, float& last_triggerValue_p)
+{
+    int val = std::round(std::clamp(triggerValue, 0.f, 1.f) * 127.f);
+    if(val != last_triggerValue_p)
+    {
+        handleContinuousController(Selected_midiChannel, midiControllerType, val);
+        last_triggerValue_p = val;
     }
 }
 
@@ -222,10 +238,14 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
         handleButton(65, _xboxInput.dpad.down, last_xboxInput.dpad.down);
         handleButton(66, _xboxInput.dpad.left, last_xboxInput.dpad.left);
         handleButton(67, _xboxInput.dpad.right, last_xboxInput.dpad.right);
+        
+        handleTrigger(1, _xboxInput.leftTrigger, last_xboxInput.leftTrigger);
+        handleTrigger(11, _xboxInput.rightTrigger, last_xboxInput.rightTrigger);
     }
 
 
 }
+
 //[/MiscUserCode]
 
 
