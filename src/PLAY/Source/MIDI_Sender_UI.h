@@ -47,6 +47,7 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
     void send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputState _xboxInput);
     int Selected_midiChannel = 1;
+    void updateList();
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -64,11 +65,11 @@ private:
     void handleNoteOn (int midiChannel, int midiNoteNumber, float velocity);
     void handleNoteOff (int midiChannel, int midiNoteNumber, float velocity);
     void handleContinuousController(int midiChannel, int midiControllerType, int value);
-    
-    
+
+
     void handleTrigger(int midiControllerType, float triggerValue, float& last_triggerValue_p);
     void handleButton(int midiNoteNumber, bool buttonStat, bool& last_buttonStat_p);
-    
+
     XboxCotroller::XboxCotrollerInputState last_xboxInput;
     //[/UserVariables]
 

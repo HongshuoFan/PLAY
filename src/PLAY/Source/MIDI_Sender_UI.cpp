@@ -174,6 +174,11 @@ void MIDI_Sender_UI::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+void MIDI_Sender_UI::updateList()
+{
+    juce__textButton_update->triggerClick();
+}
+
 void MIDI_Sender_UI::sendToOutput(const juce::MidiMessage& msg)
 {
     if(outDevice != nullptr){
@@ -239,7 +244,19 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
         handleButton(66, _xboxInput.dpad.left, last_xboxInput.dpad.left);
         handleButton(67, _xboxInput.dpad.right, last_xboxInput.dpad.right);
         
+        handleButton(68, _xboxInput.buttons.rb, last_xboxInput.buttons.rb);
+        handleButton(69, _xboxInput.buttons.lb, last_xboxInput.buttons.lb);
+        
+        handleButton(70, _xboxInput.buttons.view, last_xboxInput.buttons.view);
+        handleButton(71, _xboxInput.buttons.share, last_xboxInput.buttons.share);
+        handleButton(72, _xboxInput.buttons.menu, last_xboxInput.buttons.menu);
+        
+        handleButton(73, _xboxInput.leftStick.stickPress, last_xboxInput.leftStick.stickPress);
+        handleButton(74, _xboxInput.rightStick.stickPress, last_xboxInput.rightStick.stickPress);
+        
+        //Modulation Wheel
         handleTrigger(1, _xboxInput.leftTrigger, last_xboxInput.leftTrigger);
+        //Expression (MSB)
         handleTrigger(11, _xboxInput.rightTrigger, last_xboxInput.rightTrigger);
     }
 
