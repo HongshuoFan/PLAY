@@ -43,8 +43,8 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
     addAndMakeVisible (juce__comboBox_outputDevicesList.get());
     juce__comboBox_outputDevicesList->setEditableText (false);
     juce__comboBox_outputDevicesList->setJustificationType (juce::Justification::centredLeft);
-    juce__comboBox_outputDevicesList->setTextWhenNothingSelected (juce::String());
-    juce__comboBox_outputDevicesList->setTextWhenNoChoicesAvailable (TRANS ("(no choices)"));
+    juce__comboBox_outputDevicesList->setTextWhenNothingSelected (TRANS ("No Devices"));
+    juce__comboBox_outputDevicesList->setTextWhenNoChoicesAvailable (TRANS ("(No Devices)"));
     juce__comboBox_outputDevicesList->addListener (this);
 
     juce__textButton_update.reset (new juce::TextButton ("MIDI_update_button"));
@@ -52,14 +52,29 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
     juce__textButton_update->setButtonText (TRANS ("Update"));
     juce__textButton_update->addListener (this);
 
+    juce__comboBox_MidiChannel.reset (new juce::ComboBox ("MidiChannel_ComboBox"));
+    addAndMakeVisible (juce__comboBox_MidiChannel.get());
+    juce__comboBox_MidiChannel->setEditableText (false);
+    juce__comboBox_MidiChannel->setJustificationType (juce::Justification::centredLeft);
+    juce__comboBox_MidiChannel->setTextWhenNothingSelected (TRANS ("0"));
+    juce__comboBox_MidiChannel->setTextWhenNoChoicesAvailable (TRANS ("(no choices)"));
+    juce__comboBox_MidiChannel->addItem (TRANS ("1"), 1);
+    juce__comboBox_MidiChannel->addListener (this);
+
 
     //[UserPreSize]
+
+    for (int i = 2; i <= 16; i++){
+        juce__comboBox_MidiChannel->addItem (TRANS (std::to_string(i)), i);
+    }
+
     //[/UserPreSize]
 
     setSize (600, 40);
 
 
     //[Constructor] You can add your own custom stuff here..
+    juce__comboBox_MidiChannel->setSelectedItemIndex(0);
     //[/Constructor]
 }
 
@@ -71,6 +86,7 @@ MIDI_Sender_UI::~MIDI_Sender_UI()
     juce__toggleButton_MIDI = nullptr;
     juce__comboBox_outputDevicesList = nullptr;
     juce__textButton_update = nullptr;
+    juce__comboBox_MidiChannel = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -87,8 +103,20 @@ void MIDI_Sender_UI::paint (juce::Graphics& g)
     g.fillAll (juce::Colour (0xff323e44));
 
     {
-        int x = 90, y = 10, width = 50, height = 20;
+        int x = proportionOfWidth (0.3800f), y = proportionOfHeight (0.2500f), width = 50, height = 20;
         juce::String text (TRANS ("Devices"));
+        juce::Colour fillColour = juce::Colours::azure;
+        //[UserPaintCustomArguments] Customize the painting arguments here..
+        //[/UserPaintCustomArguments]
+        g.setColour (fillColour);
+        g.setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+        g.drawText (text, x, y, width, height,
+                    juce::Justification::centred, true);
+    }
+
+    {
+        int x = proportionOfWidth (0.1167f), y = proportionOfHeight (0.2500f), width = 50, height = 20;
+        juce::String text (TRANS ("Channel"));
         juce::Colour fillColour = juce::Colours::azure;
         //[UserPaintCustomArguments] Customize the painting arguments here..
         //[/UserPaintCustomArguments]
@@ -107,8 +135,9 @@ void MIDI_Sender_UI::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    juce__comboBox_outputDevicesList->setBounds (proportionOfWidth (0.2900f), proportionOfHeight (0.2250f), 283, 24);
+    juce__comboBox_outputDevicesList->setBounds (proportionOfWidth (0.4700f), proportionOfHeight (0.2500f), 187, 24);
     juce__textButton_update->setBounds (490, 10, proportionOfWidth (0.1300f), proportionOfHeight (0.6000f));
+    juce__comboBox_MidiChannel->setBounds (proportionOfWidth (0.2200f), proportionOfHeight (0.2500f), proportionOfWidth (0.1133f), proportionOfHeight (0.6000f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -128,7 +157,7 @@ void MIDI_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         //[UserButtonCode_juce__textButton_update] -- add your button handler code here..
         availableDevices = juce::MidiOutput::getAvailableDevices();
         juce__comboBox_outputDevicesList->clear();
-        
+
         if(availableDevices.size() > 0)
         {
             int index = 1;
@@ -170,6 +199,12 @@ void MIDI_Sender_UI::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
         }
         //[/UserComboBoxCode_juce__comboBox_outputDevicesList]
     }
+    else if (comboBoxThatHasChanged == juce__comboBox_MidiChannel.get())
+    {
+        //[UserComboBoxCode_juce__comboBox_MidiChannel] -- add your combo box handling code here..
+        Selected_midiChannel = juce__comboBox_MidiChannel->getSelectedId();
+        //[/UserComboBoxCode_juce__comboBox_MidiChannel]
+    }
 
     //[UsercomboBoxChanged_Post]
     //[/UsercomboBoxChanged_Post]
@@ -184,7 +219,7 @@ void MIDI_Sender_UI::updateList()
 }
 
 void MIDI_Sender_UI::closeConnection(){
-    
+
     if (outDevice != nullptr){
         outDevice.reset();
         outDevice = nullptr;
@@ -255,17 +290,17 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
         handleButton(65, _xboxInput.dpad.down, last_xboxInput.dpad.down);
         handleButton(66, _xboxInput.dpad.left, last_xboxInput.dpad.left);
         handleButton(67, _xboxInput.dpad.right, last_xboxInput.dpad.right);
-        
+
         handleButton(68, _xboxInput.buttons.rb, last_xboxInput.buttons.rb);
         handleButton(69, _xboxInput.buttons.lb, last_xboxInput.buttons.lb);
-        
+
         handleButton(70, _xboxInput.buttons.view, last_xboxInput.buttons.view);
         handleButton(71, _xboxInput.buttons.share, last_xboxInput.buttons.share);
         handleButton(72, _xboxInput.buttons.menu, last_xboxInput.buttons.menu);
-        
+
         handleButton(73, _xboxInput.leftStick.stickPress, last_xboxInput.leftStick.stickPress);
         handleButton(74, _xboxInput.rightStick.stickPress, last_xboxInput.rightStick.stickPress);
-        
+
         //Modulation Wheel
         handleTrigger(1, _xboxInput.leftTrigger, last_xboxInput.leftTrigger);
         //Breath Controller (MSB)
@@ -278,7 +313,7 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
         handleTrigger(10, _xboxInput.rightStick.x, last_xboxInput.rightStick.x);
         //Expression (MSB)
         handleTrigger(11, _xboxInput.rightStick.y, last_xboxInput.rightStick.y);
-        
+
     }
 
 
@@ -301,19 +336,25 @@ BEGIN_JUCER_METADATA
                  snapPixels="8" snapActive="0" snapShown="0" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="600" initialHeight="40">
   <BACKGROUND backgroundColour="ff323e44">
-    <TEXT pos="90 10 50 20" fill="solid: fff0ffff" hasStroke="0" text="Devices"
+    <TEXT pos="38% 25% 50 20" fill="solid: fff0ffff" hasStroke="0" text="Devices"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
+    <TEXT pos="11.667% 25% 50 20" fill="solid: fff0ffff" hasStroke="0"
+          text="Channel" fontname="Default font" fontsize="15.0" kerning="0.0"
+          bold="0" italic="0" justification="36"/>
   </BACKGROUND>
   <TOGGLEBUTTON name="MIDI_activeButton" id="dc04b5e769d393aa" memberName="juce__toggleButton_MIDI"
                 virtualName="" explicitFocusOrder="0" pos="2 5 70 30" buttonText="MIDI"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <COMBOBOX name="MIDI_OuputList" id="56bd8f7ca39cfc55" memberName="juce__comboBox_outputDevicesList"
-            virtualName="" explicitFocusOrder="0" pos="29% 22.5% 283 24"
-            editable="0" layout="33" items="" textWhenNonSelected="" textWhenNoItems="(no choices)"/>
+            virtualName="" explicitFocusOrder="0" pos="47% 25% 187 24" editable="0"
+            layout="33" items="" textWhenNonSelected="No Devices" textWhenNoItems="(No Devices)"/>
   <TEXTBUTTON name="MIDI_update_button" id="b8439ee890c80617" memberName="juce__textButton_update"
               virtualName="" explicitFocusOrder="0" pos="490 10 13% 60%" buttonText="Update"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <COMBOBOX name="MidiChannel_ComboBox" id="9aa8a3b1ee702033" memberName="juce__comboBox_MidiChannel"
+            virtualName="" explicitFocusOrder="0" pos="22% 25% 11.333% 60%"
+            editable="0" layout="33" items="1" textWhenNonSelected="0" textWhenNoItems="(no choices)"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

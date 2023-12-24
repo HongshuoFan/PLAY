@@ -78,6 +78,7 @@ private:
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_MIDI;
     std::unique_ptr<juce::ComboBox> juce__comboBox_outputDevicesList;
     std::unique_ptr<juce::TextButton> juce__textButton_update;
+    std::unique_ptr<juce::ComboBox> juce__comboBox_MidiChannel;
 
 
     //==============================================================================

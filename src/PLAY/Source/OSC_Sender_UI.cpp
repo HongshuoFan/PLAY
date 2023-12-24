@@ -47,8 +47,6 @@ OSC_Sender_UI::OSC_Sender_UI ()
     juce__textEditor_IP->setPopupMenuEnabled (true);
     juce__textEditor_IP->setText (juce::String());
 
-    juce__textEditor_IP->setBounds (100, 10, 150, 24);
-
     juce__textEditor_port.reset (new juce::TextEditor ("Port_Editor"));
     addAndMakeVisible (juce__textEditor_port.get());
     juce__textEditor_port->setMultiLine (false);
@@ -58,8 +56,6 @@ OSC_Sender_UI::OSC_Sender_UI ()
     juce__textEditor_port->setCaretVisible (true);
     juce__textEditor_port->setPopupMenuEnabled (true);
     juce__textEditor_port->setText (juce::String());
-
-    juce__textEditor_port->setBounds (320, 10, 150, 24);
 
     juce__toggleButton_OSC.reset (new juce::ToggleButton ("OSC_activeButton"));
     addAndMakeVisible (juce__toggleButton_OSC.get());
@@ -139,6 +135,8 @@ void OSC_Sender_UI::resized()
     //[/UserPreResize]
 
     juce__textButton_update->setBounds (490, 10, proportionOfWidth (0.1300f), proportionOfHeight (0.6000f));
+    juce__textEditor_IP->setBounds (proportionOfWidth (0.1667f), proportionOfHeight (0.2500f), 150, 24);
+    juce__textEditor_port->setBounds (proportionOfWidth (0.5333f), proportionOfHeight (0.2500f), 150, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -545,13 +543,13 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="490 10 13% 60%" buttonText="Update"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTEDITOR name="IP_Editor" id="cb666364e6e180c6" memberName="juce__textEditor_IP"
-              virtualName="" explicitFocusOrder="0" pos="100 10 150 24" initialText=""
-              multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="0"
-              caret="1" popupmenu="1"/>
+              virtualName="" explicitFocusOrder="0" pos="16.667% 25% 150 24"
+              initialText="" multiline="0" retKeyStartsLine="0" readonly="0"
+              scrollbars="0" caret="1" popupmenu="1"/>
   <TEXTEDITOR name="Port_Editor" id="f7c38c045e142531" memberName="juce__textEditor_port"
-              virtualName="" explicitFocusOrder="0" pos="320 10 150 24" initialText=""
-              multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="0"
-              caret="1" popupmenu="1"/>
+              virtualName="" explicitFocusOrder="0" pos="53.333% 25% 150 24"
+              initialText="" multiline="0" retKeyStartsLine="0" readonly="0"
+              scrollbars="0" caret="1" popupmenu="1"/>
   <TOGGLEBUTTON name="OSC_activeButton" id="dc04b5e769d393aa" memberName="juce__toggleButton_OSC"
                 virtualName="" explicitFocusOrder="0" pos="2 5 70 30" buttonText="OSC"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
