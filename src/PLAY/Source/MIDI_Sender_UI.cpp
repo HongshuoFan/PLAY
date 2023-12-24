@@ -74,8 +74,7 @@ MIDI_Sender_UI::~MIDI_Sender_UI()
 
 
     //[Destructor]. You can add your own custom destruction code here..
-    outDevice.reset();
-    outDevice = nullptr;
+    closeConnection();
     //[/Destructor]
 }
 
@@ -129,11 +128,18 @@ void MIDI_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         //[UserButtonCode_juce__textButton_update] -- add your button handler code here..
         availableDevices = juce::MidiOutput::getAvailableDevices();
         juce__comboBox_outputDevicesList->clear();
-        int index = 1;
-        for (auto& newDevice : availableDevices)
+        
+        if(availableDevices.size() > 0)
         {
-            juce__comboBox_outputDevicesList->addItem(newDevice.name, index);
-            index += 1;
+            int index = 1;
+            for (auto& newDevice : availableDevices)
+            {
+                juce__comboBox_outputDevicesList->addItem(newDevice.name, index);
+                index += 1;
+            }
+            juce__comboBox_outputDevicesList->setSelectedItemIndex(0);
+        }else{
+            juce__comboBox_outputDevicesList->setTextWhenNothingSelected(TRANS ("(No Device, Update the list)"));
         }
         //[/UserButtonCode_juce__textButton_update]
     }
@@ -154,9 +160,7 @@ void MIDI_Sender_UI::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
         juce::MidiDeviceInfo selectedDevice = availableDevices[selectedIndex];
         //std::cout<<selectedIndex<<" "<< selectedDevice.name <<"  selected \n";
 
-        if (outDevice != nullptr){
-            outDevice.reset();
-        }
+        closeConnection();
 
         outDevice = juce::MidiOutput::openDevice (selectedDevice.identifier);
         //handleNoteOn(1, 60, 1.f);
@@ -177,6 +181,14 @@ void MIDI_Sender_UI::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
 void MIDI_Sender_UI::updateList()
 {
     juce__textButton_update->triggerClick();
+}
+
+void MIDI_Sender_UI::closeConnection(){
+    
+    if (outDevice != nullptr){
+        outDevice.reset();
+        outDevice = nullptr;
+    }
 }
 
 void MIDI_Sender_UI::sendToOutput(const juce::MidiMessage& msg)
@@ -256,8 +268,17 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
         
         //Modulation Wheel
         handleTrigger(1, _xboxInput.leftTrigger, last_xboxInput.leftTrigger);
+        //Breath Controller (MSB)
+        handleTrigger(2, _xboxInput.rightTrigger, last_xboxInput.rightTrigger);
+        //Volume (MSB)
+        handleTrigger(7, _xboxInput.leftStick.x, last_xboxInput.leftStick.x);
+        //Balance (MSB)
+        handleTrigger(8, _xboxInput.leftStick.y, last_xboxInput.leftStick.y);
+        //Pan (MSB)
+        handleTrigger(10, _xboxInput.rightStick.x, last_xboxInput.rightStick.x);
         //Expression (MSB)
-        handleTrigger(11, _xboxInput.rightTrigger, last_xboxInput.rightTrigger);
+        handleTrigger(11, _xboxInput.rightStick.y, last_xboxInput.rightStick.y);
+        
     }
 
 

@@ -280,7 +280,15 @@ void MainComponent::userTriedToCloseWindow()
         hidIO_2 = nullptr;
     }
     //disconnect OSC
-    osc_sender->disConnect();
+    if(osc_sender)
+    {
+        osc_sender->disConnect();
+    }
+    //disconnect MIDI
+    if(midi_sender)
+    {
+        midi_sender->closeConnection();
+    }
 }
 
 void MainComponent::EnableXboxControllerVibration(){

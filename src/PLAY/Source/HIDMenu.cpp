@@ -153,7 +153,7 @@ void HIDMenu::buttonClicked (juce::Button* buttonThatWasClicked)
         _listHid.get_hid_list();
 
         devicesMap = _listHid.devicesMap;
-        if(devicesMap.size()){
+        if(devicesMap.size()>0){
             updateHIDcombox();
         }
         else{

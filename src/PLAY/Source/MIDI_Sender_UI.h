@@ -48,6 +48,7 @@ public:
     void send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputState _xboxInput);
     int Selected_midiChannel = 1;
     void updateList();
+    void closeConnection();
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;

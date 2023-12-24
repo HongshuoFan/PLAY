@@ -37,7 +37,7 @@ XboxController_UI::XboxController_UI ()
     Left_Stick->resized();
 
     Right_Stick.reset(new StickGUI());
-    Right_Stick->setBounds(317, 130, 80, 80);
+    Right_Stick->setBounds(315, 130, 80, 80);
     Right_Stick->resized();
     addAndMakeVisible(Right_Stick.get());
     //[/Constructor_pre]
