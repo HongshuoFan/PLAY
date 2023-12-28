@@ -12,13 +12,13 @@ MainComponent::MainComponent()
     addAndMakeVisible(m_HIDMenu.get());
     
     osc_sender.reset(new OSC_Sender_UI);
-    osc_sender->setBounds(0, proportionOfHeight (0.9f), 600, 40);
+    osc_sender->setBounds(10, proportionOfHeight (0.9f), 600, 40);
     
     osc_receiver.reset(new OSC_Receiver);
     osc_receiver->TriggerVibration = [this]{onDataReceived();};
     
     midi_sender.reset(new MIDI_Sender_UI);
-    midi_sender->setBounds(0, proportionOfHeight (0.8f), 600, 40);
+    midi_sender->setBounds(10, proportionOfHeight (0.8f), 600, 40);
     // Add a listener to the m_HIDMenu
     
     //xbxUI.reset (new XboxController_UI);
@@ -58,10 +58,10 @@ void MainComponent::resized()
     // If you add any child components, this is where you should
     // update their positions.
     if(osc_sender){
-        osc_sender->setBounds(0, proportionOfHeight (0.9f), 600, 40);
+        osc_sender->setBounds(10, proportionOfHeight (0.9f), 600, 40);
     }
     if(midi_sender){
-        midi_sender->setBounds(0, proportionOfHeight (0.8f), 600, 40);
+        midi_sender->setBounds(10, proportionOfHeight (0.8f), 600, 40);
     }
     
 }

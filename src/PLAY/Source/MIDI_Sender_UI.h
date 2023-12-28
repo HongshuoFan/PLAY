@@ -22,6 +22,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
 #include "XboxControllerState.h"
+#include "DualSenseState.h"
 //[/Headers]
 
 
@@ -46,6 +47,7 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     void send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputState _xboxInput);
+    void send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput);
     int Selected_midiChannel = 1;
     void updateList();
     void closeConnection();

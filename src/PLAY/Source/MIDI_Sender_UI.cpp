@@ -319,6 +319,10 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
 
 }
 
+void MIDI_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput)
+{
+    
+}
 //[/MiscUserCode]
 
 
