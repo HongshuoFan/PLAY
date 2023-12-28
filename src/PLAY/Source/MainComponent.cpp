@@ -217,7 +217,8 @@ void MainComponent::onDualSense_DataReceived()
     DS_UI.DS_UI_input = DS_input->DS_input;
     //send DualSense data via OSC
     osc_sender->send_DualSense_OSC_message(DS_input->DS_input);
-   
+    //send DualSense Controller data via MIDI
+    midi_sender->send_DualSense_OSC_message(DS_input->DS_input);
 }
 
 void MainComponent::onXboxController_DataReceived() {
@@ -226,6 +227,7 @@ void MainComponent::onXboxController_DataReceived() {
     xbxUI._input = XC_input->xbox_input;
     //send Xbox Controller data via OSC
     osc_sender->send_Xbox_OSC_message(XC_input->xbox_input);
+    //send Xbox Controller data via MIDI
     midi_sender->send_Xbox_MIDI_message(XC_input->xbox_input);
 }
 

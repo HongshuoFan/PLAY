@@ -321,7 +321,41 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
 
 void MIDI_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput)
 {
-    
+    if(juce__toggleButton_MIDI->getToggleState())
+    {
+        handleButton(60, _dualSenseInput.buttons.cross, last_dualSenseInput.buttons.cross);
+        handleButton(61, _dualSenseInput.buttons.circle, last_dualSenseInput.buttons.circle);
+        handleButton(62, _dualSenseInput.buttons.square, last_dualSenseInput.buttons.square);
+        handleButton(63, _dualSenseInput.buttons.triangle, last_dualSenseInput.buttons.triangle);
+
+        handleButton(64, _dualSenseInput.dpad.up, last_dualSenseInput.dpad.up);
+        handleButton(65, _dualSenseInput.dpad.down, last_dualSenseInput.dpad.down);
+        handleButton(66, _dualSenseInput.dpad.left, last_dualSenseInput.dpad.left);
+        handleButton(67, _dualSenseInput.dpad.right, last_dualSenseInput.dpad.right);
+        
+        handleButton(68, _dualSenseInput.buttons.r1, last_dualSenseInput.buttons.r1);
+        handleButton(69, _dualSenseInput.buttons.l1, last_dualSenseInput.buttons.l1);
+
+        handleButton(70, _dualSenseInput.buttons.select, last_dualSenseInput.buttons.select);
+        //handleButton(71, _dualSenseInput.buttons., last_xboxInput.buttons.share);
+        handleButton(72, _dualSenseInput.buttons.menu, last_dualSenseInput.buttons.menu);
+
+        handleButton(73, _dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress);
+        handleButton(74, _dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress);
+        
+        //Modulation Wheel
+        handleTrigger(1, _dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger);
+        //Breath Controller (MSB)
+        handleTrigger(2, _dualSenseInput.rightTrigger, last_dualSenseInput.rightTrigger);
+        //Volume (MSB)
+        handleTrigger(7, _dualSenseInput.leftStick.x, last_dualSenseInput.leftStick.x);
+        //Balance (MSB)
+        handleTrigger(8, _dualSenseInput.leftStick.y, last_dualSenseInput.leftStick.y);
+        //Pan (MSB)
+        handleTrigger(10, _dualSenseInput.rightStick.x, last_dualSenseInput.rightStick.x);
+        //Expression (MSB)
+        handleTrigger(11, _dualSenseInput.rightStick.y, last_dualSenseInput.rightStick.y);
+    }
 }
 //[/MiscUserCode]
 

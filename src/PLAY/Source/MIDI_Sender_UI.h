@@ -74,6 +74,7 @@ private:
     void handleButton(int midiNoteNumber, bool buttonStat, bool& last_buttonStat_p);
 
     XboxCotroller::XboxCotrollerInputState last_xboxInput;
+    DualSense::DualSenseInputState last_dualSenseInput;
     //[/UserVariables]
 
     //==============================================================================
