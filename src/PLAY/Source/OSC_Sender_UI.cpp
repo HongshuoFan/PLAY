@@ -245,15 +245,17 @@ void OSC_Sender_UI::disConnect(){
 void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState _xboxInput)
 {
     if(juce__toggleButton_OSC->getToggleState()){
-        float stickFliter = 0.01;
+        float stickFliter = 0.02;
         ConvertAndSend_float(_xboxInput.leftStick.x, last_xboxInput.leftStick.x,
                              "/leftStick/x", last_xboxInput.leftStick.x, stickFliter);
         ConvertAndSend_float(_xboxInput.leftStick.y, last_xboxInput.leftStick.y,
                              "/leftStick/y", last_xboxInput.leftStick.y, stickFliter);
+        
         ConvertAndSend_float(_xboxInput.rightStick.x, last_xboxInput.rightStick.x,
-                             "/rightStick/x", last_xboxInput.leftStick.x, stickFliter);
+                             "/rightStick/x", last_xboxInput.rightStick.x, stickFliter);
         ConvertAndSend_float(_xboxInput.rightStick.y, last_xboxInput.rightStick.y,
-                             "/rightStick/y", last_xboxInput.leftStick.y, stickFliter);
+                             "/rightStick/y", last_xboxInput.rightStick.y, stickFliter);
+        
         ConvertAndSend_float(_xboxInput.leftTrigger, last_xboxInput.leftTrigger,
                              "/leftTrigger", last_xboxInput.leftTrigger, stickFliter);
         ConvertAndSend_float(_xboxInput.rightTrigger, last_xboxInput.rightTrigger,
@@ -305,6 +307,7 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
                              "/rightStick/x", last_xboxInput.leftStick.x, stickFliter);
         ConvertAndSend_float(_dualSenseInput.rightStick.y, last_xboxInput.rightStick.y,
                              "/rightStick/y", last_xboxInput.leftStick.y, stickFliter);
+        
         ConvertAndSend_float(_dualSenseInput.leftTrigger, last_xboxInput.leftTrigger,
                              "/leftTrigger", last_xboxInput.leftTrigger, stickFliter);
         ConvertAndSend_float(_dualSenseInput.rightTrigger, last_xboxInput.rightTrigger,
