@@ -76,27 +76,27 @@ void MainComponent::onHIDMenuChanged()
     //handle different controller
     if(strcmp("DualSense Wireless Controller", charPointer) == 0){
             
-        initialConnection("DualSense Wireless Controller");
-        hidIO_1->device_name = charPointer;
-        if(hidIO_1->connect()){
-            // initial duel sense
-            DS_input.reset(new DualSense_Input());
-            DS_output.reset(new DualSense_Output);
-                
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-                // enable dual sense controller
-            DS_output->initialOuput();
-            hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
-                
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-            // add callback function and start reading thread
-            hidIO_1->dataReceivedCallback = [this]{onDualSense_DataReceived();};
-            addAndMakeVisible(DS_UI);
-            DS_UI.isConnected = true;
-            
-        }else{
-            WarningWindow("Unable to connect DualSense Wireless Controller");
-        }
+//        initialConnection("DualSense Wireless Controller");
+//        hidIO_1->device_name = charPointer;
+//        if(hidIO_1->connect()){
+//            // initial duel sense
+//            DS_input.reset(new DualSense_Input());
+//            DS_output.reset(new DualSense_Output);
+//
+//            std::this_thread::sleep_for(std::chrono::seconds(1));
+//                // enable dual sense controller
+//            DS_output->initialOuput();
+//            hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
+//
+//            std::this_thread::sleep_for(std::chrono::seconds(1));
+//            // add callback function and start reading thread
+//            hidIO_1->dataReceivedCallback = [this]{onDualSense_DataReceived();};
+//            addAndMakeVisible(DS_UI);
+//            DS_UI.isConnected = true;
+//
+//        }else{
+//            WarningWindow("Unable to connect DualSense Wireless Controller");
+//        }
         
     }else if(strcmp("Xbox Wireless Controller", charPointer) == 0){
             
@@ -121,62 +121,62 @@ void MainComponent::onHIDMenuChanged()
         }
             
         }else if(strcmp(L_JoyConName.toUTF8(), charPointer) == 0 || strcmp(R_JoyConName.toUTF8(), charPointer) == 0){
-            int JC_connected = 0;
-            for (const auto& entry : m_HIDMenu->devicesMap) {
-                juce::String key = entry.first;
-                
-                if(L_JoyConName == key){
-                    JC_connected += 1;
-                }else if(R_JoyConName == key){
-                    JC_connected += 1;
-                }
-                
-            }
-            
-            if(JC_connected == 2){
-                
-                initialConnection("Joy-Con");
-                hidIO_1->device_name = (char*) "Joy-Con (L)";
-                // initialize second hidIO
-                hidIO_2.reset(new HID_IO());
-                hidIO_2->device_name = (char*) "Joy-Con (R)";
-                hidIO_2->dataReceivedCallback = [this]{onDataReceived();};
-                
-                JC_input.reset(new JoyCon_Input());
-                JC_output.reset(new JoyCon_Output());
-                
-                if(hidIO_1->connect() && hidIO_2->connect()){
-                    
-                    JC_output->changeMode(0x31);
-                    hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
-                    hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
-                    
-                    std::this_thread::sleep_for(std::chrono::seconds(1));
-                    
-                    JC_output->trunIMU(true);
-                    hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
-                    hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
-                    
-                    hidIO_1->dataReceivedCallback = [this]{onJoyCon_L_DataReceived();};
-                    hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
-                    
-                    JC_UI.isConnected = true;
-                    addAndMakeVisible(JC_UI);
-                    
-                }else{
-                    WarningWindow("Unable to connect Joy-Con");
-                    
-                    m_HIDMenu.reset(new HIDMenu());
-                    m_HIDMenu->onHIDMenuChanged = [this]{onHIDMenuChanged();};
-                    addAndMakeVisible(m_HIDMenu.get());
-                }
-                
-            }else{
-                
-                WarningWindow("Make sure connecting both Joy-Con");
-                
-            }
-            
+//            int JC_connected = 0;
+//            for (const auto& entry : m_HIDMenu->devicesMap) {
+//                juce::String key = entry.first;
+//                
+//                if(L_JoyConName == key){
+//                    JC_connected += 1;
+//                }else if(R_JoyConName == key){
+//                    JC_connected += 1;
+//                }
+//                
+//            }
+//            
+//            if(JC_connected == 2){
+//                
+//                initialConnection("Joy-Con");
+//                hidIO_1->device_name = (char*) "Joy-Con (L)";
+//                // initialize second hidIO
+//                hidIO_2.reset(new HID_IO());
+//                hidIO_2->device_name = (char*) "Joy-Con (R)";
+//                hidIO_2->dataReceivedCallback = [this]{onDataReceived();};
+//                
+//                JC_input.reset(new JoyCon_Input());
+//                JC_output.reset(new JoyCon_Output());
+//                
+//                if(hidIO_1->connect() && hidIO_2->connect()){
+//                    
+//                    JC_output->changeMode(0x31);
+//                    hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
+//                    hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+//                    
+//                    std::this_thread::sleep_for(std::chrono::seconds(1));
+//                    
+//                    JC_output->trunIMU(true);
+//                    hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
+//                    hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+//                    
+//                    hidIO_1->dataReceivedCallback = [this]{onJoyCon_L_DataReceived();};
+//                    hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
+//                    
+//                    JC_UI.isConnected = true;
+//                    addAndMakeVisible(JC_UI);
+//                    
+//                }else{
+//                    WarningWindow("Unable to connect Joy-Con");
+//                    
+//                    m_HIDMenu.reset(new HIDMenu());
+//                    m_HIDMenu->onHIDMenuChanged = [this]{onHIDMenuChanged();};
+//                    addAndMakeVisible(m_HIDMenu.get());
+//                }
+//                
+//            }else{
+//                
+//                WarningWindow("Make sure connecting both Joy-Con");
+//                
+//            }
+//            
         }else{
             std::cout << "connect to unknown Controller" << std::endl;
             WarningWindow("Unsupported device");
