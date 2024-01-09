@@ -51,6 +51,7 @@ public:
     int Selected_midiChannel = 1;
     void updateList();
     void closeConnection();
+    
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -68,7 +69,7 @@ private:
     void handleNoteOn (int midiChannel, int midiNoteNumber, float velocity);
     void handleNoteOff (int midiChannel, int midiNoteNumber, float velocity);
     void handleContinuousController(int midiChannel, int midiControllerType, int value);
-
+    std::unique_ptr<juce::MidiOutput>  PlayMidiDevice;
 
     void handleTrigger(int midiControllerType, float triggerValue, float& last_triggerValue_p);
     void handleButton(int midiNoteNumber, bool buttonStat, bool& last_buttonStat_p);

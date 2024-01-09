@@ -67,7 +67,11 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
     for (int i = 2; i <= 16; i++){
         juce__comboBox_MidiChannel->addItem (TRANS (std::to_string(i)), i);
     }
-
+   
+    juce__textButton_update->setVisible(false);
+    juce__comboBox_outputDevicesList->setVisible(false);
+    //virtual Midi device MAC only
+    PlayMidiDevice = juce::MidiOutput::createNewDevice("PLAY");
     //[/UserPreSize]
 
     setSize (600, 40);
@@ -228,8 +232,8 @@ void MIDI_Sender_UI::closeConnection(){
 
 void MIDI_Sender_UI::sendToOutput(const juce::MidiMessage& msg)
 {
-    if(outDevice != nullptr){
-        outDevice->sendMessageNow(msg);
+    if(PlayMidiDevice != nullptr){
+        PlayMidiDevice->sendMessageNow(msg);
     }
 }
 
