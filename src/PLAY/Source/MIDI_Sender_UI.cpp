@@ -67,7 +67,7 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
     for (int i = 2; i <= 16; i++){
         juce__comboBox_MidiChannel->addItem (TRANS (std::to_string(i)), i);
     }
-   
+
     juce__textButton_update->setVisible(false);
     juce__comboBox_outputDevicesList->setVisible(false);
     //virtual Midi device MAC only
@@ -105,18 +105,6 @@ void MIDI_Sender_UI::paint (juce::Graphics& g)
     //[/UserPrePaint]
 
     g.fillAll (juce::Colour (0xff323e44));
-
-    {
-        int x = proportionOfWidth (0.3800f), y = proportionOfHeight (0.2500f), width = 50, height = 20;
-        juce::String text (TRANS ("Devices"));
-        juce::Colour fillColour = juce::Colours::azure;
-        //[UserPaintCustomArguments] Customize the painting arguments here..
-        //[/UserPaintCustomArguments]
-        g.setColour (fillColour);
-        g.setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
-        g.drawText (text, x, y, width, height,
-                    juce::Justification::centred, true);
-    }
 
     {
         int x = proportionOfWidth (0.1167f), y = proportionOfHeight (0.2500f), width = 50, height = 20;
@@ -336,7 +324,7 @@ void MIDI_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _
         handleButton(65, _dualSenseInput.dpad.down, last_dualSenseInput.dpad.down);
         handleButton(66, _dualSenseInput.dpad.left, last_dualSenseInput.dpad.left);
         handleButton(67, _dualSenseInput.dpad.right, last_dualSenseInput.dpad.right);
-        
+
         handleButton(68, _dualSenseInput.buttons.r1, last_dualSenseInput.buttons.r1);
         handleButton(69, _dualSenseInput.buttons.l1, last_dualSenseInput.buttons.l1);
 
@@ -346,7 +334,7 @@ void MIDI_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _
 
         handleButton(73, _dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress);
         handleButton(74, _dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress);
-        
+
         //Modulation Wheel
         handleTrigger(1, _dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger);
         //Breath Controller (MSB)
@@ -378,7 +366,7 @@ BEGIN_JUCER_METADATA
                  snapPixels="8" snapActive="0" snapShown="0" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="600" initialHeight="40">
   <BACKGROUND backgroundColour="ff323e44">
-    <TEXT pos="38% 25% 50 20" fill="solid: fff0ffff" hasStroke="0" text="Devices"
+    <TEXT pos="38% 25% 50 20" fill="solid: f0ffff" hasStroke="0" text="Devices"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="36"/>
     <TEXT pos="11.667% 25% 50 20" fill="solid: fff0ffff" hasStroke="0"
