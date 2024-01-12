@@ -325,11 +325,20 @@ void MainComponent::Right_JC_IMU()
 }
 
 void MainComponent::Left_JC_Vib(){
-    JC_output->Vibration(200, 0.2, 10, 0, 1);
+    JC_output->vibration(true, 0.5, true);
+    hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
+    JC_output->rumbleSend(200, 0.2, 50, 0.0, true);
     hidIO_1->writeRawData(JC_output->_output, 0x10, 12);
+    
+    //std::this_thread::sleep_for(std::chrono::seconds(1));
+    
+//    JC_output->vibration(false, 0.5, true);
+//    hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
 }
 
 void MainComponent::Right_JC_Vib(){
-    JC_output->Vibration(200, 0.2, 10, 0, 0);
+    JC_output->vibration(true, 0.5, false);
+    hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+    JC_output->rumbleSend(200, 0.2, 50, 0.0, false);
     hidIO_2->writeRawData(JC_output->_output, 0x10, 12);
 }

@@ -23,7 +23,8 @@ public:
     uint8_t _output[49];
     void trunIMU(bool on_off);
     void changeMode(uint8_t arg);
-    void Vibration(double highFreq, double highAmp, double lowFreq, double lowAmp, bool isLeft);
+    void vibration(bool on_off, double amp, bool isLeft);
+    void rumbleSend(double highFreq, double highAmp, double lowFreq, double lowAmp, bool isLeft);
     
     void enableMCU();
     void setMCUMode();

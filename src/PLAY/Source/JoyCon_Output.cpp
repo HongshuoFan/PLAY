@@ -64,8 +64,14 @@ void JoyCon_Output::changeMode(uint8_t arg)
     // x31    NFC/IR mode. Pushes large packets @60Hz
     _output[11] = arg;
 }
+void JoyCon_Output::vibration(bool on_off, double amp, bool isLeft){
+    initBasicOutput();
+    _output[10] = 0x48;
+    _output[11] = on_off ? 0x01 : 0x00;
+    
+}
 
-void JoyCon_Output::Vibration(double highFreq, double highAmp, double lowFreq, double lowAmp, bool isLeft)
+void JoyCon_Output::rumbleSend(double highFreq, double highAmp, double lowFreq, double lowAmp, bool isLeft)
 {
     initBasicOutput();
     uint16_t encodeByte = uint16_t(__encodeFreq(highFreq));
