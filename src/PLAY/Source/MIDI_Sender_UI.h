@@ -49,7 +49,6 @@ public:
     void send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputState _xboxInput);
     void send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput);
     int Selected_midiChannel = 1;
-    void updateList();
     void closeConnection();
 
     //[/UserMethods]
@@ -80,8 +79,6 @@ private:
 
     //==============================================================================
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_MIDI;
-    std::unique_ptr<juce::ComboBox> juce__comboBox_outputDevicesList;
-    std::unique_ptr<juce::TextButton> juce__textButton_update;
     std::unique_ptr<juce::ComboBox> juce__comboBox_MidiChannel;
 
 

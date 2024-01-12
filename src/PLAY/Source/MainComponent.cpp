@@ -197,7 +197,6 @@ void MainComponent::initialConnection(juce::String nameOfDevice)
     //add OSC_SenderUI
     addAndMakeVisible(osc_sender.get());
     //add MIDI_SenderUI
-    midi_sender->updateList();
     addAndMakeVisible(midi_sender.get());
     std::cout << "connect to " << nameOfDevice << std::endl;
 }
