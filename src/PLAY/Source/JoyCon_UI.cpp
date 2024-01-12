@@ -317,6 +317,16 @@ JoyCon_UI::JoyCon_UI ()
     juce__slider_r_gyr_z->setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xff263238));
     juce__slider_r_gyr_z->addListener (this);
 
+    juce__toggleButton_L_IMU.reset (new juce::ToggleButton ("Left_JC_IMU_toggle"));
+    addAndMakeVisible (juce__toggleButton_L_IMU.get());
+    juce__toggleButton_L_IMU->setButtonText (TRANS ("Left IMU"));
+    juce__toggleButton_L_IMU->addListener (this);
+
+    juce__toggleButton_R_IMU.reset (new juce::ToggleButton ("Right_JC_IMU_toggle"));
+    addAndMakeVisible (juce__toggleButton_R_IMU.get());
+    juce__toggleButton_R_IMU->setButtonText (TRANS ("Right IMU"));
+    juce__toggleButton_R_IMU->addListener (this);
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -370,6 +380,8 @@ JoyCon_UI::~JoyCon_UI()
     juce__slider_r_gyr_x = nullptr;
     juce__slider_r_gyr_y = nullptr;
     juce__slider_r_gyr_z = nullptr;
+    juce__toggleButton_L_IMU = nullptr;
+    juce__toggleButton_R_IMU = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -437,18 +449,20 @@ void JoyCon_UI::resized()
     juce__slider_l_acc_x->setBounds (proportionOfWidth (0.0200f), proportionOfHeight (0.0823f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
     juce__slider_l_acc_y->setBounds (proportionOfWidth (0.0200f), proportionOfHeight (0.2118f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
     juce__slider_l_acc_z->setBounds (proportionOfWidth (0.0200f), proportionOfHeight (0.3412f), 120, 34);
-    juce__label_Gyroscope->setBounds (proportionOfWidth (0.0550f), proportionOfHeight (0.5353f), 75, 12);
-    juce__slider_l_gyr_x->setBounds (proportionOfWidth (0.0183f), proportionOfHeight (0.5794f), proportionOfWidth (0.2017f), proportionOfHeight (0.1000f));
-    juce__slider_l_gyr_y->setBounds (proportionOfWidth (0.0183f), proportionOfHeight (0.7059f), proportionOfWidth (0.2017f), proportionOfHeight (0.1000f));
-    juce__slider_l_gyr_z->setBounds (proportionOfWidth (0.0183f), proportionOfHeight (0.8324f), proportionOfWidth (0.2017f), proportionOfHeight (0.1000f));
+    juce__label_Gyroscope->setBounds (proportionOfWidth (0.0550f), proportionOfHeight (0.5059f), 75, 12);
+    juce__slider_l_gyr_x->setBounds (proportionOfWidth (0.0183f), proportionOfHeight (0.5500f), proportionOfWidth (0.2017f), proportionOfHeight (0.1000f));
+    juce__slider_l_gyr_y->setBounds (proportionOfWidth (0.0183f), proportionOfHeight (0.6765f), proportionOfWidth (0.2017f), proportionOfHeight (0.1000f));
+    juce__slider_l_gyr_z->setBounds (proportionOfWidth (0.0183f), proportionOfHeight (0.8029f), proportionOfWidth (0.2017f), proportionOfHeight (0.1000f));
     juce__label_acc2->setBounds (proportionOfWidth (0.8267f), proportionOfHeight (0.0206f), 75, 12);
-    juce__label_Gyroscope2->setBounds (proportionOfWidth (0.8267f), proportionOfHeight (0.5353f), 75, 12);
+    juce__label_Gyroscope2->setBounds (proportionOfWidth (0.8267f), proportionOfHeight (0.5059f), 75, 12);
     juce__slider_r_acc_x->setBounds (proportionOfWidth (0.7900f), proportionOfHeight (0.0823f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
     juce__slider_r_acc_y->setBounds (proportionOfWidth (0.7900f), proportionOfHeight (0.2118f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
     juce__slider_r_acc_z->setBounds (proportionOfWidth (0.7900f), proportionOfHeight (0.3412f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
-    juce__slider_r_gyr_x->setBounds (proportionOfWidth (0.7900f), proportionOfHeight (0.5794f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
-    juce__slider_r_gyr_y->setBounds (proportionOfWidth (0.7900f), proportionOfHeight (0.7059f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
-    juce__slider_r_gyr_z->setBounds (proportionOfWidth (0.7900f), proportionOfHeight (0.8324f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
+    juce__slider_r_gyr_x->setBounds (proportionOfWidth (0.7900f), proportionOfHeight (0.5500f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
+    juce__slider_r_gyr_y->setBounds (proportionOfWidth (0.7900f), proportionOfHeight (0.6765f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
+    juce__slider_r_gyr_z->setBounds (proportionOfWidth (0.7900f), proportionOfHeight (0.8029f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
+    juce__toggleButton_L_IMU->setBounds (proportionOfWidth (0.4400f), proportionOfHeight (0.3500f), 82, 24);
+    juce__toggleButton_R_IMU->setBounds (proportionOfWidth (0.4400f), proportionOfHeight (0.5000f), 82, 24);
     internalPath1.clear();
     internalPath1.startNewSubPath (static_cast<float> (proportionOfWidth (0.4133f)), static_cast<float> (proportionOfHeight (0.8971f)));
     internalPath1.lineTo (static_cast<float> (proportionOfWidth (0.4133f)), static_cast<float> (proportionOfHeight (0.0265f)));
@@ -572,6 +586,20 @@ void JoyCon_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     {
         //[UserButtonCode_juce__textButton_home] -- add your button handler code here..
         //[/UserButtonCode_juce__textButton_home]
+    }
+    else if (buttonThatWasClicked == juce__toggleButton_L_IMU.get())
+    {
+        //[UserButtonCode_juce__toggleButton_L_IMU] -- add your button handler code here..
+        left_imu = juce__toggleButton_L_IMU->getToggleState();
+        onLeftIMUChanged();
+        //[/UserButtonCode_juce__toggleButton_L_IMU]
+    }
+    else if (buttonThatWasClicked == juce__toggleButton_R_IMU.get())
+    {
+        //[UserButtonCode_juce__toggleButton_R_IMU] -- add your button handler code here..
+        right_imu = juce__toggleButton_R_IMU->getToggleState();
+        onRightIMUChanged();
+        //[/UserButtonCode_juce__toggleButton_R_IMU]
     }
 
     //[UserbuttonClicked_Post]
@@ -829,24 +857,24 @@ BEGIN_JUCER_METADATA
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <LABEL name="Gyroscope" id="be5bd99aa3d8564b" memberName="juce__label_Gyroscope"
-         virtualName="" explicitFocusOrder="0" pos="5.5% 53.529% 75 12"
+         virtualName="" explicitFocusOrder="0" pos="5.5% 50.588% 75 12"
          edTextCol="ff000000" edBkgCol="0" labelText="Gyroscope" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="10.0" kerning="0.0" bold="0" italic="0" justification="12"/>
   <SLIDER name="L_Gyr_x" id="6162d626240ec822" memberName="juce__slider_l_gyr_x"
-          virtualName="" explicitFocusOrder="0" pos="1.833% 57.941% 20.167% 10%"
+          virtualName="" explicitFocusOrder="0" pos="1.833% 55% 20.167% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
           min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="L_Gyr_y" id="726028bb5c101d79" memberName="juce__slider_l_gyr_y"
-          virtualName="" explicitFocusOrder="0" pos="1.833% 70.588% 20.167% 10%"
+          virtualName="" explicitFocusOrder="0" pos="1.833% 67.647% 20.167% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
           min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="L_Gyr_z" id="8d6a53e81889b85a" memberName="juce__slider_l_gyr_z"
-          virtualName="" explicitFocusOrder="0" pos="1.833% 83.235% 20.167% 10%"
+          virtualName="" explicitFocusOrder="0" pos="1.833% 80.294% 20.167% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
           min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
@@ -857,7 +885,7 @@ BEGIN_JUCER_METADATA
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="10.0" kerning="0.0" bold="0" italic="0" justification="12"/>
   <LABEL name="Gyroscope" id="e788889755d5ed8f" memberName="juce__label_Gyroscope2"
-         virtualName="" explicitFocusOrder="0" pos="82.667% 53.529% 75 12"
+         virtualName="" explicitFocusOrder="0" pos="82.667% 50.588% 75 12"
          edTextCol="ff000000" edBkgCol="0" labelText="Gyroscope" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="10.0" kerning="0.0" bold="0" italic="0" justification="12"/>
@@ -880,23 +908,29 @@ BEGIN_JUCER_METADATA
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="R_Gyr_x" id="ec407bcaab06cb9b" memberName="juce__slider_r_gyr_x"
-          virtualName="" explicitFocusOrder="0" pos="79% 57.941% 20% 10%"
-          bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
-          min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
+          virtualName="" explicitFocusOrder="0" pos="79% 55% 20% 10%" bkgcol="ff263238"
+          trackcol="ff263238" rotarysliderfill="ff263238" min="-500.0"
+          max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="R_Gyr_y" id="b857e28523eb6ea1" memberName="juce__slider_r_gyr_y"
-          virtualName="" explicitFocusOrder="0" pos="79% 70.588% 20% 10%"
+          virtualName="" explicitFocusOrder="0" pos="79% 67.647% 20% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
           min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="R_Gyr_z" id="95df5889bdf0a2ba" memberName="juce__slider_r_gyr_z"
-          virtualName="" explicitFocusOrder="0" pos="79% 83.235% 20% 10%"
+          virtualName="" explicitFocusOrder="0" pos="79% 80.294% 20% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
           min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
+  <TOGGLEBUTTON name="Left_JC_IMU_toggle" id="9b99ae182d27bbd5" memberName="juce__toggleButton_L_IMU"
+                virtualName="" explicitFocusOrder="0" pos="44% 35% 82 24" buttonText="Left IMU"
+                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+  <TOGGLEBUTTON name="Right_JC_IMU_toggle" id="c42986959dcca701" memberName="juce__toggleButton_R_IMU"
+                virtualName="" explicitFocusOrder="0" pos="44% 50% 82 24" buttonText="Right IMU"
+                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

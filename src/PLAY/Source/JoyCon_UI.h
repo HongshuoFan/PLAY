@@ -50,6 +50,10 @@ public:
     JoyCon::L_JoyCon_InputState l_jc_input;
     JoyCon::R_JoyCon_InputState r_jc_input;
     bool isConnected = false;
+    std::function<void()> onLeftIMUChanged;
+    std::function<void()> onRightIMUChanged;
+    bool left_imu;
+    bool right_imu;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -102,6 +106,8 @@ private:
     std::unique_ptr<juce::Slider> juce__slider_r_gyr_x;
     std::unique_ptr<juce::Slider> juce__slider_r_gyr_y;
     std::unique_ptr<juce::Slider> juce__slider_r_gyr_z;
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton_L_IMU;
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton_R_IMU;
     juce::Path internalPath1;
     juce::Path internalPath2;
 
