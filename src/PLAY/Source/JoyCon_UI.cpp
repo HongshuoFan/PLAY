@@ -327,6 +327,18 @@ JoyCon_UI::JoyCon_UI ()
     juce__toggleButton_R_IMU->setButtonText (TRANS ("Right IMU"));
     juce__toggleButton_R_IMU->addListener (this);
 
+    juce__textButton_L_Virb.reset (new juce::TextButton ("L_Virb_button"));
+    addAndMakeVisible (juce__textButton_L_Virb.get());
+    juce__textButton_L_Virb->setButtonText (TRANS ("vib"));
+    juce__textButton_L_Virb->addListener (this);
+    juce__textButton_L_Virb->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
+
+    juce__textButton_R_Virb.reset (new juce::TextButton ("R_Virb_button"));
+    addAndMakeVisible (juce__textButton_R_Virb.get());
+    juce__textButton_R_Virb->setButtonText (TRANS ("vib"));
+    juce__textButton_R_Virb->addListener (this);
+    juce__textButton_R_Virb->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -382,6 +394,8 @@ JoyCon_UI::~JoyCon_UI()
     juce__slider_r_gyr_z = nullptr;
     juce__toggleButton_L_IMU = nullptr;
     juce__toggleButton_R_IMU = nullptr;
+    juce__textButton_L_Virb = nullptr;
+    juce__textButton_R_Virb = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -463,6 +477,8 @@ void JoyCon_UI::resized()
     juce__slider_r_gyr_z->setBounds (proportionOfWidth (0.7900f), proportionOfHeight (0.8029f), proportionOfWidth (0.2000f), proportionOfHeight (0.1000f));
     juce__toggleButton_L_IMU->setBounds (proportionOfWidth (0.4400f), proportionOfHeight (0.3500f), 82, 24);
     juce__toggleButton_R_IMU->setBounds (proportionOfWidth (0.4400f), proportionOfHeight (0.5000f), 82, 24);
+    juce__textButton_L_Virb->setBounds (proportionOfWidth (0.4167f), proportionOfHeight (0.8706f), proportionOfWidth (0.0600f), proportionOfHeight (0.0647f));
+    juce__textButton_R_Virb->setBounds (proportionOfWidth (0.5333f), proportionOfHeight (0.8706f), proportionOfWidth (0.0617f), proportionOfHeight (0.0618f));
     internalPath1.clear();
     internalPath1.startNewSubPath (static_cast<float> (proportionOfWidth (0.4133f)), static_cast<float> (proportionOfHeight (0.8971f)));
     internalPath1.lineTo (static_cast<float> (proportionOfWidth (0.4133f)), static_cast<float> (proportionOfHeight (0.0265f)));
@@ -600,6 +616,18 @@ void JoyCon_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         right_imu = juce__toggleButton_R_IMU->getToggleState();
         onRightIMUChanged();
         //[/UserButtonCode_juce__toggleButton_R_IMU]
+    }
+    else if (buttonThatWasClicked == juce__textButton_L_Virb.get())
+    {
+        //[UserButtonCode_juce__textButton_L_Virb] -- add your button handler code here..
+        onLeftVibration();
+        //[/UserButtonCode_juce__textButton_L_Virb]
+    }
+    else if (buttonThatWasClicked == juce__textButton_R_Virb.get())
+    {
+        //[UserButtonCode_juce__textButton_R_Virb] -- add your button handler code here..
+        onRightVibration();
+        //[/UserButtonCode_juce__textButton_R_Virb]
     }
 
     //[UserbuttonClicked_Post]
@@ -931,6 +959,14 @@ BEGIN_JUCER_METADATA
   <TOGGLEBUTTON name="Right_JC_IMU_toggle" id="c42986959dcca701" memberName="juce__toggleButton_R_IMU"
                 virtualName="" explicitFocusOrder="0" pos="44% 50% 82 24" buttonText="Right IMU"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+  <TEXTBUTTON name="L_Virb_button" id="ba471e8ab99c2e40" memberName="juce__textButton_L_Virb"
+              virtualName="" explicitFocusOrder="0" pos="41.667% 87.059% 6% 6.471%"
+              bgColOn="ff5f9ea0" buttonText="vib" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
+  <TEXTBUTTON name="R_Virb_button" id="85734151709505e4" memberName="juce__textButton_R_Virb"
+              virtualName="" explicitFocusOrder="0" pos="53.333% 87.059% 6.167% 6.176%"
+              bgColOn="ff5f9ea0" buttonText="vib" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

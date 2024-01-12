@@ -51,7 +51,9 @@ public:
     JoyCon::R_JoyCon_InputState r_jc_input;
     bool isConnected = false;
     std::function<void()> onLeftIMUChanged;
+    std::function<void()> onLeftVibration;
     std::function<void()> onRightIMUChanged;
+    std::function<void()> onRightVibration;
     bool left_imu;
     bool right_imu;
     //[/UserMethods]
@@ -108,6 +110,8 @@ private:
     std::unique_ptr<juce::Slider> juce__slider_r_gyr_z;
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_L_IMU;
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_R_IMU;
+    std::unique_ptr<juce::TextButton> juce__textButton_L_Virb;
+    std::unique_ptr<juce::TextButton> juce__textButton_R_Virb;
     juce::Path internalPath1;
     juce::Path internalPath2;
 

@@ -82,7 +82,9 @@ private:
     void onJoyCon_R_DataReceived();
     
     void Left_JC_IMU();
+    void Left_JC_Vib();
     void Right_JC_IMU();
+    void Right_JC_Vib();
     
     void WarningWindow(juce::String WarningMessage);
     void initialConnection(juce::String nameOfDevice);

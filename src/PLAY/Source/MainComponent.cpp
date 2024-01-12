@@ -153,11 +153,11 @@ void MainComponent::onHIDMenuChanged()
                     
                     std::this_thread::sleep_for(std::chrono::seconds(1));
                     
-//                    JC_output->trunIMU(true);
-//                    hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
-//                    hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
                     JC_UI.onLeftIMUChanged = [this]{Left_JC_IMU();};
                     JC_UI.onRightIMUChanged = [this]{Right_JC_IMU();};
+                    
+                    JC_UI.onLeftVibration = [this]{Left_JC_Vib();};
+                    JC_UI.onRightVibration = [this]{Right_JC_Vib();};
                     
                     hidIO_1->dataReceivedCallback = [this]{onJoyCon_L_DataReceived();};
                     hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
@@ -322,4 +322,14 @@ void MainComponent::Right_JC_IMU()
 {
     JC_output->trunIMU(JC_UI.right_imu);
     hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+}
+
+void MainComponent::Left_JC_Vib(){
+    JC_output->Vibration(200, 0.2, 10, 0, 1);
+    hidIO_1->writeRawData(JC_output->_output, 0x10, 12);
+}
+
+void MainComponent::Right_JC_Vib(){
+    JC_output->Vibration(200, 0.2, 10, 0, 0);
+    hidIO_2->writeRawData(JC_output->_output, 0x10, 12);
 }
