@@ -304,9 +304,9 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
         ConvertAndSend_float(_dualSenseInput.leftStick.y, last_dualSenseInput.leftStick.y,
                              "/leftStick/y", last_dualSenseInput.leftStick.y, stickFliter);
         ConvertAndSend_float(_dualSenseInput.rightStick.x, last_xboxInput.rightStick.x,
-                             "/rightStick/x", last_xboxInput.leftStick.x, stickFliter);
+                             "/rightStick/x", last_xboxInput.rightStick.x, stickFliter);
         ConvertAndSend_float(_dualSenseInput.rightStick.y, last_xboxInput.rightStick.y,
-                             "/rightStick/y", last_xboxInput.leftStick.y, stickFliter);
+                             "/rightStick/y", last_xboxInput.rightStick.y, stickFliter);
         
         ConvertAndSend_float(_dualSenseInput.leftTrigger, last_xboxInput.leftTrigger,
                              "/leftTrigger", last_xboxInput.leftTrigger, stickFliter);
