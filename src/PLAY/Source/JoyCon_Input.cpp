@@ -57,6 +57,7 @@ void JoyCon_Input::evaluate_L_JC_HidInputBuffer(uint8_t* _reportData)
         uint8_t *stick_data = _reportData + 6;
         l_jc_input.stick.x = stick_data[0] | ((stick_data[1] & 0xF) << 8);
         l_jc_input.stick.y = (stick_data[1] >> 4) | (stick_data[2] << 4);
+        
         CalcAnalogStickSub(&l_jc_input.stick);
     
         
@@ -145,8 +146,8 @@ void JoyCon_Input::CalcAnalogStickSub(JoyCon::AnalogStick* InputStick)
     InputStick->y_max = fmax(InputStick->y_max, y);
     InputStick->y_min = fmin(InputStick->y_min, y);
     
-    x = (x - InputStick->x_min) / (InputStick->x_max - InputStick->x_min);
-    y = (y - InputStick->y_min) / (InputStick->y_max - InputStick->y_min);
+    x = (x - InputStick->x_min) / abs(InputStick->x_max - InputStick->x_min);
+    y = (y - InputStick->y_min) / abs(InputStick->y_max - InputStick->y_min);
     
     InputStick->x = clamp(x, 0.f, 1.f);
     InputStick->y = clamp(y, 0.f, 1.f);

@@ -14,12 +14,12 @@ namespace JoyCon {
 
     typedef struct _AnalogStick {
     
-        float x = 0.f;
-        float y = 0.f;
+        float x = 0.5f;
+        float y = 0.5f;
         bool stickPress = false;
-        float x_max = -1000.f;
+        float x_max = 3000.f;
         float x_min = 1000.f;
-        float y_max = -1000.f;
+        float y_max = 3000.f;
         float y_min = 1000.f;
     
     } AnalogStick;
