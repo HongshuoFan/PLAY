@@ -96,11 +96,11 @@ void DualSense_Output::initialOuput(bool isBT) {
 //
     // Right trigger is forcy
     DS_output.rightTriggerEffect.effectType = DualSense::TriggerEffectType::ContinuousResitance;
-    DS_output.rightTriggerEffect.Continuous.force = 0x10;
+    DS_output.rightTriggerEffect.Continuous.force = 0x50;
     DS_output.rightTriggerEffect.Continuous.startPosition = 0x00;
     
     DS_output.leftTriggerEffect.effectType = DualSense::TriggerEffectType::ContinuousResitance;
-    DS_output.leftTriggerEffect.Continuous.force = 0x05;
+    DS_output.leftTriggerEffect.Continuous.force = 0x50;
     DS_output.leftTriggerEffect.Continuous.startPosition = 0x00;
     
     createDualSenseOutput();
