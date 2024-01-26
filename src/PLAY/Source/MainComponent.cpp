@@ -76,27 +76,30 @@ void MainComponent::onHIDMenuChanged()
     //handle different controller
     if(strcmp("DualSense Wireless Controller", charPointer) == 0){
             
-//        initialConnection("DualSense Wireless Controller");
-//        hidIO_1->device_name = charPointer;
-//        if(hidIO_1->connect()){
-//            // initial duel sense
-//            DS_input.reset(new DualSense_Input());
-//            DS_output.reset(new DualSense_Output);
-//
-//            std::this_thread::sleep_for(std::chrono::seconds(1));
-//                // enable dual sense controller
-//            DS_output->initialOuput();
-//            hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
-//
-//            std::this_thread::sleep_for(std::chrono::seconds(1));
-//            // add callback function and start reading thread
-//            hidIO_1->dataReceivedCallback = [this]{onDualSense_DataReceived();};
-//            addAndMakeVisible(DS_UI);
-//            DS_UI.isConnected = true;
-//
-//        }else{
-//            WarningWindow("Unable to connect DualSense Wireless Controller");
-//        }
+        initialConnection("DualSense Wireless Controller");
+        hidIO_1->device_name = charPointer;
+        if(hidIO_1->connect()){
+            // initial duel sense
+            DS_input.reset(new DualSense_Input());
+            DS_output.reset(new DualSense_Output);
+            
+            // usb 0x02
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            // add callback function and start reading thread
+            hidIO_1->dataReceivedCallback = [this]{onDualSense_DataReceived();};
+            
+            // enable dual sense controller
+            DS_output->initialOuput(DS_input->usbOrBT);
+            hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
+            
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            
+            addAndMakeVisible(DS_UI);
+            DS_UI.isConnected = true;
+
+        }else{
+            WarningWindow("Unable to connect DualSense Wireless Controller");
+        }
         
     }else if(strcmp("Xbox Wireless Controller", charPointer) == 0){
             
