@@ -47,7 +47,7 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     void send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputState _xboxInput);
-    void send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput);
+    void send_DualSense_MIDI_message(DualSense::DualSenseInputState _dualSenseInput);
     int Selected_midiChannel = 1;
     void closeConnection();
 

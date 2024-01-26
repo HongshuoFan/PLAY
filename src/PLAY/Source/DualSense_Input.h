@@ -22,7 +22,7 @@ public:
     DualSense_Input();
     ~DualSense_Input() override;
     bool usbOrBT;
-    DualSense::DualSenseInputState DS_input;
+    DualSense::DualSenseInputState ds_input;
     
     void evaluateDualSenseHidInputBuffer(uint8_t* _reportData);
     
