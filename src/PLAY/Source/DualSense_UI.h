@@ -50,6 +50,7 @@ public:
     void update() override;
     DualSense::DualSenseInputState DS_UI_input;
     bool isConnected;
+    bool enableIMU;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -91,6 +92,7 @@ private:
     std::unique_ptr<juce::Slider> juce__slider_gyr_x;
     std::unique_ptr<juce::Slider> juce__slider_gyr_y;
     std::unique_ptr<juce::Slider> juce__slider_gyr_z;
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton_IMU;
     juce::Path internalPath1;
 
 

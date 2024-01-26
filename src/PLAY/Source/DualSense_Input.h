@@ -24,7 +24,7 @@ public:
     bool usbOrBT;
     DualSense::DualSenseInputState ds_input;
     
-    void evaluateDualSenseHidInputBuffer(uint8_t* _reportData);
+    void evaluateDualSenseHidInputBuffer(uint8_t* _reportData, bool enableIMU);
     
     
 private:

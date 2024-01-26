@@ -210,6 +210,13 @@ DualSense_UI::DualSense_UI ()
     juce__slider_gyr_z->setColour (juce::Slider::rotarySliderFillColourId, juce::Colour (0xff263238));
     juce__slider_gyr_z->addListener (this);
 
+    juce__toggleButton_IMU.reset (new juce::ToggleButton ("toggleButton_IMU"));
+    addAndMakeVisible (juce__toggleButton_IMU.get());
+    juce__toggleButton_IMU->setButtonText (TRANS ("IMU"));
+    juce__toggleButton_IMU->addListener (this);
+
+    juce__toggleButton_IMU->setBounds (80, 274, 65, 24);
+
     internalPath1.startNewSubPath (300.0f, 216.0f);
     internalPath1.lineTo (384.0f, 216.0f);
     internalPath1.quadraticTo (406.0f, 213.0f, 432.0f, 240.0f);
@@ -268,6 +275,7 @@ DualSense_UI::~DualSense_UI()
     juce__slider_gyr_x = nullptr;
     juce__slider_gyr_y = nullptr;
     juce__slider_gyr_z = nullptr;
+    juce__toggleButton_IMU = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -393,6 +401,12 @@ void DualSense_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     {
         //[UserButtonCode_juce__textButton_menu] -- add your button handler code here..
         //[/UserButtonCode_juce__textButton_menu]
+    }
+    else if (buttonThatWasClicked == juce__toggleButton_IMU.get())
+    {
+        //[UserButtonCode_juce__toggleButton_IMU] -- add your button handler code here..
+        enableIMU = juce__toggleButton_IMU->getToggleState();
+        //[/UserButtonCode_juce__toggleButton_IMU]
     }
 
     //[UserbuttonClicked_Post]
@@ -623,6 +637,9 @@ BEGIN_JUCER_METADATA
           min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
+  <TOGGLEBUTTON name="toggleButton_IMU" id="fc92f293dfd205b2" memberName="juce__toggleButton_IMU"
+                virtualName="" explicitFocusOrder="0" pos="80 274 65 24" buttonText="IMU"
+                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

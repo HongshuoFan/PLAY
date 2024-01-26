@@ -217,7 +217,7 @@ void MainComponent::onDataReceived()
 void MainComponent::onDualSense_DataReceived()
 {
     //handle the DualSense input data
-    DS_input->evaluateDualSenseHidInputBuffer(hidIO_1->reportData);
+    DS_input->evaluateDualSenseHidInputBuffer(hidIO_1->reportData, DS_UI.enableIMU);
     DS_UI.DS_UI_input = DS_input->ds_input;
     //send DualSense data via OSC
     osc_sender->send_DualSense_OSC_message(DS_input->ds_input);
