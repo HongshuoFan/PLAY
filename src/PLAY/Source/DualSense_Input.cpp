@@ -35,7 +35,8 @@ int16_t DualSense_Input::uint16_to_int16(uint16_t a)
 void DualSense_Input::evaluateDualSenseHidInputBuffer(uint8_t *_reportData) {
     //0x31 BT
     int index_shift = _reportData[0] == 0x31 ? 0 : -1;
-    
+    usbOrBT = _reportData[0] == 0x31 ? true : false;
+   
     // Convert sticks to signed range 0 4080
     DS_input.leftStick.x = (_reportData[2 + index_shift] << 4) / 4080.;
     DS_input.leftStick.y = 1. - (_reportData[3 + index_shift] << 4) / 4080.;

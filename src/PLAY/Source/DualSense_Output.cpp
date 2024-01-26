@@ -27,7 +27,8 @@ void DualSense_Output::createDualSenseOutput() {
     
     _output[0] = 0x31;
     _output[1] = 0x02;
-    int index_offset = 2;
+    int index_offset = usbOrBT == 1 ? 2 : 1;
+   
     // Feature mask
     _output[0x00 + index_offset] = 0xFF;
     _output[0x01 + index_offset] = 0xF7;
@@ -70,10 +71,10 @@ void DualSense_Output::createDualSenseOutput() {
     
 }
 
-void DualSense_Output::initialOuput() {
-    
-    
-    uint16_t lrmbl = 0.;
+void DualSense_Output::initialOuput(bool isBT) {
+    usbOrBT = isBT;
+
+    uint16_t lrmbl = 0.1;
     uint16_t rrmbl = 0.;
     int btMul = 10;
     
@@ -95,11 +96,11 @@ void DualSense_Output::initialOuput() {
 //
     // Right trigger is forcy
     DS_output.rightTriggerEffect.effectType = DualSense::TriggerEffectType::ContinuousResitance;
-    DS_output.rightTriggerEffect.Continuous.force = 0x01;
+    DS_output.rightTriggerEffect.Continuous.force = 0x10;
     DS_output.rightTriggerEffect.Continuous.startPosition = 0x00;
     
     DS_output.leftTriggerEffect.effectType = DualSense::TriggerEffectType::ContinuousResitance;
-    DS_output.leftTriggerEffect.Continuous.force = 0x01;
+    DS_output.leftTriggerEffect.Continuous.force = 0x05;
     DS_output.leftTriggerEffect.Continuous.startPosition = 0x00;
     
     createDualSenseOutput();

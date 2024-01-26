@@ -25,11 +25,11 @@ public:
     //DualSense::DualSenseOutputState DS_output;
     uint8_t _output[78];
     void createDualSenseOutput();
-    void initialOuput();
+    void initialOuput(bool isBT);
     void disConnectOutput();
     void processTrigger(DualSense::TriggerEffect* ptrEffect, unsigned char* buffer);
     DualSense::Color color_R8G8B8_UCHAR_A32_FLOAT(unsigned char r, unsigned char g, unsigned char b, float a);
-    
+    bool usbOrBT;
     DualSense::DualSenseOutputState DS_output;
     
 private:

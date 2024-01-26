@@ -21,7 +21,7 @@ class DualSense_Input  : public juce::Component
 public:
     DualSense_Input();
     ~DualSense_Input() override;
-    
+    bool usbOrBT;
     DualSense::DualSenseInputState DS_input;
     
     void evaluateDualSenseHidInputBuffer(uint8_t* _reportData);
