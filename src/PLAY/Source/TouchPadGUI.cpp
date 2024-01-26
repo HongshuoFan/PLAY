@@ -75,17 +75,29 @@ void TouchPadGUI::paint (juce::Graphics& g)
 
     //[UserPaint] Add your own custom painting code here..
     {
-        g.setColour (onColour);
+        g.setFont (juce::Font (10.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
         if(touchPoint1.down){
-           
+            g.setColour (onColour);
             g.fillEllipse (touchPoint1.x, touchPoint1.y, pointSize, pointSize);
+           
+            juce::String text_1 (TRANS ("1"));
+            g.setColour (juce::Colours::black);
+            //g.setFont (juce::Font (10.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+            g.drawText (text_1, touchPoint1.x, touchPoint1.y, pointSize, pointSize,
+                        juce::Justification::centred, true);
         }
     }
 
     {
         if(touchPoint2.down){
-           
+            g.setColour (onColour);
             g.fillEllipse (touchPoint2.x, touchPoint2.y, pointSize, pointSize);
+            
+            juce::String text_2 (TRANS ("2"));
+            g.setColour (juce::Colours::black);
+            //g.setFont (juce::Font (10.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+            g.drawText (text_2, touchPoint2.x, touchPoint2.y, pointSize, pointSize,
+                        juce::Justification::centred, true);
         }
     }
     //[/UserPaint]
@@ -118,7 +130,7 @@ void TouchPadGUI::updateTouchPad_1(DualSense::Touch Point1)
         //std::cout<<"1:"<< touchPoint1.x << " "<<  touchPoint1.y<<"\n";
     }else{
         touchPoint1.down = false;
-        
+
     }
 
 }
@@ -135,10 +147,10 @@ void TouchPadGUI::updateTouchPad_2(DualSense::Touch Point2)
 
         touchPoint2.y = proportionOfHeight (0.9f) - (Point2.y * proportionOfHeight (0.9f));
         touchPoint2.y = std::clamp(touchPoint2.y, 1.0f, h);
-  
+
     }else{
         touchPoint2.down = false;
-        
+
     }
 
 }
