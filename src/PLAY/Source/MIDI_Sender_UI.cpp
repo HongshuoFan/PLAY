@@ -270,13 +270,14 @@ void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState 
         handleButton(69, _dualSenseInput.buttons.l1, last_dualSenseInput.buttons.l1);
 
         handleButton(70, _dualSenseInput.buttons.select, last_dualSenseInput.buttons.select);
-        
         handleButton(71, _dualSenseInput.buttons.menu, last_dualSenseInput.buttons.menu);
 
         handleButton(72, _dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress);
         handleButton(73, _dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress);
+        
         handleButton(74, _dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad);
-
+        
+        //MIDI CC
         //Modulation Wheel
         handleTrigger(1, _dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger);
         //Breath Controller (MSB)
@@ -289,6 +290,26 @@ void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState 
         handleTrigger(10, _dualSenseInput.rightStick.x, last_dualSenseInput.rightStick.x);
         //Expression (MSB)
         handleTrigger(11, _dualSenseInput.rightStick.y, last_dualSenseInput.rightStick.y);
+        
+        //Effect Controller 1 (MSB)
+        handleTrigger(12, _dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x);
+        //Effect Controller 2 (MSB)
+        handleTrigger(13, _dualSenseInput.touchPoint1.y, last_dualSenseInput.touchPoint1.y);
+        
+        //Undefined (MSB)
+        handleTrigger(14, _dualSenseInput.touchPoint2.x, last_dualSenseInput.touchPoint2.x);
+        //Undefined (MSB)
+        handleTrigger(15, _dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y);
+        
+        //General Purpose (MSB) gyroscope
+        handleTrigger(16, _dualSenseInput.gyroscope.x, last_dualSenseInput.gyroscope.x);
+        handleTrigger(17, _dualSenseInput.gyroscope.y, last_dualSenseInput.gyroscope.y);
+        handleTrigger(18, _dualSenseInput.gyroscope.z, last_dualSenseInput.gyroscope.z);
+        
+        handleTrigger(19, _dualSenseInput.accelerometer.x, last_dualSenseInput.accelerometer.x);
+        handleTrigger(20, _dualSenseInput.accelerometer.y, last_dualSenseInput.accelerometer.y);
+        handleTrigger(21, _dualSenseInput.accelerometer.z, last_dualSenseInput.accelerometer.z);
+        
     }
 }
 //[/MiscUserCode]
