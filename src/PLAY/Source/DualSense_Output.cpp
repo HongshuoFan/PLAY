@@ -73,7 +73,6 @@ void DualSense_Output::createDualSenseOutput() {
 
 void DualSense_Output::initialOuput(bool isBT) {
     usbOrBT = isBT;
-
     uint16_t lrmbl = 0.1;
     uint16_t rrmbl = 0.;
     int btMul = 10;

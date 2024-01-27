@@ -83,17 +83,16 @@ void MainComponent::onHIDMenuChanged()
             DS_input.reset(new DualSense_Input());
             DS_output.reset(new DualSense_Output);
             
-            // usb 0x02
             std::this_thread::sleep_for(std::chrono::seconds(1));
             // add callback function and start reading thread
             hidIO_1->dataReceivedCallback = [this]{onDualSense_DataReceived();};
             
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+
             // enable dual sense controller
             DS_output->initialOuput(DS_input->usbOrBT);
             hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
-            
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-            
+                        
             addAndMakeVisible(DS_UI);
             DS_UI.isConnected = true;
 

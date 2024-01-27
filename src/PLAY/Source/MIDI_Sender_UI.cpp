@@ -270,11 +270,12 @@ void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState 
         handleButton(69, _dualSenseInput.buttons.l1, last_dualSenseInput.buttons.l1);
 
         handleButton(70, _dualSenseInput.buttons.select, last_dualSenseInput.buttons.select);
-        //handleButton(71, _dualSenseInput.buttons., last_xboxInput.buttons.share);
-        handleButton(72, _dualSenseInput.buttons.menu, last_dualSenseInput.buttons.menu);
+        
+        handleButton(71, _dualSenseInput.buttons.menu, last_dualSenseInput.buttons.menu);
 
-        handleButton(73, _dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress);
-        handleButton(74, _dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress);
+        handleButton(72, _dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress);
+        handleButton(73, _dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress);
+        handleButton(74, _dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad);
 
         //Modulation Wheel
         handleTrigger(1, _dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger);
