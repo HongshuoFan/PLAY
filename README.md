@@ -36,9 +36,32 @@ Note: If you see 'Open a Mac app from an unidentified developer', go to this [pa
 4. enable MIDI and/or OSC sender.
 option: enable/disable controller's IMU accelerometer and gyroscope.
 
-### MIDI Mapping:
+### Mapping:
+Xbox wireless controller |
+:----------------:|:-------------:|:---------------:|
+Controller input  |  MIDI message | OSC address     |
+:----------------:|:-------------:|:---------------:|
+Button A          |  Note 60      |  /buttons/a     |
+Button B          |  Note 61      |  /buttons/b     |
+Button X          |  Note 62      |  /buttons/x     |
+Button Y          |  Note 63      |  /buttons/y     |
+Dpad Up           |  Note 64      |  /dpad/up       |
+Dpad Down         |  Note 65      |  /dpad/down     |
+Dpad Left         |  Note 66      |  /dpad/left     |
+Dpad Right        |  Note 67      |  /dpad/right    |
+Button Rb         |  Note 68      |  /buttons/rb    |
+Button Lb         |  Note 69      |  /buttons/lb    |
+Button view       |  Note 70      |  /buttons/view  |
+Button Share      |  Note 71      |  /buttons/share |
+Button menu       |  Note 72      |  /buttons/menu  |
+Left trigger      |  MIDI CC 1    |  /leftTrigger   |
+Right trigger     |  MIDI CC 2    |  /rightTrigger  |
+Left stick X      |  MIDI CC 7    |  /leftStick/x   |
+Left stick Y      |  MIDI CC 8    |  /leftStick/y   |
+Right stick X     |  MIDI CC 10   |  /rightStick/x  |
+Right stick Y     |  MIDI CC 11   |  /rightStick/y  |
 
-
+ 
 ## Contributing
 
 ## License
@@ -46,3 +69,5 @@ option: enable/disable controller's IMU accelerometer and gyroscope.
 ## Credits 
 
 ## Project Team
+
+## References
