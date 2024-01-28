@@ -23,11 +23,11 @@ The PLAY project investigates the creative possibilities of VGCs as human-comput
 
 
 ## Installation
-1. Go the GitHub release page[https://github.com/HongshuoFan/PLAY/releases].
+1. Go the [GitHub release page](https://github.com/HongshuoFan/PLAY/releases).
 2. Download the latest version of the software package (macOSX only for now).
 3. Unzip the software package.
 4. Copy the PLAY app to your application folder.
-Note: If you see 'Open a Mac app from an unidentified developer', go to this page[https://support.apple.com/en-gb/guide/mac-help/mh40616/13.0/mac/13.0] for a solution.
+Note: If you see 'Open a Mac app from an unidentified developer', go to this [page](https://support.apple.com/en-gb/guide/mac-help/mh40616/13.0/mac/13.0) for a solution.
 
 ## Usage
 1. Pair the controller with your computer.
