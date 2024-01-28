@@ -41,7 +41,7 @@ Option: enable/disable controller's IMU accelerometer and gyroscope.
 
 ### Mapping:
 
-** Xbox wireless controller **
+**Xbox wireless controller**
 
 Controller input  |  MIDI message | OSC address     |
 :----------------:|:-------------:|:---------------:|
