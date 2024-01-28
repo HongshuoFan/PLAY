@@ -1,6 +1,6 @@
 # PLAY
 
-Tis repository is the software repository for the PLAY project. The GUI software aim to convert video game controllers (VGCs) input signal into MIDI and/or OSC messages.
+Tis repository is the software repository for the PLAY project. The PLAY app aim to convert video game controllers (VGCs) input signal into MIDI and/or OSC messages.
 
 The PLAY project investigates the creative possibilities of VGCs as human-computer interfaces (HCIs) for musical performance and composition. The aim is to transform VGCs into adaptive musical instruments, offering a new perspective on composing and performing virtuosic music, particularly for individuals without traditional instrument expertise.
 
@@ -20,6 +20,7 @@ The PLAY project investigates the creative possibilities of VGCs as human-comput
 - Current support VGCs: Xbox wirelless controller, PS5 Dualsense controller, Nitendo Switch Joycons.
 - Enable/disable controller's IMU accelerometer and gyroscope.
 - Convert input signal into MIDI and/or OSC messages.
+- Customizedable MIDI channel and OSC port.
 
 
 ## Installation
@@ -32,9 +33,10 @@ Note: If you see 'Open a Mac app from an unidentified developer', go to this [pa
 ## Usage
 1. Pair the controller with your computer.
 2. Lunch the PLAY app.
-3. select your controller using the drop down menu.
-4. enable MIDI and/or OSC sender.
-option: enable/disable controller's IMU accelerometer and gyroscope.
+3. Select your controller using the drop down menu.
+4. Enable MIDI and/or OSC sender.
+
+Option: enable/disable controller's IMU accelerometer and gyroscope.
 
 ### Mapping:
 `Xbox wireless controller`
