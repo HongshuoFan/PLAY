@@ -10,7 +10,7 @@ The PLAY project investigates the creative possibilities of VGCs as human-comput
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
- - [MIDI Mapping](#midi-mapping)
+		- [MIDI Mapping](#midi-mapping)
 - [Contributing](#contributing)
 - [License](#license)
 - [Credits](#credits)
