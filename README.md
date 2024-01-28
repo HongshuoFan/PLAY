@@ -10,11 +10,11 @@ The PLAY project investigates the creative possibilities of VGCs as human-comput
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- - [MIDI Mapping](#midi-mapping)
+ - [MIDI Mapping](#midi-mapping)
 - [Contributing](#contributing)
 - [License](#license)
 - [Credits](#credits)
-- [Project Team](#contact)
+- [Project Team](#project-team)
 
 ## Features
 - Current support VGCs: Xbox wirelless controller, PS5 Dualsense controller, Nitendo Switch Joycons.
