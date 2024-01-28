@@ -28,6 +28,7 @@ The PLAY project investigates the creative possibilities of VGCs as human-comput
 2. Download the latest version of the software package (macOSX only for now).
 3. Unzip the software package.
 4. Copy the PLAY app to your application folder.
+
 Note: If you see 'Open a Mac app from an unidentified developer', go to this [page](https://support.apple.com/en-gb/guide/mac-help/mh40616/13.0/mac/13.0) for a solution.
 
 ## Usage
@@ -39,7 +40,9 @@ Note: If you see 'Open a Mac app from an unidentified developer', go to this [pa
 Option: enable/disable controller's IMU accelerometer and gyroscope.
 
 ### Mapping:
-`Xbox wireless controller`
+
+** Xbox wireless controller **
+
 Controller input  |  MIDI message | OSC address     |
 :----------------:|:-------------:|:---------------:|
 Button A          |  Note 60      |  /buttons/a     |
