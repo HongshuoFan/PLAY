@@ -7,7 +7,7 @@ This repository houses the PLAY application, designed to transform video game co
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-    - [Mapping Guide](#mapping-guide)
+- [Mapping Guide](#mapping-guide)
 - [Contributing](#contributing)
 - [License](#license)
 - [Credits](#credits)
@@ -37,9 +37,9 @@ This repository houses the PLAY application, designed to transform video game co
 
 *Optional*: Toggle the controller's IMU features according to your preferences.
 
-### Mapping Guide:
+## Mapping Guide:
 
-#### Xbox Wireless Controller
+### Xbox Wireless Controller
 
 Controller Input  |  MIDI Message | OSC Address     |
 |-----------------|---------------|-----------------|
@@ -63,10 +63,10 @@ Left stick Y      |  MIDI CC 8    |  /leftStick/y   |
 Right stick X     |  MIDI CC 10   |  /rightStick/x  |
 Right stick Y     |  MIDI CC 11   |  /rightStick/y  |
 
-#### PS5 Dualsense controller
+### PS5 Dualsense controller
 *Coming soon*
 
-#### Nintendo Switch Joycons
+### Nintendo Switch Joycons
 *Coming soon*
  
 ## Contributing
