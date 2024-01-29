@@ -17,10 +17,10 @@ The PLAY project investigates the creative possibilities of VGCs as human-comput
 - [Project Team](#project-team)
 
 ## Features
-- Current support VGCs: Xbox wirelless controller, PS5 Dualsense controller, Nitendo Switch Joycons.
-- Enable/disable controller's IMU accelerometer and gyroscope.
+- Supported wired and Bluetooth VGCs: Xbox wireless controller, PS5 Dualsense controller, Nintendo Switch Joycons.
+- Enable/disable the controller's IMU accelerometer and gyroscope.
 - Convert input signal into MIDI and/or OSC messages.
-- Customizedable MIDI channel and OSC port.
+- Customisable MIDI channel and OSC receiver IP/port.
 
 
 ## Installation
@@ -76,7 +76,7 @@ PLAY is licensed under the MIT License. You are free to use and distribute the s
 
 ## Credits 
 
-We gratefully acknowledge the support from The Oxford Research Centre in the Humanities (HCP) and Radcliffe Humanities Jesus College for funding parts of this project.
+We gratefully acknowledge the support from [The Oxford Research Centre in the Humanities (HCP)](https://www.torch.ox.ac.uk/humanities-cultural-programme), Jesus College Oxford and [Royal Northern college of Music](https://www.rncm.ac.uk/) for funding parts of this project.
 
 
 ## Project Team
