@@ -68,10 +68,21 @@ Right stick Y     |  MIDI CC 11   |  /rightStick/y  |
  
 ## Contributing
 
+Contributions to the PLAY project are welcome! If you encounter any issues or have ideas for improvements, please submit them as GitHub issues or create a pull request with your proposed changes.
+
 ## License
+
+PLAY is licensed under the MIT License. You are free to use and distribute the software in accordance with the terms of the license. If you use this in your project kindly give credit to the team.
 
 ## Credits 
 
+We gratefully acknowledge the support from The Oxford Research Centre in the Humanities (HCP) and Radcliffe Humanities Jesus College for funding parts of this project.
+
+
 ## Project Team
+- Dr. Robert Laidlow: [Robert.laidlow@oxford.ac.uk](mailto:Robert.laidlow@oxford.ac.uk)
+- Dr. Hongshuo Fan: [Hongshuo.fan@rncm.ac.uk](mailto:Hongshuo.fan@rncm.ac.uk)
+- Dr. Bofan Ma: [Bofan.ma@rncm.ac.uk](mailto:Bofan.ma@rncm.ac.uk)
+- Ellen Sargen: [ellensargen@gmail.com](mailto:ellensargen@gmail.com)
 
 ## References
