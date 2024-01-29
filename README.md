@@ -41,7 +41,7 @@ This repository houses the PLAY application, designed to transform video game co
 #### Xbox Wireless Controller
 
 Controller input  |  MIDI message | OSC address     |
-:----------------:|:-------------:|:---------------:|
+|-----------------|---------------|-----------------|
 Button A          |  Note 60      |  /buttons/a     |
 Button B          |  Note 61      |  /buttons/b     |
 Button X          |  Note 62      |  /buttons/x     |
@@ -73,21 +73,20 @@ PLAY is licensed under the MIT License. You are free to use and distribute the s
 
 ## Credits 
 
-We gratefully acknowledge the support from [The Oxford Research Centre in the Humanities (HCP)](https://www.torch.ox.ac.uk/humanities-cultural-programme), Jesus College Oxford and [Royal Northern College of Music](https://www.rncm.ac.uk/) for funding parts of this project.
+Special thanks to [The Oxford Research Centre in the Humanities (HCP)](https://www.torch.ox.ac.uk/humanities-cultural-programme), Jesus College Oxford, and the [Royal Northern College of Music](https://www.rncm.ac.uk/) for their support and funding.
 
 
 ## Project Team
-- Dr. Robert Laidlow: [Robert.laidlow@oxford.ac.uk](mailto:Robert.laidlow@oxford.ac.uk)
-- Dr. Hongshuo Fan: [Hongshuo.fan@rncm.ac.uk](mailto:Hongshuo.fan@rncm.ac.uk)
-- Dr. Bofan Ma: [Bofan.ma@rncm.ac.uk](mailto:Bofan.ma@rncm.ac.uk)
+- Dr. Robert Laidlow: [robert.laidlow@oxford.ac.uk](mailto:robert.laidlow@oxford.ac.uk)
+- Dr. Hongshuo Fan: [hongshuo.fan@rncm.ac.uk](mailto:hongshuo.fan@rncm.ac.uk)
+- Dr. Bofan Ma: [bofan.ma@rncm.ac.uk](mailto:bofan.ma@rncm.ac.uk)
 - Ellen Sargen: [ellensargen@gmail.com](mailto:ellensargen@gmail.com)
 
 ## References
-- [JUCE](https://github.com/juce-framework/JUCE)
+- [JUCE Framework](https://github.com/juce-framework/JUCE)
 - [JoyShockLibrary](https://github.com/JibbSmart/JoyShockLibrary)
-- [DualSense on Windows [API]](https://github.com/Ohjurot/DualSense-Windows)
+- [DualSense Windows API](https://github.com/Ohjurot/DualSense-Windows)
 - [DS4Windows](https://github.com/Ryochan7/DS4Windows)
-- [Nintendo_Switch_Reverse_Engineering](https://github.com/dekuNukem/Nintendo_Switch_Reverse_Engineering)
-
+- [Nintendo Switch Reverse Engineering](https://github.com/dekuNukem/Nintendo_Switch_Reverse_Engineering)
 
 
