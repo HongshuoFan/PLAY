@@ -86,15 +86,11 @@ We gratefully acknowledge the support from [The Oxford Research Centre in the Hu
 - Ellen Sargen: [ellensargen@gmail.com](mailto:ellensargen@gmail.com)
 
 ## References
-[JUCE](https://github.com/juce-framework/JUCE)
-
-[JoyShockLibrary](https://github.com/JibbSmart/JoyShockLibrary)
-
-[DualSense on Windows [API]](https://github.com/Ohjurot/DualSense-Windows)
-
-[DS4Windows](https://github.com/Ryochan7/DS4Windows)
-
-[Nintendo_Switch_Reverse_Engineering](https://github.com/dekuNukem/Nintendo_Switch_Reverse_Engineering)
+- [JUCE](https://github.com/juce-framework/JUCE)
+- [JoyShockLibrary](https://github.com/JibbSmart/JoyShockLibrary)
+- [DualSense on Windows [API]](https://github.com/Ohjurot/DualSense-Windows)
+- [DS4Windows](https://github.com/Ryochan7/DS4Windows)
+- [Nintendo_Switch_Reverse_Engineering](https://github.com/dekuNukem/Nintendo_Switch_Reverse_Engineering)
 
 
 
