@@ -12,6 +12,7 @@ This repository houses the PLAY application, designed to transform video game co
 - [License](#license)
 - [Credits](#credits)
 - [Project Team](#project-team)
+- [References](#references)
 
 ## Features
 - **VGC Support**: Compatible with wired and Bluetooth VGCs including Xbox wireless controller, PS5 Dualsense controller, and Nintendo Switch Joycons.
