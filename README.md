@@ -7,7 +7,7 @@ This repository houses the PLAY application, designed to transform video game co
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-    - [Mapping](#mapping)
+    - [Mapping Guide](#mapping-guide)
 - [Contributing](#contributing)
 - [License](#license)
 - [Credits](#credits)
@@ -36,11 +36,11 @@ This repository houses the PLAY application, designed to transform video game co
 
 *Optional*: Toggle the controller's IMU features according to your preferences.
 
-### Mapping:
+### Mapping Guide:
 
 #### Xbox Wireless Controller
 
-Controller input  |  MIDI message | OSC address     |
+Controller Input  |  MIDI Message | OSC Address     |
 |-----------------|---------------|-----------------|
 Button A          |  Note 60      |  /buttons/a     |
 Button B          |  Note 61      |  /buttons/b     |
