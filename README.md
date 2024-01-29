@@ -76,7 +76,7 @@ Contributions to the PLAY project are welcome! If you encounter any issues or ha
 
 ## License
 
-PLAY is licensed under the [MIT License](LICENSE). You are free to use and distribute the software in accordance with the terms of the license. If you use this in your project kindly give credit to the team.
+PLAY is licensed under the [GPL-3.0](LICENSE). You are free to use and distribute the software in accordance with the terms of the license. If you use this in your project kindly give credit to the team.
 
 ## Credits 
 
