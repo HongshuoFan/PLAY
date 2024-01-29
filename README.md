@@ -62,6 +62,11 @@ Left stick Y      |  MIDI CC 8    |  /leftStick/y   |
 Right stick X     |  MIDI CC 10   |  /rightStick/x  |
 Right stick Y     |  MIDI CC 11   |  /rightStick/y  |
 
+#### PS5 Dualsense controller
+*Coming soon*
+
+#### Nintendo Switch Joycons
+*Coming soon*
  
 ## Contributing
 
