@@ -1,9 +1,6 @@
 # PLAY
 
-Tis repository is the software repository for the PLAY project. The PLAY app aim to convert video game controllers (VGCs) input signal into MIDI and/or OSC messages.
-
-The PLAY project investigates the creative possibilities of VGCs as human-computer interfaces (HCIs) for musical performance and composition. The aim is to transform VGCs into adaptive musical instruments, offering a new perspective on composing and performing virtuosic music, particularly for individuals without traditional instrument expertise.
-
+This repository houses the PLAY application, designed to transform video game controllers (VGCs) into dynamic musical instruments. The PLAY app converts the input signals from VGCs into MIDI and/or OSC messages, facilitating their use in musical performance and composition.
 
 
 ## Table of Contents
@@ -17,31 +14,31 @@ The PLAY project investigates the creative possibilities of VGCs as human-comput
 - [Project Team](#project-team)
 
 ## Features
-- Supported wired and Bluetooth VGCs: Xbox wireless controller, PS5 Dualsense controller, Nintendo Switch Joycons.
-- Enable/disable the controller's IMU accelerometer and gyroscope.
-- Convert input signal into MIDI and/or OSC messages.
-- Customisable MIDI channel and OSC receiver IP/port.
+- **VGC Support**: Compatible with wired and Bluetooth VGCs including Xbox wireless controller, PS5 Dualsense controller, and Nintendo Switch Joycons.
+- **IMU Support**: Option to enable/disable the controller's IMU accelerometer and gyroscope.
+- **Customization**: Customizable MIDI channel and OSC receiver IP/port for tailored integration into musical setups.
+- **Signal Conversion**: Ability to convert input signals into either MIDI or OSC messages, or both.
 
 
 ## Installation
-1. Go the [GitHub release page](https://github.com/HongshuoFan/PLAY/releases).
-2. Download the latest version of the software package (macOSX only for now).
-3. Unzip the software package.
-4. Copy the PLAY app to your application folder.
+1. Navigate to the [GitHub release page](https://github.com/HongshuoFan/PLAY/releases).
+2. Download the latest software package (currently available for macOS).
+3. Extract the contents of the package.
+4. Drag and drop the PLAY app into your Applications folder.
 
-Note: If you see 'Open a Mac app from an unidentified developer', go to this [page](https://support.apple.com/en-gb/guide/mac-help/mh40616/13.0/mac/13.0) for a solution.
+*Note*: If you encounter a warning about unidentified developers, refer to [this Apple support page](https://support.apple.com/en-gb/guide/mac-help/mh40616/13.0/mac/13.0) for assistance.
 
 ## Usage
-1. Pair the controller with your computer.
-2. Lunch the PLAY app.
-3. Select your controller using the drop down menu.
-4. Enable MIDI and/or OSC sender.
+1. Connect the controller to your computer via pairing or USB connection.
+2. Launch the PLAY app.
+3. Use the dropdown menu to select your controller.
+4. Activate MIDI and/or OSC output as needed.
 
-Option: enable/disable controller's IMU accelerometer and gyroscope.
+*Optional*: Toggle the controller's IMU features according to your preferences.
 
 ### Mapping:
 
-**Xbox wireless controller**
+#### Xbox Wireless Controller
 
 Controller input  |  MIDI message | OSC address     |
 :----------------:|:-------------:|:---------------:|
