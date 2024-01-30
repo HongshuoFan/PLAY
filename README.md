@@ -17,6 +17,7 @@ This repository houses the PLAY application, designed to transform video game co
 ## Features
 - **VGC Support**: Compatible with wired and Bluetooth VGCs including Xbox wireless controller, PS5 Dualsense controller, and Nintendo Switch Joycons.
 - **IMU Support**: Option to enable/disable the controller's IMU accelerometer and gyroscope.
+- **GUI and Visuals**: GUI and visual feedback for VGC input signals.
 - **Customization**: Customizable MIDI channel and OSC receiver IP/port for tailored integration into musical setups.
 - **Signal Conversion**: Ability to convert input signals into either MIDI or OSC messages, or both.
 - **PS5 Dualsense adaptive trigger**: Changing the Dualsense controller triggers resistance.
