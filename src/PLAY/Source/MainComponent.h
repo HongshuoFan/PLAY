@@ -51,6 +51,7 @@ private:
     std::unique_ptr<DualSense_Input> DS_input;
     std::unique_ptr<DualSense_Output> DS_output;
     DualSense_UI DS_UI;
+    void update_DualSense_TriggerForce();
     
     // Xbox Controller stuffs.
     std::unique_ptr<XboxController_Input> XC_input;
@@ -74,6 +75,7 @@ private:
     void onDataReceived();
     
     void onDualSense_DataReceived();
+    
     
     void onXboxController_DataReceived();
     void EnableXboxControllerVibration();

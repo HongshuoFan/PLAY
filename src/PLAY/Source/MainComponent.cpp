@@ -86,7 +86,7 @@ void MainComponent::onHIDMenuChanged()
             std::this_thread::sleep_for(std::chrono::seconds(1));
             // add callback function and start reading thread
             hidIO_1->dataReceivedCallback = [this]{onDualSense_DataReceived();};
-            
+            DS_UI.UpdateTriggerForce = [this]{update_DualSense_TriggerForce();};
             std::this_thread::sleep_for(std::chrono::seconds(1));
 
             // enable dual sense controller
@@ -343,4 +343,9 @@ void MainComponent::Right_JC_Vib(){
     hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
     JC_output->rumbleSend(200, 0.2, 50, 0.0, false);
     hidIO_2->writeRawData(JC_output->_output, 0x10, 12);
+}
+
+void MainComponent::update_DualSense_TriggerForce()
+{
+    std::cout<<DS_UI.triggerForice<<"\n";
 }
