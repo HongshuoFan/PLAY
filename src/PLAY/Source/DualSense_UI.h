@@ -51,6 +51,8 @@ public:
     DualSense::DualSenseInputState DS_UI_input;
     bool isConnected;
     bool enableIMU;
+    std::function<void()> UpdateTriggerForce;
+    float triggerForice = 0.5;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -93,6 +95,8 @@ private:
     std::unique_ptr<juce::Slider> juce__slider_gyr_y;
     std::unique_ptr<juce::Slider> juce__slider_gyr_z;
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_IMU;
+    std::unique_ptr<juce::Slider> juce__slider_force_Trigger;
+    std::unique_ptr<juce::TextButton> juce__textButton_UpdateTrigger;
     juce::Path internalPath1;
 
 

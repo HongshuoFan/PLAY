@@ -217,6 +217,19 @@ DualSense_UI::DualSense_UI ()
 
     juce__toggleButton_IMU->setBounds (80, 274, 65, 24);
 
+    juce__slider_force_Trigger.reset (new juce::Slider ("Trigger_force"));
+    addAndMakeVisible (juce__slider_force_Trigger.get());
+    juce__slider_force_Trigger->setRange (0, 1, 0);
+    juce__slider_force_Trigger->setSliderStyle (juce::Slider::LinearVertical);
+    juce__slider_force_Trigger->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 60, 20);
+    juce__slider_force_Trigger->addListener (this);
+
+    juce__textButton_UpdateTrigger.reset (new juce::TextButton ("UpdateTrigger_button"));
+    addAndMakeVisible (juce__textButton_UpdateTrigger.get());
+    juce__textButton_UpdateTrigger->setButtonText (TRANS ("UpdateTrigger"));
+    juce__textButton_UpdateTrigger->addListener (this);
+    juce__textButton_UpdateTrigger->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
+
     internalPath1.startNewSubPath (300.0f, 216.0f);
     internalPath1.lineTo (384.0f, 216.0f);
     internalPath1.quadraticTo (406.0f, 213.0f, 432.0f, 240.0f);
@@ -276,6 +289,8 @@ DualSense_UI::~DualSense_UI()
     juce__slider_gyr_y = nullptr;
     juce__slider_gyr_z = nullptr;
     juce__toggleButton_IMU = nullptr;
+    juce__slider_force_Trigger = nullptr;
+    juce__textButton_UpdateTrigger = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -333,6 +348,8 @@ void DualSense_UI::resized()
     juce__slider_gyr_x->setBounds (proportionOfWidth (0.2867f), proportionOfHeight (0.8794f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
     juce__slider_gyr_y->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.8794f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
     juce__slider_gyr_z->setBounds (proportionOfWidth (0.5800f), proportionOfHeight (0.8794f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__slider_force_Trigger->setBounds (proportionOfWidth (0.7850f), proportionOfHeight (0.4824f), proportionOfWidth (0.0733f), proportionOfHeight (0.3294f));
+    juce__textButton_UpdateTrigger->setBounds (proportionOfWidth (0.7667f), proportionOfHeight (0.8235f), proportionOfWidth (0.1083f), proportionOfHeight (0.0529f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -408,6 +425,12 @@ void DualSense_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         enableIMU = juce__toggleButton_IMU->getToggleState();
         //[/UserButtonCode_juce__toggleButton_IMU]
     }
+    else if (buttonThatWasClicked == juce__textButton_UpdateTrigger.get())
+    {
+        //[UserButtonCode_juce__textButton_UpdateTrigger] -- add your button handler code here..
+        UpdateTriggerForce();
+        //[/UserButtonCode_juce__textButton_UpdateTrigger]
+    }
 
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
@@ -457,6 +480,12 @@ void DualSense_UI::sliderValueChanged (juce::Slider* sliderThatWasMoved)
     {
         //[UserSliderCode_juce__slider_gyr_z] -- add your slider handling code here..
         //[/UserSliderCode_juce__slider_gyr_z]
+    }
+    else if (sliderThatWasMoved == juce__slider_force_Trigger.get())
+    {
+        //[UserSliderCode_juce__slider_force_Trigger] -- add your slider handling code here..
+        triggerForice = juce__slider_force_Trigger->getValue();
+        //[/UserSliderCode_juce__slider_force_Trigger]
     }
 
     //[UsersliderValueChanged_Post]
@@ -640,6 +669,15 @@ BEGIN_JUCER_METADATA
   <TOGGLEBUTTON name="toggleButton_IMU" id="fc92f293dfd205b2" memberName="juce__toggleButton_IMU"
                 virtualName="" explicitFocusOrder="0" pos="80 274 65 24" buttonText="IMU"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+  <SLIDER name="Trigger_force" id="a625551f52222742" memberName="juce__slider_force_Trigger"
+          virtualName="" explicitFocusOrder="0" pos="78.5% 48.235% 7.333% 32.941%"
+          min="0.0" max="1.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxBelow"
+          textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="1"/>
+  <TEXTBUTTON name="UpdateTrigger_button" id="9145f1204ec28b2e" memberName="juce__textButton_UpdateTrigger"
+              virtualName="" explicitFocusOrder="0" pos="76.667% 82.353% 10.833% 5.294%"
+              bgColOn="ff5f9ea0" buttonText="UpdateTrigger" connectedEdges="0"
+              needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
