@@ -347,5 +347,6 @@ void MainComponent::Right_JC_Vib(){
 
 void MainComponent::update_DualSense_TriggerForce()
 {
-    std::cout<<DS_UI.triggerForice<<"\n";
+    DS_output->updateTrigger(DS_UI.triggerForce);
+    hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
 }

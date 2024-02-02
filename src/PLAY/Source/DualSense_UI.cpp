@@ -484,7 +484,7 @@ void DualSense_UI::sliderValueChanged (juce::Slider* sliderThatWasMoved)
     else if (sliderThatWasMoved == juce__slider_force_Trigger.get())
     {
         //[UserSliderCode_juce__slider_force_Trigger] -- add your slider handling code here..
-        triggerForice = juce__slider_force_Trigger->getValue();
+        triggerForce = juce__slider_force_Trigger->getValue();
         //[/UserSliderCode_juce__slider_force_Trigger]
     }
 

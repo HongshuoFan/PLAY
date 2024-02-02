@@ -52,7 +52,7 @@ public:
     bool isConnected;
     bool enableIMU;
     std::function<void()> UpdateTriggerForce;
-    float triggerForice = 0.5;
+    float triggerForce = 0.;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
