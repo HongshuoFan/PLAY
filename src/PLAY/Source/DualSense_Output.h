@@ -31,6 +31,7 @@ public:
     DualSense::Color color_R8G8B8_UCHAR_A32_FLOAT(unsigned char r, unsigned char g, unsigned char b, float a);
     bool usbOrBT;
     DualSense::DualSenseOutputState DS_output;
+    void updateTrigger(float triggerForce);
     
 private:
     __DS5W::CRC32 ds_crc32;

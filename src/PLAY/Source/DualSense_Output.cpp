@@ -95,11 +95,11 @@ void DualSense_Output::initialOuput(bool isBT) {
 //
     // Right trigger is forcy
     DS_output.rightTriggerEffect.effectType = DualSense::TriggerEffectType::ContinuousResitance;
-    DS_output.rightTriggerEffect.Continuous.force = 0x50;
+    DS_output.rightTriggerEffect.Continuous.force = 0x00;
     DS_output.rightTriggerEffect.Continuous.startPosition = 0x00;
     
     DS_output.leftTriggerEffect.effectType = DualSense::TriggerEffectType::ContinuousResitance;
-    DS_output.leftTriggerEffect.Continuous.force = 0x50;
+    DS_output.leftTriggerEffect.Continuous.force = 0x00;
     DS_output.leftTriggerEffect.Continuous.startPosition = 0x00;
     
     createDualSenseOutput();
@@ -193,4 +193,26 @@ void DualSense_Output::processTrigger(DualSense::TriggerEffect* ptrEffect, unsig
 
                 break;
         }
+}
+
+void DualSense_Output::updateTrigger(float triggerForce)
+{
+    float tf = triggerForce * 255.;
+    
+    unsigned char force = (unsigned char)tf;
+    DS_output.microphoneLed = DualSense::MicLed::PULSE;
+    //DS_output.disableLeds = true;
+    DS_output.playerLeds.bitmask = DualSense_OSTATE_PLAYER_LED_MIDDLE;
+    //DS_output.playerLeds.brightness = DualSense::LedBrightness::LOW;
+    DS_output.lightbar = color_R8G8B8_UCHAR_A32_FLOAT(255., 0, 0, triggerForce);
+    // Right trigger is forcy
+    DS_output.rightTriggerEffect.effectType = DualSense::TriggerEffectType::ContinuousResitance;
+    DS_output.rightTriggerEffect.Continuous.force = force;
+//    DS_output.rightTriggerEffect.Continuous.startPosition = 0x00;
+    
+    DS_output.leftTriggerEffect.effectType = DualSense::TriggerEffectType::ContinuousResitance;
+    DS_output.leftTriggerEffect.Continuous.force = force;
+//    DS_output.leftTriggerEffect.Continuous.startPosition = 0x00;
+    
+    createDualSenseOutput();
 }
