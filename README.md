@@ -45,19 +45,19 @@ This repository houses the PLAY application, designed to transform video game co
 
 Controller Input  |  MIDI Message | OSC Address     |
 |-----------------|---------------|-----------------|
-Button A          |  Note 60      |  /buttons/a     |
-Button B          |  Note 61      |  /buttons/b     |
-Button X          |  Note 62      |  /buttons/x     |
-Button Y          |  Note 63      |  /buttons/y     |
-Dpad Up           |  Note 64      |  /dpad/up       |
-Dpad Down         |  Note 65      |  /dpad/down     |
-Dpad Left         |  Note 66      |  /dpad/left     |
-Dpad Right        |  Note 67      |  /dpad/right    |
-Button Rb         |  Note 68      |  /buttons/rb    |
-Button Lb         |  Note 69      |  /buttons/lb    |
-Button view       |  Note 70      |  /buttons/view  |
-Button Share      |  Note 71      |  /buttons/share |
-Button menu       |  Note 72      |  /buttons/menu  |
+Button A          |  Note 36      |  /buttons/a     |
+Button B          |  Note 37      |  /buttons/b     |
+Button X          |  Note 38      |  /buttons/x     |
+Button Y          |  Note 39      |  /buttons/y     |
+Dpad Up           |  Note 40      |  /dpad/up       |
+Dpad Down         |  Note 41      |  /dpad/down     |
+Dpad Left         |  Note 42      |  /dpad/left     |
+Dpad Right        |  Note 43      |  /dpad/right    |
+Button Lb         |  Note 44      |  /buttons/lb    |
+Button Rb         |  Note 45      |  /buttons/rb    |
+Button view       |  Note 46      |  /buttons/view  |
+Button Share      |  Note 47      |  /buttons/share |
+Button menu       |  Note 48      |  /buttons/menu  |
 Left trigger      |  MIDI CC 1    |  /leftTrigger   |
 Right trigger     |  MIDI CC 2    |  /rightTrigger  |
 Left stick X      |  MIDI CC 7    |  /leftStick/x   |
