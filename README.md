@@ -20,7 +20,7 @@ This repository houses the PLAY application, designed to transform video game co
 - **GUI and Visuals**: GUI and visual feedback for VGC input signals.
 - **Customization**: Customizable MIDI channel and OSC receiver IP/port for tailored integration into musical setups.
 - **Signal Conversion**: Ability to convert input signals into either MIDI or OSC messages, or both.
-- **PS5 Dualsense adaptive trigger**: Changing the Dualsense controller triggers resistance.
+- **PS5 Dualsense adaptive trigger**: Custom the Dualsense controller triggers resistance.
 
 
 ## Installation
@@ -85,7 +85,7 @@ Special thanks to [The Oxford Research Centre in the Humanities (HCP)](https://w
 
 
 ## Project Team
-- Dr. Robert Laidlow: [robert.laidlow@oxford.ac.uk](mailto:robert.laidlow@oxford.ac.uk)
+- Dr. Robert Laidlow: [robert.laidlow@oxford.ac.uk](mailto:robert.laidlow@jesus.ox.ac.uk)
 - Dr. Hongshuo Fan: [hongshuo.fan@rncm.ac.uk](mailto:hongshuo.fan@rncm.ac.uk)
 - Dr. Bofan Ma: [bofan.ma@rncm.ac.uk](mailto:bofan.ma@rncm.ac.uk)
 - Ellen Sargen: [ellensargen@gmail.com](mailto:ellensargen@gmail.com)
