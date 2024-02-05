@@ -48,7 +48,7 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
     juce__comboBox_MidiChannel->addItem (TRANS ("1"), 1);
     juce__comboBox_MidiChannel->addListener (this);
 
-    juce__comboBox_MidiChannel->setBounds (434, 9, 68, 24);
+    juce__comboBox_MidiChannel->setBounds (434, 11, 68, 24);
 
     juce__textEditor_MidiDeviceName.reset (new juce::TextEditor ("Midi_DeviceName"));
     addAndMakeVisible (juce__textEditor_MidiDeviceName.get());
@@ -60,7 +60,7 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
     juce__textEditor_MidiDeviceName->setPopupMenuEnabled (true);
     juce__textEditor_MidiDeviceName->setText (TRANS ("PLAY"));
 
-    juce__textEditor_MidiDeviceName->setBounds (167, 9, 150, 24);
+    juce__textEditor_MidiDeviceName->setBounds (167, 11, 150, 24);
 
 
     //[UserPreSize]
@@ -151,14 +151,14 @@ void MIDI_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     {
         //[UserButtonCode_juce__toggleButton_MIDI] -- add your button handler code here..
         if(juce__toggleButton_MIDI->getState()){
-           
+
             if(PlayMidiDevice){
                 closeConnection();
             }
-            
+
             MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
             PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
-            
+
         }else{
             closeConnection();
         }
@@ -378,10 +378,10 @@ BEGIN_JUCER_METADATA
                 virtualName="" explicitFocusOrder="0" pos="2 5 70 30" buttonText="MIDI"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <COMBOBOX name="MidiChannel_ComboBox" id="9aa8a3b1ee702033" memberName="juce__comboBox_MidiChannel"
-            virtualName="" explicitFocusOrder="0" pos="434 9 68 24" editable="0"
+            virtualName="" explicitFocusOrder="0" pos="434 11 68 24" editable="0"
             layout="33" items="1" textWhenNonSelected="0" textWhenNoItems="(no choices)"/>
   <TEXTEDITOR name="Midi_DeviceName" id="513699a69d967b42" memberName="juce__textEditor_MidiDeviceName"
-              virtualName="" explicitFocusOrder="0" pos="167 9 150 24" initialText="PLAY"
+              virtualName="" explicitFocusOrder="0" pos="167 11 150 24" initialText="PLAY"
               multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
 </JUCER_COMPONENT>

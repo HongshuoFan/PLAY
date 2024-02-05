@@ -259,7 +259,7 @@ DualSense_UI::DualSense_UI ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (600, 340);
+    setSize (600, 350);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -334,30 +334,30 @@ void DualSense_UI::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    juce__textButton_triangle->setBounds (proportionOfWidth (0.7133f), proportionOfHeight (0.1853f), proportionOfWidth (0.0600f), proportionOfHeight (0.0500f));
-    juce__textButton_circle->setBounds (proportionOfWidth (0.7700f), proportionOfHeight (0.2823f), proportionOfWidth (0.0600f), proportionOfHeight (0.0500f));
-    juce__textButton_square->setBounds (proportionOfWidth (0.6550f), proportionOfHeight (0.2823f), proportionOfWidth (0.0600f), proportionOfHeight (0.0500f));
-    juce__textButton_cross->setBounds (proportionOfWidth (0.7133f), proportionOfHeight (0.3794f), proportionOfWidth (0.0600f), proportionOfHeight (0.0529f));
-    juce__textButton_up->setBounds (proportionOfWidth (0.2383f), proportionOfHeight (0.2118f), proportionOfWidth (0.0417f), proportionOfHeight (0.0441f));
-    juce__textButton_left->setBounds (proportionOfWidth (0.1967f), proportionOfHeight (0.2823f), proportionOfWidth (0.0417f), proportionOfHeight (0.0441f));
-    juce__textButton_right->setBounds (proportionOfWidth (0.2767f), proportionOfHeight (0.2823f), proportionOfWidth (0.0417f), proportionOfHeight (0.0441f));
-    juce__textButton_down->setBounds (proportionOfWidth (0.2383f), proportionOfHeight (0.3559f), proportionOfWidth (0.0417f), proportionOfHeight (0.0441f));
-    juce__textButton_l1->setBounds (proportionOfWidth (0.2200f), proportionOfHeight (0.0265f), proportionOfWidth (0.0600f), proportionOfHeight (0.0500f));
-    juce__textButton_r1->setBounds (proportionOfWidth (0.7200f), proportionOfHeight (0.0265f), proportionOfWidth (0.0600f), proportionOfHeight (0.0500f));
-    juce__textButton_Select->setBounds (proportionOfWidth (0.2950f), proportionOfHeight (0.1382f), proportionOfWidth (0.0417f), proportionOfHeight (0.0323f));
-    juce__textButton_menu->setBounds (proportionOfWidth (0.6617f), proportionOfHeight (0.1441f), proportionOfWidth (0.0417f), proportionOfHeight (0.0323f));
-    juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0100f), proportionOfHeight (0.0294f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
-    juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8850f), proportionOfHeight (0.0294f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
-    juce__slider_acc_x->setBounds (proportionOfWidth (0.2867f), proportionOfHeight (0.7088f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
-    juce__label_acc->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.6618f), 75, 12);
-    juce__slider_acc_y->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.7088f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
-    juce__slider_acc_z->setBounds (proportionOfWidth (0.5800f), proportionOfHeight (0.7088f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
-    juce__label_Gyroscope->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.8294f), 75, 12);
-    juce__slider_gyr_x->setBounds (proportionOfWidth (0.2867f), proportionOfHeight (0.8794f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
-    juce__slider_gyr_y->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.8794f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
-    juce__slider_gyr_z->setBounds (proportionOfWidth (0.5800f), proportionOfHeight (0.8794f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
-    juce__slider_force_Trigger->setBounds (proportionOfWidth (0.7850f), proportionOfHeight (0.4824f), proportionOfWidth (0.0733f), proportionOfHeight (0.3294f));
-    juce__textButton_UpdateTrigger->setBounds (proportionOfWidth (0.7667f), proportionOfHeight (0.8235f), proportionOfWidth (0.1083f), proportionOfHeight (0.0529f));
+    juce__textButton_triangle->setBounds (proportionOfWidth (0.7133f), proportionOfHeight (0.1857f), proportionOfWidth (0.0600f), proportionOfHeight (0.0514f));
+    juce__textButton_circle->setBounds (proportionOfWidth (0.7700f), proportionOfHeight (0.2829f), proportionOfWidth (0.0600f), proportionOfHeight (0.0514f));
+    juce__textButton_square->setBounds (proportionOfWidth (0.6550f), proportionOfHeight (0.2829f), proportionOfWidth (0.0600f), proportionOfHeight (0.0514f));
+    juce__textButton_cross->setBounds (proportionOfWidth (0.7133f), proportionOfHeight (0.3800f), proportionOfWidth (0.0600f), proportionOfHeight (0.0543f));
+    juce__textButton_up->setBounds (proportionOfWidth (0.2383f), proportionOfHeight (0.2114f), proportionOfWidth (0.0417f), proportionOfHeight (0.0429f));
+    juce__textButton_left->setBounds (proportionOfWidth (0.1967f), proportionOfHeight (0.2829f), proportionOfWidth (0.0417f), proportionOfHeight (0.0429f));
+    juce__textButton_right->setBounds (proportionOfWidth (0.2767f), proportionOfHeight (0.2829f), proportionOfWidth (0.0417f), proportionOfHeight (0.0429f));
+    juce__textButton_down->setBounds (proportionOfWidth (0.2383f), proportionOfHeight (0.3571f), proportionOfWidth (0.0417f), proportionOfHeight (0.0429f));
+    juce__textButton_l1->setBounds (proportionOfWidth (0.2200f), proportionOfHeight (0.0257f), proportionOfWidth (0.0600f), proportionOfHeight (0.0514f));
+    juce__textButton_r1->setBounds (proportionOfWidth (0.7200f), proportionOfHeight (0.0257f), proportionOfWidth (0.0600f), proportionOfHeight (0.0514f));
+    juce__textButton_Select->setBounds (proportionOfWidth (0.2950f), proportionOfHeight (0.1371f), proportionOfWidth (0.0417f), proportionOfHeight (0.0314f));
+    juce__textButton_menu->setBounds (proportionOfWidth (0.6617f), proportionOfHeight (0.1429f), proportionOfWidth (0.0417f), proportionOfHeight (0.0314f));
+    juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0100f), proportionOfHeight (0.0286f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
+    juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8850f), proportionOfHeight (0.0286f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
+    juce__slider_acc_x->setBounds (proportionOfWidth (0.2767f), proportionOfHeight (0.7086f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__label_acc->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.6543f), 75, 12);
+    juce__slider_acc_y->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.7086f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__slider_acc_z->setBounds (proportionOfWidth (0.5967f), proportionOfHeight (0.7086f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__label_Gyroscope->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.8257f), 75, 12);
+    juce__slider_gyr_x->setBounds (proportionOfWidth (0.2767f), proportionOfHeight (0.8800f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__slider_gyr_y->setBounds (proportionOfWidth (0.4350f), proportionOfHeight (0.8800f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__slider_gyr_z->setBounds (proportionOfWidth (0.5967f), proportionOfHeight (0.8800f), proportionOfWidth (0.1200f), proportionOfHeight (0.1000f));
+    juce__slider_force_Trigger->setBounds (proportionOfWidth (0.7850f), proportionOfHeight (0.4829f), proportionOfWidth (0.0733f), proportionOfHeight (0.3286f));
+    juce__textButton_UpdateTrigger->setBounds (proportionOfWidth (0.7667f), proportionOfHeight (0.8229f), proportionOfWidth (0.1083f), proportionOfHeight (0.0543f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -571,112 +571,112 @@ BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="DualSense_UI" componentName=""
                  parentClasses="public juce::AnimatedAppComponent" constructorParams=""
-                 variableInitialisers="" snapPixels="8" snapActive="0" snapShown="0"
-                 overlayOpacity="0.330" fixedSize="1" initialWidth="600" initialHeight="340">
+                 variableInitialisers="" snapPixels="8" snapActive="0" snapShown="1"
+                 overlayOpacity="0.330" fixedSize="1" initialWidth="600" initialHeight="350">
   <BACKGROUND backgroundColour="ff323e44">
     <PATH pos="0 0 100 100" fill="solid: edfdff" hasStroke="1" stroke="3, mitered, butt"
           strokeColour="solid: ff6495ed" nonZeroWinding="1">s 300 216 l 384 216 q 406 213 432 240 l 472 328 q 504 328 528 304 l 536 248 q 544 168 488 40 l 408 24 q 304 16 192 24 l 112 40 q 64 152 64 224 l 64 272 l 72 304 q 88 328 128 328 q 152 272 176 224 q 197 214 216 216 x</PATH>
   </BACKGROUND>
   <TEXTBUTTON name="triangle_button" id="adfc8a3c333c90c1" memberName="juce__textButton_triangle"
-              virtualName="" explicitFocusOrder="0" pos="71.333% 18.529% 6% 5%"
+              virtualName="" explicitFocusOrder="0" pos="71.333% 18.571% 6% 5.143%"
               bgColOn="ff5f9ea0" buttonText="Triangle" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="circle_button" id="37d4661129ea5fa4" memberName="juce__textButton_circle"
-              virtualName="" explicitFocusOrder="0" pos="77% 28.235% 6% 5%"
+              virtualName="" explicitFocusOrder="0" pos="77% 28.286% 6% 5.143%"
               bgColOn="ff5f9ea0" buttonText="Circle" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="square_button" id="664054e5b09e5f11" memberName="juce__textButton_square"
-              virtualName="" explicitFocusOrder="0" pos="65.5% 28.235% 6% 5%"
+              virtualName="" explicitFocusOrder="0" pos="65.5% 28.286% 6% 5.143%"
               bgColOn="ff5f9ea0" buttonText="Square" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="cross_button" id="1530d958f2eea907" memberName="juce__textButton_cross"
-              virtualName="" explicitFocusOrder="0" pos="71.333% 37.941% 6% 5.294%"
+              virtualName="" explicitFocusOrder="0" pos="71.333% 38% 6% 5.429%"
               bgColOn="ff5f9ea0" buttonText="Cross" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="up_button" id="803a38bfe0c5cf5a" memberName="juce__textButton_up"
-              virtualName="" explicitFocusOrder="0" pos="23.833% 21.176% 4.167% 4.412%"
+              virtualName="" explicitFocusOrder="0" pos="23.833% 21.143% 4.167% 4.286%"
               bgColOn="ff5f9ea0" buttonText="U" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="left_button" id="6e161f21a51340d7" memberName="juce__textButton_left"
-              virtualName="" explicitFocusOrder="0" pos="19.667% 28.235% 4.167% 4.412%"
+              virtualName="" explicitFocusOrder="0" pos="19.667% 28.286% 4.167% 4.286%"
               bgColOn="ff5f9ea0" buttonText="L" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="right_button" id="348faaa33173332b" memberName="juce__textButton_right"
-              virtualName="" explicitFocusOrder="0" pos="27.667% 28.235% 4.167% 4.412%"
+              virtualName="" explicitFocusOrder="0" pos="27.667% 28.286% 4.167% 4.286%"
               bgColOn="ff5f9ea0" buttonText="R" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="down_button" id="12403ef0daaaeefa" memberName="juce__textButton_down"
-              virtualName="" explicitFocusOrder="0" pos="23.833% 35.588% 4.167% 4.412%"
+              virtualName="" explicitFocusOrder="0" pos="23.833% 35.714% 4.167% 4.286%"
               bgColOn="ff5f9ea0" buttonText="D" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="l1_button" id="4da68bd4fbe75348" memberName="juce__textButton_l1"
-              virtualName="" explicitFocusOrder="0" pos="22% 2.647% 6% 5%"
+              virtualName="" explicitFocusOrder="0" pos="22% 2.571% 6% 5.143%"
               bgColOn="ff5f9ea0" buttonText="l1" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="r1_button" id="afad88da9b7b5250" memberName="juce__textButton_r1"
-              virtualName="" explicitFocusOrder="0" pos="72% 2.647% 6% 5%"
+              virtualName="" explicitFocusOrder="0" pos="72% 2.571% 6% 5.143%"
               bgColOn="ff5f9ea0" buttonText="r1" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="Select_button" id="3a3507360c48e793" memberName="juce__textButton_Select"
-              virtualName="" explicitFocusOrder="0" pos="29.5% 13.824% 4.167% 3.235%"
+              virtualName="" explicitFocusOrder="0" pos="29.5% 13.714% 4.167% 3.143%"
               bgColOn="ff5f9ea0" buttonText="Select" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="menu_button" id="476fde5307adb33" memberName="juce__textButton_menu"
-              virtualName="" explicitFocusOrder="0" pos="66.167% 14.412% 4.167% 3.235%"
+              virtualName="" explicitFocusOrder="0" pos="66.167% 14.286% 4.167% 3.143%"
               bgColOn="ff5f9ea0" buttonText="Menu" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <SLIDER name="L_Trigger" id="108db3ed35a76737" memberName="juce__slider_L_Trigger"
-          virtualName="" explicitFocusOrder="0" pos="1% 2.941% 10% 50%"
+          virtualName="" explicitFocusOrder="0" pos="1% 2.857% 10% 50%"
           min="0.0" max="1.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="R_Trigger" id="e9ba45a333eabc57" memberName="juce__slider_R_Trigger"
-          virtualName="" explicitFocusOrder="0" pos="88.5% 2.941% 10% 50%"
+          virtualName="" explicitFocusOrder="0" pos="88.5% 2.857% 10% 50%"
           min="0.0" max="1.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="Acc_x" id="24cea3497d731f4b" memberName="juce__slider_acc_x"
-          virtualName="" explicitFocusOrder="0" pos="28.667% 70.882% 12% 10%"
+          virtualName="" explicitFocusOrder="0" pos="27.667% 70.857% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
           min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <LABEL name="accelerometer" id="cc65c8b747b37e4d" memberName="juce__label_acc"
-         virtualName="" explicitFocusOrder="0" pos="43.5% 66.176% 75 12"
+         virtualName="" explicitFocusOrder="0" pos="43.5% 65.429% 75 12"
          edTextCol="ff000000" edBkgCol="0" labelText="Accelerometer" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="10.0" kerning="0.0" bold="0" italic="0" justification="12"/>
   <SLIDER name="Acc_y" id="b462cd929d8fbad4" memberName="juce__slider_acc_y"
-          virtualName="" explicitFocusOrder="0" pos="43.5% 70.882% 12% 10%"
+          virtualName="" explicitFocusOrder="0" pos="43.5% 70.857% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
           min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="Acc_z" id="208dc18dd2ea7d8b" memberName="juce__slider_acc_z"
-          virtualName="" explicitFocusOrder="0" pos="58% 70.882% 12% 10%"
+          virtualName="" explicitFocusOrder="0" pos="59.667% 70.857% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
           min="-1.0" max="1.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <LABEL name="G" id="8ab528613d592fe" memberName="juce__label_Gyroscope"
-         virtualName="" explicitFocusOrder="0" pos="43.5% 82.941% 75 12"
+         virtualName="" explicitFocusOrder="0" pos="43.5% 82.571% 75 12"
          edTextCol="ff000000" edBkgCol="0" labelText="Gyroscope" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="10.0" kerning="0.0" bold="0" italic="0" justification="12"/>
   <SLIDER name="Gyr_x" id="1c1a4acc7ac21ffd" memberName="juce__slider_gyr_x"
-          virtualName="" explicitFocusOrder="0" pos="28.667% 87.941% 12% 10%"
+          virtualName="" explicitFocusOrder="0" pos="27.667% 88% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
           min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="Gyr_y" id="71cda18e92b1fc54" memberName="juce__slider_gyr_y"
-          virtualName="" explicitFocusOrder="0" pos="43.5% 87.941% 12% 10%"
+          virtualName="" explicitFocusOrder="0" pos="43.5% 88% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
           min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="Gyr_z" id="de553fe4aa9c3cf4" memberName="juce__slider_gyr_z"
-          virtualName="" explicitFocusOrder="0" pos="58% 87.941% 12% 10%"
+          virtualName="" explicitFocusOrder="0" pos="59.667% 88% 12% 10%"
           bkgcol="ff263238" trackcol="ff263238" rotarysliderfill="ff263238"
           min="-500.0" max="500.0" int="0.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
@@ -685,12 +685,12 @@ BEGIN_JUCER_METADATA
                 virtualName="" explicitFocusOrder="0" pos="74 274 71 24" buttonText="IMU"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <SLIDER name="Trigger_force" id="a625551f52222742" memberName="juce__slider_force_Trigger"
-          virtualName="" explicitFocusOrder="0" pos="78.5% 48.235% 7.333% 32.941%"
+          virtualName="" explicitFocusOrder="0" pos="78.5% 48.286% 7.333% 32.857%"
           min="0.0" max="1.0" int="0.0" style="LinearVertical" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <TEXTBUTTON name="UpdateTrigger_button" id="9145f1204ec28b2e" memberName="juce__textButton_UpdateTrigger"
-              virtualName="" explicitFocusOrder="0" pos="76.667% 82.353% 10.833% 5.294%"
+              virtualName="" explicitFocusOrder="0" pos="76.667% 82.286% 10.833% 5.429%"
               bgColOn="ff5f9ea0" buttonText="UpdateTrigger" connectedEdges="0"
               needsCallback="1" radioGroupId="0"/>
   <TOGGLEBUTTON name="toggleButton_vibration" id="1c127cb27174cff6" memberName="juce__toggleButton_vibration"
