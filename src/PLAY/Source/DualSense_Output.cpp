@@ -111,6 +111,8 @@ void DualSense_Output::disConnectOutput() {
 //    _output[1] = 0x02;
 //    _output[2] = 0x00;
 //    _output[3] = 0xff;
+    DS_output.leftRumble = 0x00;
+    DS_output.rightRumble = 0x00;
     DS_output.microphoneLed = DualSense::MicLed::OFF;
     DS_output.disableLeds = true;
     DS_output.playerLeds.bitmask = 0;
@@ -214,5 +216,13 @@ void DualSense_Output::updateTrigger(float triggerForce)
     DS_output.leftTriggerEffect.Continuous.force = force;
 //    DS_output.leftTriggerEffect.Continuous.startPosition = 0x00;
     
+    createDualSenseOutput();
+}
+
+void DualSense_Output::rumble(float force)
+{
+    unsigned char rf = (unsigned char)(force * 128.);
+    DS_output.leftRumble = rf;
+    DS_output.rightRumble = rf;
     createDualSenseOutput();
 }

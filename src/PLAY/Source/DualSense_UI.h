@@ -51,6 +51,8 @@ public:
     DualSense::DualSenseInputState DS_UI_input;
     bool isConnected;
     bool enableIMU;
+    std::function<void()> UpdateVibration;
+    bool virbration = false;
     std::function<void()> UpdateTriggerForce;
     float triggerForce = 0.;
     //[/UserMethods]
@@ -97,6 +99,7 @@ private:
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_IMU;
     std::unique_ptr<juce::Slider> juce__slider_force_Trigger;
     std::unique_ptr<juce::TextButton> juce__textButton_UpdateTrigger;
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton_vibration;
     juce::Path internalPath1;
 
 

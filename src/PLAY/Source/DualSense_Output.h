@@ -32,6 +32,7 @@ public:
     bool usbOrBT;
     DualSense::DualSenseOutputState DS_output;
     void updateTrigger(float triggerForce);
+    void rumble(float force);
     
 private:
     __DS5W::CRC32 ds_crc32;

@@ -214,25 +214,25 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
 {
     if(juce__toggleButton_MIDI->getToggleState())
     {
-        handleButton(60, _xboxInput.buttons.a, last_xboxInput.buttons.a);
-        handleButton(61, _xboxInput.buttons.b, last_xboxInput.buttons.b);
-        handleButton(62, _xboxInput.buttons.x, last_xboxInput.buttons.x);
-        handleButton(63, _xboxInput.buttons.y, last_xboxInput.buttons.y);
+        handleButton(36, _xboxInput.buttons.a, last_xboxInput.buttons.a);
+        handleButton(37, _xboxInput.buttons.b, last_xboxInput.buttons.b);
+        handleButton(38, _xboxInput.buttons.x, last_xboxInput.buttons.x);
+        handleButton(39, _xboxInput.buttons.y, last_xboxInput.buttons.y);
 
-        handleButton(64, _xboxInput.dpad.up, last_xboxInput.dpad.up);
-        handleButton(65, _xboxInput.dpad.down, last_xboxInput.dpad.down);
-        handleButton(66, _xboxInput.dpad.left, last_xboxInput.dpad.left);
-        handleButton(67, _xboxInput.dpad.right, last_xboxInput.dpad.right);
+        handleButton(40, _xboxInput.dpad.up, last_xboxInput.dpad.up);
+        handleButton(41, _xboxInput.dpad.down, last_xboxInput.dpad.down);
+        handleButton(42, _xboxInput.dpad.left, last_xboxInput.dpad.left);
+        handleButton(43, _xboxInput.dpad.right, last_xboxInput.dpad.right);
 
-        handleButton(68, _xboxInput.buttons.rb, last_xboxInput.buttons.rb);
-        handleButton(69, _xboxInput.buttons.lb, last_xboxInput.buttons.lb);
+        handleButton(44, _xboxInput.buttons.rb, last_xboxInput.buttons.rb);
+        handleButton(45, _xboxInput.buttons.lb, last_xboxInput.buttons.lb);
 
-        handleButton(70, _xboxInput.buttons.view, last_xboxInput.buttons.view);
-        handleButton(71, _xboxInput.buttons.share, last_xboxInput.buttons.share);
-        handleButton(72, _xboxInput.buttons.menu, last_xboxInput.buttons.menu);
+        handleButton(46, _xboxInput.buttons.view, last_xboxInput.buttons.view);
+        handleButton(47, _xboxInput.buttons.share, last_xboxInput.buttons.share);
+        handleButton(48, _xboxInput.buttons.menu, last_xboxInput.buttons.menu);
 
-        handleButton(73, _xboxInput.leftStick.stickPress, last_xboxInput.leftStick.stickPress);
-        handleButton(74, _xboxInput.rightStick.stickPress, last_xboxInput.rightStick.stickPress);
+        handleButton(49, _xboxInput.leftStick.stickPress, last_xboxInput.leftStick.stickPress);
+        handleButton(50, _xboxInput.rightStick.stickPress, last_xboxInput.rightStick.stickPress);
 
         //Modulation Wheel
         handleTrigger(1, _xboxInput.leftTrigger, last_xboxInput.leftTrigger);
@@ -256,26 +256,26 @@ void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState 
 {
     if(juce__toggleButton_MIDI->getToggleState())
     {
-        handleButton(60, _dualSenseInput.buttons.cross, last_dualSenseInput.buttons.cross);
-        handleButton(61, _dualSenseInput.buttons.circle, last_dualSenseInput.buttons.circle);
-        handleButton(62, _dualSenseInput.buttons.square, last_dualSenseInput.buttons.square);
-        handleButton(63, _dualSenseInput.buttons.triangle, last_dualSenseInput.buttons.triangle);
+        handleButton(36, _dualSenseInput.buttons.cross, last_dualSenseInput.buttons.cross);
+        handleButton(37, _dualSenseInput.buttons.circle, last_dualSenseInput.buttons.circle);
+        handleButton(38, _dualSenseInput.buttons.square, last_dualSenseInput.buttons.square);
+        handleButton(39, _dualSenseInput.buttons.triangle, last_dualSenseInput.buttons.triangle);
 
-        handleButton(64, _dualSenseInput.dpad.up, last_dualSenseInput.dpad.up);
-        handleButton(65, _dualSenseInput.dpad.down, last_dualSenseInput.dpad.down);
-        handleButton(66, _dualSenseInput.dpad.left, last_dualSenseInput.dpad.left);
-        handleButton(67, _dualSenseInput.dpad.right, last_dualSenseInput.dpad.right);
+        handleButton(40, _dualSenseInput.dpad.up, last_dualSenseInput.dpad.up);
+        handleButton(41, _dualSenseInput.dpad.down, last_dualSenseInput.dpad.down);
+        handleButton(42, _dualSenseInput.dpad.left, last_dualSenseInput.dpad.left);
+        handleButton(43, _dualSenseInput.dpad.right, last_dualSenseInput.dpad.right);
 
-        handleButton(68, _dualSenseInput.buttons.r1, last_dualSenseInput.buttons.r1);
-        handleButton(69, _dualSenseInput.buttons.l1, last_dualSenseInput.buttons.l1);
+        handleButton(44, _dualSenseInput.buttons.r1, last_dualSenseInput.buttons.r1);
+        handleButton(45, _dualSenseInput.buttons.l1, last_dualSenseInput.buttons.l1);
 
-        handleButton(70, _dualSenseInput.buttons.select, last_dualSenseInput.buttons.select);
-        handleButton(71, _dualSenseInput.buttons.menu, last_dualSenseInput.buttons.menu);
+        handleButton(46, _dualSenseInput.buttons.select, last_dualSenseInput.buttons.select);
+        handleButton(47, _dualSenseInput.buttons.menu, last_dualSenseInput.buttons.menu);
 
-        handleButton(72, _dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress);
-        handleButton(73, _dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress);
+        handleButton(48, _dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress);
+        handleButton(49, _dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress);
         
-        handleButton(74, _dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad);
+        handleButton(50, _dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad);
         
         //MIDI CC
         //Modulation Wheel
