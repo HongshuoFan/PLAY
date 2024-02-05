@@ -50,7 +50,7 @@ public:
     void send_DualSense_MIDI_message(DualSense::DualSenseInputState _dualSenseInput);
     int Selected_midiChannel = 1;
     void closeConnection();
-
+    juce::String MidiDeviceName = "PLAY";
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -62,7 +62,7 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    std::unique_ptr<juce::MidiOutput> outDevice;
+    //std::unique_ptr<juce::MidiOutput> outDevice;
     juce::Array<juce::MidiDeviceInfo> availableDevices;
     void sendToOutput(const juce::MidiMessage& msg);
     void handleNoteOn (int midiChannel, int midiNoteNumber, float velocity);
@@ -80,6 +80,7 @@ private:
     //==============================================================================
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_MIDI;
     std::unique_ptr<juce::ComboBox> juce__comboBox_MidiChannel;
+    std::unique_ptr<juce::TextEditor> juce__textEditor_MidiDeviceName;
 
 
     //==============================================================================

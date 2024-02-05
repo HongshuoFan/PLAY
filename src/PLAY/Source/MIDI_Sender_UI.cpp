@@ -48,6 +48,20 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
     juce__comboBox_MidiChannel->addItem (TRANS ("1"), 1);
     juce__comboBox_MidiChannel->addListener (this);
 
+    juce__comboBox_MidiChannel->setBounds (434, 9, 68, 24);
+
+    juce__textEditor_MidiDeviceName.reset (new juce::TextEditor ("Midi_DeviceName"));
+    addAndMakeVisible (juce__textEditor_MidiDeviceName.get());
+    juce__textEditor_MidiDeviceName->setMultiLine (false);
+    juce__textEditor_MidiDeviceName->setReturnKeyStartsNewLine (false);
+    juce__textEditor_MidiDeviceName->setReadOnly (false);
+    juce__textEditor_MidiDeviceName->setScrollbarsShown (true);
+    juce__textEditor_MidiDeviceName->setCaretVisible (true);
+    juce__textEditor_MidiDeviceName->setPopupMenuEnabled (true);
+    juce__textEditor_MidiDeviceName->setText (TRANS ("PLAY"));
+
+    juce__textEditor_MidiDeviceName->setBounds (167, 9, 150, 24);
+
 
     //[UserPreSize]
 
@@ -57,7 +71,7 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
 
 
     //virtual Midi device MAC only
-    PlayMidiDevice = juce::MidiOutput::createNewDevice("PLAY");
+    PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
     //[/UserPreSize]
 
     setSize (600, 40);
@@ -75,6 +89,7 @@ MIDI_Sender_UI::~MIDI_Sender_UI()
 
     juce__toggleButton_MIDI = nullptr;
     juce__comboBox_MidiChannel = nullptr;
+    juce__textEditor_MidiDeviceName = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -91,8 +106,20 @@ void MIDI_Sender_UI::paint (juce::Graphics& g)
     g.fillAll (juce::Colour (0xff323e44));
 
     {
-        int x = proportionOfWidth (0.1167f), y = proportionOfHeight (0.2500f), width = 50, height = 20;
+        int x = proportionOfWidth (0.6067f), y = proportionOfHeight (0.2000f), width = 58, height = 28;
         juce::String text (TRANS ("Channel"));
+        juce::Colour fillColour = juce::Colours::azure;
+        //[UserPaintCustomArguments] Customize the painting arguments here..
+        //[/UserPaintCustomArguments]
+        g.setColour (fillColour);
+        g.setFont (juce::Font (15.00f, juce::Font::plain).withTypefaceStyle ("Regular"));
+        g.drawText (text, x, y, width, height,
+                    juce::Justification::centred, true);
+    }
+
+    {
+        int x = proportionOfWidth (0.1117f), y = proportionOfHeight (0.1750f), width = 102, height = 28;
+        juce::String text (TRANS ("DeviceName"));
         juce::Colour fillColour = juce::Colours::azure;
         //[UserPaintCustomArguments] Customize the painting arguments here..
         //[/UserPaintCustomArguments]
@@ -111,7 +138,6 @@ void MIDI_Sender_UI::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    juce__comboBox_MidiChannel->setBounds (proportionOfWidth (0.2200f), proportionOfHeight (0.2500f), proportionOfWidth (0.1133f), proportionOfHeight (0.6000f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -124,6 +150,18 @@ void MIDI_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     if (buttonThatWasClicked == juce__toggleButton_MIDI.get())
     {
         //[UserButtonCode_juce__toggleButton_MIDI] -- add your button handler code here..
+        if(juce__toggleButton_MIDI->getState()){
+           
+            if(PlayMidiDevice){
+                closeConnection();
+            }
+            
+            MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
+            PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
+            
+        }else{
+            closeConnection();
+        }
         //[/UserButtonCode_juce__toggleButton_MIDI]
     }
 
@@ -153,9 +191,9 @@ void MIDI_Sender_UI::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
 
 void MIDI_Sender_UI::closeConnection(){
 
-    if (outDevice != nullptr){
-        outDevice.reset();
-        outDevice = nullptr;
+    if (PlayMidiDevice != nullptr){
+        PlayMidiDevice.reset();
+        PlayMidiDevice = nullptr;
     }
 }
 
@@ -224,8 +262,8 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
         handleButton(42, _xboxInput.dpad.left, last_xboxInput.dpad.left);
         handleButton(43, _xboxInput.dpad.right, last_xboxInput.dpad.right);
 
-        handleButton(44, _xboxInput.buttons.rb, last_xboxInput.buttons.rb);
-        handleButton(45, _xboxInput.buttons.lb, last_xboxInput.buttons.lb);
+        handleButton(44, _xboxInput.buttons.lb, last_xboxInput.buttons.lb);
+        handleButton(45, _xboxInput.buttons.rb, last_xboxInput.buttons.rb);
 
         handleButton(46, _xboxInput.buttons.view, last_xboxInput.buttons.view);
         handleButton(47, _xboxInput.buttons.share, last_xboxInput.buttons.share);
@@ -266,17 +304,17 @@ void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState 
         handleButton(42, _dualSenseInput.dpad.left, last_dualSenseInput.dpad.left);
         handleButton(43, _dualSenseInput.dpad.right, last_dualSenseInput.dpad.right);
 
-        handleButton(44, _dualSenseInput.buttons.r1, last_dualSenseInput.buttons.r1);
-        handleButton(45, _dualSenseInput.buttons.l1, last_dualSenseInput.buttons.l1);
+        handleButton(44, _dualSenseInput.buttons.l1, last_dualSenseInput.buttons.l1);
+        handleButton(45, _dualSenseInput.buttons.r1, last_dualSenseInput.buttons.r1);
 
         handleButton(46, _dualSenseInput.buttons.select, last_dualSenseInput.buttons.select);
         handleButton(47, _dualSenseInput.buttons.menu, last_dualSenseInput.buttons.menu);
 
         handleButton(48, _dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress);
         handleButton(49, _dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress);
-        
+
         handleButton(50, _dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad);
-        
+
         //MIDI CC
         //Modulation Wheel
         handleTrigger(1, _dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger);
@@ -290,26 +328,26 @@ void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState 
         handleTrigger(10, _dualSenseInput.rightStick.x, last_dualSenseInput.rightStick.x);
         //Expression (MSB)
         handleTrigger(11, _dualSenseInput.rightStick.y, last_dualSenseInput.rightStick.y);
-        
+
         //Effect Controller 1 (MSB)
         handleTrigger(12, _dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x);
         //Effect Controller 2 (MSB)
         handleTrigger(13, _dualSenseInput.touchPoint1.y, last_dualSenseInput.touchPoint1.y);
-        
+
         //Undefined (MSB)
         handleTrigger(14, _dualSenseInput.touchPoint2.x, last_dualSenseInput.touchPoint2.x);
         //Undefined (MSB)
         handleTrigger(15, _dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y);
-        
+
         //General Purpose (MSB) gyroscope
         handleTrigger(16, _dualSenseInput.gyroscope.x, last_dualSenseInput.gyroscope.x);
         handleTrigger(17, _dualSenseInput.gyroscope.y, last_dualSenseInput.gyroscope.y);
         handleTrigger(18, _dualSenseInput.gyroscope.z, last_dualSenseInput.gyroscope.z);
-        
+
         handleTrigger(19, _dualSenseInput.accelerometer.x, last_dualSenseInput.accelerometer.x);
         handleTrigger(20, _dualSenseInput.accelerometer.y, last_dualSenseInput.accelerometer.y);
         handleTrigger(21, _dualSenseInput.accelerometer.z, last_dualSenseInput.accelerometer.z);
-        
+
     }
 }
 //[/MiscUserCode]
@@ -329,16 +367,23 @@ BEGIN_JUCER_METADATA
                  snapPixels="8" snapActive="0" snapShown="0" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="600" initialHeight="40">
   <BACKGROUND backgroundColour="ff323e44">
-    <TEXT pos="11.667% 25% 50 20" fill="solid: fff0ffff" hasStroke="0"
+    <TEXT pos="60.667% 20% 58 28" fill="solid: fff0ffff" hasStroke="0"
           text="Channel" fontname="Default font" fontsize="15.0" kerning="0.0"
+          bold="0" italic="0" justification="36"/>
+    <TEXT pos="11.167% 17.5% 102 28" fill="solid: fff0ffff" hasStroke="0"
+          text="DeviceName" fontname="Default font" fontsize="15.0" kerning="0.0"
           bold="0" italic="0" justification="36"/>
   </BACKGROUND>
   <TOGGLEBUTTON name="MIDI_activeButton" id="dc04b5e769d393aa" memberName="juce__toggleButton_MIDI"
                 virtualName="" explicitFocusOrder="0" pos="2 5 70 30" buttonText="MIDI"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <COMBOBOX name="MidiChannel_ComboBox" id="9aa8a3b1ee702033" memberName="juce__comboBox_MidiChannel"
-            virtualName="" explicitFocusOrder="0" pos="22% 25% 11.333% 60%"
-            editable="0" layout="33" items="1" textWhenNonSelected="0" textWhenNoItems="(no choices)"/>
+            virtualName="" explicitFocusOrder="0" pos="434 9 68 24" editable="0"
+            layout="33" items="1" textWhenNonSelected="0" textWhenNoItems="(no choices)"/>
+  <TEXTEDITOR name="Midi_DeviceName" id="513699a69d967b42" memberName="juce__textEditor_MidiDeviceName"
+              virtualName="" explicitFocusOrder="0" pos="167 9 150 24" initialText="PLAY"
+              multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"
+              caret="1" popupmenu="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

@@ -43,7 +43,7 @@ StickGUI::StickGUI ()
 
     //[Constructor] You can add your own custom stuff here..
     //setSize (Stickheight*2, Stickheight*2);
-    
+
     //[/Constructor]
 }
 
@@ -82,7 +82,7 @@ void StickGUI::paint (juce::Graphics& g)
     }else{
         g.fillEllipse (px, py, width, height);
     }
-    
+
     //[/UserPaint]
 }
 
