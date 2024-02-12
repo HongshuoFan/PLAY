@@ -71,7 +71,7 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
 
 
     //virtual Midi device MAC only
-    PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
+    //PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
     //[/UserPreSize]
 
     setSize (600, 40);
@@ -150,15 +150,23 @@ void MIDI_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     if (buttonThatWasClicked == juce__toggleButton_MIDI.get())
     {
         //[UserButtonCode_juce__toggleButton_MIDI] -- add your button handler code here..
-        if(juce__toggleButton_MIDI->getState()){
-
+        if(juce__toggleButton_MIDI->getToggleState()){
+            
             if(PlayMidiDevice){
-                closeConnection();
+                if(MidiDeviceName == juce__textEditor_MidiDeviceName->getText()){
+                    //std::cout<<"same name "<< PlayMidiDevice->getName()<<"\n";
+                }else{
+                    //std::cout<<"new name \n";
+                    closeConnection();
+                    MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
+                    PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
+                }
+                
+            }else{
+                MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
+                PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
             }
-
-            MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
-            PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
-
+           
         }else{
             closeConnection();
         }
@@ -192,6 +200,7 @@ void MIDI_Sender_UI::comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged)
 void MIDI_Sender_UI::closeConnection(){
 
     if (PlayMidiDevice != nullptr){
+        PlayMidiDevice->clearAllPendingMessages();
         PlayMidiDevice.reset();
         PlayMidiDevice = nullptr;
     }
