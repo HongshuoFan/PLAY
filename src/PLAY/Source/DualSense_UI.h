@@ -49,11 +49,14 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
     void update() override;
     DualSense::DualSenseInputState DS_UI_input;
+    DualSense::DualSenseEnableState DS_EnableStats;
+
     bool isConnected;
     bool enableIMU;
     std::function<void()> UpdateVibration;
     bool virbration = false;
     std::function<void()> UpdateTriggerForce;
+
     float triggerForce = 0.;
     //[/UserMethods]
 

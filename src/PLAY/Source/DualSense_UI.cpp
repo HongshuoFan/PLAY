@@ -536,6 +536,12 @@ void DualSense_UI::update()
 
         Left_Stick->updatePoint(DS_UI_input.leftStick.x, DS_UI_input.leftStick.y, DS_UI_input.leftStick.stickPress);
         Right_Stick->updatePoint(DS_UI_input.rightStick.x, DS_UI_input.rightStick.y, DS_UI_input.rightStick.stickPress);
+        
+        DS_EnableStats.leftStickStates.x = Left_Stick->enableX;
+        DS_EnableStats.leftStickStates.y = Left_Stick->enableY;
+        
+        DS_EnableStats.rightStickStates.x = Right_Stick->enableX;
+        DS_EnableStats.rightStickStates.y = Right_Stick->enableY;
 
         juce__slider_L_Trigger->setValue(std::clamp(DS_UI_input.leftTrigger, 0.f, 1.0f));
         juce__slider_R_Trigger->setValue(std::clamp(DS_UI_input.rightTrigger, 0.f, 1.0f));
