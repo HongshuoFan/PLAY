@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.9
+  Created with Projucer version: 7.0.10
 
   ------------------------------------------------------------------------------
 
@@ -34,6 +34,20 @@ StickGUI::StickGUI ()
     py = getHeight()/2.f;
     //[/Constructor_pre]
 
+    juce__toggleButton_stick_x.reset (new juce::ToggleButton ("Toggle_Stick_X"));
+    addAndMakeVisible (juce__toggleButton_stick_x.get());
+    juce__toggleButton_stick_x->setButtonText (TRANS ("X"));
+    juce__toggleButton_stick_x->setConnectedEdges (juce::Button::ConnectedOnLeft | juce::Button::ConnectedOnBottom);
+    juce__toggleButton_stick_x->addListener (this);
+    juce__toggleButton_stick_x->setColour (juce::ToggleButton::textColourId, juce::Colour (0x50ffffff));
+
+    juce__toggleButton_stick_y.reset (new juce::ToggleButton ("toggle_Stick_Y"));
+    addAndMakeVisible (juce__toggleButton_stick_y.get());
+    juce__toggleButton_stick_y->setButtonText (TRANS ("Y"));
+    juce__toggleButton_stick_y->setConnectedEdges (juce::Button::ConnectedOnRight | juce::Button::ConnectedOnTop);
+    juce__toggleButton_stick_y->addListener (this);
+    juce__toggleButton_stick_y->setColour (juce::ToggleButton::textColourId, juce::Colour (0x50ffffff));
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -52,6 +66,8 @@ StickGUI::~StickGUI()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
+    juce__toggleButton_stick_x = nullptr;
+    juce__toggleButton_stick_y = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -91,8 +107,30 @@ void StickGUI::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
+    juce__toggleButton_stick_x->setBounds (proportionOfWidth (0.0577f), proportionOfHeight (0.7885f), proportionOfWidth (0.3269f), proportionOfHeight (0.1731f));
+    juce__toggleButton_stick_y->setBounds (proportionOfWidth (0.6154f), proportionOfHeight (0.0577f), proportionOfWidth (0.3269f), proportionOfHeight (0.1731f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
+}
+
+void StickGUI::buttonClicked (juce::Button* buttonThatWasClicked)
+{
+    //[UserbuttonClicked_Pre]
+    //[/UserbuttonClicked_Pre]
+
+    if (buttonThatWasClicked == juce__toggleButton_stick_x.get())
+    {
+        //[UserButtonCode_juce__toggleButton_stick_x] -- add your button handler code here..
+        //[/UserButtonCode_juce__toggleButton_stick_x]
+    }
+    else if (buttonThatWasClicked == juce__toggleButton_stick_y.get())
+    {
+        //[UserButtonCode_juce__toggleButton_stick_y] -- add your button handler code here..
+        //[/UserButtonCode_juce__toggleButton_stick_y]
+    }
+
+    //[UserbuttonClicked_Post]
+    //[/UserbuttonClicked_Post]
 }
 
 void StickGUI::mouseDrag (const juce::MouseEvent& e)
@@ -148,7 +186,7 @@ BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="StickGUI" componentName=""
                  parentClasses="public juce::Component" constructorParams="" variableInitialisers=""
-                 snapPixels="2" snapActive="0" snapShown="1" overlayOpacity="0.330"
+                 snapPixels="2" snapActive="0" snapShown="0" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="104" initialHeight="104">
   <METHODS>
     <METHOD name="mouseDrag (const juce::MouseEvent&amp; e)"/>
@@ -157,6 +195,14 @@ BEGIN_JUCER_METADATA
     <ROUNDRECT pos="50%c 50%c 96.154% 96.154%" cornerSize="10.0" fill="solid: a5852a"
                hasStroke="1" stroke="2, mitered, butt" strokeColour="solid: ff2aa582"/>
   </BACKGROUND>
+  <TOGGLEBUTTON name="Toggle_Stick_X" id="ce6f09ac788bf2b9" memberName="juce__toggleButton_stick_x"
+                virtualName="" explicitFocusOrder="0" pos="5.769% 78.846% 32.692% 17.308%"
+                txtcol="50ffffff" buttonText="X" connectedEdges="9" needsCallback="1"
+                radioGroupId="0" state="0"/>
+  <TOGGLEBUTTON name="toggle_Stick_Y" id="56b937c86828f442" memberName="juce__toggleButton_stick_y"
+                virtualName="" explicitFocusOrder="0" pos="61.538% 5.769% 32.692% 17.308%"
+                txtcol="50ffffff" buttonText="Y" connectedEdges="6" needsCallback="1"
+                radioGroupId="0" state="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
