@@ -88,6 +88,7 @@ void MainComponent::onHIDMenuChanged()
             hidIO_1->dataReceivedCallback = [this]{onDualSense_DataReceived();};
             DS_UI.UpdateTriggerForce = [this]{update_DualSense_TriggerForce();};
             DS_UI.UpdateVibration = [this]{update_DualSense_Vibration();};
+            
             std::this_thread::sleep_for(std::chrono::seconds(1));
 
             // enable dual sense controller
@@ -219,10 +220,12 @@ void MainComponent::onDualSense_DataReceived()
     //handle the DualSense input data
     DS_input->evaluateDualSenseHidInputBuffer(hidIO_1->reportData, DS_UI.enableIMU);
     DS_UI.DS_UI_input = DS_input->ds_input;
+   
     //send DualSense data via OSC
-    osc_sender->send_DualSense_OSC_message(DS_input->ds_input);
+    osc_sender->send_DualSense_OSC_message(DS_UI.DS_UI_input);
+    
     //send DualSense Controller data via MIDI
-    midi_sender->send_DualSense_MIDI_message(DS_input->ds_input);
+    midi_sender->send_DualSense_MIDI_message(DS_UI.DS_UI_input, DS_UI.DS_EnableStats);
 }
 
 void MainComponent::onXboxController_DataReceived() {
