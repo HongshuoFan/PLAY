@@ -4,7 +4,7 @@
 MainComponent::MainComponent()
 {
     //initialize();
-    setSize (600, 440);
+    setSize (700, 500);
     
     // Create HIDmenu compoent and add it to the MainComponent
     m_HIDMenu.reset(new HIDMenu());
