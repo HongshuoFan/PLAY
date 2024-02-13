@@ -85,7 +85,7 @@ Special thanks to [The Oxford Research Centre in the Humanities (HCP)](https://w
 
 
 ## Project Team
-- Dr. Robert Laidlow: [robert.laidlow@oxford.ac.uk](mailto:robert.laidlow@jesus.ox.ac.uk)
+- Dr. Robert Laidlow: [robert.laidlow@jesus.ox.ac.uk](mailto:robert.laidlow@jesus.ox.ac.uk)
 - Dr. Hongshuo Fan: [hongshuo.fan@rncm.ac.uk](mailto:hongshuo.fan@rncm.ac.uk)
 - Dr. Bofan Ma: [bofan.ma@rncm.ac.uk](mailto:bofan.ma@rncm.ac.uk)
 - Ellen Sargen: [ellensargen@gmail.com](mailto:ellensargen@gmail.com)
