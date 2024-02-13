@@ -71,7 +71,8 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
 
 
     //virtual Midi device MAC only
-    //PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
+    MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
+    PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
     //[/UserPreSize]
 
     setSize (600, 40);
@@ -154,9 +155,9 @@ void MIDI_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
             
             if(PlayMidiDevice){
                 if(MidiDeviceName == juce__textEditor_MidiDeviceName->getText()){
-                    //std::cout<<"same name "<< PlayMidiDevice->getName()<<"\n";
+                    std::cout<<"same name "<< PlayMidiDevice->getName()<<"\n";
                 }else{
-                    //std::cout<<"new name \n";
+                    std::cout<<"new name \n";
                     closeConnection();
                     MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
                     PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
@@ -168,7 +169,7 @@ void MIDI_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
             }
            
         }else{
-            closeConnection();
+            //closeConnection();
         }
         //[/UserButtonCode_juce__toggleButton_MIDI]
     }
