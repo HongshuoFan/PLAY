@@ -45,6 +45,7 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
 
     void updatePoint(float x, float y, bool button);
+    bool enableX, enableY;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;

@@ -56,6 +56,10 @@ StickGUI::StickGUI ()
 
 
     //[Constructor] You can add your own custom stuff here..
+    juce__toggleButton_stick_x->setToggleState(true, juce::sendNotification);
+    juce__toggleButton_stick_y->setToggleState(true, juce::sendNotification);
+    enableX = true;
+    enableY = true;
     //setSize (Stickheight*2, Stickheight*2);
 
     //[/Constructor]
@@ -121,11 +125,13 @@ void StickGUI::buttonClicked (juce::Button* buttonThatWasClicked)
     if (buttonThatWasClicked == juce__toggleButton_stick_x.get())
     {
         //[UserButtonCode_juce__toggleButton_stick_x] -- add your button handler code here..
+        enableX = juce__toggleButton_stick_x->getToggleState();
         //[/UserButtonCode_juce__toggleButton_stick_x]
     }
     else if (buttonThatWasClicked == juce__toggleButton_stick_y.get())
     {
         //[UserButtonCode_juce__toggleButton_stick_y] -- add your button handler code here..
+        enableY = juce__toggleButton_stick_y->getToggleState();
         //[/UserButtonCode_juce__toggleButton_stick_y]
     }
 
