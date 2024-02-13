@@ -215,7 +215,7 @@ DualSense_UI::DualSense_UI ()
     juce__toggleButton_IMU->setButtonText (TRANS ("IMU"));
     juce__toggleButton_IMU->addListener (this);
 
-    juce__toggleButton_IMU->setBounds (107, 278, 71, 24);
+    juce__toggleButton_IMU->setBounds (108, 278, 71, 24);
 
     juce__slider_force_Trigger.reset (new juce::Slider ("Trigger_force"));
     addAndMakeVisible (juce__slider_force_Trigger.get());
@@ -232,10 +232,18 @@ DualSense_UI::DualSense_UI ()
 
     juce__toggleButton_vibration.reset (new juce::ToggleButton ("toggleButton_vibration"));
     addAndMakeVisible (juce__toggleButton_vibration.get());
-    juce__toggleButton_vibration->setButtonText (TRANS ("vibration"));
+    juce__toggleButton_vibration->setButtonText (TRANS ("Vibration"));
     juce__toggleButton_vibration->addListener (this);
 
-    juce__toggleButton_vibration->setBounds (107, 247, 71, 24);
+    juce__toggleButton_vibration->setBounds (108, 247, 71, 24);
+
+    juce__toggleButton_enableAll.reset (new juce::ToggleButton ("toggleButton_enableAll"));
+    addAndMakeVisible (juce__toggleButton_enableAll.get());
+    juce__toggleButton_enableAll->setButtonText (TRANS ("Dis/Enable All"));
+    juce__toggleButton_enableAll->addListener (this);
+    juce__toggleButton_enableAll->setToggleState (true, juce::dontSendNotification);
+
+    juce__toggleButton_enableAll->setBounds (108, 216, 96, 24);
 
     internalPath1.startNewSubPath (354.0f, 226.0f);
     internalPath1.lineTo (444.0f, 226.0f);
@@ -265,6 +273,7 @@ DualSense_UI::DualSense_UI ()
     //[Constructor] You can add your own custom stuff here..
     setFramesPerSecond (1);
     isConnected = false;
+    enableIMU = false;
     //[/Constructor]
 }
 
@@ -299,6 +308,7 @@ DualSense_UI::~DualSense_UI()
     juce__slider_force_Trigger = nullptr;
     juce__textButton_UpdateTrigger = nullptr;
     juce__toggleButton_vibration = nullptr;
+    juce__toggleButton_enableAll = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -451,6 +461,15 @@ void DualSense_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         UpdateVibration();
         //[/UserButtonCode_juce__toggleButton_vibration]
     }
+    else if (buttonThatWasClicked == juce__toggleButton_enableAll.get())
+    {
+        //[UserButtonCode_juce__toggleButton_enableAll] -- add your button handler code here..
+        bool new_state = juce__toggleButton_enableAll->getToggleState();
+        Left_Stick->changeStates(new_state);
+        Right_Stick->changeStates(new_state);
+        TouchPad->changeStates(new_state);
+        //[/UserButtonCode_juce__toggleButton_enableAll]
+    }
 
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
@@ -536,10 +555,10 @@ void DualSense_UI::update()
 
         Left_Stick->updatePoint(DS_UI_input.leftStick.x, DS_UI_input.leftStick.y, DS_UI_input.leftStick.stickPress);
         Right_Stick->updatePoint(DS_UI_input.rightStick.x, DS_UI_input.rightStick.y, DS_UI_input.rightStick.stickPress);
-        
+
         DS_EnableStats.leftStickStates.x = Left_Stick->enableX;
         DS_EnableStats.leftStickStates.y = Left_Stick->enableY;
-        
+
         DS_EnableStats.rightStickStates.x = Right_Stick->enableX;
         DS_EnableStats.rightStickStates.y = Right_Stick->enableY;
 
@@ -549,6 +568,12 @@ void DualSense_UI::update()
         TouchPad->updateTouchPad_1(DS_UI_input.touchPoint1);
         TouchPad->updateTouchPad_2(DS_UI_input.touchPoint2);
         TouchPad->pressTouchPad = DS_UI_input.buttons.touchPad;
+
+        DS_EnableStats.touchPoint1States.x = TouchPad->isP1Enable_x;
+        DS_EnableStats.touchPoint1States.y = TouchPad->isP1Enable_y;
+
+        DS_EnableStats.touchPoint2States.x = TouchPad->isP2Enable_x;
+        DS_EnableStats.touchPoint2States.y = TouchPad->isP2Enable_y;
 
         juce__slider_acc_x->setValue(std::clamp(DS_UI_input.accelerometer.x, -1.0f, 1.0f));
         juce__slider_acc_y->setValue(std::clamp(DS_UI_input.accelerometer.y, -1.0f, 1.0f));
@@ -693,7 +718,7 @@ BEGIN_JUCER_METADATA
           textBoxEditable="0" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <TOGGLEBUTTON name="toggleButton_IMU" id="fc92f293dfd205b2" memberName="juce__toggleButton_IMU"
-                virtualName="" explicitFocusOrder="0" pos="107 278 71 24" buttonText="IMU"
+                virtualName="" explicitFocusOrder="0" pos="108 278 71 24" buttonText="IMU"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <SLIDER name="Trigger_force" id="a625551f52222742" memberName="juce__slider_force_Trigger"
           virtualName="" explicitFocusOrder="0" pos="75.714% 43% 7.286% 32.75%"
@@ -705,8 +730,11 @@ BEGIN_JUCER_METADATA
               bgColOn="ff5f9ea0" buttonText="UpdateTrigger" connectedEdges="0"
               needsCallback="1" radioGroupId="0"/>
   <TOGGLEBUTTON name="toggleButton_vibration" id="1c127cb27174cff6" memberName="juce__toggleButton_vibration"
-                virtualName="" explicitFocusOrder="0" pos="107 247 71 24" buttonText="vibration"
+                virtualName="" explicitFocusOrder="0" pos="108 247 71 24" buttonText="Vibration"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+  <TOGGLEBUTTON name="toggleButton_enableAll" id="8bcdf7461574a259" memberName="juce__toggleButton_enableAll"
+                virtualName="" explicitFocusOrder="0" pos="108 216 96 24" buttonText="Dis/Enable All"
+                connectedEdges="0" needsCallback="1" radioGroupId="0" state="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

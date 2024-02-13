@@ -103,6 +103,7 @@ private:
     std::unique_ptr<juce::Slider> juce__slider_force_Trigger;
     std::unique_ptr<juce::TextButton> juce__textButton_UpdateTrigger;
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_vibration;
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton_enableAll;
     juce::Path internalPath1;
 
 
