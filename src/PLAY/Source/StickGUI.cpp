@@ -39,6 +39,7 @@ StickGUI::StickGUI ()
     juce__toggleButton_stick_x->setButtonText (TRANS ("X"));
     juce__toggleButton_stick_x->setConnectedEdges (juce::Button::ConnectedOnLeft | juce::Button::ConnectedOnBottom);
     juce__toggleButton_stick_x->addListener (this);
+    juce__toggleButton_stick_x->setToggleState (true, juce::dontSendNotification);
     juce__toggleButton_stick_x->setColour (juce::ToggleButton::textColourId, juce::Colour (0x50ffffff));
 
     juce__toggleButton_stick_y.reset (new juce::ToggleButton ("toggle_Stick_Y"));
@@ -46,6 +47,7 @@ StickGUI::StickGUI ()
     juce__toggleButton_stick_y->setButtonText (TRANS ("Y"));
     juce__toggleButton_stick_y->setConnectedEdges (juce::Button::ConnectedOnRight | juce::Button::ConnectedOnTop);
     juce__toggleButton_stick_y->addListener (this);
+    juce__toggleButton_stick_y->setToggleState (true, juce::dontSendNotification);
     juce__toggleButton_stick_y->setColour (juce::ToggleButton::textColourId, juce::Colour (0x50ffffff));
 
 
@@ -56,8 +58,6 @@ StickGUI::StickGUI ()
 
 
     //[Constructor] You can add your own custom stuff here..
-    juce__toggleButton_stick_x->setToggleState(true, juce::sendNotification);
-    juce__toggleButton_stick_y->setToggleState(true, juce::sendNotification);
     enableX = true;
     enableY = true;
     //setSize (Stickheight*2, Stickheight*2);
@@ -204,11 +204,11 @@ BEGIN_JUCER_METADATA
   <TOGGLEBUTTON name="Toggle_Stick_X" id="ce6f09ac788bf2b9" memberName="juce__toggleButton_stick_x"
                 virtualName="" explicitFocusOrder="0" pos="5.769% 78.846% 32.692% 17.308%"
                 txtcol="50ffffff" buttonText="X" connectedEdges="9" needsCallback="1"
-                radioGroupId="0" state="0"/>
+                radioGroupId="0" state="1"/>
   <TOGGLEBUTTON name="toggle_Stick_Y" id="56b937c86828f442" memberName="juce__toggleButton_stick_y"
                 virtualName="" explicitFocusOrder="0" pos="61.538% 5.769% 32.692% 17.308%"
                 txtcol="50ffffff" buttonText="Y" connectedEdges="6" needsCallback="1"
-                radioGroupId="0" state="0"/>
+                radioGroupId="0" state="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

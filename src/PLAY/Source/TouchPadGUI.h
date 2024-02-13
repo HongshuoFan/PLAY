@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.9
+  Created with Projucer version: 7.0.10
 
   ------------------------------------------------------------------------------
 
@@ -34,7 +34,8 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class TouchPadGUI  : public juce::Component
+class TouchPadGUI  : public juce::Component,
+                     public juce::Button::Listener
 {
 public:
     //==============================================================================
@@ -44,12 +45,15 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     void updateTouchPad_1(DualSense::Touch Point1);
+    bool isP1Enable_x, isP1Enable_y;
     void updateTouchPad_2(DualSense::Touch Point2);
+    bool isP2Enable_x, isP2Enable_y;
     bool pressTouchPad;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
     void resized() override;
+    void buttonClicked (juce::Button* buttonThatWasClicked) override;
 
 
 
@@ -65,6 +69,10 @@ private:
     //[/UserVariables]
 
     //==============================================================================
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton_p1x;
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton_p1y;
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton_p2x;
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton_p2y;
 
 
     //==============================================================================
