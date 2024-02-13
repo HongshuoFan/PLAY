@@ -55,8 +55,24 @@ namespace DualSense {
         float y;
         
         bool stickPress;
+    
         
     } AnalogStick;
+
+    typedef struct _EnableXY {
+        
+        bool x;
+        bool y;
+    
+    } EnableXY;
+
+    typedef struct _EnableXYZ {
+    
+        bool x;
+        bool y;
+        bool z;
+        
+    } EnableXYZ;
 
     /// <summary>
     /// 3 Component vector
@@ -449,4 +465,13 @@ namespace DualSense {
         TriggerEffect rightTriggerEffect;
 
     } DualSenseOutputState;
+
+    typedef struct _DualSenseEnableState {
+        
+        EnableXY leftStickStates;
+        EnableXY rightStickStates;
+        EnableXY touchPoint1States;
+        EnableXY touchPoint2States;
+    
+    } DualSenseEnableState;
 }
