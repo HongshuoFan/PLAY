@@ -300,7 +300,7 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
 
 }
 
-void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState _dualSenseInput)
+void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState _dualSenseInput, DualSense::DualSenseEnableState _dualSenseEnableState)
 {
     if(juce__toggleButton_MIDI->getToggleState())
     {
@@ -330,14 +330,26 @@ void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState 
         handleTrigger(1, _dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger);
         //Breath Controller (MSB)
         handleTrigger(2, _dualSenseInput.rightTrigger, last_dualSenseInput.rightTrigger);
-        //Volume (MSB)
-        handleTrigger(7, _dualSenseInput.leftStick.x, last_dualSenseInput.leftStick.x);
-        //Balance (MSB)
-        handleTrigger(8, _dualSenseInput.leftStick.y, last_dualSenseInput.leftStick.y);
-        //Pan (MSB)
-        handleTrigger(10, _dualSenseInput.rightStick.x, last_dualSenseInput.rightStick.x);
-        //Expression (MSB)
-        handleTrigger(11, _dualSenseInput.rightStick.y, last_dualSenseInput.rightStick.y);
+        
+        if(_dualSenseEnableState.leftStickStates.x){
+            //Volume (MSB)
+            handleTrigger(7, _dualSenseInput.leftStick.x, last_dualSenseInput.leftStick.x);
+        }
+        
+        if(_dualSenseEnableState.leftStickStates.y){
+            //Balance (MSB)
+            handleTrigger(8, _dualSenseInput.leftStick.y, last_dualSenseInput.leftStick.y);
+        }
+        
+        if(_dualSenseEnableState.rightStickStates.x){
+            //Pan (MSB)
+            handleTrigger(10, _dualSenseInput.rightStick.x, last_dualSenseInput.rightStick.x);
+        }
+        
+        if(_dualSenseEnableState.rightStickStates.y){
+            //Expression (MSB)
+            handleTrigger(11, _dualSenseInput.rightStick.y, last_dualSenseInput.rightStick.y);
+        }
 
         //Effect Controller 1 (MSB)
         handleTrigger(12, _dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x);
