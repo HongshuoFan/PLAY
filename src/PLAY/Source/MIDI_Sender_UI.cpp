@@ -350,16 +350,26 @@ void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState 
             //Expression (MSB)
             handleTrigger(11, _dualSenseInput.rightStick.y, last_dualSenseInput.rightStick.y);
         }
-
-        //Effect Controller 1 (MSB)
-        handleTrigger(12, _dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x);
-        //Effect Controller 2 (MSB)
-        handleTrigger(13, _dualSenseInput.touchPoint1.y, last_dualSenseInput.touchPoint1.y);
-
-        //Undefined (MSB)
-        handleTrigger(14, _dualSenseInput.touchPoint2.x, last_dualSenseInput.touchPoint2.x);
-        //Undefined (MSB)
-        handleTrigger(15, _dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y);
+        
+        if(_dualSenseEnableState.touchPoint1States.x){
+            //Effect Controller 1 (MSB)
+            handleTrigger(12, _dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x);
+        }
+        
+        if(_dualSenseEnableState.touchPoint1States.y){
+            //Effect Controller 2 (MSB)
+            handleTrigger(13, _dualSenseInput.touchPoint1.y, last_dualSenseInput.touchPoint1.y);
+        }
+        
+        if(_dualSenseEnableState.touchPoint2States.x){
+            //Undefined (MSB)
+            handleTrigger(14, _dualSenseInput.touchPoint2.x, last_dualSenseInput.touchPoint2.x);
+        }
+        
+        if(_dualSenseEnableState.touchPoint2States.y){
+            //Undefined (MSB)
+            handleTrigger(15, _dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y);
+        }
 
         //General Purpose (MSB) gyroscope
         handleTrigger(16, _dualSenseInput.gyroscope.x, last_dualSenseInput.gyroscope.x);
