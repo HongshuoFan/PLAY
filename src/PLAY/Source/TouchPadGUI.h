@@ -49,6 +49,7 @@ public:
     void updateTouchPad_2(DualSense::Touch Point2);
     bool isP2Enable_x, isP2Enable_y;
     bool pressTouchPad;
+    void changeStates(bool new_state);
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;

@@ -46,6 +46,7 @@ public:
 
     void updatePoint(float x, float y, bool button);
     bool enableX, enableY;
+    void changeStates(bool new_states);
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;

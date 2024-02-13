@@ -159,7 +159,8 @@ void StickGUI::mouseDrag (const juce::MouseEvent& e)
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
-void StickGUI::updatePoint(float x, float y, bool button) {
+void StickGUI::updatePoint(float x, float y, bool button)
+{
 
     px = x * proportionOfWidth (0.9f);
     //px = fmax(1, fmin(px, getWidth()));
@@ -176,6 +177,12 @@ void StickGUI::updatePoint(float x, float y, bool button) {
         pointColour = offColour;
     }
 
+}
+
+void StickGUI::changeStates(bool new_states)
+{
+    juce__toggleButton_stick_x->setToggleState (new_states, juce::sendNotification);
+    juce__toggleButton_stick_y->setToggleState (new_states, juce::sendNotification);
 }
 
 //[/MiscUserCode]
