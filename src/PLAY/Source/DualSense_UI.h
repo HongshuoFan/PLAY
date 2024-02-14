@@ -24,6 +24,7 @@
 #include "StickGUI.h"
 #include "TouchPadGUI.h"
 #include "DualSenseState.h"
+#include "vec3GUI.h"
 //[/Headers]
 
 
@@ -72,6 +73,8 @@ private:
     std::unique_ptr<StickGUI> Left_Stick;
     std::unique_ptr<StickGUI> Right_Stick;
     std::unique_ptr<TouchPadGUI> TouchPad;
+    std::unique_ptr<vec3GUI> Acc;
+    std::unique_ptr<vec3GUI> Gyo;
     //float clamp(float v, float min, float max);
     //TouchPadGUI touchPad;
     //[/UserVariables]
@@ -91,14 +94,6 @@ private:
     std::unique_ptr<juce::TextButton> juce__textButton_menu;
     std::unique_ptr<juce::Slider> juce__slider_L_Trigger;
     std::unique_ptr<juce::Slider> juce__slider_R_Trigger;
-    std::unique_ptr<juce::Slider> juce__slider_acc_x;
-    std::unique_ptr<juce::Label> juce__label_acc;
-    std::unique_ptr<juce::Slider> juce__slider_acc_y;
-    std::unique_ptr<juce::Slider> juce__slider_acc_z;
-    std::unique_ptr<juce::Label> juce__label_Gyroscope;
-    std::unique_ptr<juce::Slider> juce__slider_gyr_x;
-    std::unique_ptr<juce::Slider> juce__slider_gyr_y;
-    std::unique_ptr<juce::Slider> juce__slider_gyr_z;
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_IMU;
     std::unique_ptr<juce::Slider> juce__slider_force_Trigger;
     std::unique_ptr<juce::TextButton> juce__textButton_UpdateTrigger;

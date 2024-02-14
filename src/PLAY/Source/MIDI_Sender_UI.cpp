@@ -370,15 +370,34 @@ void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState 
             //Undefined (MSB)
             handleTrigger(15, _dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y);
         }
-
-        //General Purpose (MSB) gyroscope
-        handleTrigger(16, _dualSenseInput.gyroscope.x, last_dualSenseInput.gyroscope.x);
-        handleTrigger(17, _dualSenseInput.gyroscope.y, last_dualSenseInput.gyroscope.y);
-        handleTrigger(18, _dualSenseInput.gyroscope.z, last_dualSenseInput.gyroscope.z);
-
-        handleTrigger(19, _dualSenseInput.accelerometer.x, last_dualSenseInput.accelerometer.x);
-        handleTrigger(20, _dualSenseInput.accelerometer.y, last_dualSenseInput.accelerometer.y);
-        handleTrigger(21, _dualSenseInput.accelerometer.z, last_dualSenseInput.accelerometer.z);
+        
+        if(_dualSenseEnableState.Gyo_states.x){
+            //General Purpose (MSB) gyroscope
+            float gyo_x = _dualSenseInput.gyroscope.x/1000;
+            handleTrigger(16, gyo_x, last_dualSenseInput.gyroscope.x);
+        }
+        
+        if(_dualSenseEnableState.Gyo_states.y){
+            float gyo_y = _dualSenseInput.gyroscope.y/1000;
+            handleTrigger(17, gyo_y, last_dualSenseInput.gyroscope.y);
+        }
+        
+        if(_dualSenseEnableState.Gyo_states.z){
+            float gyo_z = _dualSenseInput.gyroscope.z/1000;
+            handleTrigger(18, gyo_z, last_dualSenseInput.gyroscope.z);
+        }
+        
+        if(_dualSenseEnableState.Acc_states.x){
+            handleTrigger(19, _dualSenseInput.accelerometer.x, last_dualSenseInput.accelerometer.x);
+        }
+        
+        if(_dualSenseEnableState.Acc_states.y){
+            handleTrigger(20, _dualSenseInput.accelerometer.y, last_dualSenseInput.accelerometer.y);
+        }
+        
+        if(_dualSenseEnableState.Acc_states.z){
+            handleTrigger(21, _dualSenseInput.accelerometer.z, last_dualSenseInput.accelerometer.z);
+        }
 
     }
 }

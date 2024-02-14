@@ -472,6 +472,8 @@ namespace DualSense {
         EnableXY rightStickStates;
         EnableXY touchPoint1States;
         EnableXY touchPoint2States;
+        EnableXYZ Acc_states;
+        EnableXYZ Gyo_states;
     
     } DualSenseEnableState;
 }

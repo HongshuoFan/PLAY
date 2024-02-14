@@ -243,7 +243,7 @@ void TouchPadGUI::changeStates(bool new_state)
     juce__toggleButton_p1y->setToggleState (new_state, juce::sendNotification);
     juce__toggleButton_p2x->setToggleState (new_state, juce::sendNotification);
     juce__toggleButton_p2y->setToggleState (new_state, juce::sendNotification);
-    
+
 }
 //[/MiscUserCode]
 
