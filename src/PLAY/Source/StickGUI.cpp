@@ -112,7 +112,7 @@ void StickGUI::resized()
     //[/UserPreResize]
 
     juce__toggleButton_stick_x->setBounds (proportionOfWidth (0.0577f), proportionOfHeight (0.7885f), proportionOfWidth (0.3269f), proportionOfHeight (0.1731f));
-    juce__toggleButton_stick_y->setBounds (proportionOfWidth (0.6154f), proportionOfHeight (0.0577f), proportionOfWidth (0.3269f), proportionOfHeight (0.1731f));
+    juce__toggleButton_stick_y->setBounds (proportionOfWidth (0.6442f), proportionOfHeight (0.0577f), proportionOfWidth (0.3269f), proportionOfHeight (0.1731f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -213,7 +213,7 @@ BEGIN_JUCER_METADATA
                 txtcol="50ffffff" buttonText="X" connectedEdges="9" needsCallback="1"
                 radioGroupId="0" state="1"/>
   <TOGGLEBUTTON name="toggle_Stick_Y" id="56b937c86828f442" memberName="juce__toggleButton_stick_y"
-                virtualName="" explicitFocusOrder="0" pos="61.538% 5.769% 32.692% 17.308%"
+                virtualName="" explicitFocusOrder="0" pos="64.423% 5.769% 32.692% 17.308%"
                 txtcol="50ffffff" buttonText="Y" connectedEdges="6" needsCallback="1"
                 radioGroupId="0" state="1"/>
 </JUCER_COMPONENT>
