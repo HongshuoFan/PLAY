@@ -300,7 +300,7 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
 
 }
 
-void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState _dualSenseInput, DualSense::DualSenseEnableState _dualSenseEnableState)
+void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState _dualSenseInput, DualSense::DualSenseEnableStates _dualSenseEnableState)
 {
     if(juce__toggleButton_MIDI->getToggleState())
     {

@@ -50,7 +50,7 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
     void update() override;
     DualSense::DualSenseInputState DS_UI_input;
-    DualSense::DualSenseEnableState DS_EnableStats;
+    DualSense::DualSenseEnableStates DS_EnableStats;
 
     bool isConnected;
     bool enableIMU;

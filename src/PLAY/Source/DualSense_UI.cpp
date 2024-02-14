@@ -221,6 +221,8 @@ DualSense_UI::~DualSense_UI()
     Left_Stick = nullptr;
     Right_Stick = nullptr;
     TouchPad = nullptr;
+    Acc = nullptr;
+    Gyo = nullptr;
     //[/Destructor]
 }
 

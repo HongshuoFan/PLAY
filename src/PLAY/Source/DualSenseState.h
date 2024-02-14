@@ -466,7 +466,7 @@ namespace DualSense {
 
     } DualSenseOutputState;
 
-    typedef struct _DualSenseEnableState {
+    typedef struct _DualSenseEnableStates {
         
         EnableXY leftStickStates;
         EnableXY rightStickStates;
@@ -475,5 +475,5 @@ namespace DualSense {
         EnableXYZ Acc_states;
         EnableXYZ Gyo_states;
     
-    } DualSenseEnableState;
+    } DualSenseEnableStates;
 }
