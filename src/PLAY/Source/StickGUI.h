@@ -52,7 +52,6 @@ public:
     void paint (juce::Graphics& g) override;
     void resized() override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
-    void mouseDrag (const juce::MouseEvent& e) override;
 
 
 

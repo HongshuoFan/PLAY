@@ -111,8 +111,8 @@ void StickGUI::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    juce__toggleButton_stick_x->setBounds (proportionOfWidth (0.0577f), proportionOfHeight (0.7885f), proportionOfWidth (0.3269f), proportionOfHeight (0.1731f));
-    juce__toggleButton_stick_y->setBounds (proportionOfWidth (0.6442f), proportionOfHeight (0.0577f), proportionOfWidth (0.3269f), proportionOfHeight (0.1731f));
+    juce__toggleButton_stick_x->setBounds (proportionOfWidth (0.0402f), proportionOfHeight (0.6099f), proportionOfWidth (0.2289f), proportionOfHeight (0.1343f));
+    juce__toggleButton_stick_y->setBounds (proportionOfWidth (0.4508f), proportionOfHeight (0.0445f), proportionOfWidth (0.2289f), proportionOfHeight (0.1343f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -139,37 +139,28 @@ void StickGUI::buttonClicked (juce::Button* buttonThatWasClicked)
     //[/UserbuttonClicked_Post]
 }
 
-void StickGUI::mouseDrag (const juce::MouseEvent& e)
-{
-    //[UserCode_mouseDrag] -- Add your code here...
-//
-//    float mouseOffsetX = e.getOffsetFromDragStart().getX();
-//    float mouseOffsetY = e.getOffsetFromDragStart().getY();
-//    float X_diff = previousMouseX - mouseOffsetX;
-//    float Y_diff = previousMouseY - mouseOffsetY;
-//    px += X_diff;
-//    py += Y_diff;
-//
-////    std::cout<< nX<<"\n";
-//    updatePoint(px,py,0);
-    //[/UserCode_mouseDrag]
-}
-
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
 void StickGUI::updatePoint(float x, float y, bool button)
 {
-
-    px = x * proportionOfWidth (0.9f);
-    //px = fmax(1, fmin(px, getWidth()));
     float w = getWidth();
-    px = std::clamp(px, 1.0f, w);
-
-    py = proportionOfHeight (0.9f) - (y * proportionOfHeight (0.9f));
     float h = getHeight();
-    py = std::clamp(py, 1.0f, h);
+
+    if(enableX){
+        px = x * proportionOfWidth (0.9f);
+        px = std::clamp(px, 1.0f, w);
+    }else{
+        px = 0.5 * w;
+    }
+
+    if(enableY){
+        py = proportionOfHeight (0.9f) - (y * proportionOfHeight (0.9f));
+        py = std::clamp(py, 1.0f, h);
+    }else{
+        py = 0.5 * h;
+    }
 
     if (button){
         pointColour = onColour;
@@ -201,19 +192,16 @@ BEGIN_JUCER_METADATA
                  parentClasses="public juce::Component" constructorParams="" variableInitialisers=""
                  snapPixels="2" snapActive="0" snapShown="0" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="104" initialHeight="104">
-  <METHODS>
-    <METHOD name="mouseDrag (const juce::MouseEvent&amp; e)"/>
-  </METHODS>
   <BACKGROUND backgroundColour="323e44">
     <ROUNDRECT pos="50%c 50%c 96.154% 96.154%" cornerSize="10.0" fill="solid: a5852a"
                hasStroke="1" stroke="2, mitered, butt" strokeColour="solid: ff2aa582"/>
   </BACKGROUND>
   <TOGGLEBUTTON name="Toggle_Stick_X" id="ce6f09ac788bf2b9" memberName="juce__toggleButton_stick_x"
-                virtualName="" explicitFocusOrder="0" pos="5.769% 78.846% 32.692% 17.308%"
+                virtualName="" explicitFocusOrder="0" pos="3.846% 60.577% 23.077% 13.462%"
                 txtcol="50ffffff" buttonText="X" connectedEdges="9" needsCallback="1"
                 radioGroupId="0" state="1"/>
   <TOGGLEBUTTON name="toggle_Stick_Y" id="56b937c86828f442" memberName="juce__toggleButton_stick_y"
-                virtualName="" explicitFocusOrder="0" pos="64.423% 5.769% 32.692% 17.308%"
+                virtualName="" explicitFocusOrder="0" pos="45.192% 4.808% 23.077% 13.462%"
                 txtcol="50ffffff" buttonText="Y" connectedEdges="6" needsCallback="1"
                 radioGroupId="0" state="1"/>
 </JUCER_COMPONENT>
