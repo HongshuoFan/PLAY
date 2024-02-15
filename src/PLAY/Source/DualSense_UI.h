@@ -57,7 +57,7 @@ public:
     std::function<void()> UpdateVibration;
     bool virbration = false;
     std::function<void()> UpdateTriggerForce;
-
+    std::function<void()> changeDevice;
     float triggerForce = 0.;
     //[/UserMethods]
 
@@ -99,6 +99,7 @@ private:
     std::unique_ptr<juce::TextButton> juce__textButton_UpdateTrigger;
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_vibration;
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_enableAll;
+    std::unique_ptr<juce::TextButton> juce__textButton;
     juce::Path internalPath1;
 
 

@@ -157,6 +157,12 @@ DualSense_UI::DualSense_UI ()
 
     juce__toggleButton_enableAll->setBounds (108, 216, 96, 24);
 
+    juce__textButton.reset (new juce::TextButton ("new button"));
+    addAndMakeVisible (juce__textButton.get());
+    juce__textButton->setButtonText (TRANS ("Change Device"));
+    juce__textButton->addListener (this);
+    juce__textButton->setColour (juce::TextButton::buttonColourId, juce::Colours::red);
+
     internalPath1.startNewSubPath (354.0f, 226.0f);
     internalPath1.lineTo (444.0f, 226.0f);
     internalPath1.quadraticTo (468.0f, 223.0f, 496.0f, 252.0f);
@@ -215,6 +221,7 @@ DualSense_UI::~DualSense_UI()
     juce__textButton_UpdateTrigger = nullptr;
     juce__toggleButton_vibration = nullptr;
     juce__toggleButton_enableAll = nullptr;
+    juce__textButton = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -264,10 +271,11 @@ void DualSense_UI::resized()
     juce__textButton_r1->setBounds (proportionOfWidth (0.7200f), proportionOfHeight (0.0250f), proportionOfWidth (0.0600f), proportionOfHeight (0.0525f));
     juce__textButton_Select->setBounds (proportionOfWidth (0.2943f), proportionOfHeight (0.1375f), proportionOfWidth (0.0414f), proportionOfHeight (0.0325f));
     juce__textButton_menu->setBounds (proportionOfWidth (0.6614f), proportionOfHeight (0.1425f), proportionOfWidth (0.0414f), proportionOfHeight (0.0325f));
-    juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0100f), proportionOfHeight (0.0275f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
-    juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8857f), proportionOfHeight (0.0275f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
+    juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0100f), proportionOfHeight (0.2075f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
+    juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8857f), proportionOfHeight (0.2075f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
     juce__slider_force_Trigger->setBounds (proportionOfWidth (0.7571f), proportionOfHeight (0.4300f), proportionOfWidth (0.0729f), proportionOfHeight (0.3275f));
     juce__textButton_UpdateTrigger->setBounds (proportionOfWidth (0.7414f), proportionOfHeight (0.7675f), proportionOfWidth (0.1086f), proportionOfHeight (0.0550f));
+    juce__textButton->setBounds (proportionOfWidth (0.8586f), proportionOfHeight (0.0175f), 89, 19);
     //[UserResized] Add your own custom resize handling here..
     Left_Stick->setBounds (proportionOfWidth (0.32f), proportionOfHeight (0.33f), proportionOfWidth (0.13f), proportionOfHeight (0.22f));
     Right_Stick->setBounds (proportionOfWidth (0.53f), proportionOfHeight (0.33f), proportionOfWidth (0.13f), proportionOfHeight (0.22f));
@@ -312,6 +320,12 @@ void DualSense_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         Acc->changeStates(new_state);
         Gyo->changeStates(new_state);
         //[/UserButtonCode_juce__toggleButton_enableAll]
+    }
+    else if (buttonThatWasClicked == juce__textButton.get())
+    {
+        //[UserButtonCode_juce__textButton] -- add your button handler code here..
+        changeDevice();
+        //[/UserButtonCode_juce__textButton]
     }
 
     //[UserbuttonClicked_Post]
@@ -475,12 +489,12 @@ BEGIN_JUCER_METADATA
               bgColOn="ff5f9ea0" buttonText="Menu" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <SLIDER name="L_Trigger" id="108db3ed35a76737" memberName="juce__slider_L_Trigger"
-          virtualName="" explicitFocusOrder="0" pos="1% 2.75% 10% 50%"
+          virtualName="" explicitFocusOrder="0" pos="1% 20.75% 10% 50%"
           min="0.0" max="1.0" int="0.01" style="LinearVertical" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
   <SLIDER name="R_Trigger" id="e9ba45a333eabc57" memberName="juce__slider_R_Trigger"
-          virtualName="" explicitFocusOrder="0" pos="88.571% 2.75% 10% 50%"
+          virtualName="" explicitFocusOrder="0" pos="88.571% 20.75% 10% 50%"
           min="0.0" max="1.0" int="0.01" style="LinearVertical" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
@@ -502,6 +516,10 @@ BEGIN_JUCER_METADATA
   <TOGGLEBUTTON name="toggleButton_enableAll" id="8bcdf7461574a259" memberName="juce__toggleButton_enableAll"
                 virtualName="" explicitFocusOrder="0" pos="108 216 96 24" buttonText="Dis/Enable All"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="1"/>
+  <TEXTBUTTON name="new button" id="22ebb74a08c1917" memberName="juce__textButton"
+              virtualName="" explicitFocusOrder="0" pos="85.857% 1.75% 89 19"
+              bgColOff="ffff0000" buttonText="Change Device" connectedEdges="0"
+              needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
