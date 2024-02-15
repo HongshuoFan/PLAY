@@ -22,6 +22,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
 #include "StickGUI.h"
+#include "vec3GUI.h"
 #include "JoyConState.h"
 //[/Headers]
 
@@ -53,8 +54,12 @@ public:
     std::function<void()> onLeftVibration;
     std::function<void()> onRightIMUChanged;
     std::function<void()> onRightVibration;
+    std::function<void()> changeDevice;
     bool left_imu;
     bool right_imu;
+    JoyCon::JoyCon_EnableStates left_EnableStates;
+    JoyCon::JoyCon_EnableStates right_EnableStates;
+
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -67,6 +72,10 @@ private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     std::unique_ptr<StickGUI> Left_Stick;
     std::unique_ptr<StickGUI> Right_Stick;
+    std::unique_ptr<vec3GUI> Left_Acc;
+    std::unique_ptr<vec3GUI> Left_Gyo;
+    std::unique_ptr<vec3GUI> Right_Acc;
+    std::unique_ptr<vec3GUI> Right_Gyo;
     //[/UserVariables]
 
     //==============================================================================
@@ -94,6 +103,8 @@ private:
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_R_IMU;
     std::unique_ptr<juce::TextButton> juce__textButton_L_Virb;
     std::unique_ptr<juce::TextButton> juce__textButton_R_Virb;
+    std::unique_ptr<juce::ToggleButton> juce__toggleButton_dis_enableAll;
+    std::unique_ptr<juce::TextButton> juce__textButton;
     juce::Path internalPath1;
     juce::Path internalPath2;
 

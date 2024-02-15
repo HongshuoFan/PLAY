@@ -32,13 +32,29 @@ JoyCon_UI::JoyCon_UI ()
     //[Constructor_pre] You can add your own custom stuff here..
     Left_Stick.reset(new StickGUI());
     addAndMakeVisible(Left_Stick.get());
-//    Left_Stick->setBounds(157, 70, 80, 80);
-//    Left_Stick->resized();
 
     Right_Stick.reset(new StickGUI());
     addAndMakeVisible(Right_Stick.get());
-//    Right_Stick->setBounds(372, 180, 80, 80);
-//    Right_Stick->resized();
+
+    Left_Acc.reset(new vec3GUI());
+    Left_Acc->title = "Accelerometer";
+    Left_Acc->setRange(0.f, 1.f);
+    addAndMakeVisible(Left_Acc.get());
+
+    Left_Gyo.reset(new vec3GUI());
+    Left_Gyo->title = "Gyrometer";
+    Left_Gyo->setRange(-1000.f, 1000.f);
+    addAndMakeVisible(Left_Gyo.get());
+
+    Right_Acc.reset(new vec3GUI());
+    Right_Acc->title = "Accelerometer";
+    Right_Acc->setRange(0.f, 1.f);
+    addAndMakeVisible(Right_Acc.get());
+
+    Right_Gyo.reset(new vec3GUI());
+    Right_Gyo->title = "Gyrometer";
+    Right_Gyo->setRange(-1000.f, 1000.f);
+    addAndMakeVisible(Right_Gyo.get());
     //[/Constructor_pre]
 
     juce__textButton_zl.reset (new juce::TextButton ("zl_button"));
@@ -163,6 +179,18 @@ JoyCon_UI::JoyCon_UI ()
     juce__textButton_R_Virb->addListener (this);
     juce__textButton_R_Virb->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
+    juce__toggleButton_dis_enableAll.reset (new juce::ToggleButton ("dis_enableAll_toggle"));
+    addAndMakeVisible (juce__toggleButton_dis_enableAll.get());
+    juce__toggleButton_dis_enableAll->setButtonText (TRANS ("Dis/Enable All"));
+    juce__toggleButton_dis_enableAll->addListener (this);
+    juce__toggleButton_dis_enableAll->setToggleState (true, juce::dontSendNotification);
+
+    juce__textButton.reset (new juce::TextButton ("new button"));
+    addAndMakeVisible (juce__textButton.get());
+    juce__textButton->setButtonText (TRANS ("Change Device"));
+    juce__textButton->addListener (this);
+    juce__textButton->setColour (juce::TextButton::buttonColourId, juce::Colours::red);
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -204,11 +232,17 @@ JoyCon_UI::~JoyCon_UI()
     juce__toggleButton_R_IMU = nullptr;
     juce__textButton_L_Virb = nullptr;
     juce__textButton_R_Virb = nullptr;
+    juce__toggleButton_dis_enableAll = nullptr;
+    juce__textButton = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
     Left_Stick  = nullptr;
     Right_Stick = nullptr;
+    Left_Acc = nullptr;
+    Left_Gyo = nullptr;
+    Right_Acc = nullptr;
+    Right_Gyo = nullptr;
     //[/Destructor]
 }
 
@@ -267,15 +301,17 @@ void JoyCon_UI::resized()
     juce__textButton_a->setBounds (proportionOfWidth (0.7100f), proportionOfHeight (0.2775f), proportionOfWidth (0.0514f), proportionOfHeight (0.0400f));
     juce__textButton_b->setBounds (proportionOfWidth (0.6671f), proportionOfHeight (0.3475f), proportionOfWidth (0.0514f), proportionOfHeight (0.0400f));
     juce__textButton_home->setBounds (proportionOfWidth (0.6114f), proportionOfHeight (0.8350f), proportionOfWidth (0.0600f), proportionOfHeight (0.0400f));
-    juce__toggleButton_L_IMU->setBounds (proportionOfWidth (0.4400f), proportionOfHeight (0.3500f), 82, 24);
-    juce__toggleButton_R_IMU->setBounds (proportionOfWidth (0.4400f), proportionOfHeight (0.5000f), 82, 24);
+    juce__toggleButton_L_IMU->setBounds (proportionOfWidth (0.4429f), proportionOfHeight (0.3500f), 82, 24);
+    juce__toggleButton_R_IMU->setBounds (proportionOfWidth (0.4429f), proportionOfHeight (0.5000f), 82, 24);
     juce__textButton_L_Virb->setBounds (proportionOfWidth (0.4171f), proportionOfHeight (0.8700f), proportionOfWidth (0.0600f), proportionOfHeight (0.0650f));
     juce__textButton_R_Virb->setBounds (proportionOfWidth (0.5329f), proportionOfHeight (0.8700f), proportionOfWidth (0.0614f), proportionOfHeight (0.0625f));
+    juce__toggleButton_dis_enableAll->setBounds (proportionOfWidth (0.4429f), proportionOfHeight (0.0250f), 100, 24);
+    juce__textButton->setBounds (proportionOfWidth (0.8657f), proportionOfHeight (0.0250f), 89, 19);
     internalPath1.clear();
     internalPath1.startNewSubPath (static_cast<float> (proportionOfWidth (0.4133f)), static_cast<float> (proportionOfHeight (0.8971f)));
     internalPath1.lineTo (static_cast<float> (proportionOfWidth (0.4133f)), static_cast<float> (proportionOfHeight (0.0265f)));
     internalPath1.quadraticTo (static_cast<float> (proportionOfWidth (0.2400f)), static_cast<float> (proportionOfHeight (0.0235f)), static_cast<float> (proportionOfWidth (0.2400f)), static_cast<float> (proportionOfHeight (0.1912f)));
-    internalPath1.lineTo (static_cast<float> (proportionOfWidth (0.2400f)), static_cast<float> (proportionOfHeight (0.7324f)));
+    internalPath1.lineTo (static_cast<float> (proportionOfWidth (0.2400f)), static_cast<float> (proportionOfHeight (0.7323f)));
     internalPath1.quadraticTo (static_cast<float> (proportionOfWidth (0.2400f)), static_cast<float> (proportionOfHeight (0.9647f)), static_cast<float> (proportionOfWidth (0.4133f)), static_cast<float> (proportionOfHeight (0.9647f)));
     internalPath1.closeSubPath();
 
@@ -289,6 +325,10 @@ void JoyCon_UI::resized()
     //[UserResized] Add your own custom resize handling here..
     Left_Stick->setBounds (proportionOfWidth (0.25f), proportionOfHeight (0.2f), proportionOfWidth (0.15f), proportionOfHeight (0.25f));
     Right_Stick->setBounds (proportionOfWidth (0.61f), proportionOfHeight (0.53f), proportionOfWidth (0.15f), proportionOfHeight (0.25f));
+    Left_Acc->setBounds (proportionOfWidth (0.01f), proportionOfHeight (0.1f), proportionOfWidth (0.2f), proportionOfHeight (0.4f));
+    Left_Gyo->setBounds (proportionOfWidth (0.01f), proportionOfHeight (0.51f), proportionOfWidth (0.2f), proportionOfHeight (0.4f));
+    Right_Acc->setBounds (proportionOfWidth (0.78f), proportionOfHeight (0.1f), proportionOfWidth (0.2f), proportionOfHeight (0.4f));
+    Right_Gyo->setBounds (proportionOfWidth (0.78f), proportionOfHeight (0.51f), proportionOfWidth (0.2f), proportionOfHeight (0.4f));
     //[/UserResized]
 }
 
@@ -323,6 +363,23 @@ void JoyCon_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         onRightVibration();
         //[/UserButtonCode_juce__textButton_R_Virb]
     }
+    else if (buttonThatWasClicked == juce__toggleButton_dis_enableAll.get())
+    {
+        //[UserButtonCode_juce__toggleButton_dis_enableAll] -- add your button handler code here..
+        Left_Stick->changeStates(juce__toggleButton_dis_enableAll->getToggleState());
+        Right_Stick->changeStates(juce__toggleButton_dis_enableAll->getToggleState());
+        Left_Acc->changeStates(juce__toggleButton_dis_enableAll->getToggleState());
+        Left_Gyo->changeStates(juce__toggleButton_dis_enableAll->getToggleState());
+        Right_Acc->changeStates(juce__toggleButton_dis_enableAll->getToggleState());
+        Right_Gyo->changeStates(juce__toggleButton_dis_enableAll->getToggleState());
+        //[/UserButtonCode_juce__toggleButton_dis_enableAll]
+    }
+    else if (buttonThatWasClicked == juce__textButton.get())
+    {
+        //[UserButtonCode_juce__textButton] -- add your button handler code here..
+        changeDevice();
+        //[/UserButtonCode_juce__textButton]
+    }
 
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
@@ -348,14 +405,19 @@ void JoyCon_UI::update()
         juce__textButton_right->setToggleState(l_jc_input.dpad.right, juce::sendNotification);
 
         Left_Stick->updatePoint(l_jc_input.stick.x, l_jc_input.stick.y, l_jc_input.stick.stickPress);
+        left_EnableStates.StickStates.x = Left_Stick->enableX;
+        left_EnableStates.StickStates.y = Left_Stick->enableY;
 
-//        juce__slider_l_acc_x->setValue(std::clamp(l_jc_input.accelerometer.x, .0f, 1.0f));
-//        juce__slider_l_acc_y->setValue(std::clamp(l_jc_input.accelerometer.y, .0f, 1.0f));
-//        juce__slider_l_acc_z->setValue(std::clamp(l_jc_input.accelerometer.z, .0f, 1.0f));
-//
-//        juce__slider_l_gyr_x->setValue(std::clamp(l_jc_input.gyroscope.x, -500.0f, 500.0f));
-//        juce__slider_l_gyr_y->setValue(std::clamp(l_jc_input.gyroscope.y, -500.0f, 500.0f));
-//        juce__slider_l_gyr_z->setValue(std::clamp(l_jc_input.gyroscope.z, -500.0f, 500.0f));
+        Left_Acc->updateSliders(l_jc_input.accelerometer.x, l_jc_input.accelerometer.y, l_jc_input.accelerometer.z);
+        left_EnableStates.Acc_states.x = Left_Acc->is_x_enable;
+        left_EnableStates.Acc_states.y = Left_Acc->is_y_enable;
+        left_EnableStates.Acc_states.z = Left_Acc->is_z_enable;
+
+        Left_Gyo->updateSliders(l_jc_input.gyroscope.x, l_jc_input.gyroscope.y, l_jc_input.gyroscope.z);
+        left_EnableStates.Gyo_states.x = Left_Gyo->is_x_enable;
+        left_EnableStates.Gyo_states.y = Left_Gyo->is_y_enable;
+        left_EnableStates.Gyo_states.z = Left_Gyo->is_z_enable;
+
 
         juce__textButton_zr->setToggleState(r_jc_input.buttons.zr, juce::sendNotification);
         juce__textButton_r->setToggleState(r_jc_input.buttons.r, juce::sendNotification);
@@ -370,14 +432,19 @@ void JoyCon_UI::update()
         juce__textButton_b->setToggleState(r_jc_input.buttons.b, juce::sendNotification);
 
         Right_Stick->updatePoint(r_jc_input.stick.x, r_jc_input.stick.y, r_jc_input.stick.stickPress);
+        right_EnableStates.StickStates.x = Right_Stick->enableX;
+        right_EnableStates.StickStates.y = Right_Stick->enableY;
 
-//        juce__slider_r_acc_x->setValue(std::clamp(r_jc_input.accelerometer.x, .0f, 1.0f));
-//        juce__slider_r_acc_y->setValue(std::clamp(r_jc_input.accelerometer.y, .0f, 1.0f));
-//        juce__slider_r_acc_z->setValue(std::clamp(r_jc_input.accelerometer.z, .0f, 1.0f));
-//
-//        juce__slider_r_gyr_x->setValue(std::clamp(r_jc_input.gyroscope.x, -500.0f, 500.0f));
-//        juce__slider_r_gyr_y->setValue(std::clamp(r_jc_input.gyroscope.y, -500.0f, 500.0f));
-//        juce__slider_r_gyr_z->setValue(std::clamp(r_jc_input.gyroscope.z, -500.0f, 500.0f));
+        Right_Acc->updateSliders(r_jc_input.accelerometer.x, r_jc_input.accelerometer.y, r_jc_input.accelerometer.z);
+        right_EnableStates.Acc_states.x = Right_Acc->is_x_enable;
+        right_EnableStates.Acc_states.y = Right_Acc->is_y_enable;
+        right_EnableStates.Acc_states.z = Right_Acc->is_z_enable;
+
+        Right_Gyo->updateSliders(r_jc_input.gyroscope.x, r_jc_input.gyroscope.y, r_jc_input.gyroscope.z);
+        right_EnableStates.Gyo_states.x = Right_Gyo->is_x_enable;
+        right_EnableStates.Gyo_states.y = Right_Gyo->is_y_enable;
+        right_EnableStates.Gyo_states.z = Right_Gyo->is_z_enable;
+
 
     }else{
         setFramesPerSecond(1);
@@ -482,11 +549,13 @@ BEGIN_JUCER_METADATA
               bgColOn="ff5f9ea0" buttonText="Home" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TOGGLEBUTTON name="Left_JC_IMU_toggle" id="9b99ae182d27bbd5" memberName="juce__toggleButton_L_IMU"
-                virtualName="" explicitFocusOrder="0" pos="44% 35% 82 24" buttonText="Left IMU"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+                virtualName="" explicitFocusOrder="0" pos="44.286% 35% 82 24"
+                buttonText="Left IMU" connectedEdges="0" needsCallback="1" radioGroupId="0"
+                state="0"/>
   <TOGGLEBUTTON name="Right_JC_IMU_toggle" id="c42986959dcca701" memberName="juce__toggleButton_R_IMU"
-                virtualName="" explicitFocusOrder="0" pos="44% 50% 82 24" buttonText="Right IMU"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
+                virtualName="" explicitFocusOrder="0" pos="44.286% 50% 82 24"
+                buttonText="Right IMU" connectedEdges="0" needsCallback="1" radioGroupId="0"
+                state="0"/>
   <TEXTBUTTON name="L_Virb_button" id="ba471e8ab99c2e40" memberName="juce__textButton_L_Virb"
               virtualName="" explicitFocusOrder="0" pos="41.714% 87% 6% 6.5%"
               bgColOn="ff5f9ea0" buttonText="vib" connectedEdges="0" needsCallback="1"
@@ -495,6 +564,14 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="53.286% 87% 6.143% 6.25%"
               bgColOn="ff5f9ea0" buttonText="vib" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
+  <TOGGLEBUTTON name="dis_enableAll_toggle" id="eaf2ec4b71d0bae" memberName="juce__toggleButton_dis_enableAll"
+                virtualName="" explicitFocusOrder="0" pos="44.286% 2.5% 100 24"
+                buttonText="Dis/Enable All" connectedEdges="0" needsCallback="1"
+                radioGroupId="0" state="1"/>
+  <TEXTBUTTON name="new button" id="22ebb74a08c1917" memberName="juce__textButton"
+              virtualName="" explicitFocusOrder="0" pos="86.571% 2.5% 89 19"
+              bgColOff="ffff0000" buttonText="Change Device" connectedEdges="0"
+              needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
