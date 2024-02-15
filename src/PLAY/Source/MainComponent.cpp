@@ -88,7 +88,7 @@ void MainComponent::onHIDMenuChanged()
             hidIO_1->dataReceivedCallback = [this]{onDualSense_DataReceived();};
             DS_UI.UpdateTriggerForce = [this]{update_DualSense_TriggerForce();};
             DS_UI.UpdateVibration = [this]{update_DualSense_Vibration();};
-            
+            DS_UI.changeDevice = [this]{changeDevice();};
             std::this_thread::sleep_for(std::chrono::seconds(1));
 
             // enable dual sense controller
@@ -162,6 +162,7 @@ void MainComponent::onHIDMenuChanged()
                     
                     JC_UI.onLeftVibration = [this]{Left_JC_Vib();};
                     JC_UI.onRightVibration = [this]{Right_JC_Vib();};
+                    JC_UI.changeDevice = [this]{changeDevice();};
                     
                     hidIO_1->dataReceivedCallback = [this]{onJoyCon_L_DataReceived();};
                     hidIO_2->dataReceivedCallback = [this]{onJoyCon_R_DataReceived();};
@@ -193,7 +194,7 @@ void MainComponent::onHIDMenuChanged()
 };
 
 void MainComponent::initialConnection(juce::String nameOfDevice)
-{   
+{
     //initialize hidIO
     hidIO_1.reset(new HID_IO());
     hidIO_1->dataReceivedCallback = [this]{onDataReceived();};
@@ -217,15 +218,17 @@ void MainComponent::onDataReceived()
 
 void MainComponent::onDualSense_DataReceived()
 {
-    //handle the DualSense input data
-    DS_input->evaluateDualSenseHidInputBuffer(hidIO_1->reportData, DS_UI.enableIMU);
-    DS_UI.DS_UI_input = DS_input->ds_input;
-   
-    //send DualSense data via OSC
-    osc_sender->send_DualSense_OSC_message(DS_UI.DS_UI_input);
-    
-    //send DualSense Controller data via MIDI
-    midi_sender->send_DualSense_MIDI_message(DS_UI.DS_UI_input, DS_UI.DS_EnableStats);
+    if(hidIO_1){
+        //handle the DualSense input data
+        DS_input->evaluateDualSenseHidInputBuffer(hidIO_1->reportData, DS_UI.enableIMU);
+        DS_UI.DS_UI_input = DS_input->ds_input;
+        
+        //send DualSense data via OSC
+        osc_sender->send_DualSense_OSC_message(DS_UI.DS_UI_input);
+        
+        //send DualSense Controller data via MIDI
+        midi_sender->send_DualSense_MIDI_message(DS_UI.DS_UI_input, DS_UI.DS_EnableStats);
+    }
 }
 
 void MainComponent::onXboxController_DataReceived() {
@@ -242,20 +245,24 @@ void MainComponent::onXboxController_DataReceived() {
 void MainComponent::onJoyCon_L_DataReceived() 
 {
     //hidIO_1->printReport();
-    
-    JC_input->evaluate_L_JC_HidInputBuffer(hidIO_1->reportData);
-    JC_UI.l_jc_input = JC_input->l_jc_input;
-    osc_sender->send_L_JoyCon_OSC_message(JC_UI.l_jc_input);
+    if(hidIO_1)
+    {
+        JC_input->evaluate_L_JC_HidInputBuffer(hidIO_1->reportData);
+        JC_UI.l_jc_input = JC_input->l_jc_input;
+        osc_sender->send_L_JoyCon_OSC_message(JC_UI.l_jc_input);
+    }
     
 }
 
 void MainComponent::onJoyCon_R_DataReceived()
 {
     //hidIO_2->printReport();
-    
-    JC_input->evaluate_R_JC_HidInputBuffer(hidIO_2->reportData);
-    JC_UI.r_jc_input = JC_input->r_jc_input;
-    osc_sender->send_R_JoyCon_OSC_message(JC_UI.r_jc_input);
+    if(hidIO_2)
+    {
+        JC_input->evaluate_R_JC_HidInputBuffer(hidIO_2->reportData);
+        JC_UI.r_jc_input = JC_input->r_jc_input;
+        osc_sender->send_R_JoyCon_OSC_message(JC_UI.r_jc_input);
+    }
 }
 
 void MainComponent::userTriedToCloseWindow()
@@ -264,12 +271,16 @@ void MainComponent::userTriedToCloseWindow()
     std::cout<<"User Tried To Close Window \n";
 
     if(DS_UI.isConnected){
+        DS_UI.setVisible(false);
+        DS_UI.isConnected = false;
         //disable dual sense controller
         DS_output->disConnectOutput();
         hidIO_1->writeRawData(DS_output->_output, 0xa2, 78);
     }
     
     if(JC_UI.isConnected){
+        JC_UI.setVisible(false);
+        JC_UI.isConnected = false;
         //disable dual sense controller
         JC_output->trunIMU(false);
         hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
@@ -292,11 +303,13 @@ void MainComponent::userTriedToCloseWindow()
     if(osc_sender)
     {
         osc_sender->disConnect();
+        osc_sender->setVisible(false);
     }
     //disconnect MIDI
     if(midi_sender)
     {
         midi_sender->closeConnection();
+        midi_sender->setVisible(false);
     }
 }
 
@@ -362,4 +375,10 @@ void MainComponent::update_DualSense_Vibration()
     DS_output->usbOrBT = DS_input->usbOrBT;
     DS_output->rumble(DS_UI.virbration ? 0.1 : 0.);
     hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
+}
+
+void MainComponent::changeDevice()
+{
+    userTriedToCloseWindow();
+    m_HIDMenu->setVisible(true);
 }

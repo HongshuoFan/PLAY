@@ -92,6 +92,7 @@ private:
     
     void WarningWindow(juce::String WarningMessage);
     void initialConnection(juce::String nameOfDevice);
+    void changeDevice();
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
