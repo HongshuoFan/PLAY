@@ -165,9 +165,24 @@ void vec3GUI::buttonClicked (juce::Button* buttonThatWasClicked)
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void vec3GUI::updateSliders(float x, float y, float z)
 {
-    juce__slider_x->setValue(std::clamp(x, slider_min, slider_max));
-    juce__slider_y->setValue(std::clamp(y, slider_min, slider_max));
-    juce__slider_z->setValue(std::clamp(z, slider_min, slider_max));
+    if(is_x_enable){
+        juce__slider_x->setValue(std::clamp(x, slider_min, slider_max));
+    }else{
+        juce__slider_x->setValue(0.f);
+    }
+    
+    if(is_y_enable){
+        juce__slider_y->setValue(std::clamp(y, slider_min, slider_max));
+        
+    }else{
+        juce__slider_y->setValue(0.f);
+    }
+    
+    if(is_z_enable){
+        juce__slider_z->setValue(std::clamp(z, slider_min, slider_max));
+    }else{
+        juce__slider_z->setValue(0.f);
+    }
 }
 
 void vec3GUI::setRange(double min, double max)
