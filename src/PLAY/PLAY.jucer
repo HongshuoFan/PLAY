@@ -52,9 +52,9 @@
               file="Source/DualSense_Output.cpp"/>
         <FILE id="IlMQkk" name="DualSense_Output.h" compile="0" resource="0"
               file="Source/DualSense_Output.h"/>
+        <FILE id="ETfnBH" name="DualSense_UI.h" compile="0" resource="0" file="Source/DualSense_UI.h"/>
         <FILE id="aaWo5r" name="DualSense_UI.cpp" compile="1" resource="0"
               file="Source/DualSense_UI.cpp"/>
-        <FILE id="ETfnBH" name="DualSense_UI.h" compile="0" resource="0" file="Source/DualSense_UI.h"/>
         <FILE id="rUtEAU" name="DualSenseState.h" compile="0" resource="0"
               file="Source/DualSenseState.h"/>
       </GROUP>
@@ -79,6 +79,8 @@
     <FILE id="pIGOHd" name="StickGUI.h" compile="0" resource="0" file="Source/StickGUI.h"/>
     <FILE id="M5ExM4" name="TouchPadGUI.cpp" compile="1" resource="0" file="Source/TouchPadGUI.cpp"/>
     <FILE id="ZrxBMX" name="TouchPadGUI.h" compile="0" resource="0" file="Source/TouchPadGUI.h"/>
+    <FILE id="Z46Uc4" name="vec3GUI.cpp" compile="1" resource="0" file="Source/vec3GUI.cpp"/>
+    <FILE id="viQNwk" name="vec3GUI.h" compile="0" resource="0" file="Source/vec3GUI.h"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
