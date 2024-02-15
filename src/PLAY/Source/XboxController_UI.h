@@ -36,8 +36,8 @@
                                                                     //[/Comments]
 */
 class XboxController_UI  : public juce::AnimatedAppComponent,
-                           public juce::Button::Listener,
-                           public juce::Slider::Listener
+                           public juce::Slider::Listener,
+                           public juce::Button::Listener
 {
 public:
     //==============================================================================
@@ -48,6 +48,7 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
     void update() override;
     XboxCotroller::XboxCotrollerInputState _input;
+    XboxCotroller::XboxCotroller_EnableStates xbox_enableStates;
     bool isConnected;
     std::function<void()> XboxVibration;
     uint8_t VibrationData[9];
@@ -56,8 +57,8 @@ public:
 
     void paint (juce::Graphics& g) override;
     void resized() override;
-    void buttonClicked (juce::Button* buttonThatWasClicked) override;
     void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
+    void buttonClicked (juce::Button* buttonThatWasClicked) override;
 
 
 
