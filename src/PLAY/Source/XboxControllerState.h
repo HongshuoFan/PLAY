@@ -58,6 +58,13 @@ namespace XboxCotroller {
 
     } Buttons;
 
+    typedef struct _EnableXY {
+    
+        bool x;
+        bool y;
+
+    } EnableXY;
+
     typedef struct _XboxCotrollerInputState{
         
         AnalogStick leftStick;
@@ -71,5 +78,12 @@ namespace XboxCotroller {
         float rightTrigger;
         
     } XboxCotrollerInputState;
+
+    typedef struct _XboxCotroller_EnableStates{
+        
+        EnableXY leftStickStates;
+        EnableXY rightStickStates;
+        
+    } XboxCotroller_EnableStates;
 
 }
