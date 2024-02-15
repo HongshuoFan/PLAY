@@ -204,11 +204,20 @@ void TouchPadGUI::updateTouchPad_1(DualSense::Touch Point1)
         float h = getHeight();
 
         touchPoint1.down = true;
-        touchPoint1.x = Point1.x * proportionOfWidth (0.9f);
-        touchPoint1.x = std::clamp( touchPoint1.x, 1.0f, w);
-
-        touchPoint1.y = proportionOfHeight (0.9f) - (Point1.y * proportionOfHeight (0.9f));
-        touchPoint1.y = std::clamp(touchPoint1.y, 1.0f, h);
+        if(isP1Enable_x){
+            touchPoint1.x = Point1.x * proportionOfWidth (0.9f);
+            touchPoint1.x = std::clamp( touchPoint1.x, 1.0f, w);
+        }else{
+            touchPoint1.x = 0.5 * w;
+        }
+        if(isP1Enable_y){
+            touchPoint1.y = proportionOfHeight (0.9f) - (Point1.y * proportionOfHeight (0.9f));
+            touchPoint1.y = std::clamp(touchPoint1.y, 1.0f, h);
+            
+        }else{
+            touchPoint1.y = 0.5 * h;
+        }
+        
         //std::cout<<"1:"<< touchPoint1.x << " "<<  touchPoint1.y<<"\n";
     }else{
         touchPoint1.down = false;
@@ -224,11 +233,19 @@ void TouchPadGUI::updateTouchPad_2(DualSense::Touch Point2)
         float h = getHeight();
 
         touchPoint2.down = true;
-        touchPoint2.x = Point2.x * proportionOfWidth (0.9f);
-        touchPoint2.x = std::clamp( touchPoint2.x, 1.0f, w);
-
-        touchPoint2.y = proportionOfHeight (0.9f) - (Point2.y * proportionOfHeight (0.9f));
-        touchPoint2.y = std::clamp(touchPoint2.y, 1.0f, h);
+        if(isP2Enable_x){
+            touchPoint2.x = Point2.x * proportionOfWidth (0.9f);
+            touchPoint2.x = std::clamp( touchPoint2.x, 1.0f, w);
+        }else{
+            touchPoint2.x = 0.5 * w;
+        }
+        
+        if(isP2Enable_y){
+            touchPoint2.y = proportionOfHeight (0.9f) - (Point2.y * proportionOfHeight (0.9f));
+            touchPoint2.y = std::clamp(touchPoint2.y, 1.0f, h);
+        }else{
+            touchPoint2.y = 0.5 * h;
+        }
 
     }else{
         touchPoint2.down = false;
