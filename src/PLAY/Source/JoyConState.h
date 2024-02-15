@@ -23,6 +23,21 @@ namespace JoyCon {
         float y_min = 1000.f;
     
     } AnalogStick;
+
+    typedef struct _EnableXY {
+        
+        bool x;
+        bool y;
+
+    } EnableXY;
+
+    typedef struct _EnableXYZ {
+
+        bool x;
+        bool y;
+        bool z;
+        
+    } EnableXYZ;
     
     typedef struct _Dpad{
     
@@ -110,5 +125,13 @@ namespace JoyCon {
         Vector3 gyroscope_min;
         
     } R_JoyCon_InputState;
+
+    typedef struct _JoyCon_EnableStates {
+        
+        EnableXY StickStates;
+        EnableXYZ Acc_states;
+        EnableXYZ Gyo_states;
+        
+    } JoyCon_EnableStates;
 
 }
