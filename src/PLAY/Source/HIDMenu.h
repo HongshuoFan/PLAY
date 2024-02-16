@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.9
+  Created with Projucer version: 7.0.10
 
   ------------------------------------------------------------------------------
 
@@ -49,6 +49,9 @@ public:
     IOHIDDeviceRef seletedDevice;
     std::map<juce::String, IOHIDDeviceRef> devicesMap;
     std::function<void()> onHIDMenuChanged;
+    void ClickRefresh__textButton();
+    juce::String supportDevices[4] =
+    {"Xbox Wireless Controller", "DualSense Wireless Controller", "Joy-Con (L)", "Joy-Con (R)"};
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;

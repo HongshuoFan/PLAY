@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.9
+  Created with Projucer version: 7.0.10
 
   ------------------------------------------------------------------------------
 
@@ -58,7 +58,7 @@ HIDMenu::HIDMenu ()
 
 
     //[Constructor] You can add your own custom stuff here..
-    Refresh__textButton->triggerClick();
+    ClickRefresh__textButton();
     //[/Constructor]
 }
 
@@ -142,13 +142,6 @@ void HIDMenu::buttonClicked (juce::Button* buttonThatWasClicked)
     if (buttonThatWasClicked == Refresh__textButton.get())
     {
         //[UserButtonCode_Refresh__textButton] -- add your button handler code here..
-        //[/UserButtonCode_Refresh__textButton]
-    }
-
-    //[UserbuttonClicked_Post]
-    if (buttonThatWasClicked == Refresh__textButton.get())
-    {
-        //get the HID list
         ListHID _listHid;
         _listHid.get_hid_list();
 
@@ -159,8 +152,10 @@ void HIDMenu::buttonClicked (juce::Button* buttonThatWasClicked)
         else{
             HIDcombox__comboBox->setTextWhenNoChoicesAvailable (TRANS ("(No Device)"));
         }
-
+        //[/UserButtonCode_Refresh__textButton]
     }
+
+    //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
 }
 
@@ -181,11 +176,20 @@ void HIDMenu::updateHIDcombox()
     for (const auto& entry : devicesMap) {
         juce::String key = entry.first;
         //std::cout << key << std::endl;
+        for(auto i : supportDevices){
+            if (key == i){
+                HIDcombox__comboBox->addItem(key, item_count);
+                item_count += 1;
+            }
+        }
 
-        HIDcombox__comboBox->addItem(key, item_count);
-        item_count += 1;
     }
 
+}
+
+void HIDMenu::ClickRefresh__textButton()
+{
+    Refresh__textButton->triggerClick();
 }
 
 //[/MiscUserCode]
