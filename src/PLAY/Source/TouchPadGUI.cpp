@@ -37,24 +37,28 @@ TouchPadGUI::TouchPadGUI ()
     juce__toggleButton_p1x->setButtonText (TRANS ("P1_X"));
     juce__toggleButton_p1x->addListener (this);
     juce__toggleButton_p1x->setToggleState (true, juce::dontSendNotification);
+    juce__toggleButton_p1x->setColour (juce::ToggleButton::textColourId, juce::Colour (0x807fffd4));
 
     juce__toggleButton_p1y.reset (new juce::ToggleButton ("P1_Y_toggle"));
     addAndMakeVisible (juce__toggleButton_p1y.get());
     juce__toggleButton_p1y->setButtonText (TRANS ("P1_Y"));
     juce__toggleButton_p1y->addListener (this);
     juce__toggleButton_p1y->setToggleState (true, juce::dontSendNotification);
+    juce__toggleButton_p1y->setColour (juce::ToggleButton::textColourId, juce::Colour (0x807fffd4));
 
     juce__toggleButton_p2x.reset (new juce::ToggleButton ("P2_X_toggle"));
     addAndMakeVisible (juce__toggleButton_p2x.get());
     juce__toggleButton_p2x->setButtonText (TRANS ("P2_X"));
     juce__toggleButton_p2x->addListener (this);
     juce__toggleButton_p2x->setToggleState (true, juce::dontSendNotification);
+    juce__toggleButton_p2x->setColour (juce::ToggleButton::textColourId, juce::Colour (0x807fffd4));
 
     juce__toggleButton_p2y.reset (new juce::ToggleButton ("P2_Y_toggle"));
     addAndMakeVisible (juce__toggleButton_p2y.get());
     juce__toggleButton_p2y->setButtonText (TRANS ("P2_Y"));
     juce__toggleButton_p2y->addListener (this);
     juce__toggleButton_p2y->setToggleState (true, juce::dontSendNotification);
+    juce__toggleButton_p2y->setColour (juce::ToggleButton::textColourId, juce::Colour (0x807fffd4));
 
 
     //[UserPreSize]
@@ -154,8 +158,8 @@ void TouchPadGUI::resized()
 
     juce__toggleButton_p1x->setBounds (proportionOfWidth (0.0144f), proportionOfHeight (0.6586f), proportionOfWidth (0.4471f), proportionOfHeight (0.1587f));
     juce__toggleButton_p1y->setBounds (proportionOfWidth (0.0144f), proportionOfHeight (0.8221f), proportionOfWidth (0.4471f), proportionOfHeight (0.1587f));
-    juce__toggleButton_p2x->setBounds (proportionOfWidth (0.7067f), proportionOfHeight (0.0288f), proportionOfWidth (0.4471f), proportionOfHeight (0.1587f));
-    juce__toggleButton_p2y->setBounds (proportionOfWidth (0.7067f), proportionOfHeight (0.1971f), proportionOfWidth (0.4471f), proportionOfHeight (0.1587f));
+    juce__toggleButton_p2x->setBounds (proportionOfWidth (0.7211f), proportionOfHeight (0.0288f), proportionOfWidth (0.4471f), proportionOfHeight (0.1587f));
+    juce__toggleButton_p2y->setBounds (proportionOfWidth (0.7211f), proportionOfHeight (0.1971f), proportionOfWidth (0.4471f), proportionOfHeight (0.1587f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -213,11 +217,11 @@ void TouchPadGUI::updateTouchPad_1(DualSense::Touch Point1)
         if(isP1Enable_y){
             touchPoint1.y = proportionOfHeight (0.9f) - (Point1.y * proportionOfHeight (0.9f));
             touchPoint1.y = std::clamp(touchPoint1.y, 1.0f, h);
-            
+
         }else{
             touchPoint1.y = 0.5 * h;
         }
-        
+
         //std::cout<<"1:"<< touchPoint1.x << " "<<  touchPoint1.y<<"\n";
     }else{
         touchPoint1.down = false;
@@ -239,7 +243,7 @@ void TouchPadGUI::updateTouchPad_2(DualSense::Touch Point2)
         }else{
             touchPoint2.x = 0.5 * w;
         }
-        
+
         if(isP2Enable_y){
             touchPoint2.y = proportionOfHeight (0.9f) - (Point2.y * proportionOfHeight (0.9f));
             touchPoint2.y = std::clamp(touchPoint2.y, 1.0f, h);
@@ -287,20 +291,20 @@ BEGIN_JUCER_METADATA
   </BACKGROUND>
   <TOGGLEBUTTON name="P1_X_toggle" id="67ea0a7ced2abfd5" memberName="juce__toggleButton_p1x"
                 virtualName="" explicitFocusOrder="0" pos="1.442% 65.865% 44.712% 15.865%"
-                buttonText="P1_X" connectedEdges="0" needsCallback="1" radioGroupId="0"
-                state="1"/>
+                txtcol="807fffd4" buttonText="P1_X" connectedEdges="0" needsCallback="1"
+                radioGroupId="0" state="1"/>
   <TOGGLEBUTTON name="P1_Y_toggle" id="f2c204a00d69bfc3" memberName="juce__toggleButton_p1y"
                 virtualName="" explicitFocusOrder="0" pos="1.442% 82.212% 44.712% 15.865%"
-                buttonText="P1_Y" connectedEdges="0" needsCallback="1" radioGroupId="0"
-                state="1"/>
+                txtcol="807fffd4" buttonText="P1_Y" connectedEdges="0" needsCallback="1"
+                radioGroupId="0" state="1"/>
   <TOGGLEBUTTON name="P2_X_toggle" id="536b1f9c05cb482d" memberName="juce__toggleButton_p2x"
-                virtualName="" explicitFocusOrder="0" pos="70.673% 2.885% 44.712% 15.865%"
-                buttonText="P2_X" connectedEdges="0" needsCallback="1" radioGroupId="0"
-                state="1"/>
+                virtualName="" explicitFocusOrder="0" pos="72.115% 2.885% 44.712% 15.865%"
+                txtcol="807fffd4" buttonText="P2_X" connectedEdges="0" needsCallback="1"
+                radioGroupId="0" state="1"/>
   <TOGGLEBUTTON name="P2_Y_toggle" id="d392cfcd82c69278" memberName="juce__toggleButton_p2y"
-                virtualName="" explicitFocusOrder="0" pos="70.673% 19.712% 44.712% 15.865%"
-                buttonText="P2_Y" connectedEdges="0" needsCallback="1" radioGroupId="0"
-                state="1"/>
+                virtualName="" explicitFocusOrder="0" pos="72.115% 19.712% 44.712% 15.865%"
+                txtcol="807fffd4" buttonText="P2_Y" connectedEdges="0" needsCallback="1"
+                radioGroupId="0" state="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
