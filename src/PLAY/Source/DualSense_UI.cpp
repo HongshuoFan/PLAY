@@ -273,8 +273,8 @@ void DualSense_UI::resized()
     juce__textButton_menu->setBounds (proportionOfWidth (0.6614f), proportionOfHeight (0.1425f), proportionOfWidth (0.0414f), proportionOfHeight (0.0325f));
     juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0100f), proportionOfHeight (0.2075f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
     juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8857f), proportionOfHeight (0.2075f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
-    juce__slider_force_Trigger->setBounds (proportionOfWidth (0.7571f), proportionOfHeight (0.4300f), proportionOfWidth (0.0729f), proportionOfHeight (0.3275f));
-    juce__textButton_UpdateTrigger->setBounds (proportionOfWidth (0.7414f), proportionOfHeight (0.7675f), proportionOfWidth (0.1086f), proportionOfHeight (0.0550f));
+    juce__slider_force_Trigger->setBounds (proportionOfWidth (0.7700f), proportionOfHeight (0.4275f), proportionOfWidth (0.0729f), proportionOfHeight (0.3275f));
+    juce__textButton_UpdateTrigger->setBounds (proportionOfWidth (0.7614f), proportionOfHeight (0.7625f), proportionOfWidth (0.0886f), proportionOfHeight (0.0550f));
     juce__textButton->setBounds (proportionOfWidth (0.8586f), proportionOfHeight (0.0175f), 89, 19);
     //[UserResized] Add your own custom resize handling here..
     Left_Stick->setBounds (proportionOfWidth (0.32f), proportionOfHeight (0.33f), proportionOfWidth (0.13f), proportionOfHeight (0.22f));
@@ -324,6 +324,7 @@ void DualSense_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == juce__textButton.get())
     {
         //[UserButtonCode_juce__textButton] -- add your button handler code here..
+        juce__toggleButton_IMU->setToggleState(false, juce::sendNotification);
         changeDevice();
         //[/UserButtonCode_juce__textButton]
     }
@@ -502,12 +503,12 @@ BEGIN_JUCER_METADATA
                 virtualName="" explicitFocusOrder="0" pos="108 278 71 24" buttonText="IMU"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <SLIDER name="Trigger_force" id="a625551f52222742" memberName="juce__slider_force_Trigger"
-          virtualName="" explicitFocusOrder="0" pos="75.714% 43% 7.286% 32.75%"
+          virtualName="" explicitFocusOrder="0" pos="77% 42.75% 7.286% 32.75%"
           min="0.0" max="1.0" int="0.01" style="LinearVertical" textBoxPos="TextBoxBelow"
           textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <TEXTBUTTON name="UpdateTrigger_button" id="9145f1204ec28b2e" memberName="juce__textButton_UpdateTrigger"
-              virtualName="" explicitFocusOrder="0" pos="74.143% 76.75% 10.857% 5.5%"
+              virtualName="" explicitFocusOrder="0" pos="76.143% 76.25% 8.857% 5.5%"
               bgColOn="ff5f9ea0" buttonText="UpdateTrigger" connectedEdges="0"
               needsCallback="1" radioGroupId="0"/>
   <TOGGLEBUTTON name="toggleButton_vibration" id="1c127cb27174cff6" memberName="juce__toggleButton_vibration"
