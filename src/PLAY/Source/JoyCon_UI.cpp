@@ -377,6 +377,8 @@ void JoyCon_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == juce__textButton.get())
     {
         //[UserButtonCode_juce__textButton] -- add your button handler code here..
+        juce__toggleButton_L_IMU->setToggleState(false, juce::sendNotification);
+        juce__toggleButton_R_IMU->setToggleState(false, juce::sendNotification);
         changeDevice();
         //[/UserButtonCode_juce__textButton]
     }
