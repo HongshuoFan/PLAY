@@ -204,7 +204,9 @@ void MIDI_Sender_UI::closeConnection(){
         PlayMidiDevice->clearAllPendingMessages();
         PlayMidiDevice.reset();
         PlayMidiDevice = nullptr;
+        juce__toggleButton_MIDI->setToggleState(false, juce::sendNotification);
     }
+    
 }
 
 void MIDI_Sender_UI::sendToOutput(const juce::MidiMessage& msg)
