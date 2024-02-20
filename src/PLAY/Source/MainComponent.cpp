@@ -185,8 +185,12 @@ void MainComponent::onHIDMenuChanged()
             }
             
         }else{
-            std::cout << "connect to unknown Controller" << std::endl;
-            WarningWindow("Unsupported device");
+            if(isChangeDevice){
+                
+            }else{
+                std::cout << "connect to unknown Controller" << std::endl;
+                WarningWindow("Unsupported device");
+            }
             
             
         }
@@ -206,6 +210,7 @@ void MainComponent::initialConnection(juce::String nameOfDevice)
     //add MIDI_SenderUI
     addAndMakeVisible(midi_sender.get());
     std::cout << "connect to " << nameOfDevice << std::endl;
+    isChangeDevice = false;
 }
 
 void MainComponent::onDataReceived()
@@ -285,9 +290,9 @@ void MainComponent::userTriedToCloseWindow()
         JC_output->trunIMU(false);
         hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
         hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
-        JC_output->changeMode(0x3F);
-        hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
-        hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+        // JC_output->changeMode(0x3F);
+        // hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
+        // hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
     }
     
     //kill hidIO threads
@@ -379,6 +384,8 @@ void MainComponent::update_DualSense_Vibration()
 
 void MainComponent::changeDevice()
 {
+    isChangeDevice = true;
     userTriedToCloseWindow();
+    m_HIDMenu->ClickRefresh__textButton();
     m_HIDMenu->setVisible(true);
 }
