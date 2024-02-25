@@ -260,7 +260,7 @@ void MIDI_Sender_UI::handleTrigger(int midiControllerType, float triggerValue, f
     }
 }
 
-void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputState _xboxInput)
+void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputState _xboxInput, XboxCotroller::XboxCotroller_EnableStates _xboxEnableStat)
 {
     if(juce__toggleButton_MIDI->getToggleState())
     {
@@ -285,17 +285,26 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
         handleButton(50, _xboxInput.rightStick.stickPress, last_xboxInput.rightStick.stickPress);
 
         //Modulation Wheel
+        
         handleTrigger(1, _xboxInput.leftTrigger, last_xboxInput.leftTrigger);
         //Breath Controller (MSB)
         handleTrigger(2, _xboxInput.rightTrigger, last_xboxInput.rightTrigger);
-        //Volume (MSB)
-        handleTrigger(7, _xboxInput.leftStick.x, last_xboxInput.leftStick.x);
-        //Balance (MSB)
-        handleTrigger(8, _xboxInput.leftStick.y, last_xboxInput.leftStick.y);
-        //Pan (MSB)
-        handleTrigger(10, _xboxInput.rightStick.x, last_xboxInput.rightStick.x);
-        //Expression (MSB)
-        handleTrigger(11, _xboxInput.rightStick.y, last_xboxInput.rightStick.y);
+        if(_xboxEnableStat.leftStickStates.x){
+            //Volume (MSB)
+            handleTrigger(7, _xboxInput.leftStick.x, last_xboxInput.leftStick.x);
+        }
+        if(_xboxEnableStat.leftStickStates.y){
+            //Balance (MSB)
+            handleTrigger(8, _xboxInput.leftStick.y, last_xboxInput.leftStick.y);
+        }
+        if(_xboxEnableStat.rightStickStates.x){
+            //Pan (MSB)
+            handleTrigger(10, _xboxInput.rightStick.x, last_xboxInput.rightStick.x);
+        }
+        if(_xboxEnableStat.rightStickStates.y){
+            //Expression (MSB)
+            handleTrigger(11, _xboxInput.rightStick.y, last_xboxInput.rightStick.y);
+        }
 
     }
 
