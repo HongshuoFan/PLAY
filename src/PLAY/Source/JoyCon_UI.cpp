@@ -185,11 +185,11 @@ JoyCon_UI::JoyCon_UI ()
     juce__toggleButton_dis_enableAll->addListener (this);
     juce__toggleButton_dis_enableAll->setToggleState (true, juce::dontSendNotification);
 
-    juce__textButton.reset (new juce::TextButton ("new button"));
-    addAndMakeVisible (juce__textButton.get());
-    juce__textButton->setButtonText (TRANS ("Change Device"));
-    juce__textButton->addListener (this);
-    juce__textButton->setColour (juce::TextButton::buttonColourId, juce::Colours::red);
+    juce__textButton_ChangeDevice.reset (new juce::TextButton ("ChangeDevice_button"));
+    addAndMakeVisible (juce__textButton_ChangeDevice.get());
+    juce__textButton_ChangeDevice->setButtonText (TRANS ("Change Device"));
+    juce__textButton_ChangeDevice->addListener (this);
+    juce__textButton_ChangeDevice->setColour (juce::TextButton::buttonColourId, juce::Colours::red);
 
 
     //[UserPreSize]
@@ -233,7 +233,7 @@ JoyCon_UI::~JoyCon_UI()
     juce__textButton_L_Virb = nullptr;
     juce__textButton_R_Virb = nullptr;
     juce__toggleButton_dis_enableAll = nullptr;
-    juce__textButton = nullptr;
+    juce__textButton_ChangeDevice = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -306,7 +306,7 @@ void JoyCon_UI::resized()
     juce__textButton_L_Virb->setBounds (proportionOfWidth (0.4171f), proportionOfHeight (0.8700f), proportionOfWidth (0.0600f), proportionOfHeight (0.0650f));
     juce__textButton_R_Virb->setBounds (proportionOfWidth (0.5329f), proportionOfHeight (0.8700f), proportionOfWidth (0.0614f), proportionOfHeight (0.0625f));
     juce__toggleButton_dis_enableAll->setBounds (proportionOfWidth (0.4429f), proportionOfHeight (0.0250f), 100, 24);
-    juce__textButton->setBounds (proportionOfWidth (0.8657f), proportionOfHeight (0.0250f), 89, 19);
+    juce__textButton_ChangeDevice->setBounds (proportionOfWidth (0.8657f), proportionOfHeight (0.0250f), 89, 19);
     internalPath1.clear();
     internalPath1.startNewSubPath (static_cast<float> (proportionOfWidth (0.4133f)), static_cast<float> (proportionOfHeight (0.8971f)));
     internalPath1.lineTo (static_cast<float> (proportionOfWidth (0.4133f)), static_cast<float> (proportionOfHeight (0.0265f)));
@@ -374,13 +374,13 @@ void JoyCon_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         Right_Gyo->changeStates(juce__toggleButton_dis_enableAll->getToggleState());
         //[/UserButtonCode_juce__toggleButton_dis_enableAll]
     }
-    else if (buttonThatWasClicked == juce__textButton.get())
+    else if (buttonThatWasClicked == juce__textButton_ChangeDevice.get())
     {
-        //[UserButtonCode_juce__textButton] -- add your button handler code here..
+        //[UserButtonCode_juce__textButton_ChangeDevice] -- add your button handler code here..
         juce__toggleButton_L_IMU->setToggleState(false, juce::sendNotification);
         juce__toggleButton_R_IMU->setToggleState(false, juce::sendNotification);
         changeDevice();
-        //[/UserButtonCode_juce__textButton]
+        //[/UserButtonCode_juce__textButton_ChangeDevice]
     }
 
     //[UserbuttonClicked_Post]
@@ -570,7 +570,7 @@ BEGIN_JUCER_METADATA
                 virtualName="" explicitFocusOrder="0" pos="44.286% 2.5% 100 24"
                 buttonText="Dis/Enable All" connectedEdges="0" needsCallback="1"
                 radioGroupId="0" state="1"/>
-  <TEXTBUTTON name="new button" id="22ebb74a08c1917" memberName="juce__textButton"
+  <TEXTBUTTON name="ChangeDevice_button" id="22ebb74a08c1917" memberName="juce__textButton_ChangeDevice"
               virtualName="" explicitFocusOrder="0" pos="86.571% 2.5% 89 19"
               bgColOff="ffff0000" buttonText="Change Device" connectedEdges="0"
               needsCallback="1" radioGroupId="0"/>

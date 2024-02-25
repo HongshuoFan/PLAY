@@ -104,7 +104,7 @@ private:
     std::unique_ptr<juce::TextButton> juce__textButton_L_Virb;
     std::unique_ptr<juce::TextButton> juce__textButton_R_Virb;
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_dis_enableAll;
-    std::unique_ptr<juce::TextButton> juce__textButton;
+    std::unique_ptr<juce::TextButton> juce__textButton_ChangeDevice;
     juce::Path internalPath1;
     juce::Path internalPath2;
 
