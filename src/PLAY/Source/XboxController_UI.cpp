@@ -233,8 +233,8 @@ void XboxController_UI::resized()
     internalPath1.closeSubPath();
 
     //[UserResized] Add your own custom resize handling here..
-    Left_Stick->setBounds (proportionOfWidth (0.25), proportionOfHeight (0.17f), proportionOfWidth (0.15f), proportionOfHeight (0.23f));
-    Right_Stick->setBounds (proportionOfWidth (0.52), proportionOfHeight (0.44f), proportionOfWidth (0.15f), proportionOfHeight (0.23f));
+    Left_Stick->setBounds (proportionOfWidth (0.25), proportionOfHeight (0.17f), proportionOfWidth (0.14f), proportionOfHeight (0.23f));
+    Right_Stick->setBounds (proportionOfWidth (0.52), proportionOfHeight (0.44f), proportionOfWidth (0.14f), proportionOfHeight (0.23f));
     //[/UserResized]
 }
 
