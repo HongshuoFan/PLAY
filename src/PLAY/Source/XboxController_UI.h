@@ -36,7 +36,6 @@
                                                                     //[/Comments]
 */
 class XboxController_UI  : public juce::AnimatedAppComponent,
-                           public juce::Slider::Listener,
                            public juce::Button::Listener
 {
 public:
@@ -51,13 +50,13 @@ public:
     XboxCotroller::XboxCotroller_EnableStates xbox_enableStates;
     bool isConnected;
     std::function<void()> XboxVibration;
+    std::function<void()> changeDevice;
     uint8_t VibrationData[9];
     void setVibrationData();
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
     void resized() override;
-    void sliderValueChanged (juce::Slider* sliderThatWasMoved) override;
     void buttonClicked (juce::Button* buttonThatWasClicked) override;
 
 
@@ -92,6 +91,7 @@ private:
     std::unique_ptr<juce::Slider> juce__slider_L_Trigger;
     std::unique_ptr<juce::Slider> juce__slider_R_Trigger;
     std::unique_ptr<juce::TextButton> juce__textButton_vibration;
+    std::unique_ptr<juce::TextButton> juce__textButton_ChangeDevice;
     juce::Path internalPath1;
 
 

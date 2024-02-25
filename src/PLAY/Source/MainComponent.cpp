@@ -117,6 +117,7 @@ void MainComponent::onHIDMenuChanged()
             osc_receiver->TriggerVibration = [this]{EnableXboxControllerVibration();};
             xbxUI.isConnected = true;
             xbxUI.XboxVibration = [this]{EnableXboxControllerVibration();};
+            xbxUI.changeDevice = [this]{changeDevice();};
             //enable the UI
             addAndMakeVisible(xbxUI);
             EnableXboxControllerVibration();
@@ -293,6 +294,11 @@ void MainComponent::userTriedToCloseWindow()
         // JC_output->changeMode(0x3F);
         // hidIO_1->writeRawData(JC_output->_output, 0x01, 12);
         // hidIO_2->writeRawData(JC_output->_output, 0x01, 12);
+    }
+    
+    if(xbxUI.isConnected){
+        xbxUI.setVisible(false);
+        xbxUI.isConnected = false;
     }
     
     //kill hidIO threads

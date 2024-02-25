@@ -33,12 +33,8 @@ XboxController_UI::XboxController_UI ()
 
     Left_Stick.reset(new StickGUI());
     addAndMakeVisible(Left_Stick.get());
-    Left_Stick->setBounds(150, 65, 80, 80);
-    Left_Stick->resized();
 
     Right_Stick.reset(new StickGUI());
-    Right_Stick->setBounds(315, 130, 80, 80);
-    Right_Stick->resized();
     addAndMakeVisible(Right_Stick.get());
     //[/Constructor_pre]
 
@@ -111,19 +107,23 @@ XboxController_UI::XboxController_UI ()
     addAndMakeVisible (juce__slider_L_Trigger.get());
     juce__slider_L_Trigger->setRange (0, 1, 0.01);
     juce__slider_L_Trigger->setSliderStyle (juce::Slider::LinearVertical);
-    juce__slider_L_Trigger->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 60, 20);
-    juce__slider_L_Trigger->addListener (this);
+    juce__slider_L_Trigger->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 60, 20);
 
     juce__slider_R_Trigger.reset (new juce::Slider ("R_Trigger"));
     addAndMakeVisible (juce__slider_R_Trigger.get());
     juce__slider_R_Trigger->setRange (0, 1, 0.01);
     juce__slider_R_Trigger->setSliderStyle (juce::Slider::LinearVertical);
-    juce__slider_R_Trigger->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 60, 20);
-    juce__slider_R_Trigger->addListener (this);
+    juce__slider_R_Trigger->setTextBoxStyle (juce::Slider::TextBoxBelow, true, 60, 20);
 
     juce__textButton_vibration.reset (new juce::TextButton ("vibration"));
     addAndMakeVisible (juce__textButton_vibration.get());
     juce__textButton_vibration->addListener (this);
+
+    juce__textButton_ChangeDevice.reset (new juce::TextButton ("ChangeDevice_button"));
+    addAndMakeVisible (juce__textButton_ChangeDevice.get());
+    juce__textButton_ChangeDevice->setButtonText (TRANS ("Change Device"));
+    juce__textButton_ChangeDevice->addListener (this);
+    juce__textButton_ChangeDevice->setColour (juce::TextButton::buttonColourId, juce::Colours::red);
 
 
     //[UserPreSize]
@@ -161,6 +161,7 @@ XboxController_UI::~XboxController_UI()
     juce__slider_L_Trigger = nullptr;
     juce__slider_R_Trigger = nullptr;
     juce__textButton_vibration = nullptr;
+    juce__textButton_ChangeDevice = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -195,56 +196,37 @@ void XboxController_UI::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    juce__textButtonX->setBounds (proportionOfWidth (0.6133f), proportionOfHeight (0.2706f), 25, 25);
-    juce__textButtonY->setBounds (proportionOfWidth (0.6633f), proportionOfHeight (0.1853f), 25, 25);
-    juce__textButtonA->setBounds (proportionOfWidth (0.6633f), proportionOfHeight (0.3559f), 25, 25);
-    juce__textButtonB->setBounds (proportionOfWidth (0.7100f), proportionOfHeight (0.2706f), 25, 25);
-    juce__textButtonView->setBounds (proportionOfWidth (0.4250f), proportionOfHeight (0.2794f), 30, 15);
-    juce__textButtonLeft->setBounds (proportionOfWidth (0.3550f), proportionOfHeight (0.4794f), 20, 20);
-    juce__textButtonUp->setBounds (proportionOfWidth (0.3900f), proportionOfHeight (0.4206f), 20, 20);
-    juce__textButtonDown->setBounds (proportionOfWidth (0.3900f), proportionOfHeight (0.5412f), 20, 20);
-    juce__textButtonRight->setBounds (proportionOfWidth (0.4250f), proportionOfHeight (0.4794f), 20, 20);
-    juce__textButtonShare->setBounds (proportionOfWidth (0.4750f), proportionOfHeight (0.3529f), 30, 15);
-    juce__textButtonMenu->setBounds (proportionOfWidth (0.5283f), proportionOfHeight (0.2794f), 30, 15);
-    juce__textButtonLB->setBounds (proportionOfWidth (0.2900f), proportionOfHeight (0.0412f), 50, 20);
-    juce__textButtonRB->setBounds (proportionOfWidth (0.6250f), proportionOfHeight (0.0412f), 50, 20);
-    juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0300f), proportionOfHeight (0.1000f), proportionOfWidth (0.1083f), proportionOfHeight (0.6000f));
+    juce__textButtonX->setBounds (proportionOfWidth (0.6129f), proportionOfHeight (0.2700f), 25, 25);
+    juce__textButtonY->setBounds (proportionOfWidth (0.6629f), proportionOfHeight (0.1850f), 25, 25);
+    juce__textButtonA->setBounds (proportionOfWidth (0.6629f), proportionOfHeight (0.3550f), 25, 25);
+    juce__textButtonB->setBounds (proportionOfWidth (0.7100f), proportionOfHeight (0.2700f), 25, 25);
+    juce__textButtonView->setBounds (proportionOfWidth (0.4257f), proportionOfHeight (0.2800f), 30, 15);
+    juce__textButtonLeft->setBounds (proportionOfWidth (0.3543f), proportionOfHeight (0.4800f), 20, 20);
+    juce__textButtonUp->setBounds (proportionOfWidth (0.3900f), proportionOfHeight (0.4200f), 20, 20);
+    juce__textButtonDown->setBounds (proportionOfWidth (0.3900f), proportionOfHeight (0.5400f), 20, 20);
+    juce__textButtonRight->setBounds (proportionOfWidth (0.4257f), proportionOfHeight (0.4800f), 20, 20);
+    juce__textButtonShare->setBounds (proportionOfWidth (0.4743f), proportionOfHeight (0.3525f), 30, 15);
+    juce__textButtonMenu->setBounds (proportionOfWidth (0.5286f), proportionOfHeight (0.2800f), 30, 15);
+    juce__textButtonLB->setBounds (proportionOfWidth (0.2900f), proportionOfHeight (0.0400f), 50, 20);
+    juce__textButtonRB->setBounds (proportionOfWidth (0.6257f), proportionOfHeight (0.0400f), 50, 20);
+    juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0300f), proportionOfHeight (0.1000f), proportionOfWidth (0.1086f), proportionOfHeight (0.6000f));
     juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8700f), proportionOfHeight (0.1000f), proportionOfWidth (0.1000f), proportionOfHeight (0.6000f));
-    juce__textButton_vibration->setBounds (proportionOfWidth (0.3750f), proportionOfHeight (0.8000f), 150, 24);
+    juce__textButton_vibration->setBounds (proportionOfWidth (0.3743f), proportionOfHeight (0.8000f), 150, 24);
+    juce__textButton_ChangeDevice->setBounds (proportionOfWidth (0.8586f), proportionOfHeight (0.0275f), proportionOfWidth (0.1271f), proportionOfHeight (0.0475f));
     internalPath1.clear();
-    internalPath1.startNewSubPath (static_cast<float> (proportionOfWidth (0.5067f)), static_cast<float> (proportionOfHeight (0.1176f)));
-    internalPath1.lineTo (static_cast<float> (proportionOfWidth (0.7333f)), static_cast<float> (proportionOfHeight (0.1176f)));
+    internalPath1.startNewSubPath (static_cast<float> (proportionOfWidth (0.5067f)), static_cast<float> (proportionOfHeight (0.1177f)));
+    internalPath1.lineTo (static_cast<float> (proportionOfWidth (0.7333f)), static_cast<float> (proportionOfHeight (0.1177f)));
     internalPath1.cubicTo (static_cast<float> (proportionOfWidth (0.7600f)), static_cast<float> (proportionOfHeight (0.2118f)), static_cast<float> (proportionOfWidth (0.9467f)), static_cast<float> (proportionOfHeight (0.8471f)), static_cast<float> (proportionOfWidth (0.8000f)), static_cast<float> (proportionOfHeight (0.9412f)));
     internalPath1.quadraticTo (static_cast<float> (proportionOfWidth (0.7600f)), static_cast<float> (proportionOfHeight (0.9412f)), static_cast<float> (proportionOfWidth (0.6667f)), static_cast<float> (proportionOfHeight (0.7059f)));
     internalPath1.lineTo (static_cast<float> (proportionOfWidth (0.3333f)), static_cast<float> (proportionOfHeight (0.7059f)));
     internalPath1.quadraticTo (static_cast<float> (proportionOfWidth (0.2533f)), static_cast<float> (proportionOfHeight (0.9176f)), static_cast<float> (proportionOfWidth (0.2133f)), static_cast<float> (proportionOfHeight (0.9412f)));
-    internalPath1.cubicTo (static_cast<float> (proportionOfWidth (0.0800f)), static_cast<float> (proportionOfHeight (0.9176f)), static_cast<float> (proportionOfWidth (0.1867f)), static_cast<float> (proportionOfHeight (0.2824f)), static_cast<float> (proportionOfWidth (0.2667f)), static_cast<float> (proportionOfHeight (0.1176f)));
+    internalPath1.cubicTo (static_cast<float> (proportionOfWidth (0.0800f)), static_cast<float> (proportionOfHeight (0.9176f)), static_cast<float> (proportionOfWidth (0.1867f)), static_cast<float> (proportionOfHeight (0.2823f)), static_cast<float> (proportionOfWidth (0.2667f)), static_cast<float> (proportionOfHeight (0.1177f)));
     internalPath1.closeSubPath();
 
     //[UserResized] Add your own custom resize handling here..
-
+    Left_Stick->setBounds (proportionOfWidth (0.25), proportionOfHeight (0.17f), proportionOfWidth (0.15f), proportionOfHeight (0.23f));
+    Right_Stick->setBounds (proportionOfWidth (0.52), proportionOfHeight (0.44f), proportionOfWidth (0.15f), proportionOfHeight (0.23f));
     //[/UserResized]
-}
-
-void XboxController_UI::sliderValueChanged (juce::Slider* sliderThatWasMoved)
-{
-    //[UsersliderValueChanged_Pre]
-    //[/UsersliderValueChanged_Pre]
-
-    if (sliderThatWasMoved == juce__slider_L_Trigger.get())
-    {
-        //[UserSliderCode_juce__slider_L_Trigger] -- add your slider handling code here..
-        //std::cout<<"LT: "<<juce__slider_L_Trigger->getValue()<<"\n";
-        //[/UserSliderCode_juce__slider_L_Trigger]
-    }
-    else if (sliderThatWasMoved == juce__slider_R_Trigger.get())
-    {
-        //[UserSliderCode_juce__slider_R_Trigger] -- add your slider handling code here..
-        //[/UserSliderCode_juce__slider_R_Trigger]
-    }
-
-    //[UsersliderValueChanged_Post]
-    //[/UsersliderValueChanged_Post]
 }
 
 void XboxController_UI::buttonClicked (juce::Button* buttonThatWasClicked)
@@ -258,6 +240,12 @@ void XboxController_UI::buttonClicked (juce::Button* buttonThatWasClicked)
 
         XboxVibration();
         //[/UserButtonCode_juce__textButton_vibration]
+    }
+    else if (buttonThatWasClicked == juce__textButton_ChangeDevice.get())
+    {
+        //[UserButtonCode_juce__textButton_ChangeDevice] -- add your button handler code here..
+        changeDevice();
+        //[/UserButtonCode_juce__textButton_ChangeDevice]
     }
 
     //[UserbuttonClicked_Post]
@@ -339,72 +327,72 @@ BEGIN_JUCER_METADATA
           strokeColour="solid: ff232323" nonZeroWinding="1">s 50.667% 11.765% l 73.333% 11.765% c 76% 21.176% 94.667% 84.706%  80% 94.118% q 76% 94.118% 66.667% 70.588% l 33.333% 70.588% q 25.333% 91.765% 21.333% 94.118% c 8% 91.765% 18.667% 28.235%  26.667% 11.765% x</PATH>
   </BACKGROUND>
   <TEXTBUTTON name="ButtonX" id="dbbbdb024f1ff6a0" memberName="juce__textButtonX"
-              virtualName="" explicitFocusOrder="0" pos="61.286% 27.059% 25 25"
+              virtualName="" explicitFocusOrder="0" pos="61.286% 27% 25 25"
               bgColOn="5f7fffd4" buttonText="X" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="ButtonY" id="4a5ce7bc3858ac8" memberName="juce__textButtonY"
-              virtualName="" explicitFocusOrder="0" pos="66.286% 18.529% 25 25"
+              virtualName="" explicitFocusOrder="0" pos="66.286% 18.5% 25 25"
               posRelativeW="dbbbdb024f1ff6a0" posRelativeH="dbbbdb024f1ff6a0"
               bgColOn="5f7fffd4" buttonText="Y" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="ButtonA" id="4732bb47b4196ef4" memberName="juce__textButtonA"
-              virtualName="" explicitFocusOrder="0" pos="66.286% 35.588% 25 25"
+              virtualName="" explicitFocusOrder="0" pos="66.286% 35.5% 25 25"
               bgColOn="5f7fffd4" buttonText="A" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="ButtonB" id="b2f40fb4daba0b" memberName="juce__textButtonB"
-              virtualName="" explicitFocusOrder="0" pos="71% 27.059% 25 25"
-              bgColOn="5f7fffd4" buttonText="B" connectedEdges="0" needsCallback="0"
-              radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="71% 27% 25 25" bgColOn="5f7fffd4"
+              buttonText="B" connectedEdges="0" needsCallback="0" radioGroupId="0"/>
   <TEXTBUTTON name="ButtonView" id="2ec1cc9996d74cb6" memberName="juce__textButtonView"
-              virtualName="" explicitFocusOrder="0" pos="42.571% 27.941% 30 15"
+              virtualName="" explicitFocusOrder="0" pos="42.571% 28% 30 15"
               bgColOn="5f7fffd4" buttonText="View" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="ButtonLeft" id="9d943df2d7e5a92c" memberName="juce__textButtonLeft"
-              virtualName="" explicitFocusOrder="0" pos="35.429% 47.941% 20 20"
+              virtualName="" explicitFocusOrder="0" pos="35.429% 48% 20 20"
               bgColOn="5f7fffd4" buttonText="L" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="ButtonUp" id="8eb72bdfaab10e19" memberName="juce__textButtonUp"
-              virtualName="" explicitFocusOrder="0" pos="39% 42.059% 20 20"
-              posRelativeW="dbbbdb024f1ff6a0" posRelativeH="dbbbdb024f1ff6a0"
-              bgColOn="5f7fffd4" buttonText="U" connectedEdges="0" needsCallback="0"
-              radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="39% 42% 20 20" posRelativeW="dbbbdb024f1ff6a0"
+              posRelativeH="dbbbdb024f1ff6a0" bgColOn="5f7fffd4" buttonText="U"
+              connectedEdges="0" needsCallback="0" radioGroupId="0"/>
   <TEXTBUTTON name="ButtonDown" id="1662ca70f842ff72" memberName="juce__textButtonDown"
-              virtualName="" explicitFocusOrder="0" pos="39% 54.118% 20 20"
-              bgColOn="5f7fffd4" buttonText="D" connectedEdges="0" needsCallback="0"
-              radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="39% 54% 20 20" bgColOn="5f7fffd4"
+              buttonText="D" connectedEdges="0" needsCallback="0" radioGroupId="0"/>
   <TEXTBUTTON name="ButtonRight" id="37e4b6bd1ab69340" memberName="juce__textButtonRight"
-              virtualName="" explicitFocusOrder="0" pos="42.571% 47.941% 20 20"
+              virtualName="" explicitFocusOrder="0" pos="42.571% 48% 20 20"
               bgColOn="5f7fffd4" buttonText="R" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="ButtonShare" id="2d216db01c9308fa" memberName="juce__textButtonShare"
-              virtualName="" explicitFocusOrder="0" pos="47.429% 35.294% 30 15"
+              virtualName="" explicitFocusOrder="0" pos="47.429% 35.25% 30 15"
               bgColOn="5f7fffd4" buttonText="Share" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="ButtonMenu" id="544df2d3cd2b549e" memberName="juce__textButtonMenu"
-              virtualName="" explicitFocusOrder="0" pos="52.857% 27.941% 30 15"
+              virtualName="" explicitFocusOrder="0" pos="52.857% 28% 30 15"
               bgColOn="5f7fffd4" buttonText="Menu" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="ButtonLB" id="14cf67a7e5cde685" memberName="juce__textButtonLB"
-              virtualName="" explicitFocusOrder="0" pos="29% 4.118% 50 20"
-              bgColOn="5f7fffd4" buttonText="LB" connectedEdges="0" needsCallback="0"
-              radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="29% 4% 50 20" bgColOn="5f7fffd4"
+              buttonText="LB" connectedEdges="0" needsCallback="0" radioGroupId="0"/>
   <TEXTBUTTON name="ButtonRB" id="5c36d320842a89c3" memberName="juce__textButtonRB"
-              virtualName="" explicitFocusOrder="0" pos="62.571% 4.118% 50 20"
+              virtualName="" explicitFocusOrder="0" pos="62.571% 4% 50 20"
               bgColOn="5f7fffd4" buttonText="RB" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <SLIDER name="L_Trigger" id="108db3ed35a76737" memberName="juce__slider_L_Trigger"
           virtualName="" explicitFocusOrder="0" pos="3% 10% 10.857% 60%"
           min="0.0" max="1.0" int="0.01" style="LinearVertical" textBoxPos="TextBoxBelow"
-          textBoxEditable="1" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
-          needsCallback="1"/>
+          textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="0"/>
   <SLIDER name="R_Trigger" id="154ab14c02d0fc10" memberName="juce__slider_R_Trigger"
           virtualName="" explicitFocusOrder="0" pos="87% 10% 10% 60%" min="0.0"
           max="1.0" int="0.01" style="LinearVertical" textBoxPos="TextBoxBelow"
-          textBoxEditable="1" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
-          needsCallback="1"/>
+          textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
+          needsCallback="0"/>
   <TEXTBUTTON name="vibration" id="feb507671c52498c" memberName="juce__textButton_vibration"
               virtualName="" explicitFocusOrder="0" pos="37.429% 80% 150 24"
               buttonText="vibration" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="ChangeDevice_button" id="22ebb74a08c1917" memberName="juce__textButton_ChangeDevice"
+              virtualName="" explicitFocusOrder="0" pos="85.857% 2.75% 12.714% 4.75%"
+              bgColOff="ffff0000" buttonText="Change Device" connectedEdges="0"
+              needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
