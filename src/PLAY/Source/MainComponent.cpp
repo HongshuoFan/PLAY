@@ -242,7 +242,7 @@ void MainComponent::onXboxController_DataReceived() {
     XC_input->evaluateXboxCotrollerHidInputBuffer(hidIO_1->reportData);
     xbxUI._input = XC_input->xbox_input;
     //send Xbox Controller data via OSC
-    osc_sender->send_Xbox_OSC_message(XC_input->xbox_input);
+    osc_sender->send_Xbox_OSC_message(xbxUI._input, xbxUI.xbox_enableStates);
     //send Xbox Controller data via MIDI
     midi_sender->send_Xbox_MIDI_message(xbxUI._input, xbxUI.xbox_enableStates);
 }

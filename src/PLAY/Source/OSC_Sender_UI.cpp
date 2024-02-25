@@ -242,20 +242,26 @@ void OSC_Sender_UI::disConnect(){
     juce__toggleButton_OSC->setToggleState(false, juce::sendNotification);
 }
 
-void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState _xboxInput)
+void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState _xboxInput, XboxCotroller::XboxCotroller_EnableStates _xboxEnableStates)
 {
     if(juce__toggleButton_OSC->getToggleState()){
         float stickFliter = 0.02;
-        ConvertAndSend_float(_xboxInput.leftStick.x, last_xboxInput.leftStick.x,
-                             "/leftStick/x", last_xboxInput.leftStick.x, stickFliter);
-        ConvertAndSend_float(_xboxInput.leftStick.y, last_xboxInput.leftStick.y,
-                             "/leftStick/y", last_xboxInput.leftStick.y, stickFliter);
-        
-        ConvertAndSend_float(_xboxInput.rightStick.x, last_xboxInput.rightStick.x,
-                             "/rightStick/x", last_xboxInput.rightStick.x, stickFliter);
-        ConvertAndSend_float(_xboxInput.rightStick.y, last_xboxInput.rightStick.y,
-                             "/rightStick/y", last_xboxInput.rightStick.y, stickFliter);
-        
+        if(_xboxEnableStates.leftStickStates.x){
+            ConvertAndSend_float(_xboxInput.leftStick.x, last_xboxInput.leftStick.x,
+                                 "/leftStick/x", last_xboxInput.leftStick.x, stickFliter);
+        }
+        if(_xboxEnableStates.leftStickStates.y){
+            ConvertAndSend_float(_xboxInput.leftStick.y, last_xboxInput.leftStick.y,
+                                 "/leftStick/y", last_xboxInput.leftStick.y, stickFliter);
+        }
+        if(_xboxEnableStates.rightStickStates.x){
+            ConvertAndSend_float(_xboxInput.rightStick.x, last_xboxInput.rightStick.x,
+                                 "/rightStick/x", last_xboxInput.rightStick.x, stickFliter);
+        }
+        if(_xboxEnableStates.rightStickStates.y){
+            ConvertAndSend_float(_xboxInput.rightStick.y, last_xboxInput.rightStick.y,
+                                 "/rightStick/y", last_xboxInput.rightStick.y, stickFliter);
+        }
         ConvertAndSend_float(_xboxInput.leftTrigger, last_xboxInput.leftTrigger,
                              "/leftTrigger", last_xboxInput.leftTrigger, stickFliter);
         ConvertAndSend_float(_xboxInput.rightTrigger, last_xboxInput.rightTrigger,

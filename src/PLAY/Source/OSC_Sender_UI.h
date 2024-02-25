@@ -46,7 +46,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    void send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState _xboxInput);
+    void send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState _xboxInput, XboxCotroller::XboxCotroller_EnableStates _xboxEnableStates);
     void send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput);
     void send_L_JoyCon_OSC_message(JoyCon::L_JoyCon_InputState _l_JC_Input);
     void send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_Input);
