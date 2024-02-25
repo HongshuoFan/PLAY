@@ -157,11 +157,11 @@ DualSense_UI::DualSense_UI ()
 
     juce__toggleButton_enableAll->setBounds (108, 216, 96, 24);
 
-    juce__textButton.reset (new juce::TextButton ("new button"));
-    addAndMakeVisible (juce__textButton.get());
-    juce__textButton->setButtonText (TRANS ("Change Device"));
-    juce__textButton->addListener (this);
-    juce__textButton->setColour (juce::TextButton::buttonColourId, juce::Colours::red);
+    juce__textButton_ChangeDevice.reset (new juce::TextButton ("ChangeDevice_button"));
+    addAndMakeVisible (juce__textButton_ChangeDevice.get());
+    juce__textButton_ChangeDevice->setButtonText (TRANS ("Change Device"));
+    juce__textButton_ChangeDevice->addListener (this);
+    juce__textButton_ChangeDevice->setColour (juce::TextButton::buttonColourId, juce::Colours::red);
 
     internalPath1.startNewSubPath (354.0f, 226.0f);
     internalPath1.lineTo (444.0f, 226.0f);
@@ -221,7 +221,7 @@ DualSense_UI::~DualSense_UI()
     juce__textButton_UpdateTrigger = nullptr;
     juce__toggleButton_vibration = nullptr;
     juce__toggleButton_enableAll = nullptr;
-    juce__textButton = nullptr;
+    juce__textButton_ChangeDevice = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -275,7 +275,7 @@ void DualSense_UI::resized()
     juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8857f), proportionOfHeight (0.2075f), proportionOfWidth (0.1000f), proportionOfHeight (0.5000f));
     juce__slider_force_Trigger->setBounds (proportionOfWidth (0.7700f), proportionOfHeight (0.4275f), proportionOfWidth (0.0729f), proportionOfHeight (0.3275f));
     juce__textButton_UpdateTrigger->setBounds (proportionOfWidth (0.7614f), proportionOfHeight (0.7625f), proportionOfWidth (0.0886f), proportionOfHeight (0.0550f));
-    juce__textButton->setBounds (proportionOfWidth (0.8586f), proportionOfHeight (0.0175f), 89, 19);
+    juce__textButton_ChangeDevice->setBounds (proportionOfWidth (0.8586f), proportionOfHeight (0.0175f), 89, 19);
     //[UserResized] Add your own custom resize handling here..
     Left_Stick->setBounds (proportionOfWidth (0.32f), proportionOfHeight (0.33f), proportionOfWidth (0.13f), proportionOfHeight (0.22f));
     Right_Stick->setBounds (proportionOfWidth (0.53f), proportionOfHeight (0.33f), proportionOfWidth (0.13f), proportionOfHeight (0.22f));
@@ -321,12 +321,12 @@ void DualSense_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         Gyo->changeStates(new_state);
         //[/UserButtonCode_juce__toggleButton_enableAll]
     }
-    else if (buttonThatWasClicked == juce__textButton.get())
+    else if (buttonThatWasClicked == juce__textButton_ChangeDevice.get())
     {
-        //[UserButtonCode_juce__textButton] -- add your button handler code here..
+        //[UserButtonCode_juce__textButton_ChangeDevice] -- add your button handler code here..
         juce__toggleButton_IMU->setToggleState(false, juce::sendNotification);
         changeDevice();
-        //[/UserButtonCode_juce__textButton]
+        //[/UserButtonCode_juce__textButton_ChangeDevice]
     }
 
     //[UserbuttonClicked_Post]
@@ -517,7 +517,7 @@ BEGIN_JUCER_METADATA
   <TOGGLEBUTTON name="toggleButton_enableAll" id="8bcdf7461574a259" memberName="juce__toggleButton_enableAll"
                 virtualName="" explicitFocusOrder="0" pos="108 216 96 24" buttonText="Dis/Enable All"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="1"/>
-  <TEXTBUTTON name="new button" id="22ebb74a08c1917" memberName="juce__textButton"
+  <TEXTBUTTON name="ChangeDevice_button" id="22ebb74a08c1917" memberName="juce__textButton_ChangeDevice"
               virtualName="" explicitFocusOrder="0" pos="85.857% 1.75% 89 19"
               bgColOff="ffff0000" buttonText="Change Device" connectedEdges="0"
               needsCallback="1" radioGroupId="0"/>

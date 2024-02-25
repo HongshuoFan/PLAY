@@ -99,7 +99,7 @@ private:
     std::unique_ptr<juce::TextButton> juce__textButton_UpdateTrigger;
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_vibration;
     std::unique_ptr<juce::ToggleButton> juce__toggleButton_enableAll;
-    std::unique_ptr<juce::TextButton> juce__textButton;
+    std::unique_ptr<juce::TextButton> juce__textButton_ChangeDevice;
     juce::Path internalPath1;
 
 
