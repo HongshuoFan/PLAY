@@ -125,6 +125,14 @@ XboxController_UI::XboxController_UI ()
     juce__textButton_ChangeDevice->addListener (this);
     juce__textButton_ChangeDevice->setColour (juce::TextButton::buttonColourId, juce::Colours::red);
 
+    juce__toggleButton_enableAll.reset (new juce::ToggleButton ("toggleButton_enableAll"));
+    addAndMakeVisible (juce__toggleButton_enableAll.get());
+    juce__toggleButton_enableAll->setButtonText (TRANS ("Dis/Enable All"));
+    juce__toggleButton_enableAll->addListener (this);
+    juce__toggleButton_enableAll->setToggleState (true, juce::dontSendNotification);
+
+    juce__toggleButton_enableAll->setBounds (282, 358, 141, 24);
+
 
     //[UserPreSize]
 
@@ -162,6 +170,7 @@ XboxController_UI::~XboxController_UI()
     juce__slider_R_Trigger = nullptr;
     juce__textButton_vibration = nullptr;
     juce__textButton_ChangeDevice = nullptr;
+    juce__toggleButton_enableAll = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -211,7 +220,7 @@ void XboxController_UI::resized()
     juce__textButtonRB->setBounds (proportionOfWidth (0.6257f), proportionOfHeight (0.0400f), 50, 20);
     juce__slider_L_Trigger->setBounds (proportionOfWidth (0.0300f), proportionOfHeight (0.1000f), proportionOfWidth (0.1086f), proportionOfHeight (0.6000f));
     juce__slider_R_Trigger->setBounds (proportionOfWidth (0.8700f), proportionOfHeight (0.1000f), proportionOfWidth (0.1000f), proportionOfHeight (0.6000f));
-    juce__textButton_vibration->setBounds (proportionOfWidth (0.3743f), proportionOfHeight (0.8000f), 150, 24);
+    juce__textButton_vibration->setBounds (proportionOfWidth (0.3929f), proportionOfHeight (0.8000f), 150, 24);
     juce__textButton_ChangeDevice->setBounds (proportionOfWidth (0.8586f), proportionOfHeight (0.0275f), proportionOfWidth (0.1271f), proportionOfHeight (0.0475f));
     internalPath1.clear();
     internalPath1.startNewSubPath (static_cast<float> (proportionOfWidth (0.5067f)), static_cast<float> (proportionOfHeight (0.1177f)));
@@ -247,6 +256,14 @@ void XboxController_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         changeDevice();
         //[/UserButtonCode_juce__textButton_ChangeDevice]
     }
+    else if (buttonThatWasClicked == juce__toggleButton_enableAll.get())
+    {
+        //[UserButtonCode_juce__toggleButton_enableAll] -- add your button handler code here..
+        bool new_state = juce__toggleButton_enableAll->getToggleState();
+        Left_Stick->changeStates(new_state);
+        Right_Stick->changeStates(new_state);
+        //[/UserButtonCode_juce__toggleButton_enableAll]
+    }
 
     //[UserbuttonClicked_Post]
     //[/UserbuttonClicked_Post]
@@ -278,8 +295,15 @@ void XboxController_UI::update()
         juce__textButtonLeft->setToggleState(_input.dpad.left,  juce::sendNotification);
         juce__textButtonRight->setToggleState(_input.dpad.right,  juce::sendNotification);
 
+        xbox_enableStates.leftStickStates.x = Left_Stick->enableX;
+        xbox_enableStates.leftStickStates.y = Left_Stick->enableY;
+        xbox_enableStates.rightStickStates.x = Right_Stick->enableX;
+        xbox_enableStates.rightStickStates.y = Right_Stick->enableY;
+
         Left_Stick->updatePoint(_input.leftStick.x, _input.leftStick.y, _input.leftStick.stickPress);
         Right_Stick->updatePoint(_input.rightStick.x, _input.rightStick.y, _input.rightStick.stickPress);
+
+
 
         juce__slider_L_Trigger->setValue(std::clamp(_input.leftTrigger, 0.f, 1.0f));
         juce__slider_R_Trigger->setValue(std::clamp(_input.rightTrigger, 0.f, 1.0f));
@@ -387,12 +411,15 @@ BEGIN_JUCER_METADATA
           textBoxEditable="0" textBoxWidth="60" textBoxHeight="20" skewFactor="1.0"
           needsCallback="0"/>
   <TEXTBUTTON name="vibration" id="feb507671c52498c" memberName="juce__textButton_vibration"
-              virtualName="" explicitFocusOrder="0" pos="37.429% 80% 150 24"
+              virtualName="" explicitFocusOrder="0" pos="39.286% 80% 150 24"
               buttonText="vibration" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="ChangeDevice_button" id="22ebb74a08c1917" memberName="juce__textButton_ChangeDevice"
               virtualName="" explicitFocusOrder="0" pos="85.857% 2.75% 12.714% 4.75%"
               bgColOff="ffff0000" buttonText="Change Device" connectedEdges="0"
               needsCallback="1" radioGroupId="0"/>
+  <TOGGLEBUTTON name="toggleButton_enableAll" id="8bcdf7461574a259" memberName="juce__toggleButton_enableAll"
+                virtualName="" explicitFocusOrder="0" pos="282 358 141 24" buttonText="Dis/Enable All"
+                connectedEdges="0" needsCallback="1" radioGroupId="0" state="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
