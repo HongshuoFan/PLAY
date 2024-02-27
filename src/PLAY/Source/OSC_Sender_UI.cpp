@@ -301,19 +301,26 @@ void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState
     }
 }
 
-void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput)
+void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _dualSenseInput, DualSense::DualSenseEnableStates _dualSenseEnableStates)
 {
     if(juce__toggleButton_OSC->getToggleState()){
         float stickFliter = 0.01;
-        ConvertAndSend_float(_dualSenseInput.leftStick.x, last_dualSenseInput.leftStick.x,
-                             "/leftStick/x", last_dualSenseInput.leftStick.x, stickFliter);
-        ConvertAndSend_float(_dualSenseInput.leftStick.y, last_dualSenseInput.leftStick.y,
-                             "/leftStick/y", last_dualSenseInput.leftStick.y, stickFliter);
-        ConvertAndSend_float(_dualSenseInput.rightStick.x, last_xboxInput.rightStick.x,
-                             "/rightStick/x", last_xboxInput.rightStick.x, stickFliter);
-        ConvertAndSend_float(_dualSenseInput.rightStick.y, last_xboxInput.rightStick.y,
-                             "/rightStick/y", last_xboxInput.rightStick.y, stickFliter);
-        
+        if(_dualSenseEnableStates.leftStickStates.x){
+            ConvertAndSend_float(_dualSenseInput.leftStick.x, last_dualSenseInput.leftStick.x,
+                                 "/leftStick/x", last_dualSenseInput.leftStick.x, stickFliter);
+        }
+        if(_dualSenseEnableStates.leftStickStates.y){
+            ConvertAndSend_float(_dualSenseInput.leftStick.y, last_dualSenseInput.leftStick.y,
+                                 "/leftStick/y", last_dualSenseInput.leftStick.y, stickFliter);
+        }
+        if(_dualSenseEnableStates.rightStickStates.x){
+            ConvertAndSend_float(_dualSenseInput.rightStick.x, last_xboxInput.rightStick.x,
+                                 "/rightStick/x", last_xboxInput.rightStick.x, stickFliter);
+        }
+        if(_dualSenseEnableStates.rightStickStates.y){
+            ConvertAndSend_float(_dualSenseInput.rightStick.y, last_xboxInput.rightStick.y,
+                                 "/rightStick/y", last_xboxInput.rightStick.y, stickFliter);
+        }
         ConvertAndSend_float(_dualSenseInput.leftTrigger, last_xboxInput.leftTrigger,
                              "/leftTrigger", last_xboxInput.leftTrigger, stickFliter);
         ConvertAndSend_float(_dualSenseInput.rightTrigger, last_xboxInput.rightTrigger,
@@ -353,47 +360,68 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
                             "/touchPoint1/id", last_dualSenseInput.touchPoint1.id);
         ConvertAndSend_bool(_dualSenseInput.touchPoint1.down, last_dualSenseInput.touchPoint1.down,
                             "/touchPoint1/down", last_dualSenseInput.touchPoint1.down);
-        ConvertAndSend_float(_dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x,
-                            "/touchPoint1/x", last_dualSenseInput.touchPoint1.x, stickFliter);
-        ConvertAndSend_float(_dualSenseInput.touchPoint1.y, last_dualSenseInput.touchPoint1.y,
-                            "/touchPoint1/y", last_dualSenseInput.touchPoint1.y, stickFliter);
-
+        if(_dualSenseEnableStates.touchPoint1States.x){
+            ConvertAndSend_float(_dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x,
+                                 "/touchPoint1/x", last_dualSenseInput.touchPoint1.x, stickFliter);
+        }
+        if(_dualSenseEnableStates.touchPoint1States.y){
+            ConvertAndSend_float(_dualSenseInput.touchPoint1.y, last_dualSenseInput.touchPoint1.y,
+                                 "/touchPoint1/y", last_dualSenseInput.touchPoint1.y, stickFliter);
+        }
         ConvertAndSend_int(_dualSenseInput.touchPoint2.id, last_dualSenseInput.touchPoint2.id,
                             "/touchPoint2/id", last_dualSenseInput.touchPoint2.id);
         ConvertAndSend_bool(_dualSenseInput.touchPoint2.down, last_dualSenseInput.touchPoint2.down,
                             "/touchPoint2/down", last_dualSenseInput.touchPoint2.down);
-        ConvertAndSend_float(_dualSenseInput.touchPoint2.x, last_dualSenseInput.touchPoint2.x,
-                            "/touchPoint2/x", last_dualSenseInput.touchPoint2.x, stickFliter);
-        ConvertAndSend_float(_dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y,
-                            "/touchPoint2/y", last_dualSenseInput.touchPoint2.y, stickFliter);
-
-        ConvertAndSend_float(_dualSenseInput.accelerometer.x, last_dualSenseInput.accelerometer.x,
-                            "/accelerometer/x", last_dualSenseInput.accelerometer.x, stickFliter);
-        ConvertAndSend_float(_dualSenseInput.accelerometer.y, last_dualSenseInput.accelerometer.y,
-                            "/accelerometer/y", last_dualSenseInput.accelerometer.y, stickFliter);
-        ConvertAndSend_float(_dualSenseInput.accelerometer.z, last_dualSenseInput.accelerometer.z,
-                            "/accelerometer/z", last_dualSenseInput.accelerometer.z, stickFliter);
-
-        ConvertAndSend_float(_dualSenseInput.gyroscope.x, last_dualSenseInput.gyroscope.x,
-                            "/gyroscope/x", last_dualSenseInput.gyroscope.x, stickFliter);
-        ConvertAndSend_float(_dualSenseInput.gyroscope.y, last_dualSenseInput.gyroscope.y,
-                            "/gyroscope/y", last_dualSenseInput.gyroscope.y, stickFliter);
-        ConvertAndSend_float(_dualSenseInput.gyroscope.z, last_dualSenseInput.gyroscope.z,
-                            "/gyroscope/z", last_dualSenseInput.gyroscope.z, stickFliter);
+        if(_dualSenseEnableStates.touchPoint2States.x){
+            ConvertAndSend_float(_dualSenseInput.touchPoint2.x, last_dualSenseInput.touchPoint2.x,
+                                 "/touchPoint2/x", last_dualSenseInput.touchPoint2.x, stickFliter);
+        }
+        if(_dualSenseEnableStates.touchPoint2States.y){
+            ConvertAndSend_float(_dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y,
+                                 "/touchPoint2/y", last_dualSenseInput.touchPoint2.y, stickFliter);
+        }
+        if(_dualSenseEnableStates.Acc_states.x){
+            ConvertAndSend_float(_dualSenseInput.accelerometer.x, last_dualSenseInput.accelerometer.x,
+                                 "/accelerometer/x", last_dualSenseInput.accelerometer.x, stickFliter);
+        }
+        if(_dualSenseEnableStates.Acc_states.y){
+            ConvertAndSend_float(_dualSenseInput.accelerometer.y, last_dualSenseInput.accelerometer.y,
+                                 "/accelerometer/y", last_dualSenseInput.accelerometer.y, stickFliter);
+        }
+        if(_dualSenseEnableStates.Acc_states.z){
+            ConvertAndSend_float(_dualSenseInput.accelerometer.z, last_dualSenseInput.accelerometer.z,
+                                 "/accelerometer/z", last_dualSenseInput.accelerometer.z, stickFliter);
+        }
+        if(_dualSenseEnableStates.Gyo_states.x){
+            ConvertAndSend_float(_dualSenseInput.gyroscope.x, last_dualSenseInput.gyroscope.x,
+                                 "/gyroscope/x", last_dualSenseInput.gyroscope.x, stickFliter);
+        }
+        if(_dualSenseEnableStates.Gyo_states.y){
+            ConvertAndSend_float(_dualSenseInput.gyroscope.y, last_dualSenseInput.gyroscope.y,
+                                 "/gyroscope/y", last_dualSenseInput.gyroscope.y, stickFliter);
+        }
+        if(_dualSenseEnableStates.Gyo_states.z){
+            ConvertAndSend_float(_dualSenseInput.gyroscope.z, last_dualSenseInput.gyroscope.z,
+                                 "/gyroscope/z", last_dualSenseInput.gyroscope.z, stickFliter);
+        }
 
     }
 
 }
 
 
-void OSC_Sender_UI::send_L_JoyCon_OSC_message(JoyCon::L_JoyCon_InputState _l_JC_Input)
+void OSC_Sender_UI::send_L_JoyCon_OSC_message(JoyCon::L_JoyCon_InputState _l_JC_Input, JoyCon::JoyCon_EnableStates _l_JC_EnableState)
 {
     if(juce__toggleButton_OSC->getToggleState()){
         float stickFliter = 0.01;
-        ConvertAndSend_float(_l_JC_Input.stick.x, last_l_JC_Input.stick.x,
-                             "/leftStick/x", last_l_JC_Input.stick.x, stickFliter);
-        ConvertAndSend_float(_l_JC_Input.stick.y, last_l_JC_Input.stick.y,
-                             "/leftStick/y", last_l_JC_Input.stick.y, stickFliter);
+        if(_l_JC_EnableState.StickStates.x){
+            ConvertAndSend_float(_l_JC_Input.stick.x, last_l_JC_Input.stick.x,
+                                 "/leftStick/x", last_l_JC_Input.stick.x, stickFliter);
+        }
+        if(_l_JC_EnableState.StickStates.y){
+            ConvertAndSend_float(_l_JC_Input.stick.y, last_l_JC_Input.stick.y,
+                                 "/leftStick/y", last_l_JC_Input.stick.y, stickFliter);
+        }
         ConvertAndSend_bool(_l_JC_Input.stick.stickPress, last_l_JC_Input.stick.stickPress,
                             "/leftStick/press", last_l_JC_Input.stick.stickPress);
 
@@ -420,32 +448,48 @@ void OSC_Sender_UI::send_L_JoyCon_OSC_message(JoyCon::L_JoyCon_InputState _l_JC_
                             "/dpad/right", last_l_JC_Input.dpad.right);
 
         float acc_filter = 0.01;
-        ConvertAndSend_float(_l_JC_Input.accelerometer.x, last_l_JC_Input.accelerometer.x,
-                            "/left/accelerometer/x", last_l_JC_Input.accelerometer.x, acc_filter);
-        ConvertAndSend_float(_l_JC_Input.accelerometer.y, last_l_JC_Input.accelerometer.y,
-                            "/left/accelerometer/y", last_l_JC_Input.accelerometer.y, acc_filter);
-        ConvertAndSend_float(_l_JC_Input.accelerometer.z, last_l_JC_Input.accelerometer.z,
-                            "/left/accelerometer/z", last_l_JC_Input.accelerometer.z, acc_filter);
+        if(_l_JC_EnableState.Acc_states.x){
+            ConvertAndSend_float(_l_JC_Input.accelerometer.x, last_l_JC_Input.accelerometer.x,
+                                 "/left/accelerometer/x", last_l_JC_Input.accelerometer.x, acc_filter);
+        }
+        if(_l_JC_EnableState.Acc_states.y){
+            ConvertAndSend_float(_l_JC_Input.accelerometer.y, last_l_JC_Input.accelerometer.y,
+                                 "/left/accelerometer/y", last_l_JC_Input.accelerometer.y, acc_filter);
+        }
+        if(_l_JC_EnableState.Acc_states.z){
+            ConvertAndSend_float(_l_JC_Input.accelerometer.z, last_l_JC_Input.accelerometer.z,
+                                 "/left/accelerometer/z", last_l_JC_Input.accelerometer.z, acc_filter);
+        }
         float gyo_filter = 0.5;
-        ConvertAndSend_float(_l_JC_Input.gyroscope.x, last_l_JC_Input.gyroscope.x,
-                            "/left/gyroscope/x", last_l_JC_Input.gyroscope.x, gyo_filter);
-        ConvertAndSend_float(_l_JC_Input.gyroscope.y, last_l_JC_Input.gyroscope.y,
-                            "/left/gyroscope/y", last_l_JC_Input.gyroscope.y, gyo_filter);
-        ConvertAndSend_float(_l_JC_Input.gyroscope.z, last_l_JC_Input.gyroscope.z,
-                            "/left/gyroscope/z", last_l_JC_Input.gyroscope.z, gyo_filter);
+        if(_l_JC_EnableState.Gyo_states.x){
+            ConvertAndSend_float(_l_JC_Input.gyroscope.x, last_l_JC_Input.gyroscope.x,
+                                 "/left/gyroscope/x", last_l_JC_Input.gyroscope.x, gyo_filter);
+        }
+        if(_l_JC_EnableState.Gyo_states.y){
+            ConvertAndSend_float(_l_JC_Input.gyroscope.y, last_l_JC_Input.gyroscope.y,
+                                 "/left/gyroscope/y", last_l_JC_Input.gyroscope.y, gyo_filter);
+        }
+        if(_l_JC_EnableState.Gyo_states.z){
+            ConvertAndSend_float(_l_JC_Input.gyroscope.z, last_l_JC_Input.gyroscope.z,
+                                 "/left/gyroscope/z", last_l_JC_Input.gyroscope.z, gyo_filter);
+        }
 
     }
 
 }
 
-void OSC_Sender_UI::send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_Input)
+void OSC_Sender_UI::send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_Input, JoyCon::JoyCon_EnableStates _r_JC_EnableState)
 {
     if(juce__toggleButton_OSC->getToggleState()){
         float stickFliter = 0.01;
-        ConvertAndSend_float(_r_JC_Input.stick.x, last_r_JC_Input.stick.x,
-                             "/rightStick/x", last_r_JC_Input.stick.x, stickFliter);
-        ConvertAndSend_float(_r_JC_Input.stick.y, last_r_JC_Input.stick.y,
-                             "/rightStick/y", last_r_JC_Input.stick.y, stickFliter);
+        if(_r_JC_EnableState.StickStates.x){
+            ConvertAndSend_float(_r_JC_Input.stick.x, last_r_JC_Input.stick.x,
+                                 "/rightStick/x", last_r_JC_Input.stick.x, stickFliter);
+        }
+        if(_r_JC_EnableState.StickStates.y){
+            ConvertAndSend_float(_r_JC_Input.stick.y, last_r_JC_Input.stick.y,
+                                 "/rightStick/y", last_r_JC_Input.stick.y, stickFliter);
+        }
         ConvertAndSend_bool(_r_JC_Input.stick.stickPress, last_r_JC_Input.stick.stickPress,
                             "/rightStick/press", last_r_JC_Input.stick.stickPress);
 
@@ -472,19 +516,31 @@ void OSC_Sender_UI::send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_
                             "/buttons/b", last_r_JC_Input.buttons.b);
 
         float acc_filter = 0.01;
-        ConvertAndSend_float(_r_JC_Input.accelerometer.x, last_r_JC_Input.accelerometer.x,
-                            "/right/accelerometer/x", last_r_JC_Input.accelerometer.x, acc_filter);
-        ConvertAndSend_float(_r_JC_Input.accelerometer.y, last_r_JC_Input.accelerometer.y,
-                            "/right/accelerometer/y", last_r_JC_Input.accelerometer.y, acc_filter);
-        ConvertAndSend_float(_r_JC_Input.accelerometer.z, last_r_JC_Input.accelerometer.z,
-                            "/right/accelerometer/z", last_r_JC_Input.accelerometer.z, acc_filter);
+        if(_r_JC_EnableState.Acc_states.x){
+            ConvertAndSend_float(_r_JC_Input.accelerometer.x, last_r_JC_Input.accelerometer.x,
+                                 "/right/accelerometer/x", last_r_JC_Input.accelerometer.x, acc_filter);
+        }
+        if(_r_JC_EnableState.Acc_states.y){
+            ConvertAndSend_float(_r_JC_Input.accelerometer.y, last_r_JC_Input.accelerometer.y,
+                                 "/right/accelerometer/y", last_r_JC_Input.accelerometer.y, acc_filter);
+        }
+        if(_r_JC_EnableState.Acc_states.z){
+            ConvertAndSend_float(_r_JC_Input.accelerometer.z, last_r_JC_Input.accelerometer.z,
+                                 "/right/accelerometer/z", last_r_JC_Input.accelerometer.z, acc_filter);
+        }
         float gyo_filter = 0.5;
-        ConvertAndSend_float(_r_JC_Input.gyroscope.x, last_r_JC_Input.gyroscope.x,
-                            "/right/gyroscope/x", last_r_JC_Input.gyroscope.x, gyo_filter);
-        ConvertAndSend_float(_r_JC_Input.gyroscope.y, last_r_JC_Input.gyroscope.y,
-                            "/right/gyroscope/y", last_r_JC_Input.gyroscope.y, gyo_filter);
-        ConvertAndSend_float(_r_JC_Input.gyroscope.z, last_r_JC_Input.gyroscope.z,
-                            "/right/gyroscope/z", last_r_JC_Input.gyroscope.z, gyo_filter);
+        if(_r_JC_EnableState.Gyo_states.x){
+            ConvertAndSend_float(_r_JC_Input.gyroscope.x, last_r_JC_Input.gyroscope.x,
+                                 "/right/gyroscope/x", last_r_JC_Input.gyroscope.x, gyo_filter);
+        }
+        if(_r_JC_EnableState.Gyo_states.y){
+            ConvertAndSend_float(_r_JC_Input.gyroscope.y, last_r_JC_Input.gyroscope.y,
+                                 "/right/gyroscope/y", last_r_JC_Input.gyroscope.y, gyo_filter);
+        }
+        if(_r_JC_EnableState.Gyo_states.z){
+            ConvertAndSend_float(_r_JC_Input.gyroscope.z, last_r_JC_Input.gyroscope.z,
+                                 "/right/gyroscope/z", last_r_JC_Input.gyroscope.z, gyo_filter);
+        }
 
     }
 
