@@ -230,7 +230,7 @@ void MainComponent::onDualSense_DataReceived()
         DS_UI.DS_UI_input = DS_input->ds_input;
         
         //send DualSense data via OSC
-        osc_sender->send_DualSense_OSC_message(DS_UI.DS_UI_input);
+        osc_sender->send_DualSense_OSC_message(DS_UI.DS_UI_input, DS_UI.DS_EnableStats);
         
         //send DualSense Controller data via MIDI
         midi_sender->send_DualSense_MIDI_message(DS_UI.DS_UI_input, DS_UI.DS_EnableStats);
@@ -255,7 +255,8 @@ void MainComponent::onJoyCon_L_DataReceived()
     {
         JC_input->evaluate_L_JC_HidInputBuffer(hidIO_1->reportData);
         JC_UI.l_jc_input = JC_input->l_jc_input;
-        osc_sender->send_L_JoyCon_OSC_message(JC_UI.l_jc_input);
+        osc_sender->send_L_JoyCon_OSC_message(JC_UI.l_jc_input, JC_UI.left_EnableStates);
+        midi_sender->send_L_JoyCon_MIDI_message(JC_UI.l_jc_input, JC_UI.left_EnableStates);
     }
     
 }
@@ -267,7 +268,8 @@ void MainComponent::onJoyCon_R_DataReceived()
     {
         JC_input->evaluate_R_JC_HidInputBuffer(hidIO_2->reportData);
         JC_UI.r_jc_input = JC_input->r_jc_input;
-        osc_sender->send_R_JoyCon_OSC_message(JC_UI.r_jc_input);
+        osc_sender->send_R_JoyCon_OSC_message(JC_UI.r_jc_input, JC_UI.right_EnableStates);
+        midi_sender->send_R_JoyCon_MIDI_message(JC_UI.r_jc_input, JC_UI.right_EnableStates);
     }
 }
 
