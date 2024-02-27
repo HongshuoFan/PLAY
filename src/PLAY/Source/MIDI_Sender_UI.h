@@ -23,6 +23,7 @@
 #include <JuceHeader.h>
 #include "XboxControllerState.h"
 #include "DualSenseState.h"
+#include "JoyConState.h"
 //[/Headers]
 
 
@@ -48,6 +49,8 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
     void send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputState _xboxInput, XboxCotroller::XboxCotroller_EnableStates _xboxEnableStat);
     void send_DualSense_MIDI_message(DualSense::DualSenseInputState _dualSenseInput, DualSense::DualSenseEnableStates _dualSenseEnableStat);
+    void send_L_JoyCon_MIDI_message(JoyCon::L_JoyCon_InputState _l_JCInput, JoyCon::JoyCon_EnableStates _l_JC_EnableStat);
+    void send_R_JoyCon_MIDI_message(JoyCon::R_JoyCon_InputState _r_JCInput, JoyCon::JoyCon_EnableStates _r_JC_EnableStat);
     int Selected_midiChannel = 1;
     void closeConnection();
     juce::String MidiDeviceName = "PLAY";
@@ -75,6 +78,8 @@ private:
 
     XboxCotroller::XboxCotrollerInputState last_xboxInput;
     DualSense::DualSenseInputState last_dualSenseInput;
+    JoyCon::L_JoyCon_InputState last_l_JCInput;
+    JoyCon::R_JoyCon_InputState last_r_JCInput;
     //[/UserVariables]
 
     //==============================================================================

@@ -313,104 +313,197 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
 
 void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState _dualSenseInput, DualSense::DualSenseEnableStates _dualSenseEnableState)
 {
-    if(juce__toggleButton_MIDI->getToggleState())
+    if(!juce__toggleButton_MIDI->getToggleState())
     {
-        handleButton(36, _dualSenseInput.buttons.cross, last_dualSenseInput.buttons.cross);
-        handleButton(37, _dualSenseInput.buttons.circle, last_dualSenseInput.buttons.circle);
-        handleButton(38, _dualSenseInput.buttons.square, last_dualSenseInput.buttons.square);
-        handleButton(39, _dualSenseInput.buttons.triangle, last_dualSenseInput.buttons.triangle);
-
-        handleButton(40, _dualSenseInput.dpad.up, last_dualSenseInput.dpad.up);
-        handleButton(41, _dualSenseInput.dpad.down, last_dualSenseInput.dpad.down);
-        handleButton(42, _dualSenseInput.dpad.left, last_dualSenseInput.dpad.left);
-        handleButton(43, _dualSenseInput.dpad.right, last_dualSenseInput.dpad.right);
-
-        handleButton(44, _dualSenseInput.buttons.l1, last_dualSenseInput.buttons.l1);
-        handleButton(45, _dualSenseInput.buttons.r1, last_dualSenseInput.buttons.r1);
-
-        handleButton(46, _dualSenseInput.buttons.select, last_dualSenseInput.buttons.select);
-        handleButton(47, _dualSenseInput.buttons.menu, last_dualSenseInput.buttons.menu);
-
-        handleButton(48, _dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress);
-        handleButton(49, _dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress);
-
-        handleButton(50, _dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad);
-
-        //MIDI CC
-        //Modulation Wheel
-        handleTrigger(1, _dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger);
-        //Breath Controller (MSB)
-        handleTrigger(2, _dualSenseInput.rightTrigger, last_dualSenseInput.rightTrigger);
-        
-        if(_dualSenseEnableState.leftStickStates.x){
-            //Volume (MSB)
-            handleTrigger(7, _dualSenseInput.leftStick.x, last_dualSenseInput.leftStick.x);
-        }
-        
-        if(_dualSenseEnableState.leftStickStates.y){
-            //Balance (MSB)
-            handleTrigger(8, _dualSenseInput.leftStick.y, last_dualSenseInput.leftStick.y);
-        }
-        
-        if(_dualSenseEnableState.rightStickStates.x){
-            //Pan (MSB)
-            handleTrigger(10, _dualSenseInput.rightStick.x, last_dualSenseInput.rightStick.x);
-        }
-        
-        if(_dualSenseEnableState.rightStickStates.y){
-            //Expression (MSB)
-            handleTrigger(11, _dualSenseInput.rightStick.y, last_dualSenseInput.rightStick.y);
-        }
-        
-        if(_dualSenseEnableState.touchPoint1States.x){
-            //Effect Controller 1 (MSB)
-            handleTrigger(12, _dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x);
-        }
-        
-        if(_dualSenseEnableState.touchPoint1States.y){
-            //Effect Controller 2 (MSB)
-            handleTrigger(13, _dualSenseInput.touchPoint1.y, last_dualSenseInput.touchPoint1.y);
-        }
-        
-        if(_dualSenseEnableState.touchPoint2States.x){
-            //Undefined (MSB)
-            handleTrigger(14, _dualSenseInput.touchPoint2.x, last_dualSenseInput.touchPoint2.x);
-        }
-        
-        if(_dualSenseEnableState.touchPoint2States.y){
-            //Undefined (MSB)
-            handleTrigger(15, _dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y);
-        }
-        
-        if(_dualSenseEnableState.Gyo_states.x){
-            //General Purpose (MSB) gyroscope
-            float gyo_x = _dualSenseInput.gyroscope.x/1000;
-            handleTrigger(16, gyo_x, last_dualSenseInput.gyroscope.x);
-        }
-        
-        if(_dualSenseEnableState.Gyo_states.y){
-            float gyo_y = _dualSenseInput.gyroscope.y/1000;
-            handleTrigger(17, gyo_y, last_dualSenseInput.gyroscope.y);
-        }
-        
-        if(_dualSenseEnableState.Gyo_states.z){
-            float gyo_z = _dualSenseInput.gyroscope.z/1000;
-            handleTrigger(18, gyo_z, last_dualSenseInput.gyroscope.z);
-        }
-        
-        if(_dualSenseEnableState.Acc_states.x){
-            handleTrigger(19, _dualSenseInput.accelerometer.x, last_dualSenseInput.accelerometer.x);
-        }
-        
-        if(_dualSenseEnableState.Acc_states.y){
-            handleTrigger(20, _dualSenseInput.accelerometer.y, last_dualSenseInput.accelerometer.y);
-        }
-        
-        if(_dualSenseEnableState.Acc_states.z){
-            handleTrigger(21, _dualSenseInput.accelerometer.z, last_dualSenseInput.accelerometer.z);
-        }
-
+        return;
     }
+    handleButton(36, _dualSenseInput.buttons.cross, last_dualSenseInput.buttons.cross);
+    handleButton(37, _dualSenseInput.buttons.circle, last_dualSenseInput.buttons.circle);
+    handleButton(38, _dualSenseInput.buttons.square, last_dualSenseInput.buttons.square);
+    handleButton(39, _dualSenseInput.buttons.triangle, last_dualSenseInput.buttons.triangle);
+
+    handleButton(40, _dualSenseInput.dpad.up, last_dualSenseInput.dpad.up);
+    handleButton(41, _dualSenseInput.dpad.down, last_dualSenseInput.dpad.down);
+    handleButton(42, _dualSenseInput.dpad.left, last_dualSenseInput.dpad.left);
+    handleButton(43, _dualSenseInput.dpad.right, last_dualSenseInput.dpad.right);
+
+    handleButton(44, _dualSenseInput.buttons.l1, last_dualSenseInput.buttons.l1);
+    handleButton(45, _dualSenseInput.buttons.r1, last_dualSenseInput.buttons.r1);
+
+    handleButton(46, _dualSenseInput.buttons.select, last_dualSenseInput.buttons.select);
+    handleButton(47, _dualSenseInput.buttons.menu, last_dualSenseInput.buttons.menu);
+
+    handleButton(48, _dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress);
+    handleButton(49, _dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress);
+
+    handleButton(50, _dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad);
+
+    //MIDI CC
+    //Modulation Wheel
+    handleTrigger(1, _dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger);
+    //Breath Controller (MSB)
+    handleTrigger(2, _dualSenseInput.rightTrigger, last_dualSenseInput.rightTrigger);
+        
+    if(_dualSenseEnableState.leftStickStates.x){
+        //Volume (MSB)
+        handleTrigger(7, _dualSenseInput.leftStick.x, last_dualSenseInput.leftStick.x);
+    }
+        
+    if(_dualSenseEnableState.leftStickStates.y){
+        //Balance (MSB)
+        handleTrigger(8, _dualSenseInput.leftStick.y, last_dualSenseInput.leftStick.y);
+    }
+        
+    if(_dualSenseEnableState.rightStickStates.x){
+        //Pan (MSB)
+        handleTrigger(10, _dualSenseInput.rightStick.x, last_dualSenseInput.rightStick.x);
+    }
+        
+    if(_dualSenseEnableState.rightStickStates.y){
+        //Expression (MSB)
+        handleTrigger(11, _dualSenseInput.rightStick.y, last_dualSenseInput.rightStick.y);
+    }
+        
+    if(_dualSenseEnableState.touchPoint1States.x){
+        //Effect Controller 1 (MSB)
+        handleTrigger(12, _dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x);
+    }
+        
+    if(_dualSenseEnableState.touchPoint1States.y){
+        //Effect Controller 2 (MSB)
+        handleTrigger(13, _dualSenseInput.touchPoint1.y, last_dualSenseInput.touchPoint1.y);
+    }
+        
+    if(_dualSenseEnableState.touchPoint2States.x){
+        //Undefined (MSB)
+        handleTrigger(14, _dualSenseInput.touchPoint2.x, last_dualSenseInput.touchPoint2.x);
+    }
+        
+    if(_dualSenseEnableState.touchPoint2States.y){
+        //Undefined (MSB)
+        handleTrigger(15, _dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y);
+    }
+        
+    if(_dualSenseEnableState.Gyo_states.x){
+        //General Purpose (MSB) gyroscope
+        handleTrigger(16, _dualSenseInput.gyroscope.x/2000 + 0.5, last_dualSenseInput.gyroscope.x);
+    }
+        
+    if(_dualSenseEnableState.Gyo_states.y){
+        handleTrigger(17, _dualSenseInput.gyroscope.y/2000 + 0.5, last_dualSenseInput.gyroscope.y);
+    }
+        
+    if(_dualSenseEnableState.Gyo_states.z){
+        handleTrigger(18, _dualSenseInput.gyroscope.z/2000 + 0.5, last_dualSenseInput.gyroscope.z);
+    }
+        
+    if(_dualSenseEnableState.Acc_states.x){
+        handleTrigger(19, _dualSenseInput.accelerometer.x * 0.5 + 0.5, last_dualSenseInput.accelerometer.x);
+    }
+        
+    if(_dualSenseEnableState.Acc_states.y){
+        handleTrigger(20, _dualSenseInput.accelerometer.y * 0.5 + 0.5, last_dualSenseInput.accelerometer.y);
+    }
+        
+    if(_dualSenseEnableState.Acc_states.z){
+        handleTrigger(21, _dualSenseInput.accelerometer.z * 0.5 + 0.5, last_dualSenseInput.accelerometer.z);
+    }
+
+    
+}
+
+void MIDI_Sender_UI::send_L_JoyCon_MIDI_message(JoyCon::L_JoyCon_InputState _l_JCInput, JoyCon::JoyCon_EnableStates _l_JC_EnableStat)
+{
+    if(!juce__toggleButton_MIDI->getToggleState()){
+        return;
+    }
+    handleButton(40, _l_JCInput.dpad.up, last_l_JCInput.dpad.up);
+    handleButton(41, _l_JCInput.dpad.down, last_l_JCInput.dpad.down);
+    handleButton(42, _l_JCInput.dpad.left, last_l_JCInput.dpad.left);
+    handleButton(43, _l_JCInput.dpad.right, last_l_JCInput.dpad.right);
+    handleButton(44, _l_JCInput.buttons.l, last_l_JCInput.buttons.l);
+    handleButton(46, _l_JCInput.buttons.zl, last_l_JCInput.buttons.zl);
+    handleButton(48, _l_JCInput.buttons.minus, last_l_JCInput.buttons.minus);
+    handleButton(50, _l_JCInput.stick.stickPress, last_l_JCInput.stick.stickPress);
+    handleButton(52, _l_JCInput.buttons.sl, last_l_JCInput.buttons.sl);
+    handleButton(54, _l_JCInput.buttons.sr, last_l_JCInput.buttons.sr);
+    handleButton(56, _l_JCInput.buttons.capture, last_l_JCInput.buttons.capture);
+    if(_l_JC_EnableStat.StickStates.x){
+        //Volume (MSB)
+        handleTrigger(7, _l_JCInput.stick.x, last_l_JCInput.stick.x);
+    }
+    
+    if(_l_JC_EnableStat.StickStates.y){
+        //Balance (MSB)
+        handleTrigger(8, _l_JCInput.stick.y, last_l_JCInput.stick.y);
+    }
+    
+    if(_l_JC_EnableStat.Acc_states.x){
+        handleTrigger(9, _l_JCInput.accelerometer.x, last_l_JCInput.accelerometer.x);
+    }
+    if(_l_JC_EnableStat.Acc_states.y){
+        handleTrigger(10, _l_JCInput.accelerometer.y, last_l_JCInput.accelerometer.y);
+    }
+    if(_l_JC_EnableStat.Acc_states.z){
+        handleTrigger(11, _l_JCInput.accelerometer.z, last_l_JCInput.accelerometer.z);
+    }
+    if(_l_JC_EnableStat.Gyo_states.x){
+        handleTrigger(12, _l_JCInput.gyroscope.x/2000. + 0.5, last_l_JCInput.gyroscope.x);
+    }
+    if(_l_JC_EnableStat.Gyo_states.y){
+        handleTrigger(13, _l_JCInput.gyroscope.y/2000. + 0.5, last_l_JCInput.gyroscope.y);
+    }
+    if(_l_JC_EnableStat.Gyo_states.z){
+        handleTrigger(14, _l_JCInput.gyroscope.z/2000. + 0.5, last_l_JCInput.gyroscope.z);
+    }
+    
+}
+
+void MIDI_Sender_UI::send_R_JoyCon_MIDI_message(JoyCon::R_JoyCon_InputState _r_JCInput, JoyCon::JoyCon_EnableStates _r_JC_EnableStat)
+{
+    if(!juce__toggleButton_MIDI->getToggleState()){
+        return;
+    }
+    handleButton(36, _r_JCInput.buttons.b, last_r_JCInput.buttons.b);
+    handleButton(37, _r_JCInput.buttons.a, last_r_JCInput.buttons.a);
+    handleButton(38, _r_JCInput.buttons.y, last_r_JCInput.buttons.y);
+    handleButton(39, _r_JCInput.buttons.x, last_r_JCInput.buttons.x);
+    handleButton(45, _r_JCInput.buttons.r, last_r_JCInput.buttons.r);
+    handleButton(47, _r_JCInput.buttons.zr, last_r_JCInput.buttons.zr);
+    handleButton(49, _r_JCInput.buttons.plus, last_r_JCInput.buttons.plus);
+    handleButton(51, _r_JCInput.stick.stickPress, last_r_JCInput.stick.stickPress);
+    handleButton(53, _r_JCInput.buttons.sl, last_r_JCInput.buttons.sl);
+    handleButton(55, _r_JCInput.buttons.sr, last_r_JCInput.buttons.sr);
+    handleButton(57, _r_JCInput.buttons.home, last_r_JCInput.buttons.home);
+    
+    if(_r_JC_EnableStat.StickStates.x){
+        //Pan (MSB)
+        handleTrigger(15, _r_JCInput.stick.x, last_r_JCInput.stick.x);
+    }
+
+    if(_r_JC_EnableStat.StickStates.y){
+        //Expression (MSB)
+        handleTrigger(16, _r_JCInput.stick.y, last_r_JCInput.stick.y);
+    }
+    if(_r_JC_EnableStat.Acc_states.x){
+        handleTrigger(17, _r_JCInput.accelerometer.x, last_r_JCInput.accelerometer.x);
+    }
+    if(_r_JC_EnableStat.Acc_states.y){
+        handleTrigger(18, _r_JCInput.accelerometer.y, last_r_JCInput.accelerometer.y);
+    }
+    if(_r_JC_EnableStat.Acc_states.z){
+        handleTrigger(19, _r_JCInput.accelerometer.z, last_r_JCInput.accelerometer.z);
+    }
+    if(_r_JC_EnableStat.Gyo_states.x){
+        handleTrigger(20, _r_JCInput.gyroscope.x/2000. + 0.5, last_r_JCInput.gyroscope.x);
+    }
+    if(_r_JC_EnableStat.Gyo_states.y){
+        handleTrigger(21, _r_JCInput.gyroscope.y/2000. + 0.5, last_r_JCInput.gyroscope.y);
+    }
+    if(_r_JC_EnableStat.Gyo_states.z){
+        handleTrigger(22, _r_JCInput.gyroscope.z/2000. + 0.5, last_r_JCInput.gyroscope.z);
+    }
+    
 }
 //[/MiscUserCode]
 
