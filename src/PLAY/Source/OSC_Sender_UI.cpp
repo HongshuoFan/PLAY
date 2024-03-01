@@ -369,7 +369,7 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
         ConvertAndSend_int(_dualSenseInput.touchPoint1.id, last_dualSenseInput.touchPoint1.id,
                             "/touchPoint1/id", last_dualSenseInput.touchPoint1.id);
         ConvertAndSend_bool(_dualSenseInput.touchPoint1.down, last_dualSenseInput.touchPoint1.down,
-                            "/touchPoint1/down", last_dualSenseInput.touchPoint1.down);
+                            "/touchPoint1/touch", last_dualSenseInput.touchPoint1.down);
         if(_dualSenseEnableStates.touchPoint1States.x){
             ConvertAndSend_float(_dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x,
                                  "/touchPoint1/x", last_dualSenseInput.touchPoint1.x, stickFliter);
@@ -381,7 +381,7 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
         ConvertAndSend_int(_dualSenseInput.touchPoint2.id, last_dualSenseInput.touchPoint2.id,
                             "/touchPoint2/id", last_dualSenseInput.touchPoint2.id);
         ConvertAndSend_bool(_dualSenseInput.touchPoint2.down, last_dualSenseInput.touchPoint2.down,
-                            "/touchPoint2/down", last_dualSenseInput.touchPoint2.down);
+                            "/touchPoint2/touch", last_dualSenseInput.touchPoint2.down);
         if(_dualSenseEnableStates.touchPoint2States.x){
             ConvertAndSend_float(_dualSenseInput.touchPoint2.x, last_dualSenseInput.touchPoint2.x,
                                  "/touchPoint2/x", last_dualSenseInput.touchPoint2.x, stickFliter);

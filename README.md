@@ -89,8 +89,8 @@ Button menu       |  Note 47      |  /buttons/menu     |
 Left stick press  |  Note 48      |  /leftStick/press  |
 Right stick press |  Note 49      |  /rightStick/press |
 TouchPad Press    |  Note 50      |  /buttons/touchPad |
-TouchPad Point1   |  Note 51      |  /touchPoint1/down |
-TouchPad Point2   |  Note 52      |  /touchPoint2/down |
+TouchPad P1 Touch |  Note 51      |  /touchPoint1/touch|
+TouchPad P2 Touch |  Note 52      |  /touchPoint2/touch|
 Left trigger      |  MIDI CC 1    |  /leftTrigger      |
 Right trigger     |  MIDI CC 2    |  /rightTrigger     |
 Left stick X      |  MIDI CC 7    |  /leftStick/x      |
