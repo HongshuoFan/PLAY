@@ -3,7 +3,7 @@
 This repository houses the PLAY application, designed to transform video game controllers (VGCs) into dynamic musical instruments. The PLAY app converts the input signals from VGCs into MIDI and/or OSC messages, facilitating their use in musical performance and composition.
 
 <p align="center" width="100%">
-    <img width="70%" src="media/PLAY_UIs.png"> 
+    <img width="80%" src="media/PLAY_UIs.png"> 
 </p>
 
 ## Table of Contents
