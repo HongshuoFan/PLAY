@@ -439,13 +439,13 @@ void MIDI_Sender_UI::send_L_JoyCon_MIDI_message(JoyCon::L_JoyCon_InputState _l_J
     }
     
     if(_l_JC_EnableStat.Acc_states.x){
-        handleTrigger(9, _l_JCInput.accelerometer.x, last_l_JCInput.accelerometer.x);
+        handleTrigger(9, (_l_JCInput.accelerometer.x + 1.)/2., last_l_JCInput.accelerometer.x);
     }
     if(_l_JC_EnableStat.Acc_states.y){
-        handleTrigger(10, _l_JCInput.accelerometer.y, last_l_JCInput.accelerometer.y);
+        handleTrigger(10, (_l_JCInput.accelerometer.y + 1.)/2., last_l_JCInput.accelerometer.y);
     }
     if(_l_JC_EnableStat.Acc_states.z){
-        handleTrigger(11, _l_JCInput.accelerometer.z, last_l_JCInput.accelerometer.z);
+        handleTrigger(11, (_l_JCInput.accelerometer.z + 1.)/2., last_l_JCInput.accelerometer.z);
     }
     if(_l_JC_EnableStat.Gyo_states.x){
         handleTrigger(12, _l_JCInput.gyroscope.x/2000. + 0.5, last_l_JCInput.gyroscope.x);
@@ -486,13 +486,13 @@ void MIDI_Sender_UI::send_R_JoyCon_MIDI_message(JoyCon::R_JoyCon_InputState _r_J
         handleTrigger(16, _r_JCInput.stick.y, last_r_JCInput.stick.y);
     }
     if(_r_JC_EnableStat.Acc_states.x){
-        handleTrigger(17, _r_JCInput.accelerometer.x, last_r_JCInput.accelerometer.x);
+        handleTrigger(17, (_r_JCInput.accelerometer.x + 1.)/2., last_r_JCInput.accelerometer.x);
     }
     if(_r_JC_EnableStat.Acc_states.y){
-        handleTrigger(18, _r_JCInput.accelerometer.y, last_r_JCInput.accelerometer.y);
+        handleTrigger(18, (_r_JCInput.accelerometer.y + 1.)/2., last_r_JCInput.accelerometer.y);
     }
     if(_r_JC_EnableStat.Acc_states.z){
-        handleTrigger(19, _r_JCInput.accelerometer.z, last_r_JCInput.accelerometer.z);
+        handleTrigger(19, (_r_JCInput.accelerometer.z + 1.)/2., last_r_JCInput.accelerometer.z);
     }
     if(_r_JC_EnableStat.Gyo_states.x){
         handleTrigger(20, _r_JCInput.gyroscope.x/2000. + 0.5, last_r_JCInput.gyroscope.x);

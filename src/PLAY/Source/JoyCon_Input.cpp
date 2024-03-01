@@ -57,7 +57,7 @@ void JoyCon_Input::evaluate_L_JC_HidInputBuffer(uint8_t* _reportData)
         uint8_t *stick_data = _reportData + 6;
         l_jc_input.stick.x = stick_data[0] | ((stick_data[1] & 0xF) << 8);
         l_jc_input.stick.y = (stick_data[1] >> 4) | (stick_data[2] << 4);
-        
+        //std::cout<<l_jc_input.stick.x<<' '<<l_jc_input.stick.y <<"\n";
         CalcAnalogStickSub(&l_jc_input.stick);
     
         
@@ -65,11 +65,11 @@ void JoyCon_Input::evaluate_L_JC_HidInputBuffer(uint8_t* _reportData)
         {
             // Accelerometer:
             // Accelerometer data is absolute (m/s^2)
-            l_jc_input.accelerometer.x = (float)(uint16_to_int16(_reportData[13] | ((_reportData[14] << 8) & 0xFF00)));
-            l_jc_input.accelerometer.y = (float)(uint16_to_int16(_reportData[15] | ((_reportData[16] << 8) & 0xFF00)));
-            l_jc_input.accelerometer.z = (float)(uint16_to_int16(_reportData[17] | ((_reportData[18] << 8) & 0xFF00)));
-            
-            NormalizVec3(&l_jc_input.accelerometer, &l_jc_input.accelerometer_min, &l_jc_input.accelerometer_max);
+            l_jc_input.accelerometer.x = (float)(uint16_to_int16(_reportData[13] | ((_reportData[14] << 8) & 0xFF00))) / 4000.;
+            l_jc_input.accelerometer.y = (float)(uint16_to_int16(_reportData[15] | ((_reportData[16] << 8) & 0xFF00))) / 4000.;
+            l_jc_input.accelerometer.z = (float)(uint16_to_int16(_reportData[17] | ((_reportData[18] << 8) & 0xFF00))) / 4000.;
+            //std::cout<<l_jc_input.accelerometer.x<<"\n";
+            //NormalizVec3(&l_jc_input.accelerometer, &l_jc_input.accelerometer_min, &l_jc_input.accelerometer_max);
             
             l_jc_input.gyroscope.x = (float)(uint16_to_int16(_reportData[19] | ((_reportData[20] << 8) & 0xFF00)))
                                     * (2000.0f / 32767.0f);
@@ -118,11 +118,11 @@ void JoyCon_Input::evaluate_R_JC_HidInputBuffer(uint8_t* _reportData)
         {
             // Accelerometer:
             // Accelerometer data is absolute (m/s^2)
-            r_jc_input.accelerometer.x = (float)(uint16_to_int16(_reportData[13] | ((_reportData[14] << 8) & 0xFF00)));
-            r_jc_input.accelerometer.y = (float)(uint16_to_int16(_reportData[15] | ((_reportData[16] << 8) & 0xFF00)));
-            r_jc_input.accelerometer.z = (float)(uint16_to_int16(_reportData[17] | ((_reportData[18] << 8) & 0xFF00)));
+            r_jc_input.accelerometer.x = (float)(uint16_to_int16(_reportData[13] | ((_reportData[14] << 8) & 0xFF00)))/4000.;
+            r_jc_input.accelerometer.y = (float)(uint16_to_int16(_reportData[15] | ((_reportData[16] << 8) & 0xFF00)))/4000.;
+            r_jc_input.accelerometer.z = (float)(uint16_to_int16(_reportData[17] | ((_reportData[18] << 8) & 0xFF00)))/4000.;
             
-            NormalizVec3(&r_jc_input.accelerometer, &r_jc_input.accelerometer_min, &r_jc_input.accelerometer_max);
+            //NormalizVec3(&r_jc_input.accelerometer, &r_jc_input.accelerometer_min, &r_jc_input.accelerometer_max);
             
             r_jc_input.gyroscope.x = (float)(uint16_to_int16(_reportData[19] | ((_reportData[20] << 8) & 0xFF00)))
                                     * (2000.0f / 32767.0f);

@@ -38,7 +38,7 @@ JoyCon_UI::JoyCon_UI ()
 
     Left_Acc.reset(new vec3GUI());
     Left_Acc->title = "Accelerometer";
-    Left_Acc->setRange(0.f, 1.f);
+    Left_Acc->setRange(-1.f, 1.f);
     addAndMakeVisible(Left_Acc.get());
 
     Left_Gyo.reset(new vec3GUI());
@@ -48,7 +48,7 @@ JoyCon_UI::JoyCon_UI ()
 
     Right_Acc.reset(new vec3GUI());
     Right_Acc->title = "Accelerometer";
-    Right_Acc->setRange(0.f, 1.f);
+    Right_Acc->setRange(-1.f, 1.f);
     addAndMakeVisible(Right_Acc.get());
 
     Right_Gyo.reset(new vec3GUI());
