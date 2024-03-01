@@ -47,29 +47,67 @@ This repository houses the PLAY application, designed to transform video game co
 ### Xbox Wireless Controller
 
 Controller Input  |  MIDI Message | OSC Address     |
-|-----------------|---------------|-----------------|
-Button A          |  Note 36      |  /buttons/a     |
-Button B          |  Note 37      |  /buttons/b     |
-Button X          |  Note 38      |  /buttons/x     |
-Button Y          |  Note 39      |  /buttons/y     |
-Dpad Up           |  Note 40      |  /dpad/up       |
-Dpad Down         |  Note 41      |  /dpad/down     |
-Dpad Left         |  Note 42      |  /dpad/left     |
-Dpad Right        |  Note 43      |  /dpad/right    |
-Button Lb         |  Note 44      |  /buttons/lb    |
-Button Rb         |  Note 45      |  /buttons/rb    |
-Button view       |  Note 46      |  /buttons/view  |
-Button Share      |  Note 47      |  /buttons/share |
-Button menu       |  Note 48      |  /buttons/menu  |
-Left trigger      |  MIDI CC 1    |  /leftTrigger   |
-Right trigger     |  MIDI CC 2    |  /rightTrigger  |
-Left stick X      |  MIDI CC 7    |  /leftStick/x   |
-Left stick Y      |  MIDI CC 8    |  /leftStick/y   |
-Right stick X     |  MIDI CC 10   |  /rightStick/x  |
-Right stick Y     |  MIDI CC 11   |  /rightStick/y  |
+|-----------------|---------------|-----------------    |
+Button A          |  Note 36      |  /buttons/a         |
+Button B          |  Note 37      |  /buttons/b         |
+Button X          |  Note 38      |  /buttons/x         |
+Button Y          |  Note 39      |  /buttons/y         |
+Dpad Up           |  Note 40      |  /dpad/up           |
+Dpad Down         |  Note 41      |  /dpad/down         |
+Dpad Left         |  Note 42      |  /dpad/left         |
+Dpad Right        |  Note 43      |  /dpad/right        |
+Button Lb         |  Note 44      |  /buttons/lb        |
+Button Rb         |  Note 45      |  /buttons/rb        |
+Button view       |  Note 46      |  /buttons/view      |
+Button Share      |  Note 47      |  /buttons/share     |
+Button menu       |  Note 48      |  /buttons/menu      |
+Left stick press  |  Note 49      |  /leftStick/press   |
+Right stick press |  Note 50      |  /rightStick/press  |
+Left trigger      |  MIDI CC 1    |  /leftTrigger       |
+Right trigger     |  MIDI CC 2    |  /rightTrigger      |
+Left stick X      |  MIDI CC 7    |  /leftStick/x       |
+Left stick Y      |  MIDI CC 8    |  /leftStick/y       |
+Right stick X     |  MIDI CC 10   |  /rightStick/x      |
+Right stick Y     |  MIDI CC 11   |  /rightStick/y      |
 
 ### PS5 Dualsense controller
-*Coming soon*
+
+Controller Input  |  MIDI Message | OSC Address     |
+|-----------------|---------------|-----------------   |
+Button Cross      |  Note 36      |  /buttons/cross    |
+Button Circle     |  Note 37      |  /buttons/circle   |
+Button Square     |  Note 38      |  /buttons/square   |
+Button Triangle   |  Note 39      |  /buttons/triangle |
+Dpad Up           |  Note 40      |  /dpad/up          |
+Dpad Down         |  Note 41      |  /dpad/down        |
+Dpad Left         |  Note 42      |  /dpad/left        |
+Dpad Right        |  Note 43      |  /dpad/right       |
+Button L1         |  Note 44      |  /buttons/l1       |
+Button R1         |  Note 45      |  /buttons/r1       |
+Button select     |  Note 46      |  /buttons/select   |
+Button menu       |  Note 47      |  /buttons/menu     |
+Left stick press  |  Note 48      |  /leftStick/press  |
+Right stick press |  Note 49      |  /rightStick/press |
+TouchPad Press    |  Note 50      |  /buttons/touchPad |
+TouchPad Point1   |  Note 51      |  /touchPoint1/down |
+TouchPad Point2   |  Note 52      |  /touchPoint2/down |
+Left trigger      |  MIDI CC 1    |  /leftTrigger      |
+Right trigger     |  MIDI CC 2    |  /rightTrigger     |
+Left stick X      |  MIDI CC 7    |  /leftStick/x      |
+Left stick Y      |  MIDI CC 8    |  /leftStick/y      |
+Right stick X     |  MIDI CC 10   |  /rightStick/x     |
+Right stick Y     |  MIDI CC 11   |  /rightStick/y     |
+TouchPad Point1 X |  MIDI CC 12   |  /touchPoint1/x    |
+TouchPad Point1 Y |  MIDI CC 13   |  /touchPoint1/y    |
+TouchPad Point2 X |  MIDI CC 14   |  /touchPoint2/x    |
+TouchPad Point2 Y |  MIDI CC 15   |  /touchPoint2/x    |
+Gyroscope X       |  MIDI CC 16   |  /gyroscope/x      |
+Gyroscope Y       |  MIDI CC 17   |  /gyroscope/y      |
+Gyroscope Z       |  MIDI CC 18   |  /gyroscope/z      |
+Accelerometer X   |  MIDI CC 19   |  /accelerometer/x  |
+Accelerometer Y   |  MIDI CC 20   |  /accelerometer/y  |
+Accelerometer Z   |  MIDI CC 21   |  /accelerometer/z  |
+
 
 ### Nintendo Switch Joycons
 *Coming soon*
