@@ -287,7 +287,11 @@ void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState
                             "/buttons/lb", last_xboxInput.buttons.lb);
         ConvertAndSend_bool(_xboxInput.buttons.rb, last_xboxInput.buttons.rb,
                             "/buttons/rb", last_xboxInput.buttons.rb);
-
+        
+        ConvertAndSend_bool(_xboxInput.leftStick.stickPress, last_xboxInput.leftStick.stickPress,
+                            "/leftStick/press", last_xboxInput.leftStick.stickPress);
+        ConvertAndSend_bool(_xboxInput.rightStick.stickPress, last_xboxInput.rightStick.stickPress,
+                            "/rightStick/press", last_xboxInput.rightStick.stickPress);
 
         ConvertAndSend_bool(_xboxInput.dpad.up, last_xboxInput.dpad.up,
                             "/dpad/up", last_xboxInput.dpad.up);
@@ -314,17 +318,23 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
                                  "/leftStick/y", last_dualSenseInput.leftStick.y, stickFliter);
         }
         if(_dualSenseEnableStates.rightStickStates.x){
-            ConvertAndSend_float(_dualSenseInput.rightStick.x, last_xboxInput.rightStick.x,
-                                 "/rightStick/x", last_xboxInput.rightStick.x, stickFliter);
+            ConvertAndSend_float(_dualSenseInput.rightStick.x, last_dualSenseInput.rightStick.x,
+                                 "/rightStick/x", last_dualSenseInput.rightStick.x, stickFliter);
         }
         if(_dualSenseEnableStates.rightStickStates.y){
-            ConvertAndSend_float(_dualSenseInput.rightStick.y, last_xboxInput.rightStick.y,
-                                 "/rightStick/y", last_xboxInput.rightStick.y, stickFliter);
+            ConvertAndSend_float(_dualSenseInput.rightStick.y, last_dualSenseInput.rightStick.y,
+                                 "/rightStick/y", last_dualSenseInput.rightStick.y, stickFliter);
         }
-        ConvertAndSend_float(_dualSenseInput.leftTrigger, last_xboxInput.leftTrigger,
-                             "/leftTrigger", last_xboxInput.leftTrigger, stickFliter);
-        ConvertAndSend_float(_dualSenseInput.rightTrigger, last_xboxInput.rightTrigger,
-                             "/rightTrigger", last_xboxInput.rightTrigger, stickFliter);
+        
+        ConvertAndSend_bool(_dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress,
+                            "/leftStick/press", last_dualSenseInput.leftStick.stickPress);
+        ConvertAndSend_bool(_dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress,
+                            "/rightStick/press", last_dualSenseInput.rightStick.stickPress);
+        
+        ConvertAndSend_float(_dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger,
+                             "/leftTrigger", last_dualSenseInput.leftTrigger, stickFliter);
+        ConvertAndSend_float(_dualSenseInput.rightTrigger, last_dualSenseInput.rightTrigger,
+                             "/rightTrigger", last_dualSenseInput.rightTrigger, stickFliter);
 
         ConvertAndSend_bool(_dualSenseInput.buttons.square, last_dualSenseInput.buttons.square,
                             "/buttons/square", last_dualSenseInput.buttons.square);

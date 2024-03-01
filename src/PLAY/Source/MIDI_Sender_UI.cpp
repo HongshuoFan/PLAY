@@ -337,7 +337,8 @@ void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState 
     handleButton(49, _dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress);
 
     handleButton(50, _dualSenseInput.buttons.touchPad, last_dualSenseInput.buttons.touchPad);
-
+    handleButton(51, _dualSenseInput.touchPoint1.down, last_dualSenseInput.touchPoint1.down);
+    handleButton(52, _dualSenseInput.touchPoint2.down, last_dualSenseInput.touchPoint2.down);
     //MIDI CC
     //Modulation Wheel
     handleTrigger(1, _dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger);
