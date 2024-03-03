@@ -50,11 +50,16 @@ HIDMenu::HIDMenu ()
     Refresh__textButton->setColour (juce::TextButton::buttonColourId, juce::Colours::grey);
     Refresh__textButton->setColour (juce::TextButton::textColourOffId, juce::Colours::azure);
 
+    juce__textButton_About.reset (new juce::TextButton ("About_button"));
+    addAndMakeVisible (juce__textButton_About.get());
+    juce__textButton_About->setButtonText (TRANS ("About"));
+    juce__textButton_About->addListener (this);
+
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (400, 40);
+    setSize (700, 40);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -69,6 +74,7 @@ HIDMenu::~HIDMenu()
 
     HIDcombox__comboBox = nullptr;
     Refresh__textButton = nullptr;
+    juce__textButton_About = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -107,7 +113,8 @@ void HIDMenu::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    Refresh__textButton->setBounds (310, 4, proportionOfWidth (0.1925f), proportionOfHeight (0.5500f));
+    Refresh__textButton->setBounds (310, 4, proportionOfWidth (0.1929f), proportionOfHeight (0.5500f));
+    juce__textButton_About->setBounds (628, 4, proportionOfWidth (0.0871f), proportionOfHeight (0.6000f));
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -154,8 +161,15 @@ void HIDMenu::buttonClicked (juce::Button* buttonThatWasClicked)
         }
         //[/UserButtonCode_Refresh__textButton]
     }
+    else if (buttonThatWasClicked == juce__textButton_About.get())
+    {
+        //[UserButtonCode_juce__textButton_About] -- add your button handler code here..
+        ShowAboutWindow();
+        //[/UserButtonCode_juce__textButton_About]
+    }
 
     //[UserbuttonClicked_Post]
+
     //[/UserbuttonClicked_Post]
 }
 
@@ -192,6 +206,36 @@ void HIDMenu::ClickRefresh__textButton()
     Refresh__textButton->triggerClick();
 }
 
+auto HIDMenu::inVisableAbout(){
+    return [ptr = Component::SafePointer (this), this] (int result)
+    {
+        aboutWindow->setVisible(false);
+        if(result == 0){
+            juce::URL("https://github.com/HongshuoFan/PLAY").launchInDefaultBrowser();
+        }
+    };
+}
+
+void HIDMenu::ShowAboutWindow()
+{
+    
+    aboutWindow = std::make_unique<juce::AlertWindow> ("About","",juce::MessageBoxIconType::InfoIcon);
+    //aboutWindow->addTextEditor ("text", "enter some text here", "text field:");
+    //aboutWindow->addComboBox ("option", { "option 1", "option 2", "option 3", "option 4" }, "some options");
+    
+    aboutWindow->addTextBlock("Special thanks to The Oxford Research Centre in the Humanities, Jesus College Oxford, and the Royal Northern College of Music for their support and funding.");
+    aboutWindow->addTextBlock("Lead developer: Hongshuo Fan");
+    aboutWindow->addTextBlock("Please find more details on our GitHub Page!");
+    
+    aboutWindow->addButton ("OK",     1, juce::KeyPress (juce::KeyPress::returnKey, 0, 0));
+    aboutWindow->addButton ("GitHub", 0, juce::KeyPress (juce::KeyPress::escapeKey, 0, 0));
+   
+    aboutWindow->enterModalState(true, juce::ModalCallbackFunction::create(inVisableAbout()));
+    
+
+}
+
+
 //[/MiscUserCode]
 
 
@@ -207,7 +251,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="HIDMenu" componentName=""
                  parentClasses="public juce::Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="0" snapShown="0" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="400" initialHeight="40">
+                 fixedSize="1" initialWidth="700" initialHeight="40">
   <BACKGROUND backgroundColour="ff323e44">
     <TEXT pos="8 0 200 30" fill="solid: fff0ffff" hasStroke="0" text="Available Controller"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
@@ -217,9 +261,12 @@ BEGIN_JUCER_METADATA
             virtualName="" explicitFocusOrder="0" pos="150 4 150 24" editable="0"
             layout="36" items="" textWhenNonSelected="" textWhenNoItems="(No Device)"/>
   <TEXTBUTTON name="Refresh button" id="9e6aa27ce2a7870e" memberName="Refresh__textButton"
-              virtualName="" explicitFocusOrder="0" pos="310 4 19.25% 55%"
+              virtualName="" explicitFocusOrder="0" pos="310 4 19.286% 55%"
               bgColOff="ff808080" textCol="fff0ffff" buttonText="Refresh" connectedEdges="0"
               needsCallback="1" radioGroupId="2"/>
+  <TEXTBUTTON name="About_button" id="357b89fcf67d7ab2" memberName="juce__textButton_About"
+              virtualName="" explicitFocusOrder="0" pos="628 4 8.714% 60%"
+              buttonText="About" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

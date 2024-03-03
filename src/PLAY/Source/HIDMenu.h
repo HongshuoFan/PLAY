@@ -22,6 +22,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
 #include "ListHID.h"
+
 //[/Headers]
 
 
@@ -64,11 +65,17 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     void updateHIDcombox();
+    void ShowAboutWindow();
+    std::unique_ptr<juce::AlertWindow> aboutWindow;
+    auto inVisableAbout();
+    auto getAsyncAlertBoxResultChosen();
+
     //[/UserVariables]
 
     //==============================================================================
     std::unique_ptr<juce::ComboBox> HIDcombox__comboBox;
     std::unique_ptr<juce::TextButton> Refresh__textButton;
+    std::unique_ptr<juce::TextButton> juce__textButton_About;
 
 
     //==============================================================================
