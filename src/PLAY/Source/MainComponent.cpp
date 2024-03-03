@@ -337,7 +337,7 @@ void MainComponent::EnableXboxControllerVibration(){
 }
 
 void MainComponent::WarningWindow(juce::String WarningMessage)
-{
+{   
     juce::AlertWindow::showMessageBoxAsync (juce::AlertWindow::WarningIcon,
                                             "Error",
                                             WarningMessage,

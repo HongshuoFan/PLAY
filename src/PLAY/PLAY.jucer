@@ -3,6 +3,18 @@
 <JUCERPROJECT id="SV00vx" name="PLAY" projectType="guiapp" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="TCfcQn" name="PLAY">
+    <GROUP id="{953D21D4-9A06-B75F-A0A3-2BD0512AE0B0}" name="GUIs">
+      <FILE id="MJMvtF" name="StickGUI.cpp" compile="1" resource="0" file="Source/StickGUI.cpp"/>
+      <FILE id="pIGOHd" name="StickGUI.h" compile="0" resource="0" file="Source/StickGUI.h"/>
+      <FILE id="M5ExM4" name="TouchPadGUI.cpp" compile="1" resource="0" file="Source/TouchPadGUI.cpp"/>
+      <FILE id="ZrxBMX" name="TouchPadGUI.h" compile="0" resource="0" file="Source/TouchPadGUI.h"/>
+      <FILE id="Z46Uc4" name="vec3GUI.cpp" compile="1" resource="0" file="Source/vec3GUI.cpp"/>
+      <FILE id="viQNwk" name="vec3GUI.h" compile="0" resource="0" file="Source/vec3GUI.h"/>
+    </GROUP>
+    <GROUP id="{2555A956-4967-5379-D1A6-3F3AECBF8A3B}" name="Media">
+      <FILE id="MiFBG9" name="PLAY_ICON0.png" compile="0" resource="1" file="../../media/PLAY_ICON0.png"/>
+      <FILE id="rqdLRk" name="PLAY_ICON1.png" compile="0" resource="1" file="../../media/PLAY_ICON1.png"/>
+    </GROUP>
     <GROUP id="{4C14A28B-FA5B-9764-48EE-FA55E98BF1A1}" name="Source">
       <GROUP id="{6580E3E3-DFAE-6468-3128-6FD8A7466B11}" name="MIDI">
         <FILE id="W5pb3I" name="MIDI_Sender_UI.cpp" compile="1" resource="0"
@@ -75,13 +87,6 @@
       <FILE id="RLQ7zR" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
     </GROUP>
-    <FILE id="MJMvtF" name="StickGUI.cpp" compile="1" resource="0" file="Source/StickGUI.cpp"/>
-    <FILE id="pIGOHd" name="StickGUI.h" compile="0" resource="0" file="Source/StickGUI.h"/>
-    <FILE id="M5ExM4" name="TouchPadGUI.cpp" compile="1" resource="0" file="Source/TouchPadGUI.cpp"/>
-    <FILE id="ZrxBMX" name="TouchPadGUI.h" compile="0" resource="0" file="Source/TouchPadGUI.h"/>
-    <FILE id="Z46Uc4" name="vec3GUI.cpp" compile="1" resource="0" file="Source/vec3GUI.cpp"/>
-    <FILE id="viQNwk" name="vec3GUI.h" compile="0" resource="0" file="Source/vec3GUI.h"/>
-    <FILE id="MiFBG9" name="PLAY_ICON0.png" compile="0" resource="1" file="../../media/PLAY_ICON0.png"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -103,7 +108,7 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" appSandbox="1" appSandboxInheritance="1"
                appSandboxOptions="com.apple.security.device.bluetooth,com.apple.security.device.usb,com.apple.security.network.client,com.apple.security.network.server"
                iosBluetoothPermissionNeeded="1" keepCustomXcodeSchemes="1" buildNumber="0.2"
-               smallIcon="MiFBG9" bigIcon="MiFBG9">
+               smallIcon="rqdLRk" bigIcon="rqdLRk" applicationCategory="public.app-category.utilities">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="PLAY" precompiledHeaderFile="/usr/local/include/hidapi/hidapi.h"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="PLAY"/>

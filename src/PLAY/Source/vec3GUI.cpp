@@ -170,14 +170,14 @@ void vec3GUI::updateSliders(float x, float y, float z)
     }else{
         juce__slider_x->setValue(0.f);
     }
-    
+
     if(is_y_enable){
         juce__slider_y->setValue(std::clamp(y, slider_min, slider_max));
-        
+
     }else{
         juce__slider_y->setValue(0.f);
     }
-    
+
     if(is_z_enable){
         juce__slider_z->setValue(std::clamp(z, slider_min, slider_max));
     }else{
