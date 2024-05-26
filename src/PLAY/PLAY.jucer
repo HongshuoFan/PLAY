@@ -16,6 +16,14 @@
       <FILE id="rqdLRk" name="PLAY_ICON1.png" compile="0" resource="1" file="../../media/PLAY_ICON1.png"/>
     </GROUP>
     <GROUP id="{4C14A28B-FA5B-9764-48EE-FA55E98BF1A1}" name="Source">
+      <GROUP id="{CB4CF603-012D-ADC8-D450-4559B4C4922D}" name="AccessController">
+        <FILE id="jlJPSp" name="AccessController_Input.cpp" compile="1" resource="0"
+              file="Source/AccessController_Input.cpp"/>
+        <FILE id="yCOpO8" name="AccessController_Input.h" compile="0" resource="0"
+              file="Source/AccessController_Input.h"/>
+        <FILE id="TxDy44" name="AccessController_State.h" compile="0" resource="0"
+              file="Source/AccessController_State.h"/>
+      </GROUP>
       <GROUP id="{6580E3E3-DFAE-6468-3128-6FD8A7466B11}" name="MIDI">
         <FILE id="W5pb3I" name="MIDI_Sender_UI.cpp" compile="1" resource="0"
               file="Source/MIDI_Sender_UI.cpp"/>

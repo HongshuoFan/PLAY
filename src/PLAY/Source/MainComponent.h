@@ -12,6 +12,8 @@
 #include "DualSense_Output.h"
 #include "DualSense_UI.h"
 
+#include "AccessController_Input.h"
+
 #include "XboxController_Input.h"
 #include "XboxController_UI.h"
 
@@ -53,7 +55,9 @@ private:
     DualSense_UI DS_UI;
     void update_DualSense_TriggerForce();
     void update_DualSense_Vibration();
-   
+    
+    // AccessController stuffs.
+    std::unique_ptr<AccessController_Input> AC_input;
     
     // Xbox Controller stuffs.
     std::unique_ptr<XboxController_Input> XC_input;
@@ -77,7 +81,7 @@ private:
     void onDataReceived();
     
     void onDualSense_DataReceived();
-    
+    void onAccessController_DataReceived();
     
     void onXboxController_DataReceived();
     void EnableXboxControllerVibration();

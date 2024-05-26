@@ -185,6 +185,33 @@ void MainComponent::onHIDMenuChanged()
                 
             }
             
+        }else if(strcmp("Access Controller", charPointer) == 0){
+            initialConnection("Access Controller");
+            hidIO_1->device_name = charPointer;
+            if(hidIO_1->connect()){
+                
+                // initial duel sense
+                AC_input.reset(new AccessController_Input());
+                DS_output.reset(new DualSense_Output);
+                
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+                // add callback function and start reading thread
+                hidIO_1->dataReceivedCallback = [this]{onAccessController_DataReceived();};
+//                DS_UI.UpdateTriggerForce = [this]{update_DualSense_TriggerForce();};
+//                DS_UI.UpdateVibration = [this]{update_DualSense_Vibration();};
+//                DS_UI.changeDevice = [this]{changeDevice();};
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+
+                // enable dual sense controller
+                DS_output->initialOuput(AC_input->usbOrBT);
+                hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
+                            
+//                addAndMakeVisible(DS_UI);
+//                DS_UI.isConnected = true;
+                
+            }
+                
+            
         }else{
             if(isChangeDevice){
                 
@@ -216,10 +243,12 @@ void MainComponent::initialConnection(juce::String nameOfDevice)
 
 void MainComponent::onDataReceived()
 {
-    //debug and placeholder function
-//    if(hidIO_1->isConneted){
-//        //hidIO_1->printReport();
-//    }
+//    debug and placeholder function
+    if(hidIO_1->isConneted){
+        hidIO_1->printReport();
+    }else{
+        std::cout << "unable to connect to "<< hidIO_1->device_name << std::endl;
+    }
 }
 
 void MainComponent::onDualSense_DataReceived()
@@ -234,8 +263,26 @@ void MainComponent::onDualSense_DataReceived()
         
         //send DualSense Controller data via MIDI
         midi_sender->send_DualSense_MIDI_message(DS_UI.DS_UI_input, DS_UI.DS_EnableStats);
+
     }
 }
+
+void MainComponent::onAccessController_DataReceived()
+{
+    if(hidIO_1){
+        //handle the DualSense input data
+        AC_input->evaluateAccessControllerHidInputBuffer(hidIO_1->reportData, DS_UI.enableIMU);
+//        DS_UI.DS_UI_input = DS_input->ds_input;
+        
+//        //send DualSense data via OSC
+//        osc_sender->send_DualSense_OSC_message(DS_UI.DS_UI_input, DS_UI.DS_EnableStats);
+//
+//        //send DualSense Controller data via MIDI
+//        midi_sender->send_DualSense_MIDI_message(DS_UI.DS_UI_input, DS_UI.DS_EnableStats);
+        hidIO_1->printReport();
+    }
+}
+
 
 void MainComponent::onXboxController_DataReceived() {
     //handle the Xbox Controller input data 
@@ -397,3 +444,5 @@ void MainComponent::changeDevice()
     m_HIDMenu->ClickRefresh__textButton();
     m_HIDMenu->setVisible(true);
 }
+
+

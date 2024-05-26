@@ -51,8 +51,8 @@ public:
     std::map<juce::String, IOHIDDeviceRef> devicesMap;
     std::function<void()> onHIDMenuChanged;
     void ClickRefresh__textButton();
-    juce::String supportDevices[4] =
-    {"Xbox Wireless Controller", "DualSense Wireless Controller", "Joy-Con (L)", "Joy-Con (R)"};
+    juce::String supportDevices[5] =
+    {"Xbox Wireless Controller", "DualSense Wireless Controller", "Joy-Con (L)", "Joy-Con (R)", "Access Controller"};
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
