@@ -58,11 +58,24 @@ namespace AccessController {
 
     } Buttons;
 
+    typedef struct _EnableXY {
+        
+        bool x;
+        bool y;
+
+    } EnableXY;
+
     typedef struct _AccessControllerInputStates {
         
         AnalogStick stick;
         Buttons buttons;
 
     } AccessControllerInputStates;
+
+    typedef struct _AccessControllerEnableStates {
+        
+        EnableXY StickStates;
+        
+    } AccessControllerEnableStates;
 
 }

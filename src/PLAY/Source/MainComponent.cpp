@@ -272,7 +272,7 @@ void MainComponent::onAccessController_DataReceived()
     if(hidIO_1){
         //handle the DualSense input data
         AC_input->evaluateAccessControllerHidInputBuffer(hidIO_1->reportData, DS_UI.enableIMU);
-//        DS_UI.DS_UI_input = DS_input->ds_input;
+        AC_UI.AC_input = AC_input->ac_input;
         
 //        //send DualSense data via OSC
 //        osc_sender->send_DualSense_OSC_message(DS_UI.DS_UI_input, DS_UI.DS_EnableStats);

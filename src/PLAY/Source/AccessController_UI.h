@@ -22,6 +22,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
 #include "StickGUI.h"
+#include "AccessController_State.h"
 //[/Headers]
 
 
@@ -34,7 +35,7 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class AccessController_UI  : public juce::Component
+class AccessController_UI  : public juce::AnimatedAppComponent
 {
 public:
     //==============================================================================
@@ -44,6 +45,9 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     bool isConnected;
+    AccessController::AccessControllerInputStates AC_input;
+    AccessController::AccessControllerEnableStates AC_EnableStats;
+    void update() override;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
@@ -57,6 +61,17 @@ private:
     //[/UserVariables]
 
     //==============================================================================
+    std::unique_ptr<juce::TextButton> juce__textButton_1;
+    std::unique_ptr<juce::TextButton> juce__textButton_2;
+    std::unique_ptr<juce::TextButton> juce__textButton_3;
+    std::unique_ptr<juce::TextButton> juce__textButton_5;
+    std::unique_ptr<juce::TextButton> juce__textButton_4;
+    std::unique_ptr<juce::TextButton> juce__textButton_7;
+    std::unique_ptr<juce::TextButton> juce__textButton_8;
+    std::unique_ptr<juce::TextButton> juce__textButton_6;
+    std::unique_ptr<juce::TextButton> juce__textButton_0;
+    std::unique_ptr<juce::TextButton> juce__textButton_profile;
+    std::unique_ptr<juce::TextButton> juce__textButton_PS;
 
 
     //==============================================================================
