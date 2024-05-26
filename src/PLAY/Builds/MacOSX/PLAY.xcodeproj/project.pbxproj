@@ -17,6 +17,7 @@
 		2D469A83056275768B7998AC /* JoyCon_Input.cpp */ = {isa = PBXBuildFile; fileRef = DEBF28DFADC66842E1694D6A; };
 		31B4E3AE540344DFBCDBF43D /* Foundation.framework */ = {isa = PBXBuildFile; fileRef = 59D7B2784C958621473D68CD; };
 		354C5F422CE5FFAF6226252C /* Security.framework */ = {isa = PBXBuildFile; fileRef = A41A8D2C79EB7B3BE3F9DE16; };
+		3B77B546574039FFEF009D7C /* AccessController_UI.cpp */ = {isa = PBXBuildFile; fileRef = B8B8B3298B78A52324027782; };
 		437662FEF65B7945765B603A /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = 8EF1A5F445BF993323DA3736; };
 		43B5B40425C6F9CAE7B842C0 /* JoyCon_UI.cpp */ = {isa = PBXBuildFile; fileRef = 68737C5270897BBA75289243; };
 		470E6DF87BB5CB90EACB3B0D /* include_juce_audio_devices.mm */ = {isa = PBXBuildFile; fileRef = EFA8B2689B3072E2C37D5AA1; };
@@ -70,6 +71,7 @@
 		0D2F99BD4EE42B050117D852 /* OSC_Receiver.h */ /* OSC_Receiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSC_Receiver.h; path = ../../Source/OSC_Receiver.h; sourceTree = SOURCE_ROOT; };
 		0EE659A09EF18AA7B4AC77B0 /* PLAY_ICON1.png */ /* PLAY_ICON1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PLAY_ICON1.png; path = ../../../../media/PLAY_ICON1.png; sourceTree = SOURCE_ROOT; };
 		10FA45DA84C898C7A9F8DC20 /* MIDI_Sender_UI.h */ /* MIDI_Sender_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MIDI_Sender_UI.h; path = ../../Source/MIDI_Sender_UI.h; sourceTree = SOURCE_ROOT; };
+		11E4EDBA32C468C22F5B7AE0 /* AccessController_UI.h */ /* AccessController_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AccessController_UI.h; path = ../../Source/AccessController_UI.h; sourceTree = SOURCE_ROOT; };
 		131D98D4B1A16D29B26A6378 /* TouchPadGUI.h */ /* TouchPadGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TouchPadGUI.h; path = ../../Source/TouchPadGUI.h; sourceTree = SOURCE_ROOT; };
 		155CDD5D4C9203356EAFF016 /* juce_audio_processors */ /* juce_audio_processors */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors; path = /Users/hongshuofan/Documents/JUCE/modules/juce_audio_processors; sourceTree = "<absolute>"; };
 		18A7CD73623EFA64F6A0750C /* include_juce_audio_utils.mm */ /* include_juce_audio_utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_utils.mm; path = ../../JuceLibraryCode/include_juce_audio_utils.mm; sourceTree = SOURCE_ROOT; };
@@ -133,6 +135,7 @@
 		AC14E912234BD08FF731E23C /* juce_osc */ /* juce_osc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_osc; path = /Users/hongshuofan/Documents/JUCE/modules/juce_osc; sourceTree = "<absolute>"; };
 		AEB7889FF3470D590D9CBB4C /* ir_sensor.h */ /* ir_sensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ir_sensor.h; path = ../../Source/ir_sensor.h; sourceTree = SOURCE_ROOT; };
 		B70A7A61274579060DE5E53E /* DualSenseState.h */ /* DualSenseState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DualSenseState.h; path = ../../Source/DualSenseState.h; sourceTree = SOURCE_ROOT; };
+		B8B8B3298B78A52324027782 /* AccessController_UI.cpp */ /* AccessController_UI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AccessController_UI.cpp; path = ../../Source/AccessController_UI.cpp; sourceTree = SOURCE_ROOT; };
 		BA373FC6D3ADEB24A1DD7CFE /* vec3GUI.cpp */ /* vec3GUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = vec3GUI.cpp; path = ../../Source/vec3GUI.cpp; sourceTree = SOURCE_ROOT; };
 		BB5CF399B09DF25565D87858 /* DiscRecording.framework */ /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = System/Library/Frameworks/DiscRecording.framework; sourceTree = SDKROOT; };
 		BBF288FFC40541D4C1D3AE1A /* StickGUI.cpp */ /* StickGUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StickGUI.cpp; path = ../../Source/StickGUI.cpp; sourceTree = SOURCE_ROOT; };
@@ -237,6 +240,8 @@
 		2CFEE86EB1997C14ED9F4F3E /* AccessController */ = {
 			isa = PBXGroup;
 			children = (
+				B8B8B3298B78A52324027782,
+				11E4EDBA32C468C22F5B7AE0,
 				702BC3DA6CC5E5BCDC7DD5F7,
 				4933C2F31900B571CF1BB184,
 				5591E8615228E9119DDC8ECB,
@@ -513,6 +518,7 @@
 				916EEBF144F393F3D6DB5914,
 				0BA5F297D15D2526E307370F,
 				94CD2C3DE1149DB05932AA69,
+				3B77B546574039FFEF009D7C,
 				B3AC5D214596A40C82E03EFF,
 				AF5002F553415DF86E71CE3E,
 				764D2D31C2810875FE889C21,

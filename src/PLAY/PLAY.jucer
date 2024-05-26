@@ -17,6 +17,10 @@
     </GROUP>
     <GROUP id="{4C14A28B-FA5B-9764-48EE-FA55E98BF1A1}" name="Source">
       <GROUP id="{CB4CF603-012D-ADC8-D450-4559B4C4922D}" name="AccessController">
+        <FILE id="X52kLJ" name="AccessController_UI.cpp" compile="1" resource="0"
+              file="Source/AccessController_UI.cpp"/>
+        <FILE id="PctRQb" name="AccessController_UI.h" compile="0" resource="0"
+              file="Source/AccessController_UI.h"/>
         <FILE id="jlJPSp" name="AccessController_Input.cpp" compile="1" resource="0"
               file="Source/AccessController_Input.cpp"/>
         <FILE id="yCOpO8" name="AccessController_Input.h" compile="0" resource="0"

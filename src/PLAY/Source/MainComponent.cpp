@@ -206,8 +206,8 @@ void MainComponent::onHIDMenuChanged()
                 DS_output->initialOuput(AC_input->usbOrBT);
                 hidIO_1->writeRawData(DS_output->_output, 0x01, 78);
                             
-//                addAndMakeVisible(DS_UI);
-//                DS_UI.isConnected = true;
+                addAndMakeVisible(AC_UI);
+                AC_UI.isConnected = true;
                 
             }
                 
@@ -279,7 +279,7 @@ void MainComponent::onAccessController_DataReceived()
 //
 //        //send DualSense Controller data via MIDI
 //        midi_sender->send_DualSense_MIDI_message(DS_UI.DS_UI_input, DS_UI.DS_EnableStats);
-        hidIO_1->printReport();
+//        hidIO_1->printReport();
     }
 }
 

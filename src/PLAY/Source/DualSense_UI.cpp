@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.10
+  Created with Projucer version: 7.0.12
 
   ------------------------------------------------------------------------------
 
@@ -243,7 +243,7 @@ void DualSense_UI::paint (juce::Graphics& g)
 
     {
         float x = 0, y = 0;
-        juce::Colour strokeColour = juce::Colours::cornflowerblue;
+        juce::Colour strokeColour = juce::Colour (0xff6493ed);
         //[UserPaintCustomArguments] Customize the painting arguments here..
         //[/UserPaintCustomArguments]
         g.setColour (strokeColour);
@@ -439,7 +439,7 @@ BEGIN_JUCER_METADATA
                  overlayOpacity="0.330" fixedSize="1" initialWidth="700" initialHeight="400">
   <BACKGROUND backgroundColour="ff323e44">
     <PATH pos="0 0 100 100" fill="solid: edfdff" hasStroke="1" stroke="3, mitered, butt"
-          strokeColour="solid: ff6495ed" nonZeroWinding="1">s 353.68 226.46 l 444.33 226.46 q 468.08 223.26 496.13 252.08 l 539.3 346 q 573.83 346 599.73 320.38 l 608.37 260.62 q 617 175.23 556.57 38.62 l 470.23 21.54 q 358 13 237.13 21.54 l 150.8 38.62 q 99 158.15 99 235 l 99 286.23 l 107.63 320.38 q 124.9 346 168.07 346 q 193.97 286.23 219.87 235 q 242.53 224.33 263.03 226.46 x</PATH>
+          strokeColour="solid: ff6493ed" nonZeroWinding="1">s 353.68 226.46 l 444.33 226.46 q 468.08 223.26 496.13 252.08 l 539.3 346 q 573.83 346 599.73 320.38 l 608.37 260.62 q 617 175.23 556.57 38.62 l 470.23 21.54 q 358 13 237.13 21.54 l 150.8 38.62 q 99 158.15 99 235 l 99 286.23 l 107.63 320.38 q 124.9 346 168.07 346 q 193.97 286.23 219.87 235 q 242.53 224.33 263.03 226.46 x</PATH>
   </BACKGROUND>
   <TEXTBUTTON name="triangle_button" id="adfc8a3c333c90c1" memberName="juce__textButton_triangle"
               virtualName="" explicitFocusOrder="0" pos="70.571% 19.5% 7.714% 5.25%"

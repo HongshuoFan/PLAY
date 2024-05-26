@@ -13,6 +13,7 @@
 #include "DualSense_UI.h"
 
 #include "AccessController_Input.h"
+#include "AccessController_UI.h"
 
 #include "XboxController_Input.h"
 #include "XboxController_UI.h"
@@ -58,7 +59,7 @@ private:
     
     // AccessController stuffs.
     std::unique_ptr<AccessController_Input> AC_input;
-    
+    AccessController_UI AC_UI;
     // Xbox Controller stuffs.
     std::unique_ptr<XboxController_Input> XC_input;
     XboxController_UI xbxUI;
