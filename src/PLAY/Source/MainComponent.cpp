@@ -57,6 +57,12 @@ void MainComponent::resized()
     // This is called when the MainComponent is resized.
     // If you add any child components, this is where you should
     // update their positions.
+    if (getWidth() < 600 || getHeight() < 500){
+        setSize(700, 500);
+    }
+    if (m_HIDMenu){
+        m_HIDMenu->setBounds(10, proportionOfHeight (0.f), proportionOfWidth(1.f), proportionOfHeight(0.5f));
+    }
     if(osc_sender){
         osc_sender->setBounds(10, proportionOfHeight (0.9f), 600, 40);
     }

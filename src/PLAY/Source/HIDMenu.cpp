@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.10
+  Created with Projucer version: 7.0.12
 
   ------------------------------------------------------------------------------
 
@@ -39,8 +39,6 @@ HIDMenu::HIDMenu ()
     HIDcombox__comboBox->setTextWhenNothingSelected (juce::String());
     HIDcombox__comboBox->setTextWhenNoChoicesAvailable (TRANS ("(No Device)"));
     HIDcombox__comboBox->addListener (this);
-
-    HIDcombox__comboBox->setBounds (150, 4, 150, 24);
 
     Refresh__textButton.reset (new juce::TextButton ("Refresh button"));
     addAndMakeVisible (Refresh__textButton.get());
@@ -90,7 +88,7 @@ void HIDMenu::paint (juce::Graphics& g)
     g.fillAll (juce::Colour (0xff323e44));
 
     {
-        int x = 8, y = 0, width = 200, height = 30;
+        int x = proportionOfWidth (0.0114f), y = 0, width = 200, height = 30;
         juce::String text (TRANS ("Available Controller"));
         juce::Colour fillColour = juce::Colours::azure;
         //[UserPaintCustomArguments] Customize the painting arguments here..
@@ -113,8 +111,9 @@ void HIDMenu::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    Refresh__textButton->setBounds (310, 4, proportionOfWidth (0.1929f), proportionOfHeight (0.5500f));
-    juce__textButton_About->setBounds (628, 4, proportionOfWidth (0.0871f), proportionOfHeight (0.6000f));
+    HIDcombox__comboBox->setBounds (proportionOfWidth (0.2141f), 4, proportionOfWidth (0.2141f), 24);
+    Refresh__textButton->setBounds (proportionOfWidth (0.4428f), 4, proportionOfWidth (0.1403f), 22);
+    juce__textButton_About->setBounds (proportionOfWidth (0.9700f) - 61, 4, 61, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -218,20 +217,20 @@ auto HIDMenu::inVisableAbout(){
 
 void HIDMenu::ShowAboutWindow()
 {
-    
+
     aboutWindow = std::make_unique<juce::AlertWindow> ("About","",juce::MessageBoxIconType::InfoIcon);
     //aboutWindow->addTextEditor ("text", "enter some text here", "text field:");
     //aboutWindow->addComboBox ("option", { "option 1", "option 2", "option 3", "option 4" }, "some options");
-    
+
     aboutWindow->addTextBlock("Special thanks to The Oxford Research Centre in the Humanities, Jesus College Oxford, and the Royal Northern College of Music for their support and funding.");
     aboutWindow->addTextBlock("Lead developer: Hongshuo Fan");
     aboutWindow->addTextBlock("Please find more details on our GitHub Page!");
-    
+
     aboutWindow->addButton ("OK",     1, juce::KeyPress (juce::KeyPress::returnKey, 0, 0));
     aboutWindow->addButton ("GitHub", 0, juce::KeyPress (juce::KeyPress::escapeKey, 0, 0));
-   
+
     aboutWindow->enterModalState(true, juce::ModalCallbackFunction::create(inVisableAbout()));
-    
+
 
 }
 
@@ -251,21 +250,21 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="HIDMenu" componentName=""
                  parentClasses="public juce::Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="0" snapShown="0" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="700" initialHeight="40">
+                 fixedSize="0" initialWidth="700" initialHeight="40">
   <BACKGROUND backgroundColour="ff323e44">
-    <TEXT pos="8 0 200 30" fill="solid: fff0ffff" hasStroke="0" text="Available Controller"
+    <TEXT pos="1.143% 0 200 30" fill="solid: fff0ffff" hasStroke="0" text="Available Controller"
           fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
           italic="0" justification="33"/>
   </BACKGROUND>
   <COMBOBOX name="HID combo box" id="aee71c7aac27d106" memberName="HIDcombox__comboBox"
-            virtualName="" explicitFocusOrder="0" pos="150 4 150 24" editable="0"
-            layout="36" items="" textWhenNonSelected="" textWhenNoItems="(No Device)"/>
+            virtualName="" explicitFocusOrder="0" pos="21.414% 4 21.414% 24"
+            editable="0" layout="36" items="" textWhenNonSelected="" textWhenNoItems="(No Device)"/>
   <TEXTBUTTON name="Refresh button" id="9e6aa27ce2a7870e" memberName="Refresh__textButton"
-              virtualName="" explicitFocusOrder="0" pos="310 4 19.286% 55%"
+              virtualName="" explicitFocusOrder="0" pos="44.283% 4 14.033% 22"
               bgColOff="ff808080" textCol="fff0ffff" buttonText="Refresh" connectedEdges="0"
               needsCallback="1" radioGroupId="2"/>
   <TEXTBUTTON name="About_button" id="357b89fcf67d7ab2" memberName="juce__textButton_About"
-              virtualName="" explicitFocusOrder="0" pos="628 4 8.714% 60%"
+              virtualName="" explicitFocusOrder="0" pos="96.985%r 4 61 24"
               buttonText="About" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
