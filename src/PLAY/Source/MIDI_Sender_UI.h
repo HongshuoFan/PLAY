@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.9
+  Created with Projucer version: 7.0.12
 
   ------------------------------------------------------------------------------
 
@@ -24,6 +24,7 @@
 #include "XboxControllerState.h"
 #include "DualSenseState.h"
 #include "JoyConState.h"
+#include "AccessController_State.h"
 //[/Headers]
 
 
@@ -51,6 +52,9 @@ public:
     void send_DualSense_MIDI_message(DualSense::DualSenseInputState _dualSenseInput, DualSense::DualSenseEnableStates _dualSenseEnableStat);
     void send_L_JoyCon_MIDI_message(JoyCon::L_JoyCon_InputState _l_JCInput, JoyCon::JoyCon_EnableStates _l_JC_EnableStat);
     void send_R_JoyCon_MIDI_message(JoyCon::R_JoyCon_InputState _r_JCInput, JoyCon::JoyCon_EnableStates _r_JC_EnableStat);
+
+    void send_AccessController_MIDI_message(AccessController::AccessControllerInputStates _AccessControllerInput, AccessController::AccessControllerEnableStates _AccessControllerEnableStates);
+
     int Selected_midiChannel = 1;
     void closeConnection();
     juce::String MidiDeviceName = "PLAY";
@@ -80,6 +84,7 @@ private:
     DualSense::DualSenseInputState last_dualSenseInput;
     JoyCon::L_JoyCon_InputState last_l_JCInput;
     JoyCon::R_JoyCon_InputState last_r_JCInput;
+    AccessController::AccessControllerInputStates last_AccessControllerInput;
     //[/UserVariables]
 
     //==============================================================================

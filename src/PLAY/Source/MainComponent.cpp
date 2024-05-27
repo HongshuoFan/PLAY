@@ -276,9 +276,9 @@ void MainComponent::onAccessController_DataReceived()
         
         //send Access controller data via OSC
         osc_sender->send_AccessController_OSC_message(AC_UI.AC_input, AC_UI.AC_EnableStats);
-//
-//        //send DualSense Controller data via MIDI
-//        midi_sender->send_DualSense_MIDI_message(DS_UI.DS_UI_input, DS_UI.DS_EnableStats);
+
+        //send DualSense Controller data via MIDI
+        midi_sender->send_AccessController_MIDI_message(AC_UI.AC_input, AC_UI.AC_EnableStats);
 //        hidIO_1->printReport();
     }
 }

@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.9
+  Created with Projucer version: 7.0.12
 
   ------------------------------------------------------------------------------
 
@@ -287,7 +287,7 @@ void OSC_Sender_UI::send_Xbox_OSC_message(XboxCotroller::XboxCotrollerInputState
                             "/buttons/lb", last_xboxInput.buttons.lb);
         ConvertAndSend_bool(_xboxInput.buttons.rb, last_xboxInput.buttons.rb,
                             "/buttons/rb", last_xboxInput.buttons.rb);
-        
+
         ConvertAndSend_bool(_xboxInput.leftStick.stickPress, last_xboxInput.leftStick.stickPress,
                             "/leftStick/press", last_xboxInput.leftStick.stickPress);
         ConvertAndSend_bool(_xboxInput.rightStick.stickPress, last_xboxInput.rightStick.stickPress,
@@ -325,12 +325,12 @@ void OSC_Sender_UI::send_DualSense_OSC_message(DualSense::DualSenseInputState _d
             ConvertAndSend_float(_dualSenseInput.rightStick.y, last_dualSenseInput.rightStick.y,
                                  "/rightStick/y", last_dualSenseInput.rightStick.y, stickFliter);
         }
-        
+
         ConvertAndSend_bool(_dualSenseInput.leftStick.stickPress, last_dualSenseInput.leftStick.stickPress,
                             "/leftStick/press", last_dualSenseInput.leftStick.stickPress);
         ConvertAndSend_bool(_dualSenseInput.rightStick.stickPress, last_dualSenseInput.rightStick.stickPress,
                             "/rightStick/press", last_dualSenseInput.rightStick.stickPress);
-        
+
         ConvertAndSend_float(_dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger,
                              "/leftTrigger", last_dualSenseInput.leftTrigger, stickFliter);
         ConvertAndSend_float(_dualSenseInput.rightTrigger, last_dualSenseInput.rightTrigger,
@@ -568,34 +568,35 @@ void OSC_Sender_UI::send_AccessController_OSC_message(AccessController::AccessCo
             ConvertAndSend_float(_AccessControllerInput.stick.y, last_AccessControllerInput.stick.y,
                                  "/rightStick/y", last_AccessControllerInput.stick.y, stickFliter);
         }
+        ConvertAndSend_bool(_AccessControllerInput.buttons.b0, last_AccessControllerInput.buttons.b0,
+                            "/buttons/b0", last_AccessControllerInput.buttons.b0);
+        ConvertAndSend_bool(_AccessControllerInput.buttons.b1, last_AccessControllerInput.buttons.b1,
+                            "/buttons/b1", last_AccessControllerInput.buttons.b1);
+        ConvertAndSend_bool(_AccessControllerInput.buttons.b2, last_AccessControllerInput.buttons.b2,
+                            "/buttons/b2", last_AccessControllerInput.buttons.b2);
+        ConvertAndSend_bool(_AccessControllerInput.buttons.b3, last_AccessControllerInput.buttons.b3,
+                            "/buttons/b3", last_AccessControllerInput.buttons.b3);
+        ConvertAndSend_bool(_AccessControllerInput.buttons.b4, last_AccessControllerInput.buttons.b4,
+                            "/buttons/b4", last_AccessControllerInput.buttons.b4);
+        ConvertAndSend_bool(_AccessControllerInput.buttons.b5, last_AccessControllerInput.buttons.b5,
+                            "/buttons/b5", last_AccessControllerInput.buttons.b5);
+        ConvertAndSend_bool(_AccessControllerInput.buttons.b6, last_AccessControllerInput.buttons.b6,
+                            "/buttons/b6", last_AccessControllerInput.buttons.b6);
+        ConvertAndSend_bool(_AccessControllerInput.buttons.b7, last_AccessControllerInput.buttons.b7,
+                            "/buttons/b7", last_AccessControllerInput.buttons.b7);
+        ConvertAndSend_bool(_AccessControllerInput.buttons.b8, last_AccessControllerInput.buttons.b8,
+                            "/buttons/b8", last_AccessControllerInput.buttons.b8);
+
+        ConvertAndSend_bool(_AccessControllerInput.buttons.ps, last_AccessControllerInput.buttons.ps,
+                            "/buttons/ps", last_AccessControllerInput.buttons.ps);
+        ConvertAndSend_bool(_AccessControllerInput.buttons.profile, last_AccessControllerInput.buttons.profile,
+                            "/buttons/profile", last_AccessControllerInput.buttons.profile);
     }
-        
-    ConvertAndSend_bool(_AccessControllerInput.buttons.b0, last_AccessControllerInput.buttons.b0,
-                        "/buttons/b0", last_AccessControllerInput.buttons.b0);
-    ConvertAndSend_bool(_AccessControllerInput.buttons.b1, last_AccessControllerInput.buttons.b1,
-                        "/buttons/b1", last_AccessControllerInput.buttons.b1);
-    ConvertAndSend_bool(_AccessControllerInput.buttons.b2, last_AccessControllerInput.buttons.b2,
-                        "/buttons/b2", last_AccessControllerInput.buttons.b2);
-    ConvertAndSend_bool(_AccessControllerInput.buttons.b3, last_AccessControllerInput.buttons.b3,
-                        "/buttons/b3", last_AccessControllerInput.buttons.b3);
-    ConvertAndSend_bool(_AccessControllerInput.buttons.b4, last_AccessControllerInput.buttons.b4,
-                        "/buttons/b4", last_AccessControllerInput.buttons.b4);
-    ConvertAndSend_bool(_AccessControllerInput.buttons.b5, last_AccessControllerInput.buttons.b5,
-                        "/buttons/b5", last_AccessControllerInput.buttons.b5);
-    ConvertAndSend_bool(_AccessControllerInput.buttons.b6, last_AccessControllerInput.buttons.b6,
-                        "/buttons/b6", last_AccessControllerInput.buttons.b6);
-    ConvertAndSend_bool(_AccessControllerInput.buttons.b7, last_AccessControllerInput.buttons.b7,
-                        "/buttons/b7", last_AccessControllerInput.buttons.b7);
-    ConvertAndSend_bool(_AccessControllerInput.buttons.b8, last_AccessControllerInput.buttons.b8,
-                        "/buttons/b8", last_AccessControllerInput.buttons.b8);
-        
-    ConvertAndSend_bool(_AccessControllerInput.buttons.ps, last_AccessControllerInput.buttons.ps,
-                        "/buttons/ps", last_AccessControllerInput.buttons.ps);
-    ConvertAndSend_bool(_AccessControllerInput.buttons.profile, last_AccessControllerInput.buttons.profile,
-                        "/buttons/profile", last_AccessControllerInput.buttons.profile);
+
+
 }
 
-    
+
 void OSC_Sender_UI::ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p, float filter)
 {
     if(val != pre_val && abs(val - pre_val) >= filter){

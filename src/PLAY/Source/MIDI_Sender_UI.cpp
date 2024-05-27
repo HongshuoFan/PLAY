@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.9
+  Created with Projucer version: 7.0.12
 
   ------------------------------------------------------------------------------
 
@@ -152,7 +152,7 @@ void MIDI_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
     {
         //[UserButtonCode_juce__toggleButton_MIDI] -- add your button handler code here..
         if(juce__toggleButton_MIDI->getToggleState()){
-            
+
             if(PlayMidiDevice){
                 if(MidiDeviceName == juce__textEditor_MidiDeviceName->getText()){
                     std::cout<<"same name "<< PlayMidiDevice->getName()<<"\n";
@@ -162,12 +162,12 @@ void MIDI_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
                     MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
                     PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
                 }
-                
+
             }else{
                 MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
                 PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
             }
-           
+
         }else{
             //closeConnection();
         }
@@ -206,7 +206,7 @@ void MIDI_Sender_UI::closeConnection(){
         PlayMidiDevice = nullptr;
         juce__toggleButton_MIDI->setToggleState(false, juce::sendNotification);
     }
-    
+
 }
 
 void MIDI_Sender_UI::sendToOutput(const juce::MidiMessage& msg)
@@ -285,7 +285,7 @@ void MIDI_Sender_UI::send_Xbox_MIDI_message(XboxCotroller::XboxCotrollerInputSta
         handleButton(50, _xboxInput.rightStick.stickPress, last_xboxInput.rightStick.stickPress);
 
         //Modulation Wheel
-        
+
         handleTrigger(1, _xboxInput.leftTrigger, last_xboxInput.leftTrigger);
         //Breath Controller (MSB)
         handleTrigger(2, _xboxInput.rightTrigger, last_xboxInput.rightTrigger);
@@ -344,73 +344,104 @@ void MIDI_Sender_UI::send_DualSense_MIDI_message(DualSense::DualSenseInputState 
     handleTrigger(1, _dualSenseInput.leftTrigger, last_dualSenseInput.leftTrigger);
     //Breath Controller (MSB)
     handleTrigger(2, _dualSenseInput.rightTrigger, last_dualSenseInput.rightTrigger);
-        
+
     if(_dualSenseEnableState.leftStickStates.x){
         //Volume (MSB)
         handleTrigger(7, _dualSenseInput.leftStick.x, last_dualSenseInput.leftStick.x);
     }
-        
+
     if(_dualSenseEnableState.leftStickStates.y){
         //Balance (MSB)
         handleTrigger(8, _dualSenseInput.leftStick.y, last_dualSenseInput.leftStick.y);
     }
-        
+
     if(_dualSenseEnableState.rightStickStates.x){
         //Pan (MSB)
         handleTrigger(10, _dualSenseInput.rightStick.x, last_dualSenseInput.rightStick.x);
     }
-        
+
     if(_dualSenseEnableState.rightStickStates.y){
         //Expression (MSB)
         handleTrigger(11, _dualSenseInput.rightStick.y, last_dualSenseInput.rightStick.y);
     }
-        
+
     if(_dualSenseEnableState.touchPoint1States.x){
         //Effect Controller 1 (MSB)
         handleTrigger(12, _dualSenseInput.touchPoint1.x, last_dualSenseInput.touchPoint1.x);
     }
-        
+
     if(_dualSenseEnableState.touchPoint1States.y){
         //Effect Controller 2 (MSB)
         handleTrigger(13, _dualSenseInput.touchPoint1.y, last_dualSenseInput.touchPoint1.y);
     }
-        
+
     if(_dualSenseEnableState.touchPoint2States.x){
         //Undefined (MSB)
         handleTrigger(14, _dualSenseInput.touchPoint2.x, last_dualSenseInput.touchPoint2.x);
     }
-        
+
     if(_dualSenseEnableState.touchPoint2States.y){
         //Undefined (MSB)
         handleTrigger(15, _dualSenseInput.touchPoint2.y, last_dualSenseInput.touchPoint2.y);
     }
-        
+
     if(_dualSenseEnableState.Gyo_states.x){
         //General Purpose (MSB) gyroscope
         handleTrigger(16, _dualSenseInput.gyroscope.x/2000 + 0.5, last_dualSenseInput.gyroscope.x);
     }
-        
+
     if(_dualSenseEnableState.Gyo_states.y){
         handleTrigger(17, _dualSenseInput.gyroscope.y/2000 + 0.5, last_dualSenseInput.gyroscope.y);
     }
-        
+
     if(_dualSenseEnableState.Gyo_states.z){
         handleTrigger(18, _dualSenseInput.gyroscope.z/2000 + 0.5, last_dualSenseInput.gyroscope.z);
     }
-        
+
     if(_dualSenseEnableState.Acc_states.x){
         handleTrigger(19, _dualSenseInput.accelerometer.x * 0.5 + 0.5, last_dualSenseInput.accelerometer.x);
     }
-        
+
     if(_dualSenseEnableState.Acc_states.y){
         handleTrigger(20, _dualSenseInput.accelerometer.y * 0.5 + 0.5, last_dualSenseInput.accelerometer.y);
     }
-        
+
     if(_dualSenseEnableState.Acc_states.z){
         handleTrigger(21, _dualSenseInput.accelerometer.z * 0.5 + 0.5, last_dualSenseInput.accelerometer.z);
     }
 
-    
+
+}
+
+void MIDI_Sender_UI::send_AccessController_MIDI_message(AccessController::AccessControllerInputStates _AccessControllerInput, AccessController::AccessControllerEnableStates _AccessControllerEnableStates)
+{
+    if(!juce__toggleButton_MIDI->getToggleState())
+    {
+        return;
+    }
+
+    if(_AccessControllerEnableStates.StickStates.x){
+        //Volume (MSB)
+        handleTrigger(7, _AccessControllerInput.stick.x, last_AccessControllerInput.stick.x);
+    }
+
+    if(_AccessControllerEnableStates.StickStates.y){
+        //Balance (MSB)
+        handleTrigger(8, _AccessControllerInput.stick.y, last_AccessControllerInput.stick.y);
+    }
+
+    handleButton(36, _AccessControllerInput.buttons.b0, last_AccessControllerInput.buttons.b0);
+    handleButton(37, _AccessControllerInput.buttons.b1, last_AccessControllerInput.buttons.b1);
+    handleButton(38, _AccessControllerInput.buttons.b2, last_AccessControllerInput.buttons.b2);
+    handleButton(39, _AccessControllerInput.buttons.b3, last_AccessControllerInput.buttons.b3);
+    handleButton(40, _AccessControllerInput.buttons.b4, last_AccessControllerInput.buttons.b4);
+    handleButton(41, _AccessControllerInput.buttons.b5, last_AccessControllerInput.buttons.b5);
+    handleButton(42, _AccessControllerInput.buttons.b6, last_AccessControllerInput.buttons.b6);
+    handleButton(43, _AccessControllerInput.buttons.b7, last_AccessControllerInput.buttons.b7);
+    handleButton(44, _AccessControllerInput.buttons.b8, last_AccessControllerInput.buttons.b8);
+    handleButton(45, _AccessControllerInput.buttons.profile, last_AccessControllerInput.buttons.profile);
+    handleButton(46, _AccessControllerInput.buttons.ps, last_AccessControllerInput.buttons.ps);
+
 }
 
 void MIDI_Sender_UI::send_L_JoyCon_MIDI_message(JoyCon::L_JoyCon_InputState _l_JCInput, JoyCon::JoyCon_EnableStates _l_JC_EnableStat)
@@ -433,12 +464,12 @@ void MIDI_Sender_UI::send_L_JoyCon_MIDI_message(JoyCon::L_JoyCon_InputState _l_J
         //Volume (MSB)
         handleTrigger(7, _l_JCInput.stick.x, last_l_JCInput.stick.x);
     }
-    
+
     if(_l_JC_EnableStat.StickStates.y){
         //Balance (MSB)
         handleTrigger(8, _l_JCInput.stick.y, last_l_JCInput.stick.y);
     }
-    
+
     if(_l_JC_EnableStat.Acc_states.x){
         handleTrigger(9, (_l_JCInput.accelerometer.x + 1.)/2., last_l_JCInput.accelerometer.x);
     }
@@ -457,7 +488,7 @@ void MIDI_Sender_UI::send_L_JoyCon_MIDI_message(JoyCon::L_JoyCon_InputState _l_J
     if(_l_JC_EnableStat.Gyo_states.z){
         handleTrigger(14, _l_JCInput.gyroscope.z/2000. + 0.5, last_l_JCInput.gyroscope.z);
     }
-    
+
 }
 
 void MIDI_Sender_UI::send_R_JoyCon_MIDI_message(JoyCon::R_JoyCon_InputState _r_JCInput, JoyCon::JoyCon_EnableStates _r_JC_EnableStat)
@@ -476,7 +507,7 @@ void MIDI_Sender_UI::send_R_JoyCon_MIDI_message(JoyCon::R_JoyCon_InputState _r_J
     handleButton(53, _r_JCInput.buttons.sl, last_r_JCInput.buttons.sl);
     handleButton(55, _r_JCInput.buttons.sr, last_r_JCInput.buttons.sr);
     handleButton(57, _r_JCInput.buttons.home, last_r_JCInput.buttons.home);
-    
+
     if(_r_JC_EnableStat.StickStates.x){
         //Pan (MSB)
         handleTrigger(15, _r_JCInput.stick.x, last_r_JCInput.stick.x);
@@ -504,7 +535,7 @@ void MIDI_Sender_UI::send_R_JoyCon_MIDI_message(JoyCon::R_JoyCon_InputState _r_J
     if(_r_JC_EnableStat.Gyo_states.z){
         handleTrigger(22, _r_JCInput.gyroscope.z/2000. + 0.5, last_r_JCInput.gyroscope.z);
     }
-    
+
 }
 //[/MiscUserCode]
 
