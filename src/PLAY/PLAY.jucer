@@ -119,7 +119,7 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" appSandbox="1" appSandboxInheritance="1"
                appSandboxOptions="com.apple.security.device.bluetooth,com.apple.security.device.usb,com.apple.security.network.client,com.apple.security.network.server"
-               iosBluetoothPermissionNeeded="1" keepCustomXcodeSchemes="1" buildNumber="0.2"
+               iosBluetoothPermissionNeeded="1" keepCustomXcodeSchemes="1" buildNumber="0.3"
                smallIcon="rqdLRk" bigIcon="rqdLRk" applicationCategory="public.app-category.utilities">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="PLAY" precompiledHeaderFile="/usr/local/include/hidapi/hidapi.h"/>
