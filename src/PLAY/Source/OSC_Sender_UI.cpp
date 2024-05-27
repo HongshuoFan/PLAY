@@ -556,6 +556,46 @@ void OSC_Sender_UI::send_R_JoyCon_OSC_message(JoyCon::R_JoyCon_InputState _r_JC_
 
 }
 
+void OSC_Sender_UI::send_AccessController_OSC_message(AccessController::AccessControllerInputStates _AccessControllerInput, AccessController::AccessControllerEnableStates _AccessControllerEnableStates)
+{
+    if(juce__toggleButton_OSC->getToggleState()){
+        float stickFliter = 0.01;
+        if(_AccessControllerEnableStates.StickStates.x){
+            ConvertAndSend_float(_AccessControllerInput.stick.x, last_AccessControllerInput.stick.x,
+                                 "/rightStick/x", last_AccessControllerInput.stick.x, stickFliter);
+        }
+        if(_AccessControllerEnableStates.StickStates.y){
+            ConvertAndSend_float(_AccessControllerInput.stick.y, last_AccessControllerInput.stick.y,
+                                 "/rightStick/y", last_AccessControllerInput.stick.y, stickFliter);
+        }
+    }
+        
+    ConvertAndSend_bool(_AccessControllerInput.buttons.b0, last_AccessControllerInput.buttons.b0,
+                        "/buttons/b0", last_AccessControllerInput.buttons.b0);
+    ConvertAndSend_bool(_AccessControllerInput.buttons.b1, last_AccessControllerInput.buttons.b1,
+                        "/buttons/b1", last_AccessControllerInput.buttons.b1);
+    ConvertAndSend_bool(_AccessControllerInput.buttons.b2, last_AccessControllerInput.buttons.b2,
+                        "/buttons/b2", last_AccessControllerInput.buttons.b2);
+    ConvertAndSend_bool(_AccessControllerInput.buttons.b3, last_AccessControllerInput.buttons.b3,
+                        "/buttons/b3", last_AccessControllerInput.buttons.b3);
+    ConvertAndSend_bool(_AccessControllerInput.buttons.b4, last_AccessControllerInput.buttons.b4,
+                        "/buttons/b4", last_AccessControllerInput.buttons.b4);
+    ConvertAndSend_bool(_AccessControllerInput.buttons.b5, last_AccessControllerInput.buttons.b5,
+                        "/buttons/b5", last_AccessControllerInput.buttons.b5);
+    ConvertAndSend_bool(_AccessControllerInput.buttons.b6, last_AccessControllerInput.buttons.b6,
+                        "/buttons/b6", last_AccessControllerInput.buttons.b6);
+    ConvertAndSend_bool(_AccessControllerInput.buttons.b7, last_AccessControllerInput.buttons.b7,
+                        "/buttons/b7", last_AccessControllerInput.buttons.b7);
+    ConvertAndSend_bool(_AccessControllerInput.buttons.b8, last_AccessControllerInput.buttons.b8,
+                        "/buttons/b8", last_AccessControllerInput.buttons.b8);
+        
+    ConvertAndSend_bool(_AccessControllerInput.buttons.ps, last_AccessControllerInput.buttons.ps,
+                        "/buttons/ps", last_AccessControllerInput.buttons.ps);
+    ConvertAndSend_bool(_AccessControllerInput.buttons.profile, last_AccessControllerInput.buttons.profile,
+                        "/buttons/profile", last_AccessControllerInput.buttons.profile);
+}
+
+    
 void OSC_Sender_UI::ConvertAndSend_float(const float val, const float pre_val, const juce::String address, float& pre_val_p, float filter)
 {
     if(val != pre_val && abs(val - pre_val) >= filter){
