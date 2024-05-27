@@ -109,7 +109,53 @@ Accelerometer Y   |  MIDI CC 20   |  /accelerometer/y  |
 Accelerometer Z   |  MIDI CC 21   |  /accelerometer/z  |
 
 
-### Nintendo Switch Joycons
+### Nintendo Switch Joycon Left
+
+Controller Input  |  MIDI Message | OSC Address     |
+|-----------------|---------------|-----------------   |
+Dpad Up           |  Note 40      |  /dpad/up          |
+Dpad Down         |  Note 41      |  /dpad/down        |
+Dpad Left         |  Note 42      |  /dpad/left        |
+Dpad Right        |  Note 43      |  /dpad/right       |
+Button L          |  Note 44      |  /buttons/l        |
+Button ZL         |  Note 46      |  /buttons/zl       |
+Button minus      |  Note 48      |  /buttons/minus    |
+Button sl         |  Note 52      |  /buttons/l_sl     |
+Button sr         |  Note 54      |  /buttons/l_sr     |
+Button capture    |  Note 56      |  /buttons/capture  |
+Left stick X      |  MIDI CC 7    |  /leftStick/x      |
+Left stick Y      |  MIDI CC 8    |  /leftStick/y      |
+Accelerometer X   |  MIDI CC 9    |  /left/accelerometer/x  |
+Accelerometer Y   |  MIDI CC 10   |  /left/accelerometer/y  |
+Accelerometer Z   |  MIDI CC 11   |  /left/accelerometer/z  |
+Gyroscope X       |  MIDI CC 12   |  /left/gyroscope/x      |
+Gyroscope Y       |  MIDI CC 13   |  /left/gyroscope/y      |
+Gyroscope Z       |  MIDI CC 14   |  /left/gyroscope/z      |
+
+### Nintendo Switch Joycon Right
+
+Controller Input  |  MIDI Message | OSC Address     |
+|-----------------|---------------|-----------------   |
+Button B          |  Note 36      |  /buttons/b        |
+Button A          |  Note 37      |  /buttons/a        |
+Button Y          |  Note 38      |  /buttons/y        |
+Button X          |  Note 39      |  /buttons/x        |
+Button R          |  Note 45      |  /buttons/r        |
+Button ZR         |  Note 47      |  /buttons/zr       |
+Button plus       |  Note 49      |  /buttons/plus     |
+Button sl         |  Note 53      |  /buttons/r_sl     |
+Button sr         |  Note 55      |  /buttons/r_sr     |
+Button home       |  Note 57      |  /buttons/home     |
+Right stick X     |  MIDI CC 15   |  /rightStick/x     |
+Right stick Y     |  MIDI CC 16   |  /rightStick/y     |
+Accelerometer X   |  MIDI CC 17   |  /right/accelerometer/x  |
+Accelerometer Y   |  MIDI CC 18   |  /right/accelerometer/y  |
+Accelerometer Z   |  MIDI CC 19   |  /right/accelerometer/z  |
+Gyroscope X       |  MIDI CC 20   |  /right/gyroscope/x      |
+Gyroscope Y       |  MIDI CC 21   |  /right/gyroscope/y      |
+Gyroscope Z       |  MIDI CC 22   |  /right/gyroscope/z      |
+
+### PS Access Controller
 *Coming soon*
  
 ## Contributing
