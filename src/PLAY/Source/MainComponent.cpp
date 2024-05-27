@@ -199,7 +199,7 @@ void MainComponent::onHIDMenuChanged()
                 hidIO_1->dataReceivedCallback = [this]{onAccessController_DataReceived();};
 //                DS_UI.UpdateTriggerForce = [this]{update_DualSense_TriggerForce();};
 //                DS_UI.UpdateVibration = [this]{update_DualSense_Vibration();};
-//                DS_UI.changeDevice = [this]{changeDevice();};
+                AC_UI.changeDevice = [this]{changeDevice();};
                 std::this_thread::sleep_for(std::chrono::seconds(1));
 
                 // enable dual sense controller
@@ -348,6 +348,11 @@ void MainComponent::userTriedToCloseWindow()
     if(xbxUI.isConnected){
         xbxUI.setVisible(false);
         xbxUI.isConnected = false;
+    }
+    
+    if(AC_UI.isConnected){
+        AC_UI.setVisible(false);
+        AC_UI.isConnected = false;
     }
     
     //kill hidIO threads

@@ -35,7 +35,8 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class AccessController_UI  : public juce::AnimatedAppComponent
+class AccessController_UI  : public juce::AnimatedAppComponent,
+                             public juce::Button::Listener
 {
 public:
     //==============================================================================
@@ -48,10 +49,12 @@ public:
     AccessController::AccessControllerInputStates AC_input;
     AccessController::AccessControllerEnableStates AC_EnableStats;
     void update() override;
+    std::function<void()> changeDevice;
     //[/UserMethods]
 
     void paint (juce::Graphics& g) override;
     void resized() override;
+    void buttonClicked (juce::Button* buttonThatWasClicked) override;
 
 
 
@@ -72,6 +75,7 @@ private:
     std::unique_ptr<juce::TextButton> juce__textButton_0;
     std::unique_ptr<juce::TextButton> juce__textButton_profile;
     std::unique_ptr<juce::TextButton> juce__textButton_PS;
+    std::unique_ptr<juce::TextButton> juce__textButton_ChangeDevice;
 
 
     //==============================================================================

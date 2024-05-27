@@ -89,6 +89,12 @@ AccessController_UI::AccessController_UI ()
     juce__textButton_PS->setButtonText (TRANS ("PS"));
     juce__textButton_PS->setColour (juce::TextButton::buttonOnColourId, juce::Colours::cadetblue);
 
+    juce__textButton_ChangeDevice.reset (new juce::TextButton ("ChangeDevice_button"));
+    addAndMakeVisible (juce__textButton_ChangeDevice.get());
+    juce__textButton_ChangeDevice->setButtonText (TRANS ("Change Device"));
+    juce__textButton_ChangeDevice->addListener (this);
+    juce__textButton_ChangeDevice->setColour (juce::TextButton::buttonColourId, juce::Colours::red);
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -118,6 +124,7 @@ AccessController_UI::~AccessController_UI()
     juce__textButton_0 = nullptr;
     juce__textButton_profile = nullptr;
     juce__textButton_PS = nullptr;
+    juce__textButton_ChangeDevice = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -149,7 +156,7 @@ void AccessController_UI::paint (juce::Graphics& g)
 void AccessController_UI::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
-    Stick_UI->setBounds (proportionOfWidth (0.1f), proportionOfHeight (0.25f), proportionOfWidth (0.26f), proportionOfHeight (0.44f));
+    Stick_UI->setBounds (proportionOfWidth (0.1f), proportionOfHeight (0.22f), proportionOfWidth (0.26f), proportionOfHeight (0.44f));
     //[/UserPreResize]
 
     juce__textButton_1->setBounds (proportionOfWidth (0.4400f), proportionOfHeight (0.4050f), proportionOfWidth (0.1100f), proportionOfHeight (0.1100f));
@@ -161,10 +168,27 @@ void AccessController_UI::resized()
     juce__textButton_8->setBounds (proportionOfWidth (0.4729f), proportionOfHeight (0.2100f), proportionOfWidth (0.1100f), proportionOfHeight (0.1100f));
     juce__textButton_6->setBounds (proportionOfWidth (0.7914f), proportionOfHeight (0.2100f), proportionOfWidth (0.1100f), proportionOfHeight (0.1100f));
     juce__textButton_0->setBounds (proportionOfWidth (0.6286f), proportionOfHeight (0.3600f), proportionOfWidth (0.1300f), proportionOfHeight (0.2000f));
-    juce__textButton_profile->setBounds (proportionOfWidth (0.1886f), proportionOfHeight (0.7700f), proportionOfWidth (0.0771f), proportionOfHeight (0.0875f));
-    juce__textButton_PS->setBounds (proportionOfWidth (0.0100f), proportionOfHeight (0.4275f), proportionOfWidth (0.0771f), proportionOfHeight (0.0875f));
+    juce__textButton_profile->setBounds (proportionOfWidth (0.1900f), proportionOfHeight (0.7675f), proportionOfWidth (0.0814f), proportionOfHeight (0.0650f));
+    juce__textButton_PS->setBounds (proportionOfWidth (0.0143f), proportionOfHeight (0.4225f), proportionOfWidth (0.0514f), proportionOfHeight (0.0550f));
+    juce__textButton_ChangeDevice->setBounds (proportionOfWidth (0.8657f), proportionOfHeight (0.0250f), 89, 19);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
+}
+
+void AccessController_UI::buttonClicked (juce::Button* buttonThatWasClicked)
+{
+    //[UserbuttonClicked_Pre]
+    //[/UserbuttonClicked_Pre]
+
+    if (buttonThatWasClicked == juce__textButton_ChangeDevice.get())
+    {
+        //[UserButtonCode_juce__textButton_ChangeDevice] -- add your button handler code here..
+        changeDevice();
+        //[/UserButtonCode_juce__textButton_ChangeDevice]
+    }
+
+    //[UserbuttonClicked_Post]
+    //[/UserbuttonClicked_Post]
 }
 
 
@@ -186,7 +210,7 @@ void AccessController_UI::update()
         juce__textButton_8->setToggleState(AC_input.buttons.b8, juce::sendNotification);
         juce__textButton_profile->setToggleState(AC_input.buttons.profile, juce::sendNotification);
         juce__textButton_PS->setToggleState(AC_input.buttons.ps, juce::sendNotification);
-        
+
         AC_EnableStats.StickStates.x = Stick_UI->enableX;
         AC_EnableStats.StickStates.y = Stick_UI->enableY;
     }
@@ -248,13 +272,17 @@ BEGIN_JUCER_METADATA
               bgColOn="ff5f9ea0" buttonText="B0" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="b_profile" id="2e9ff81fc46d23b1" memberName="juce__textButton_profile"
-              virtualName="" explicitFocusOrder="0" pos="18.857% 77% 7.714% 8.75%"
+              virtualName="" explicitFocusOrder="0" pos="19% 76.75% 8.143% 6.5%"
               bgColOn="ff5f9ea0" buttonText="Profile" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="button_PS" id="2371879eb5f17bdd" memberName="juce__textButton_PS"
-              virtualName="" explicitFocusOrder="0" pos="1% 42.75% 7.714% 8.75%"
+              virtualName="" explicitFocusOrder="0" pos="1.429% 42.25% 5.143% 5.5%"
               bgColOn="ff5f9ea0" buttonText="PS" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
+  <TEXTBUTTON name="ChangeDevice_button" id="22ebb74a08c1917" memberName="juce__textButton_ChangeDevice"
+              virtualName="" explicitFocusOrder="0" pos="86.571% 2.5% 89 19"
+              bgColOff="ffff0000" buttonText="Change Device" connectedEdges="0"
+              needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
