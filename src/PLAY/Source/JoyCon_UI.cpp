@@ -475,105 +475,109 @@ BEGIN_JUCER_METADATA
           strokeColour="solid: ff6495ed" nonZeroWinding="1">s 60% 96.471% q 77.333% 98.824% 77.333% 80% l 77.333% 21.176% q 77.334% 0% 60% 2.353% x</PATH>
   </BACKGROUND>
   <TEXTBUTTON name="zl_button" id="1cc67156ee26efac" memberName="juce__textButton_zl"
-              virtualName="" explicitFocusOrder="0" pos="25% 3.5% 5.857% 4.75%"
+              virtualName="" explicitFocusOrder="0" pos="24.948% 3.461% 5.821% 4.773%"
               bgColOn="ff5f9ea0" buttonText="ZL" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="l_button" id="a20fe6afd4607943" memberName="juce__textButton_l"
-              virtualName="" explicitFocusOrder="0" pos="33.857% 1.5% 5.857% 4.75%"
+              virtualName="" explicitFocusOrder="0" pos="33.888% 1.551% 5.821% 4.773%"
               bgColOn="ff5f9ea0" buttonText="L" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="minus_button" id="995bf07d41bd7cf2" memberName="juce__textButton_minus"
-              virtualName="" explicitFocusOrder="0" pos="35.429% 9% 4.571% 3.75%"
+              virtualName="" explicitFocusOrder="0" pos="35.447% 8.95% 4.574% 3.699%"
               bgColOn="ff5f9ea0" buttonText="-" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="capture_button" id="dd3b2e191ddd1126" memberName="juce__textButton_capture"
-              virtualName="" explicitFocusOrder="0" pos="34.143% 83.5% 6% 4%"
+              virtualName="" explicitFocusOrder="0" pos="34.096% 83.532% 6.029% 4.057%"
               bgColOn="ff5f9ea0" buttonText="Capture" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="up_button" id="60a341aecef994de" memberName="juce__textButton_UP"
-              virtualName="" explicitFocusOrder="0" pos="30.286% 52.75% 5.143% 4%"
+              virtualName="" explicitFocusOrder="0" pos="30.249% 52.745% 5.094% 4.057%"
               bgColOn="ff5f9ea0" buttonText="Up" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="left_button" id="353c25528095ee94" memberName="juce__textButton_Left"
-              virtualName="" explicitFocusOrder="0" pos="25.286% 60% 5.143% 4%"
+              virtualName="" explicitFocusOrder="0" pos="25.26% 60.024% 5.094% 4.057%"
               bgColOn="ff5f9ea0" buttonText="Left" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="right_button" id="643e5d0931220731" memberName="juce__textButton_right"
-              virtualName="" explicitFocusOrder="0" pos="34.857% 60% 5.143% 4%"
+              virtualName="" explicitFocusOrder="0" pos="34.823% 60.024% 5.094% 4.057%"
               bgColOn="ff5f9ea0" buttonText="Right" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="down_button" id="96446f9ae02af8a5" memberName="juce__textButton_down"
-              virtualName="" explicitFocusOrder="0" pos="30.286% 67.75% 5.143% 4%"
+              virtualName="" explicitFocusOrder="0" pos="30.249% 67.78% 5.094% 4.057%"
               bgColOn="ff5f9ea0" buttonText="Down" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="sl_button" id="5a6ddc9a283427fc" memberName="juce__textButton_sl_l"
-              virtualName="" explicitFocusOrder="0" pos="42% 16% 5% 10%" bgColOn="ff5f9ea0"
-              buttonText="SL" connectedEdges="0" needsCallback="0" radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="41.996% 15.99% 4.99% 10.024%"
+              bgColOn="ff5f9ea0" buttonText="SL" connectedEdges="0" needsCallback="0"
+              radioGroupId="0"/>
   <TEXTBUTTON name="sr_button" id="55c7c15a26ad5788" memberName="juce__textButton_sr_l"
-              virtualName="" explicitFocusOrder="0" pos="42% 66% 5% 10%" bgColOn="ff5f9ea0"
-              buttonText="SR" connectedEdges="0" needsCallback="0" radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="41.996% 65.99% 4.99% 10.024%"
+              bgColOn="ff5f9ea0" buttonText="SR" connectedEdges="0" needsCallback="0"
+              radioGroupId="0"/>
   <TEXTBUTTON name="zr_button" id="612844c53a7abbf0" memberName="juce__textButton_zr"
-              virtualName="" explicitFocusOrder="0" pos="70% 3.5% 5.857% 4.75%"
+              virtualName="" explicitFocusOrder="0" pos="69.958% 3.461% 5.821% 4.773%"
               bgColOn="ff5f9ea0" buttonText="ZR" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="r_button" id="569fe346efcede6a" memberName="juce__textButton_r"
-              virtualName="" explicitFocusOrder="0" pos="61.429% 1.5% 5.857% 4.75%"
+              virtualName="" explicitFocusOrder="0" pos="61.435% 1.551% 5.821% 4.773%"
               bgColOn="ff5f9ea0" buttonText="R" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="plus_button" id="e13f508f32787f45" memberName="juce__textButton_plus"
-              virtualName="" explicitFocusOrder="0" pos="61.143% 9% 4.143% 4.75%"
+              virtualName="" explicitFocusOrder="0" pos="61.123% 8.95% 4.158% 4.773%"
               bgColOn="ff5f9ea0" buttonText="+" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="sr_button" id="82e6498f7ab5583b" memberName="juce__textButton_sr_r"
-              virtualName="" explicitFocusOrder="0" pos="54% 16% 5% 10%" bgColOn="ff5f9ea0"
-              buttonText="SR" connectedEdges="0" needsCallback="0" radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="53.95% 15.99% 4.99% 10.024%"
+              bgColOn="ff5f9ea0" buttonText="SR" connectedEdges="0" needsCallback="0"
+              radioGroupId="0"/>
   <TEXTBUTTON name="sl_button" id="aef97be374c91d95" memberName="juce__textButton_sl_r"
-              virtualName="" explicitFocusOrder="0" pos="54% 66% 5% 10%" bgColOn="ff5f9ea0"
-              buttonText="SL" connectedEdges="0" needsCallback="0" radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="53.95% 65.99% 4.99% 10.024%"
+              bgColOn="ff5f9ea0" buttonText="SL" connectedEdges="0" needsCallback="0"
+              radioGroupId="0"/>
   <TEXTBUTTON name="x_button" id="f392b142ac2be96d" memberName="juce__textButton_x"
-              virtualName="" explicitFocusOrder="0" pos="66.714% 20.5% 5.143% 4%"
+              virtualName="" explicitFocusOrder="0" pos="66.736% 20.525% 5.094% 4.057%"
               bgColOn="ff5f9ea0" buttonText="X" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="y_button" id="e1327e3abe5f6601" memberName="juce__textButton_y"
-              virtualName="" explicitFocusOrder="0" pos="62% 27.75% 5.143% 4%"
+              virtualName="" explicitFocusOrder="0" pos="61.954% 27.804% 5.094% 4.057%"
               bgColOn="ff5f9ea0" buttonText="Y" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="a_button" id="45678a3db2453320" memberName="juce__textButton_a"
-              virtualName="" explicitFocusOrder="0" pos="71% 27.75% 5.143% 4%"
+              virtualName="" explicitFocusOrder="0" pos="70.998% 27.804% 5.094% 4.057%"
               bgColOn="ff5f9ea0" buttonText="A" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="b_button" id="b8895522617ca8c8" memberName="juce__textButton_b"
-              virtualName="" explicitFocusOrder="0" pos="66.714% 34.75% 5.143% 4%"
+              virtualName="" explicitFocusOrder="0" pos="66.736% 34.726% 5.094% 4.057%"
               bgColOn="ff5f9ea0" buttonText="B" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="home_button" id="c339f80e78117710" memberName="juce__textButton_home"
-              virtualName="" explicitFocusOrder="0" pos="61.143% 83.5% 6% 4%"
+              virtualName="" explicitFocusOrder="0" pos="61.123% 83.532% 6.029% 4.057%"
               bgColOn="ff5f9ea0" buttonText="Home" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TOGGLEBUTTON name="Left_JC_IMU_toggle" id="9b99ae182d27bbd5" memberName="juce__toggleButton_L_IMU"
-                virtualName="" explicitFocusOrder="0" pos="43.429% 35% 14.571% 6%"
+                virtualName="" explicitFocusOrder="0" pos="43.451% 34.964% 14.553% 5.967%"
                 buttonText="Left IMU" connectedEdges="0" needsCallback="1" radioGroupId="0"
                 state="0"/>
   <TOGGLEBUTTON name="Right_JC_IMU_toggle" id="c42986959dcca701" memberName="juce__toggleButton_R_IMU"
-                virtualName="" explicitFocusOrder="0" pos="43.429% 50% 14.571% 6%"
+                virtualName="" explicitFocusOrder="0" pos="43.451% 50% 14.553% 5.967%"
                 buttonText="Right IMU" connectedEdges="0" needsCallback="1" radioGroupId="0"
                 state="0"/>
   <TEXTBUTTON name="L_Virb_button" id="ba471e8ab99c2e40" memberName="juce__textButton_L_Virb"
-              virtualName="" explicitFocusOrder="0" pos="41.714% 87% 6% 6.5%"
+              virtualName="" explicitFocusOrder="0" pos="41.684% 86.993% 6.029% 6.444%"
               bgColOn="ff5f9ea0" buttonText="vib" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TEXTBUTTON name="R_Virb_button" id="85734151709505e4" memberName="juce__textButton_R_Virb"
-              virtualName="" explicitFocusOrder="0" pos="53.286% 87% 6.143% 6.25%"
+              virtualName="" explicitFocusOrder="0" pos="53.326% 86.993% 6.133% 6.205%"
               bgColOn="ff5f9ea0" buttonText="vib" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TOGGLEBUTTON name="dis_enableAll_toggle" id="eaf2ec4b71d0bae" memberName="juce__toggleButton_dis_enableAll"
-                virtualName="" explicitFocusOrder="0" pos="43.429% 2.5% 14.571% 6%"
+                virtualName="" explicitFocusOrder="0" pos="43.451% 2.506% 14.553% 5.967%"
                 buttonText="Dis/Enable All" connectedEdges="0" needsCallback="1"
                 radioGroupId="0" state="1"/>
   <TEXTBUTTON name="ChangeDevice_button" id="22ebb74a08c1917" memberName="juce__textButton_ChangeDevice"
-              virtualName="" explicitFocusOrder="0" pos="87% 1% 89 19" bgColOff="ffff0000"
-              buttonText="Change Device" connectedEdges="0" needsCallback="1"
-              radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="87.006% 0.955% 89 19"
+              bgColOff="ffff0000" buttonText="Change Device" connectedEdges="0"
+              needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
