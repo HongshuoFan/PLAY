@@ -60,6 +60,15 @@ void MainComponent::resized()
     if (getWidth() < 600 || getHeight() < 500){
         setSize(700, 500);
     }
+    
+    int controllerUI_Height = floor(getWidth())*0.55;
+    
+    if (controllerUI_Height > proportionOfWidth(0.8)){
+        
+        controllerUI_Height = proportionOfWidth(0.8);
+        
+    }
+   
     if (m_HIDMenu){
         m_HIDMenu->setBounds(10, proportionOfHeight (0.f), proportionOfWidth(1.f), proportionOfHeight(0.5f));
     }
@@ -68,6 +77,12 @@ void MainComponent::resized()
     }
     if(midi_sender){
         midi_sender->setBounds(10, proportionOfHeight (0.8f), 600, 40);
+    }
+    if(AC_UI.isConnected){
+        AC_UI.setBounds(1, proportionOfHeight (0.f), proportionOfWidth(1.f), controllerUI_Height);
+    }
+    if(DS_UI.isConnected){
+        DS_UI.setBounds(1, proportionOfHeight (0.f), proportionOfWidth(1.f), controllerUI_Height);
     }
     
 }
