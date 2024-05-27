@@ -84,7 +84,12 @@ void MainComponent::resized()
     if(DS_UI.isConnected){
         DS_UI.setBounds(1, proportionOfHeight (0.f), proportionOfWidth(1.f), controllerUI_Height);
     }
-    
+    if(xbxUI.isConnected){
+        xbxUI.setBounds(1, proportionOfHeight (0.f), proportionOfWidth(1.f), controllerUI_Height);
+    }
+    if(JC_UI.isConnected){
+        JC_UI.setBounds(1, proportionOfHeight (0.f), proportionOfWidth(1.f), controllerUI_Height);
+    }
 }
 
 void MainComponent::onHIDMenuChanged()
@@ -266,7 +271,7 @@ void MainComponent::onDataReceived()
 {
 //    debug and placeholder function
     if(hidIO_1->isConneted){
-        hidIO_1->printReport();
+//        hidIO_1->printReport();
     }else{
         std::cout << "unable to connect to "<< hidIO_1->device_name << std::endl;
     }

@@ -254,7 +254,7 @@ void DualSense_UI::resized()
     juce__textButton_UpdateTrigger->setBounds (proportionOfWidth (0.7609f), proportionOfHeight (0.7625f), proportionOfWidth (0.0884f), proportionOfHeight (0.0549f));
     juce__toggleButton_vibration->setBounds (proportionOfWidth (0.1538f), proportionOfHeight (0.6169f), proportionOfWidth (0.1372f), proportionOfHeight (0.0597f));
     juce__toggleButton_enableAll->setBounds (proportionOfWidth (0.1538f), proportionOfHeight (0.5406f), proportionOfWidth (0.1372f), proportionOfHeight (0.0597f));
-    juce__textButton_ChangeDevice->setBounds (proportionOfWidth (0.9000f), proportionOfHeight (0.0100f), 89, 19);
+    juce__textButton_ChangeDevice->setBounds (proportionOfWidth (0.8700f), proportionOfHeight (0.0095f), 89, 19);
     internalPath1.clear();
     internalPath1.startNewSubPath (static_cast<float> (proportionOfWidth (0.5053f)), static_cast<float> (proportionOfHeight (0.5662f)));
     internalPath1.lineTo (static_cast<float> (proportionOfWidth (0.6348f)), static_cast<float> (proportionOfHeight (0.5662f)));
@@ -519,7 +519,7 @@ BEGIN_JUCER_METADATA
                 buttonText="Dis/Enable All" connectedEdges="0" needsCallback="1"
                 radioGroupId="0" state="1"/>
   <TEXTBUTTON name="ChangeDevice_button" id="22ebb74a08c1917" memberName="juce__textButton_ChangeDevice"
-              virtualName="" explicitFocusOrder="0" pos="90.021% 0.955% 89 19"
+              virtualName="" explicitFocusOrder="0" pos="87.006% 0.955% 89 19"
               bgColOff="ffff0000" buttonText="Change Device" connectedEdges="0"
               needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>

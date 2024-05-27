@@ -170,7 +170,7 @@ void AccessController_UI::resized()
     juce__textButton_0->setBounds (proportionOfWidth (0.6289f), proportionOfHeight (0.3604f), proportionOfWidth (0.1299f), proportionOfHeight (0.2005f));
     juce__textButton_profile->setBounds (proportionOfWidth (0.1902f), proportionOfHeight (0.7673f), proportionOfWidth (0.0811f), proportionOfHeight (0.0644f));
     juce__textButton_PS->setBounds (proportionOfWidth (0.0146f), proportionOfHeight (0.4224f), proportionOfWidth (0.0509f), proportionOfHeight (0.0549f));
-    juce__textButton_ChangeDevice->setBounds (proportionOfWidth (0.9000f), proportionOfHeight (0.0100f), 89, 19);
+    juce__textButton_ChangeDevice->setBounds (proportionOfWidth (0.8700f), proportionOfHeight (0.0095f), 89, 19);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -280,7 +280,7 @@ BEGIN_JUCER_METADATA
               bgColOn="ff5f9ea0" buttonText="PS" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TEXTBUTTON name="ChangeDevice_button" id="22ebb74a08c1917" memberName="juce__textButton_ChangeDevice"
-              virtualName="" explicitFocusOrder="0" pos="90.021% 0.955% 89 19"
+              virtualName="" explicitFocusOrder="0" pos="87.006% 0.955% 89 19"
               bgColOff="ffff0000" buttonText="Change Device" connectedEdges="0"
               needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>

@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 7.0.10
+  Created with Projucer version: 7.0.12
 
   ------------------------------------------------------------------------------
 
@@ -301,12 +301,12 @@ void JoyCon_UI::resized()
     juce__textButton_a->setBounds (proportionOfWidth (0.7100f), proportionOfHeight (0.2775f), proportionOfWidth (0.0514f), proportionOfHeight (0.0400f));
     juce__textButton_b->setBounds (proportionOfWidth (0.6671f), proportionOfHeight (0.3475f), proportionOfWidth (0.0514f), proportionOfHeight (0.0400f));
     juce__textButton_home->setBounds (proportionOfWidth (0.6114f), proportionOfHeight (0.8350f), proportionOfWidth (0.0600f), proportionOfHeight (0.0400f));
-    juce__toggleButton_L_IMU->setBounds (proportionOfWidth (0.4429f), proportionOfHeight (0.3500f), 82, 24);
-    juce__toggleButton_R_IMU->setBounds (proportionOfWidth (0.4429f), proportionOfHeight (0.5000f), 82, 24);
+    juce__toggleButton_L_IMU->setBounds (proportionOfWidth (0.4343f), proportionOfHeight (0.3500f), proportionOfWidth (0.1457f), proportionOfHeight (0.0600f));
+    juce__toggleButton_R_IMU->setBounds (proportionOfWidth (0.4343f), proportionOfHeight (0.5000f), proportionOfWidth (0.1457f), proportionOfHeight (0.0600f));
     juce__textButton_L_Virb->setBounds (proportionOfWidth (0.4171f), proportionOfHeight (0.8700f), proportionOfWidth (0.0600f), proportionOfHeight (0.0650f));
     juce__textButton_R_Virb->setBounds (proportionOfWidth (0.5329f), proportionOfHeight (0.8700f), proportionOfWidth (0.0614f), proportionOfHeight (0.0625f));
-    juce__toggleButton_dis_enableAll->setBounds (proportionOfWidth (0.4429f), proportionOfHeight (0.0250f), 100, 24);
-    juce__textButton_ChangeDevice->setBounds (proportionOfWidth (0.8657f), proportionOfHeight (0.0250f), 89, 19);
+    juce__toggleButton_dis_enableAll->setBounds (proportionOfWidth (0.4343f), proportionOfHeight (0.0250f), proportionOfWidth (0.1457f), proportionOfHeight (0.0600f));
+    juce__textButton_ChangeDevice->setBounds (proportionOfWidth (0.8700f), proportionOfHeight (0.0100f), 89, 19);
     internalPath1.clear();
     internalPath1.startNewSubPath (static_cast<float> (proportionOfWidth (0.4133f)), static_cast<float> (proportionOfHeight (0.8971f)));
     internalPath1.lineTo (static_cast<float> (proportionOfWidth (0.4133f)), static_cast<float> (proportionOfHeight (0.0265f)));
@@ -467,7 +467,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="JoyCon_UI" componentName=""
                  parentClasses="public juce::AnimatedAppComponent" constructorParams=""
                  variableInitialisers="" snapPixels="2" snapActive="1" snapShown="1"
-                 overlayOpacity="0.330" fixedSize="1" initialWidth="700" initialHeight="400">
+                 overlayOpacity="0.330" fixedSize="0" initialWidth="700" initialHeight="400">
   <BACKGROUND backgroundColour="ff323e44">
     <PATH pos="0 0 100 100" fill="solid: a52a5f" hasStroke="1" stroke="2, mitered, butt"
           strokeColour="solid: ffdc143c" nonZeroWinding="1">s 41.334% 89.706% l 41.334% 2.647% q 24% 2.353% 24% 19.118% l 24% 73.235% q 24% 96.471% 41.334% 96.471% x</PATH>
@@ -551,11 +551,11 @@ BEGIN_JUCER_METADATA
               bgColOn="ff5f9ea0" buttonText="Home" connectedEdges="0" needsCallback="0"
               radioGroupId="0"/>
   <TOGGLEBUTTON name="Left_JC_IMU_toggle" id="9b99ae182d27bbd5" memberName="juce__toggleButton_L_IMU"
-                virtualName="" explicitFocusOrder="0" pos="44.286% 35% 82 24"
+                virtualName="" explicitFocusOrder="0" pos="43.429% 35% 14.571% 6%"
                 buttonText="Left IMU" connectedEdges="0" needsCallback="1" radioGroupId="0"
                 state="0"/>
   <TOGGLEBUTTON name="Right_JC_IMU_toggle" id="c42986959dcca701" memberName="juce__toggleButton_R_IMU"
-                virtualName="" explicitFocusOrder="0" pos="44.286% 50% 82 24"
+                virtualName="" explicitFocusOrder="0" pos="43.429% 50% 14.571% 6%"
                 buttonText="Right IMU" connectedEdges="0" needsCallback="1" radioGroupId="0"
                 state="0"/>
   <TEXTBUTTON name="L_Virb_button" id="ba471e8ab99c2e40" memberName="juce__textButton_L_Virb"
@@ -567,13 +567,13 @@ BEGIN_JUCER_METADATA
               bgColOn="ff5f9ea0" buttonText="vib" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <TOGGLEBUTTON name="dis_enableAll_toggle" id="eaf2ec4b71d0bae" memberName="juce__toggleButton_dis_enableAll"
-                virtualName="" explicitFocusOrder="0" pos="44.286% 2.5% 100 24"
+                virtualName="" explicitFocusOrder="0" pos="43.429% 2.5% 14.571% 6%"
                 buttonText="Dis/Enable All" connectedEdges="0" needsCallback="1"
                 radioGroupId="0" state="1"/>
   <TEXTBUTTON name="ChangeDevice_button" id="22ebb74a08c1917" memberName="juce__textButton_ChangeDevice"
-              virtualName="" explicitFocusOrder="0" pos="86.571% 2.5% 89 19"
-              bgColOff="ffff0000" buttonText="Change Device" connectedEdges="0"
-              needsCallback="1" radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="87% 1% 89 19" bgColOff="ffff0000"
+              buttonText="Change Device" connectedEdges="0" needsCallback="1"
+              radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA
