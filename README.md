@@ -175,7 +175,7 @@ Special thanks to [The Oxford Research Centre in the Humanities (HCP)](https://w
 - Dr. Robert Laidlow: [robert.laidlow@jesus.ox.ac.uk](mailto:robert.laidlow@jesus.ox.ac.uk)
 - Dr. Hongshuo Fan: [hongshuo.fan@rncm.ac.uk](mailto:hongshuo.fan@rncm.ac.uk)
 - Dr. Bofan Ma: [bofan.ma@rncm.ac.uk](mailto:bofan.ma@rncm.ac.uk)
-- Ellen Sargen: [ellensargen@gmail.com](mailto:ellensargen@gmail.com)
+- Dr. Ellen Sargen: [ellensargen@gmail.com](mailto:ellensargen@gmail.com)
 
 ## References
 - [JUCE Framework](https://github.com/juce-framework/JUCE)
