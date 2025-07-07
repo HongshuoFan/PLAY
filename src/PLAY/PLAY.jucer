@@ -57,11 +57,17 @@
       <GROUP id="{4C2DD010-8FD4-1A5E-A422-8741ABA77820}" name="HID">
         <FILE id="tGyaT3" name="HID_IO.cpp" compile="1" resource="0" file="Source/HID_IO.cpp"/>
         <FILE id="rXo96D" name="HID_IO.h" compile="0" resource="0" file="Source/HID_IO.h"/>
+        <FILE id="FODfCx" name="HID_IO_Win.cpp" compile="1" resource="0" file="Source/HID_IO_Win.cpp"/>
+        <FILE id="EFuH9x" name="HID_IO_Win.h" compile="0" resource="0" file="Source/HID_IO_Win.h"/>
         <FILE id="ngNx0O" name="HIDMenu.cpp" compile="1" resource="0" file="Source/HIDMenu.cpp"/>
         <FILE id="Obri31" name="HIDMenu.h" compile="0" resource="0" file="Source/HIDMenu.h"/>
+        <FILE id="hAD8c5" name="HIDMenu_Win.cpp" compile="1" resource="0" file="Source/HIDMenu_Win.cpp"/>
+        <FILE id="ezi6yp" name="HIDMenu_Win.h" compile="0" resource="0" file="Source/HIDMenu_Win.h"/>
         <FILE id="utjFkL" name="InputProvider.h" compile="0" resource="0" file="Source/InputProvider.h"/>
         <FILE id="OJJ0ov" name="ListHID.cpp" compile="1" resource="0" file="Source/ListHID.cpp"/>
         <FILE id="SDbuee" name="ListHID.h" compile="0" resource="0" file="Source/ListHID.h"/>
+        <FILE id="fjp1Kn" name="ListHID_Win.cpp" compile="1" resource="0" file="Source/ListHID_Win.cpp"/>
+        <FILE id="CjH6be" name="ListHID_Win.h" compile="0" resource="0" file="Source/ListHID_Win.h"/>
       </GROUP>
       <GROUP id="{CA55C71D-F775-655C-C1D6-D428A80D2CD1}" name="DualSense">
         <FILE id="rxiHLn" name="DualSense_CRC32.cpp" compile="1" resource="0"
@@ -141,5 +147,26 @@
         <MODULEPATH id="juce_audio_devices" path="../../../../../Documents/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
+    <VS2022 targetFolder="Builds/VisualStudio2022">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
+        <MODULEPATH id="juce_core" path="../../juce"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce"/>
+        <MODULEPATH id="juce_events" path="../../juce"/>
+        <MODULEPATH id="juce_graphics" path="../../juce"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce"/>
+        <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+        <MODULEPATH id="juce_midi_ci" path="../../juce"/>
+        <MODULEPATH id="juce_osc" path="../../juce"/>
+      </MODULEPATHS>
+    </VS2022>
   </EXPORTFORMATS>
 </JUCERPROJECT>

@@ -8,6 +8,8 @@
   ==============================================================================
 */
 
+#if defined(__APPLE__) && defined(__MACH__)
+
 #include <JuceHeader.h>
 #include "ListHID.h"
 
@@ -91,3 +93,4 @@ void ListHID::get_hid_list()
     
     return ;
 }
+#endif // __APPLE__ && __MACH__

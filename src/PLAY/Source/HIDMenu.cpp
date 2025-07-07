@@ -16,7 +16,7 @@
 
   ==============================================================================
 */
-
+#if defined(__APPLE__) && defined(__MACH__)
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
@@ -276,3 +276,4 @@ END_JUCER_METADATA
 //[EndFile] You can add extra defines here...
 //[/EndFile]
 
+#endif // __APPLE__ && __MACH__

@@ -7,7 +7,7 @@
 
   ==============================================================================
 */
-
+#if defined(__APPLE__) && defined(__MACH__)
 #include <JuceHeader.h>
 #include "HID_IO.h"
 #include <mach/mach_error.h>
@@ -275,3 +275,4 @@ void HID_IO::printReport() {
 }
 
 
+#endif // __APPLE__ && __MACH__

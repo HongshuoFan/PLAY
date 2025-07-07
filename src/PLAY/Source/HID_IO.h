@@ -9,7 +9,7 @@
 */
 
 #pragma once
-
+#if defined(__APPLE__) && defined(__MACH__)
 
 #include <IOKit/hid/IOHIDManager.h>
 #include <IOKit/IOKitLib.h>
@@ -90,3 +90,4 @@ private:
    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HID_IO)
 };
+#endif // __APPLE__ && __MACH__

@@ -72,7 +72,39 @@ MIDI_Sender_UI::MIDI_Sender_UI ()
 
     //virtual Midi device MAC only
     MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
+    //[UserPreSize]
+
+    for (int i = 2; i <= 16; i++){
+        juce__comboBox_MidiChannel->addItem (TRANS (std::to_string(i)), i);
+    }
+
+    #if JUCE_WINDOWS
+    // On Windows, createNewDevice is not supported. Use openDevice instead.
+    auto midiOutputs = juce::MidiOutput::getAvailableDevices();
+    if (!midiOutputs.isEmpty())
+    {
+        // Try to find a device matching the name in the text editor
+        auto nameToFind = juce__textEditor_MidiDeviceName->getText();
+        auto found = std::find_if(midiOutputs.begin(), midiOutputs.end(),
+            [&nameToFind](const juce::MidiDeviceInfo& info) { return info.name == nameToFind; });
+        if (found != midiOutputs.end())
+        {
+            MidiDeviceName = found->name;
+            PlayMidiDevice = juce::MidiOutput::openDevice(found->identifier);
+        }
+        else
+        {
+            // Fallback: open the first available device
+            MidiDeviceName = midiOutputs[0].name;
+            PlayMidiDevice = juce::MidiOutput::openDevice(midiOutputs[0].identifier);
+        }
+    }
+    #else
+    // virtual Midi device MAC only
+    MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
     PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
+    #endif
+    //[/UserPreSize]
     //[/UserPreSize]
 
     setSize (600, 40);
@@ -153,20 +185,59 @@ void MIDI_Sender_UI::buttonClicked (juce::Button* buttonThatWasClicked)
         //[UserButtonCode_juce__toggleButton_MIDI] -- add your button handler code here..
         if(juce__toggleButton_MIDI->getToggleState()){
 
-            if(PlayMidiDevice){
-                if(MidiDeviceName == juce__textEditor_MidiDeviceName->getText()){
-                    std::cout<<"same name "<< PlayMidiDevice->getName()<<"\n";
-                }else{
-                    std::cout<<"new name \n";
-                    closeConnection();
+            #if JUCE_WINDOWS
+                if (PlayMidiDevice) {
+                    if (MidiDeviceName == juce__textEditor_MidiDeviceName->getText()) {
+                        std::cout << "same name " << PlayMidiDevice->getName() << "\n";
+                    } else {
+                        std::cout << "new name \n";
+                        closeConnection();
+                        auto midiOutputs = juce::MidiOutput::getAvailableDevices();
+                        auto nameToFind = juce__textEditor_MidiDeviceName->getText();
+                        auto found = std::find_if(midiOutputs.begin(), midiOutputs.end(),
+                            [&nameToFind](const juce::MidiDeviceInfo& info) { return info.name == nameToFind; });
+                        if (found != midiOutputs.end()) {
+                            MidiDeviceName = found->name;
+                            PlayMidiDevice = juce::MidiOutput::openDevice(found->identifier);
+                        } else if (!midiOutputs.isEmpty()) {
+                            MidiDeviceName = midiOutputs[0].name;
+                            PlayMidiDevice = juce::MidiOutput::openDevice(midiOutputs[0].identifier);
+                        } else {
+                            MidiDeviceName = "";
+                            PlayMidiDevice = nullptr;
+                        }
+                    }
+                } else {
+                    auto midiOutputs = juce::MidiOutput::getAvailableDevices();
+                    auto nameToFind = juce__textEditor_MidiDeviceName->getText();
+                    auto found = std::find_if(midiOutputs.begin(), midiOutputs.end(),
+                        [&nameToFind](const juce::MidiDeviceInfo& info) { return info.name == nameToFind; });
+                    if (found != midiOutputs.end()) {
+                        MidiDeviceName = found->name;
+                        PlayMidiDevice = juce::MidiOutput::openDevice(found->identifier);
+                    } else if (!midiOutputs.isEmpty()) {
+                        MidiDeviceName = midiOutputs[0].name;
+                        PlayMidiDevice = juce::MidiOutput::openDevice(midiOutputs[0].identifier);
+                    } else {
+                        MidiDeviceName = "";
+                        PlayMidiDevice = nullptr;
+                    }
+                }
+            #else
+                if (PlayMidiDevice) {
+                    if (MidiDeviceName == juce__textEditor_MidiDeviceName->getText()) {
+                        std::cout << "same name " << PlayMidiDevice->getName() << "\n";
+                    } else {
+                        std::cout << "new name \n";
+                        closeConnection();
+                        MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
+                        PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
+                    }
+                } else {
                     MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
                     PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
                 }
-
-            }else{
-                MidiDeviceName = juce__textEditor_MidiDeviceName->getText();
-                PlayMidiDevice = juce::MidiOutput::createNewDevice(MidiDeviceName);
-            }
+            #endif
 
         }else{
             //closeConnection();

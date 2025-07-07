@@ -19,6 +19,8 @@
 
 #pragma once
 
+#if defined(__APPLE__) && defined(__MACH__)
+
 //[Headers]     -- You can add your own extra header files here --
 #include <JuceHeader.h>
 #include "ListHID.h"
@@ -85,3 +87,4 @@ private:
 //[EndFile] You can add extra defines here...
 //[/EndFile]
 
+#endif // __APPLE__ && __MACH__

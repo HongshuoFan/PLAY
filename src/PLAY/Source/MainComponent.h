@@ -1,23 +1,26 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "HIDMenu.h"
-#include "HID_IO.h"
+
+// Platform-specific includes for HID
+#if defined(_WIN32) || defined(_WIN64)
+    #include "HIDMenu_Win.h"
+    #include "HID_IO_Win.h"
+#else
+    #include "HIDMenu.h"
+    #include "HID_IO.h"
+#endif
+
 #include "OSC_Sender_UI.h"
 #include "OSC_Receiver.h"
-
 #include "MIDI_Sender_UI.h"
-
 #include "DualSense_Input.h"
 #include "DualSense_Output.h"
 #include "DualSense_UI.h"
-
 #include "AccessController_Input.h"
 #include "AccessController_UI.h"
-
 #include "XboxController_Input.h"
 #include "XboxController_UI.h"
-
 #include "JoyCon_Input.h"
 #include "JoyCon_Output.h"
 #include "JoyCon_UI.h"

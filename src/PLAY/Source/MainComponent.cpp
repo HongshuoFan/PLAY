@@ -281,7 +281,10 @@ void MainComponent::onDualSense_DataReceived()
 {
     if(hidIO_1){
         //handle the DualSense input data
-        DS_input->evaluateDualSenseHidInputBuffer(hidIO_1->reportData, DS_UI.enableIMU);
+        // Modify the call to evaluateDualSenseHidInputBuffer to pass a pointer to the data in the vector  
+        DS_input->evaluateDualSenseHidInputBuffer(hidIO_1->reportData.data(), DS_UI.enableIMU);
+		std::cout << "DualSense Data Received" << std::endl;
+        
         DS_UI.DS_UI_input = DS_input->ds_input;
         
         //send DualSense data via OSC
@@ -297,7 +300,7 @@ void MainComponent::onAccessController_DataReceived()
 {
     if(hidIO_1){
         //handle the DualSense input data
-        AC_input->evaluateAccessControllerHidInputBuffer(hidIO_1->reportData, DS_UI.enableIMU);
+        AC_input->evaluateAccessControllerHidInputBuffer(hidIO_1->reportData.data(), DS_UI.enableIMU);
         AC_UI.AC_input = AC_input->ac_input;
         
         //send Access controller data via OSC
@@ -312,7 +315,7 @@ void MainComponent::onAccessController_DataReceived()
 
 void MainComponent::onXboxController_DataReceived() {
     //handle the Xbox Controller input data 
-    XC_input->evaluateXboxCotrollerHidInputBuffer(hidIO_1->reportData);
+    XC_input->evaluateXboxCotrollerHidInputBuffer(hidIO_1->reportData.data());
     xbxUI._input = XC_input->xbox_input;
     //send Xbox Controller data via OSC
     osc_sender->send_Xbox_OSC_message(xbxUI._input, xbxUI.xbox_enableStates);
@@ -326,12 +329,11 @@ void MainComponent::onJoyCon_L_DataReceived()
     //hidIO_1->printReport();
     if(hidIO_1)
     {
-        JC_input->evaluate_L_JC_HidInputBuffer(hidIO_1->reportData);
-        JC_UI.l_jc_input = JC_input->l_jc_input;
-        osc_sender->send_L_JoyCon_OSC_message(JC_input->l_jc_input, JC_UI.left_EnableStates);
-        midi_sender->send_L_JoyCon_MIDI_message(JC_input->l_jc_input, JC_UI.left_EnableStates);
-    }
-    
+            JC_input->evaluate_L_JC_HidInputBuffer(hidIO_1->reportData.data());
+            osc_sender->send_L_JoyCon_OSC_message(JC_input->l_jc_input, JC_UI.left_EnableStates);
+            midi_sender->send_L_JoyCon_MIDI_message(JC_input->l_jc_input, JC_UI.left_EnableStates);
+	 }
+        
 }
 
 void MainComponent::onJoyCon_R_DataReceived()
@@ -339,7 +341,7 @@ void MainComponent::onJoyCon_R_DataReceived()
     //hidIO_2->printReport();
     if(hidIO_2)
     {
-        JC_input->evaluate_R_JC_HidInputBuffer(hidIO_2->reportData);
+        JC_input->evaluate_R_JC_HidInputBuffer(hidIO_2->reportData.data());
         JC_UI.r_jc_input = JC_input->r_jc_input;
         osc_sender->send_R_JoyCon_OSC_message(JC_input->r_jc_input, JC_UI.right_EnableStates);
         midi_sender->send_R_JoyCon_MIDI_message(JC_input->r_jc_input, JC_UI.right_EnableStates);

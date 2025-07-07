@@ -10,27 +10,24 @@
 
 #pragma once
 
+#if defined(__APPLE__) && defined(__MACH__)
+
 #include <JuceHeader.h>
 #include <IOKit/IOKitLib.h>
 #include <IOKit/hid/IOHIDManager.h>
 
 //==============================================================================
-/*
-*/
+// macOS-only ListHID
 class ListHID  : public juce::Component
 {
 public:
-    ListHID();
+    ListHID();  
     ~ListHID() override;
-
-//    void paint (juce::Graphics&) override;
-//    void resized() override;
-    
     void get_hid_list();
-    
     std::set<IOHIDDeviceRef> uniqueDevices;
     std::map<juce::String, IOHIDDeviceRef> devicesMap;
-    
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ListHID)
 };
+
+#endif // __APPLE__ && __MACH__
