@@ -12,14 +12,12 @@
 #include "HID_IO.h"
 
 #include <atomic>
-#include <condition_variable>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
 #include <list>
 #include <memory>
-#include <mutex>
 #include <thread>
 #include <utility>
 #include <vector>
@@ -92,24 +90,11 @@ public:
         if (owner.device_name == nullptr)
             return false;
 
-        resetConnectionNotification();
-
         owner.isConneted = false;
         owner.reportData = nullptr;
         startReadingThread();
 
-        std::unique_lock<std::mutex> lock(connectionMutex);
-        connectionCondition.wait_for(lock, std::chrono::seconds(3), [this]() { return connectionNotified; });
-
-        const bool connected = connectionNotified && connectionResult;
-        owner.isConneted = connected;
-
-        lock.unlock();
-
-        if (! connected)
-            stopReadingThread();
-
-        return connected;
+        return readingThread.joinable();
     }
 
     void disconnect() override
@@ -117,7 +102,6 @@ public:
         deviceRef = nullptr;
         owner.isConneted = false;
         owner.reportData = nullptr;
-        notifyConnectionResult(false);
     }
 
     bool writeRawData(const uint8_t* data, size_t reportId, size_t length) override
@@ -221,10 +205,7 @@ private:
         manager = IOHIDManagerCreate(kCFAllocatorDefault, kIOHIDOptionsTypeNone);
 
         if (manager == nullptr)
-        {
-            notifyConnectionResult(false);
             return;
-        }
 
         CFDictionaryRef matchingDict[6];
         matchingDict[0] = createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_Joystick);
@@ -243,7 +224,6 @@ private:
         {
             CFRelease(manager);
             manager = nullptr;
-            notifyConnectionResult(false);
             return;
         }
 
@@ -259,7 +239,6 @@ private:
             std::cout << mach_error_string(openResult) << "\n";
             CFRelease(manager);
             manager = nullptr;
-            notifyConnectionResult(false);
             return;
         }
 
@@ -285,8 +264,6 @@ private:
             CFRelease(manager);
             manager = nullptr;
         }
-
-        notifyConnectionResult(false);
     }
 
     static CFMutableDictionaryRef createDeviceMatchingDictionary(uint32_t usagePage, uint32_t usage)
@@ -399,13 +376,18 @@ private:
                         deviceRef = device;
                         owner.reportData = deviceInfo.reportBuffer.get();
                         owner.isConneted = true;
-                        notifyConnectionResult(true);
                         keepDevice = true;
                     }
                 }
 
                 if (! keepDevice)
-                    notifyConnectionResult(false);
+                {
+                    if (deviceRef == device)
+                        deviceRef = nullptr;
+
+                    if (deviceRef == nullptr)
+                        owner.isConneted = false;
+                }
             }
             else
             {
@@ -414,7 +396,14 @@ private:
         }
 
         if (! keepDevice)
+        {
+            if (deviceRef == deviceInfo.device)
+                deviceRef = nullptr;
+
+            if (deviceRef == nullptr)
+                owner.isConneted = false;
             devices.pop_back();
+        }
     }
 
     void processExistingDevices()
@@ -478,35 +467,12 @@ private:
             owner.dataReceivedCallback();
     }
 
-    void notifyConnectionResult(bool succeeded)
-    {
-        std::lock_guard<std::mutex> lock(connectionMutex);
-
-        if (! connectionNotified)
-        {
-            connectionNotified = true;
-            connectionResult = succeeded;
-            connectionCondition.notify_all();
-        }
-    }
-
-    void resetConnectionNotification()
-    {
-        std::lock_guard<std::mutex> lock(connectionMutex);
-        connectionNotified = false;
-        connectionResult = false;
-    }
-
     IOHIDManagerRef manager = nullptr;
     IOHIDDeviceRef deviceRef = nullptr;
     std::list<DeviceInfo> devices;
     std::thread readingThread;
     std::atomic<bool> stopThreadFlag{ false };
     std::atomic<CFRunLoopRef> runLoop { nullptr };
-    std::mutex connectionMutex;
-    std::condition_variable connectionCondition;
-    bool connectionNotified = false;
-    bool connectionResult = false;
 };
 
 #endif // JUCE_MAC

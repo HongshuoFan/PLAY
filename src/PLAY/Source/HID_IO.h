@@ -14,12 +14,9 @@
 #include "InputProvider.h"
 #include "HIDTypes.h"
 #include <JuceHeader.h>
-#include <chrono>
 #include <cstddef>
 #include <functional>
 #include <memory>
-#include <thread>
-#include <vector>
 
 //==============================================================================
 /*
