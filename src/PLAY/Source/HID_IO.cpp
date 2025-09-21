@@ -22,6 +22,7 @@
 #include <mutex>
 #include <thread>
 #include <utility>
+#include <vector>
 
 class HID_IO::HidBackend
 {
@@ -199,6 +200,17 @@ private:
         std::unique_ptr<uint8_t, decltype(&std::free)> reportBuffer{ nullptr, &std::free };
     };
 
+    DeviceInfo* findDeviceInfo(IOHIDDeviceRef device)
+    {
+        for (auto& info : devices)
+        {
+            if (info.device == device)
+                return std::addressof(info);
+        }
+
+        return nullptr;
+    }
+
     void createConnection()
     {
         owner.isConneted = false;
@@ -254,6 +266,8 @@ private:
         CFRunLoopRef currentLoop = CFRunLoopGetCurrent();
         runLoop.store(currentLoop);
         IOHIDManagerScheduleWithRunLoop(manager, currentLoop, CFSTR("CustomLoop"));
+
+        processExistingDevices();
 
         while (! stopThreadFlag.load())
         {
@@ -346,6 +360,9 @@ private:
 
     void onDeviceMatched(IOHIDDeviceRef device)
     {
+        if (findDeviceInfo(device) != nullptr)
+            return;
+
         devices.emplace_back();
 
         auto& deviceInfo = devices.back();
@@ -398,6 +415,34 @@ private:
 
         if (! keepDevice)
             devices.pop_back();
+    }
+
+    void processExistingDevices()
+    {
+        if (manager == nullptr)
+            return;
+
+        CFSetRef deviceSet = IOHIDManagerCopyDevices(manager);
+
+        if (deviceSet == nullptr)
+            return;
+
+        const CFIndex deviceCount = CFSetGetCount(deviceSet);
+
+        if (deviceCount > 0)
+        {
+            std::vector<IOHIDDeviceRef> existingDevices(static_cast<size_t>(deviceCount));
+            CFSetGetValues(deviceSet,
+                           reinterpret_cast<const void**>(existingDevices.data()));
+
+            for (auto deviceRef : existingDevices)
+            {
+                if (deviceRef != nullptr)
+                    onDeviceMatched(deviceRef);
+            }
+        }
+
+        CFRelease(deviceSet);
     }
 
     static IOHIDReportCallback getCallback()
