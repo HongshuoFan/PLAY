@@ -47,8 +47,8 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
     bool HIDDeviceChanged;
     juce::String selectedKey;
-    IOHIDDeviceRef seletedDevice;
-    std::map<juce::String, IOHIDDeviceRef> devicesMap;
+    HidDeviceHandle seletedDevice;
+    std::map<juce::String, HidDeviceHandle> devicesMap;
     std::function<void()> onHIDMenuChanged;
     void ClickRefresh__textButton();
     juce::String supportDevices[5] =

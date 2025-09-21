@@ -10,6 +10,12 @@
 
 #include <JuceHeader.h>
 #include "ListHID.h"
+#include <cstdlib>
+
+#if JUCE_MAC
+# include <IOKit/IOKitLib.h>
+# include <IOKit/hid/IOHIDManager.h>
+#endif
 
 //==============================================================================
 ListHID::ListHID()
@@ -52,6 +58,7 @@ ListHID::~ListHID()
 
 void ListHID::get_hid_list()
 {
+#if JUCE_MAC
     IOHIDManagerRef manager = IOHIDManagerCreate(kCFAllocatorDefault, kIOHIDOptionsTypeNone);
     if (manager){
         //clear map
@@ -63,31 +70,36 @@ void ListHID::get_hid_list()
         CFIndex deviceCount = CFSetGetCount(deviceSet);
         IOHIDDeviceRef *devices = (IOHIDDeviceRef *)malloc(sizeof(IOHIDDeviceRef) * deviceCount);
         CFSetGetValues(deviceSet, (const void **)devices);
-       
+
         for (CFIndex i = 0; i < deviceCount; ++i) {
             IOHIDDeviceRef device = devices[i];
-            
+
             CFStringRef productName = (CFStringRef)IOHIDDeviceGetProperty(device, CFSTR(kIOHIDProductKey));
-            
+
             // Check if this device is unique
-            if(productName && uniqueDevices.insert(device).second){
+            HidDeviceHandle handle = static_cast<HidDeviceHandle>(device);
+            if(productName && uniqueDevices.insert(handle).second){
                 // This device is unique, process it
                 char productNameCString[256];
                 CFStringGetCString(productName, productNameCString, sizeof(productNameCString), kCFStringEncodingUTF8);
-                
+
                 juce::String keyString(productNameCString);
-                
-                devicesMap[keyString] = device;
+
+                devicesMap[keyString] = handle;
                 //printf("Device Name: %s\n", productNameCString);
-                
+
             }
-            
+
         }
         free(devices);
         CFRelease(deviceSet);
         IOHIDManagerClose(manager, kIOHIDOptionsTypeNone);
         CFRelease(manager);
     }
-    
+
     return ;
+#else
+    devicesMap.clear();
+    uniqueDevices.clear();
+#endif
 }

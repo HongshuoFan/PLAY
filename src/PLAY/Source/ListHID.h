@@ -11,8 +11,9 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include <IOKit/IOKitLib.h>
-#include <IOKit/hid/IOHIDManager.h>
+#include "HIDTypes.h"
+#include <map>
+#include <set>
 
 //==============================================================================
 /*
@@ -28,8 +29,8 @@ public:
     
     void get_hid_list();
     
-    std::set<IOHIDDeviceRef> uniqueDevices;
-    std::map<juce::String, IOHIDDeviceRef> devicesMap;
+    std::set<HidDeviceHandle> uniqueDevices;
+    std::map<juce::String, HidDeviceHandle> devicesMap;
     
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ListHID)

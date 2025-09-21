@@ -7,6 +7,13 @@
 */
 
 #include <JuceHeader.h>
+
+#if ! JUCE_MAC
+# include "HID_IO.h"
+# include "ListHID.h"
+# include "HIDMenu.h"
+#endif
+
 #include "MainComponent.h"
 
 //==============================================================================
