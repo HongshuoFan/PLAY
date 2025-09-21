@@ -431,12 +431,13 @@ private:
 
         if (deviceCount > 0)
         {
-            std::vector<IOHIDDeviceRef> existingDevices(static_cast<size_t>(deviceCount));
-            CFSetGetValues(deviceSet,
-                           reinterpret_cast<const void**>(existingDevices.data()));
+            std::vector<CFTypeRef> existingDevices(static_cast<size_t>(deviceCount));
+            CFSetGetValues(deviceSet, existingDevices.data());
 
-            for (auto deviceRef : existingDevices)
+            for (auto deviceValue : existingDevices)
             {
+                auto deviceRef = static_cast<IOHIDDeviceRef>(const_cast<void*>(deviceValue));
+
                 if (deviceRef != nullptr)
                     onDeviceMatched(deviceRef);
             }
