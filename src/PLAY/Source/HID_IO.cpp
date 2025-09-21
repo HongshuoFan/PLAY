@@ -12,12 +12,14 @@
 #include "HID_IO.h"
 
 #include <atomic>
+#include <chrono>
+#include <condition_variable>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
-#include <list>
 #include <memory>
+#include <mutex>
 #include <thread>
 #include <utility>
 #include <vector>
@@ -72,53 +74,56 @@ public:
 #include <IOKit/hid/IOHIDManager.h>
 #include <IOKit/hid/IOHIDLib.h>
 #include <mach/mach_error.h>
-#include <stdexcept>
 
 class HID_IO::MacHidBackend : public HID_IO::HidBackend
 {
 public:
-    explicit MacHidBackend(HID_IO& ownerIn) : HidBackend(ownerIn) {}
+    explicit MacHidBackend(HID_IO& ownerIn)
+        : HidBackend(ownerIn)
+    {
+    }
 
     ~MacHidBackend() override
     {
-        stopReadingThread();
+        shutdown();
     }
 
     bool connect() override
     {
-        stopReadingThread();
+        shutdown();
 
         if (owner.device_name == nullptr)
             return false;
 
         owner.isConneted = false;
         owner.reportData = nullptr;
-        startReadingThread();
 
-        return readingThread.joinable();
+        if (! startThread())
+            return false;
+
+        if (! waitForConnection())
+        {
+            shutdown();
+            return false;
+        }
+
+        return true;
     }
 
     void disconnect() override
     {
-        for (auto& info : devices)
-            unscheduleDevice(info);
-
-        deviceRef = nullptr;
-        owner.isConneted = false;
-        owner.reportData = nullptr;
+        shutdown();
     }
 
     bool writeRawData(const uint8_t* data, size_t reportId, size_t length) override
     {
-        IOReturn result = kIOReturnError;
-
-        if (deviceRef != nullptr)
+        if (activeDevice.device != nullptr)
         {
-            result = IOHIDDeviceSetReport(deviceRef,
-                                          kIOHIDReportTypeOutput,
-                                          static_cast<CFIndex>(reportId),
-                                          data,
-                                          static_cast<CFIndex>(length));
+            const IOReturn result = IOHIDDeviceSetReport(activeDevice.device,
+                                                         kIOHIDReportTypeOutput,
+                                                         static_cast<CFIndex>(reportId),
+                                                         data,
+                                                         static_cast<CFIndex>(length));
 
             if (result == kIOReturnSuccess)
                 return true;
@@ -127,7 +132,7 @@ public:
         }
         else
         {
-            std::cout << "IOReturn error: " << result << " - " << mach_error_string(result) << std::endl;
+            std::cout << "IOReturn error: " << mach_error_string(kIOReturnNotOpen) << std::endl;
         }
 
         return false;
@@ -135,41 +140,19 @@ public:
 
     void startReadingThread() override
     {
-        if (! readingThread.joinable())
-        {
-            stopThreadFlag.store(false);
-            runLoop.store(nullptr);
-            readingThread = std::thread([this]() { createConnection(); });
-        }
-        else
-        {
-            owner.isConneted = false;
-        }
+        startThread();
     }
 
     void stopReadingThread() override
     {
-        if (readingThread.joinable())
-        {
-            stopThreadFlag.store(true);
-
-            if (auto loop = runLoop.load())
-                CFRunLoopStop(loop);
-
-            readingThread.join();
-            runLoop.store(nullptr);
-            stopThreadFlag.store(false);
-        }
-
-        disconnect();
-        devices.clear();
+        shutdown();
     }
 
     void printReport() override
     {
-        if (deviceRef != nullptr && owner.reportData != nullptr)
+        if (activeDevice.device != nullptr && owner.reportData != nullptr)
         {
-            const auto maxInputReportSize = static_cast<uint32_t>(getIntProperty(deviceRef, CFSTR(kIOHIDMaxInputReportSizeKey)));
+            const auto maxInputReportSize = static_cast<uint32_t>(getIntProperty(activeDevice.device, CFSTR(kIOHIDMaxInputReportSizeKey)));
             for (uint32_t i = 0; i < maxInputReportSize; ++i)
             {
                 std::cout << i << ":";
@@ -180,58 +163,123 @@ public:
     }
 
 private:
-    struct DeviceInfo
+    struct DeviceContext
     {
-        MacHidBackend* backend = nullptr;
-        DeviceIdType deviceId{};
         IOHIDDeviceRef device = nullptr;
         std::unique_ptr<uint8_t, decltype(&std::free)> reportBuffer{ nullptr, &std::free };
-        CFRunLoopRef scheduledLoop = nullptr;
+        CFIndex reportLength = 0;
     };
 
-    DeviceInfo* findDeviceInfo(IOHIDDeviceRef device)
+    bool startThread()
     {
-        for (auto& info : devices)
+        if (readingThread.joinable())
+            return true;
+
         {
-            if (info.device == device)
-                return std::addressof(info);
+            std::lock_guard<std::mutex> lock(stateMutex);
+            hasConnectionResult = false;
+            connectionResult = false;
         }
 
-        return nullptr;
+        stopThread.store(false);
+        runLoop.store(nullptr);
+        readingThread = std::thread([this]() { runLoopThread(); });
+        return readingThread.joinable();
     }
 
-    void createConnection()
+    bool waitForConnection()
     {
+        std::unique_lock<std::mutex> lock(stateMutex);
+
+        if (! stateCV.wait_for(lock, std::chrono::seconds(5), [this]() { return hasConnectionResult; }))
+            return false;
+
+        return connectionResult;
+    }
+
+    void shutdown()
+    {
+        stopThread.store(true);
+
+        if (auto loop = runLoop.load())
+            CFRunLoopStop(loop);
+
+        if (readingThread.joinable())
+            readingThread.join();
+
+        stopThread.store(false);
+        runLoop.store(nullptr);
+        scheduledLoop = nullptr;
+
         owner.isConneted = false;
         owner.reportData = nullptr;
-        deviceRef = nullptr;
-        for (auto& info : devices)
-            unscheduleDevice(info);
 
-        devices.clear();
+        cleanupActiveDevice();
 
+        manager = nullptr;
+
+        std::lock_guard<std::mutex> lock(stateMutex);
+        hasConnectionResult = false;
+        connectionResult = false;
+    }
+
+    void runLoopThread()
+    {
         manager = IOHIDManagerCreate(kCFAllocatorDefault, kIOHIDOptionsTypeNone);
 
         if (manager == nullptr)
+        {
+            signalConnectionResult(false);
             return;
+        }
 
-        CFDictionaryRef matchingDict[6];
-        matchingDict[0] = createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_Joystick);
-        matchingDict[1] = createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_GamePad);
-        matchingDict[2] = createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_MultiAxisController);
-        matchingDict[3] = createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_Pointer);
-        matchingDict[4] = createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_AssistiveControl);
-        matchingDict[5] = createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_SpatialController);
+        CFMutableDictionaryRef matchingDicts[6] = {
+            createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_Joystick),
+            createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_GamePad),
+            createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_MultiAxisController),
+            createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_Pointer),
+            createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_AssistiveControl),
+            createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_SpatialController)
+        };
 
-        CFArrayRef multiple = CFArrayCreate(kCFAllocatorDefault, (const void**) matchingDict, 6, &kCFTypeArrayCallBacks);
+        bool matchingOk = true;
 
-        for (auto dict : matchingDict)
+        for (auto dict : matchingDicts)
+        {
+            if (dict == nullptr)
+            {
+                matchingOk = false;
+                break;
+            }
+        }
+
+        if (! matchingOk)
+        {
+            for (auto dict : matchingDicts)
+            {
+                if (dict != nullptr)
+                    CFRelease(dict);
+            }
+
+            CFRelease(manager);
+            manager = nullptr;
+            signalConnectionResult(false);
+            return;
+        }
+
+        CFArrayRef multiple = CFArrayCreate(kCFAllocatorDefault,
+                                            reinterpret_cast<const void**>(matchingDicts),
+                                            6,
+                                            &kCFTypeArrayCallBacks);
+
+        for (auto dict : matchingDicts)
             CFRelease(dict);
 
         if (multiple == nullptr)
         {
             CFRelease(manager);
             manager = nullptr;
+            signalConnectionResult(false);
             return;
         }
 
@@ -239,6 +287,7 @@ private:
         CFRelease(multiple);
 
         IOHIDManagerRegisterDeviceMatchingCallback(manager, &MacHidBackend::onDeviceMatchedStub, this);
+        IOHIDManagerRegisterDeviceRemovalCallback(manager, &MacHidBackend::onDeviceRemovedStub, this);
 
         const IOReturn openResult = IOHIDManagerOpen(manager, kIOHIDOptionsTypeNone);
 
@@ -247,186 +296,44 @@ private:
             std::cout << mach_error_string(openResult) << "\n";
             CFRelease(manager);
             manager = nullptr;
+            signalConnectionResult(false);
             return;
         }
 
         CFRunLoopRef currentLoop = CFRunLoopGetCurrent();
+        scheduledLoop = currentLoop;
         runLoop.store(currentLoop);
         IOHIDManagerScheduleWithRunLoop(manager, currentLoop, CFSTR("CustomLoop"));
 
         processExistingDevices();
 
-        while (! stopThreadFlag.load())
+        while (! stopThread.load())
         {
-            if (CFRunLoopRunInMode(CFSTR("CustomLoop"), 1, true) == kCFRunLoopRunStopped)
+            const auto status = CFRunLoopRunInMode(CFSTR("CustomLoop"), 1, true);
+
+            if (status == kCFRunLoopRunStopped || status == kCFRunLoopRunFinished)
                 break;
         }
 
-        IOHIDManagerClose(manager, 0);
         runLoop.store(nullptr);
-        owner.isConneted = false;
-        owner.reportData = nullptr;
+
+        if (manager != nullptr && scheduledLoop != nullptr)
+            IOHIDManagerUnscheduleFromRunLoop(manager, scheduledLoop, CFSTR("CustomLoop"));
+
+        scheduledLoop = nullptr;
 
         if (manager != nullptr)
         {
+            IOHIDManagerClose(manager, kIOHIDOptionsTypeNone);
             CFRelease(manager);
             manager = nullptr;
         }
-    }
 
-    static CFMutableDictionaryRef createDeviceMatchingDictionary(uint32_t usagePage, uint32_t usage)
-    {
-        CFMutableDictionaryRef result = CFDictionaryCreateMutable(kCFAllocatorDefault,
-                                                                   0,
-                                                                   &kCFTypeDictionaryKeyCallBacks,
-                                                                   &kCFTypeDictionaryValueCallBacks);
+        owner.isConneted = false;
+        owner.reportData = nullptr;
+        cleanupActiveDevice();
 
-        if (result == nullptr)
-            throw std::runtime_error("CFDictionaryCreateMutable failed.");
-
-        if (usagePage != 0)
-        {
-            CFNumberRef pageCFNumberRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &usagePage);
-            if (pageCFNumberRef == nullptr)
-                throw std::runtime_error("CFNumberCreate failed.");
-
-            CFDictionarySetValue(result, CFSTR(kIOHIDDeviceUsagePageKey), pageCFNumberRef);
-            CFRelease(pageCFNumberRef);
-
-            if (usage != 0)
-            {
-                CFNumberRef usageCFNumberRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &usage);
-                if (usageCFNumberRef == nullptr)
-                    throw std::runtime_error("CFNumberCreate failed.");
-
-                CFDictionarySetValue(result, CFSTR(kIOHIDDeviceUsageKey), usageCFNumberRef);
-                CFRelease(usageCFNumberRef);
-            }
-        }
-
-        return result;
-    }
-
-    static int getIntProperty(IOHIDDeviceRef device, CFStringRef key)
-    {
-        int value = 0;
-        CFTypeRef property = IOHIDDeviceGetProperty(device, key);
-
-        if (property && CFGetTypeID(property) == CFNumberGetTypeID())
-        {
-            CFNumberRef number = static_cast<CFNumberRef>(property);
-            CFNumberGetValue(number, kCFNumberSInt32Type, &value);
-            return value;
-        }
-
-        return value;
-    }
-
-    static DeviceIdType getDeviceID(IOHIDDeviceRef dev)
-    {
-        DeviceIdType device{ 0 };
-        int vendor = getIntProperty(dev, CFSTR(kIOHIDVendorIDKey));
-        int product = getIntProperty(dev, CFSTR(kIOHIDProductIDKey));
-        int location = getIntProperty(dev, CFSTR(kIOHIDLocationIDKey));
-        device.at(0) = vendor & 0xFF;
-        device.at(1) = (vendor >> 8) & 0xFF;
-        device.at(2) = product & 0xFF;
-        device.at(3) = (product >> 8) & 0xFF;
-        device.at(4) = (location >> 16) & 0xFF;
-        device.at(5) = (location >> 24) & 0xFF;
-        return device;
-    }
-
-    static void onDeviceMatchedStub(void* context, IOReturn result, void* sender, IOHIDDeviceRef device)
-    {
-        juce::ignoreUnused(result, sender);
-        static_cast<MacHidBackend*>(context)->onDeviceMatched(device);
-    }
-
-    void onDeviceMatched(IOHIDDeviceRef device)
-    {
-        if (findDeviceInfo(device) != nullptr)
-            return;
-
-        devices.emplace_back();
-
-        auto& deviceInfo = devices.back();
-        deviceInfo.backend = this;
-        deviceInfo.device = device;
-        deviceInfo.deviceId = getDeviceID(device);
-
-        char nameBuffer[256]{};
-        bool hasName = false;
-
-        if (auto name_cf = static_cast<CFStringRef>(IOHIDDeviceGetProperty(device, CFSTR(kIOHIDProductKey))))
-            hasName = CFStringGetCString(name_cf, nameBuffer, sizeof(nameBuffer), kCFStringEncodingUTF8);
-
-        bool keepDevice = false;
-
-        if (! stopThreadFlag.load() && hasName)
-        {
-            if (owner.device_name != nullptr && std::strcmp(nameBuffer, owner.device_name) == 0)
-            {
-                const int maxInputReportSize = getIntProperty(device, CFSTR(kIOHIDMaxInputReportSizeKey));
-
-                if (maxInputReportSize > 0)
-                {
-                    deviceInfo.reportBuffer.reset(static_cast<uint8_t*>(std::calloc(static_cast<size_t>(maxInputReportSize), sizeof(uint8_t))));
-
-                    if (deviceInfo.reportBuffer != nullptr)
-                    {
-                        IOHIDDeviceRegisterInputReportCallback(device,
-                                                               deviceInfo.reportBuffer.get(),
-                                                               static_cast<CFIndex>(maxInputReportSize),
-                                                               getCallback(),
-                                                               &deviceInfo);
-
-                        if (auto loop = runLoop.load())
-                        {
-                            IOHIDDeviceScheduleWithRunLoop(device, loop, CFSTR("CustomLoop"));
-                            deviceInfo.scheduledLoop = loop;
-                        }
-
-                        deviceRef = device;
-                        owner.reportData = deviceInfo.reportBuffer.get();
-                        owner.isConneted = true;
-                        keepDevice = true;
-                    }
-                }
-
-                if (! keepDevice)
-                {
-                    if (deviceRef == device)
-                        deviceRef = nullptr;
-
-                    if (deviceRef == nullptr)
-                        owner.isConneted = false;
-                }
-            }
-            else
-            {
-                std::cout << nameBuffer << " Not match \n";
-            }
-        }
-
-        if (! keepDevice)
-        {
-            if (deviceRef == deviceInfo.device)
-                deviceRef = nullptr;
-
-            if (deviceRef == nullptr)
-                owner.isConneted = false;
-            devices.pop_back();
-        }
-    }
-
-    void unscheduleDevice(DeviceInfo& deviceInfo)
-    {
-        if (deviceInfo.device != nullptr && deviceInfo.scheduledLoop != nullptr)
-        {
-            IOHIDDeviceUnscheduleFromRunLoop(deviceInfo.device, deviceInfo.scheduledLoop, CFSTR("CustomLoop"));
-            deviceInfo.scheduledLoop = nullptr;
-        }
+        signalConnectionResult(false);
     }
 
     void processExistingDevices()
@@ -443,19 +350,179 @@ private:
 
         if (deviceCount > 0)
         {
-            std::vector<CFTypeRef> existingDevices(static_cast<size_t>(deviceCount));
+            std::vector<const void*> existingDevices(static_cast<size_t>(deviceCount));
             CFSetGetValues(deviceSet, existingDevices.data());
 
-            for (auto deviceValue : existingDevices)
+            for (const void* deviceValue : existingDevices)
             {
-                auto deviceRef = static_cast<IOHIDDeviceRef>(const_cast<void*>(deviceValue));
+                auto device = static_cast<IOHIDDeviceRef>(const_cast<void*>(deviceValue));
 
-                if (deviceRef != nullptr)
-                    onDeviceMatched(deviceRef);
+                if (device != nullptr)
+                    onDeviceMatched(kIOReturnSuccess, device);
             }
         }
 
         CFRelease(deviceSet);
+    }
+
+    void cleanupActiveDevice()
+    {
+        activeDevice.reportBuffer.reset();
+        activeDevice.reportLength = 0;
+        activeDevice.device = nullptr;
+    }
+
+    void signalConnectionResult(bool success)
+    {
+        std::lock_guard<std::mutex> lock(stateMutex);
+
+        if (hasConnectionResult)
+            return;
+
+        connectionResult = success;
+        hasConnectionResult = true;
+        stateCV.notify_one();
+    }
+
+    static CFMutableDictionaryRef createDeviceMatchingDictionary(uint32_t usagePage, uint32_t usage)
+    {
+        CFMutableDictionaryRef result = CFDictionaryCreateMutable(kCFAllocatorDefault,
+                                                                   0,
+                                                                   &kCFTypeDictionaryKeyCallBacks,
+                                                                   &kCFTypeDictionaryValueCallBacks);
+
+        if (result == nullptr)
+            return nullptr;
+
+        if (usagePage != 0)
+        {
+            CFNumberRef pageCFNumberRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &usagePage);
+
+            if (pageCFNumberRef == nullptr)
+            {
+                CFRelease(result);
+                return nullptr;
+            }
+
+            CFDictionarySetValue(result, CFSTR(kIOHIDDeviceUsagePageKey), pageCFNumberRef);
+            CFRelease(pageCFNumberRef);
+
+            if (usage != 0)
+            {
+                CFNumberRef usageCFNumberRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &usage);
+
+                if (usageCFNumberRef == nullptr)
+                {
+                    CFRelease(result);
+                    return nullptr;
+                }
+
+                CFDictionarySetValue(result, CFSTR(kIOHIDDeviceUsageKey), usageCFNumberRef);
+                CFRelease(usageCFNumberRef);
+            }
+        }
+
+        return result;
+    }
+
+    static int getIntProperty(IOHIDDeviceRef device, CFStringRef key)
+    {
+        int value = 0;
+        CFTypeRef property = IOHIDDeviceGetProperty(device, key);
+
+        if (property != nullptr && CFGetTypeID(property) == CFNumberGetTypeID())
+        {
+            CFNumberRef number = static_cast<CFNumberRef>(property);
+            CFNumberGetValue(number, kCFNumberSInt32Type, &value);
+        }
+
+        return value;
+    }
+
+    static void onDeviceMatchedStub(void* context, IOReturn result, void* sender, IOHIDDeviceRef device)
+    {
+        juce::ignoreUnused(sender);
+        static_cast<MacHidBackend*>(context)->onDeviceMatched(result, device);
+    }
+
+    void onDeviceMatched(IOReturn result, IOHIDDeviceRef device)
+    {
+        juce::ignoreUnused(result);
+
+        if (stopThread.load())
+            return;
+
+        if (owner.device_name == nullptr)
+            return;
+
+        if (activeDevice.device != nullptr)
+        {
+            if (activeDevice.device == device)
+            {
+                if (! owner.isConneted)
+                {
+                    owner.isConneted = true;
+                    signalConnectionResult(true);
+                }
+            }
+
+            return;
+        }
+
+        char nameBuffer[256]{};
+        bool hasName = false;
+
+        if (auto nameCF = static_cast<CFStringRef>(IOHIDDeviceGetProperty(device, CFSTR(kIOHIDProductKey))))
+            hasName = CFStringGetCString(nameCF, nameBuffer, sizeof(nameBuffer), kCFStringEncodingUTF8);
+
+        if (! hasName)
+            return;
+
+        if (std::strcmp(nameBuffer, owner.device_name) != 0)
+            return;
+
+        CFIndex maxInputReportSize = getIntProperty(device, CFSTR(kIOHIDMaxInputReportSizeKey));
+
+        if (maxInputReportSize <= 0)
+            maxInputReportSize = 64;
+
+        auto* buffer = static_cast<uint8_t*>(std::calloc(static_cast<size_t>(maxInputReportSize), sizeof(uint8_t)));
+
+        if (buffer == nullptr)
+        {
+            signalConnectionResult(false);
+            return;
+        }
+
+        activeDevice.reportBuffer.reset(buffer);
+        activeDevice.reportLength = maxInputReportSize;
+        activeDevice.device = device;
+
+        IOHIDDeviceRegisterInputReportCallback(device,
+                                               activeDevice.reportBuffer.get(),
+                                               activeDevice.reportLength,
+                                               getCallback(),
+                                               this);
+
+        owner.reportData = activeDevice.reportBuffer.get();
+        owner.isConneted = true;
+        signalConnectionResult(true);
+    }
+
+    static void onDeviceRemovedStub(void* context, IOReturn result, void* sender, IOHIDDeviceRef device)
+    {
+        juce::ignoreUnused(result, sender);
+        static_cast<MacHidBackend*>(context)->onDeviceRemoved(device);
+    }
+
+    void onDeviceRemoved(IOHIDDeviceRef device)
+    {
+        if (activeDevice.device != device)
+            return;
+
+        owner.isConneted = false;
+        owner.reportData = nullptr;
+        cleanupActiveDevice();
     }
 
     static IOHIDReportCallback getCallback()
@@ -471,12 +538,11 @@ private:
                                         uint8_t* report,
                                         CFIndex reportLength)
     {
-        auto* deviceInfo = reinterpret_cast<DeviceInfo*>(context);
-        deviceInfo->backend->inputReportCallback(*deviceInfo, result, sender, type, reportID, report, reportLength);
+        auto* backend = static_cast<MacHidBackend*>(context);
+        backend->inputReportCallback(result, sender, type, reportID, report, reportLength);
     }
 
-    void inputReportCallback(DeviceInfo& deviceInfo,
-                             IOReturn result,
+    void inputReportCallback(IOReturn result,
                              void* sender,
                              IOHIDReportType type,
                              uint32_t reportID,
@@ -484,18 +550,24 @@ private:
                              CFIndex reportLength)
     {
         juce::ignoreUnused(result, sender, type, reportID, report, reportLength);
-        owner.reportData = deviceInfo.reportBuffer.get();
+
+        owner.reportData = activeDevice.reportBuffer.get();
 
         if (owner.dataReceivedCallback)
             owner.dataReceivedCallback();
     }
 
     IOHIDManagerRef manager = nullptr;
-    IOHIDDeviceRef deviceRef = nullptr;
-    std::list<DeviceInfo> devices;
+    DeviceContext activeDevice;
     std::thread readingThread;
-    std::atomic<bool> stopThreadFlag{ false };
+    std::atomic<bool> stopThread{ false };
     std::atomic<CFRunLoopRef> runLoop { nullptr };
+    CFRunLoopRef scheduledLoop = nullptr;
+
+    std::mutex stateMutex;
+    std::condition_variable stateCV;
+    bool hasConnectionResult = false;
+    bool connectionResult = false;
 };
 
 #endif // JUCE_MAC
