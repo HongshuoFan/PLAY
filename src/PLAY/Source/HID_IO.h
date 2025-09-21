@@ -58,6 +58,13 @@ public:
 
 private:
     class HidBackend;
+    class NullHidBackend;
+#if JUCE_MAC
+    class MacHidBackend;
+#endif
+
+    static std::unique_ptr<HidBackend> createBackend(HID_IO& owner);
+
     std::unique_ptr<HidBackend> backend;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HID_IO)

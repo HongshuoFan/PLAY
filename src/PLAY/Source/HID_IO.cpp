@@ -37,35 +37,32 @@ protected:
     HID_IO& owner;
 };
 
-namespace
+class HID_IO::NullHidBackend : public HID_IO::HidBackend
 {
-    class NullHidBackend : public HID_IO::HidBackend
+public:
+    explicit NullHidBackend(HID_IO& ownerIn) : HidBackend(ownerIn) {}
+
+    bool connect() override
     {
-    public:
-        explicit NullHidBackend(HID_IO& ownerIn) : HidBackend(ownerIn) {}
+        owner.isConneted = false;
+        return false;
+    }
 
-        bool connect() override
-        {
-            owner.isConneted = false;
-            return false;
-        }
+    void disconnect() override
+    {
+        owner.isConneted = false;
+    }
 
-        void disconnect() override
-        {
-            owner.isConneted = false;
-        }
+    bool writeRawData(const uint8_t* data, size_t reportId, size_t length) override
+    {
+        juce::ignoreUnused(data, reportId, length);
+        return false;
+    }
 
-        bool writeRawData(const uint8_t* data, size_t reportId, size_t length) override
-        {
-            juce::ignoreUnused(data, reportId, length);
-            return false;
-        }
-
-        void startReadingThread() override {}
-        void stopReadingThread() override {}
-        void printReport() override {}
-    };
-}
+    void startReadingThread() override {}
+    void stopReadingThread() override {}
+    void printReport() override {}
+};
 
 #if JUCE_MAC
 
@@ -354,16 +351,14 @@ private:
 
 #endif // JUCE_MAC
 
-namespace
+
+std::unique_ptr<HID_IO::HidBackend> HID_IO::createBackend(HID_IO& owner)
 {
-    std::unique_ptr<HID_IO::HidBackend> createBackend(HID_IO& owner)
-    {
-       #if JUCE_MAC
-        return std::make_unique<HID_IO::MacHidBackend>(owner);
-       #else
-        return std::make_unique<NullHidBackend>(owner);
-       #endif
-    }
+#if JUCE_MAC
+    return std::make_unique<MacHidBackend>(owner);
+#else
+    return std::make_unique<NullHidBackend>(owner);
+#endif
 }
 
 HID_IO::HID_IO()
