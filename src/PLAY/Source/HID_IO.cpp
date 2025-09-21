@@ -70,6 +70,7 @@ public:
 
 #include <IOKit/IOKitLib.h>
 #include <IOKit/hid/IOHIDManager.h>
+#include <IOKit/hid/IOHIDLib.h>
 #include <mach/mach_error.h>
 #include <stdexcept>
 
@@ -99,6 +100,9 @@ public:
 
     void disconnect() override
     {
+        for (auto& info : devices)
+            unscheduleDevice(info);
+
         deviceRef = nullptr;
         owner.isConneted = false;
         owner.reportData = nullptr;
@@ -182,6 +186,7 @@ private:
         DeviceIdType deviceId{};
         IOHIDDeviceRef device = nullptr;
         std::unique_ptr<uint8_t, decltype(&std::free)> reportBuffer{ nullptr, &std::free };
+        CFRunLoopRef scheduledLoop = nullptr;
     };
 
     DeviceInfo* findDeviceInfo(IOHIDDeviceRef device)
@@ -200,6 +205,9 @@ private:
         owner.isConneted = false;
         owner.reportData = nullptr;
         deviceRef = nullptr;
+        for (auto& info : devices)
+            unscheduleDevice(info);
+
         devices.clear();
 
         manager = IOHIDManagerCreate(kCFAllocatorDefault, kIOHIDOptionsTypeNone);
@@ -373,6 +381,12 @@ private:
                                                                getCallback(),
                                                                &deviceInfo);
 
+                        if (auto loop = runLoop.load())
+                        {
+                            IOHIDDeviceScheduleWithRunLoop(device, loop, CFSTR("CustomLoop"));
+                            deviceInfo.scheduledLoop = loop;
+                        }
+
                         deviceRef = device;
                         owner.reportData = deviceInfo.reportBuffer.get();
                         owner.isConneted = true;
@@ -403,6 +417,15 @@ private:
             if (deviceRef == nullptr)
                 owner.isConneted = false;
             devices.pop_back();
+        }
+    }
+
+    void unscheduleDevice(DeviceInfo& deviceInfo)
+    {
+        if (deviceInfo.device != nullptr && deviceInfo.scheduledLoop != nullptr)
+        {
+            IOHIDDeviceUnscheduleFromRunLoop(deviceInfo.device, deviceInfo.scheduledLoop, CFSTR("CustomLoop"));
+            deviceInfo.scheduledLoop = nullptr;
         }
     }
 
@@ -460,8 +483,8 @@ private:
                              uint8_t* report,
                              CFIndex reportLength)
     {
-        juce::ignoreUnused(deviceInfo, result, sender, type, reportID, reportLength);
-        owner.reportData = report;
+        juce::ignoreUnused(result, sender, type, reportID, report, reportLength);
+        owner.reportData = deviceInfo.reportBuffer.get();
 
         if (owner.dataReceivedCallback)
             owner.dataReceivedCallback();
