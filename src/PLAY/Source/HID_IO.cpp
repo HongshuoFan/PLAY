@@ -267,9 +267,14 @@ private:
             return;
         }
 
+        const void* rawMatchingDicts[matchingDicts.size()];
+
+        for (size_t i = 0; i < matchingDicts.size(); ++i)
+            rawMatchingDicts[i] = matchingDicts[i];
+
         CFArrayRef multiple = CFArrayCreate(kCFAllocatorDefault,
-                                            reinterpret_cast<const void**>(matchingDicts),
-                                            6,
+                                            rawMatchingDicts,
+                                            static_cast<CFIndex>(matchingDicts.size()),
                                             &kCFTypeArrayCallBacks);
 
         for (auto dict : matchingDicts)
