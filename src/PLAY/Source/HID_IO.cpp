@@ -233,7 +233,7 @@ private:
             return;
         }
 
-        CFMutableDictionaryRef matchingDicts[6] = {
+        std::vector<CFMutableDictionaryRef> matchingDicts = {
             createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_Joystick),
             createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_GamePad),
             createDeviceMatchingDictionary(kHIDPage_GenericDesktop, kHIDUsage_GD_MultiAxisController),
@@ -267,14 +267,15 @@ private:
             return;
         }
 
-        const void* rawMatchingDicts[matchingDicts.size()];
+        std::vector<const void*> rawMatchingDicts;
+        rawMatchingDicts.reserve(matchingDicts.size());
 
-        for (size_t i = 0; i < matchingDicts.size(); ++i)
-            rawMatchingDicts[i] = matchingDicts[i];
+        for (auto dict : matchingDicts)
+            rawMatchingDicts.push_back(dict);
 
         CFArrayRef multiple = CFArrayCreate(kCFAllocatorDefault,
-                                            rawMatchingDicts,
-                                            static_cast<CFIndex>(matchingDicts.size()),
+                                            rawMatchingDicts.data(),
+                                            static_cast<CFIndex>(rawMatchingDicts.size()),
                                             &kCFTypeArrayCallBacks);
 
         for (auto dict : matchingDicts)
